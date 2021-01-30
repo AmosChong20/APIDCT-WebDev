@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Jumbotron } from 'react-bootstrap';
-
+import Loading from '../components/Loading'
 class Page1 extends Component {
     state = {  }
     render() { 

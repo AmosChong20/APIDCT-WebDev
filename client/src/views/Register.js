@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import React from 'react'
-import '../components/css/Register.css';
+import './css/Register.css';
 import logoBase from '../assets/image/yatai 10th logo-10.png';
 import logoTop1 from '../assets/image/yatai 10th logo-bian.png';
 

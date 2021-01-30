@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logoBase from '../assets/image/yatai 10th logo-10.png';
 import logoTop1 from '../assets/image/yatai 10th logo-bian.png';
-import '../index.css'
+import './css/HomeHeader.css'
 
 class HomeHeader extends Component {
     state = {  }
