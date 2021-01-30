@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { addRegisterData } from '../controllers/register-controller.js';
+import { addRegisterData } from '../controllers/register.js';
 
 const router = express.Router();
 
