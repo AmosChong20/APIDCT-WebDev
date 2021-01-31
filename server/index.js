@@ -2,9 +2,11 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import { port, mongoConnectionString } from "./config.js";
+import dotenv from 'dotenv';
+import { port } from "./config.js";
 
 import registerRoutes from '../server/routes/register.js';
+dotenv.config();
 
 const app = express();
 app.use(bodyParser.json({limit:"30mb", extended:true}));
@@ -20,7 +22,7 @@ app.get('/',(req,res) =>{
 });
 
 
-mongoose.connect(mongoConnectionString,{
+mongoose.connect(process.env.mongoConnectionString,{
     useNewUrlParser:true,
     useUnifiedTopology:true,
     useFindAndModify:false,
