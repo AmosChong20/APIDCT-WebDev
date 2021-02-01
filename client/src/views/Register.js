@@ -2,7 +2,7 @@ import { useState } from 'react'
 import React from 'react'
 import './css/Register.css';
 import logoBase from '../assets/image/yatai 10th logo-10.png';
-import logoTop1 from '../assets/image/yatai 10th logo-bian.png';
+import logo from '../assets/image/yatai 10th logo-bian.png';
 
 
 const Register = () => {
@@ -115,9 +115,10 @@ const Register = () => {
               <span className = "englishF"> Submit / </span> <span> 提交 </span>
             </button>
           </form>
-          <div className="col-4 logo">
-            <img src= {logoBase} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="ten-logo" width="80%" />
-            <img src={logoTop1} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="bian-logo" width="80%" />
+          <div className="col-4 register-page-logo-div">
+            <img src= {logoBase} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="register-page-logo ten-logo" width="80%" />
+            <img src= {logo} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="register-page-logo bian-logo" width="80%" />
+            
           </div>
         </div>
       </div>
