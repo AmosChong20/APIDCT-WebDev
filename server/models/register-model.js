@@ -4,7 +4,7 @@ const resgisterSchema = mongoose.Schema({
     engSchoolName: String,
     chiSchoolName: String,
     engTeamLeaderName: String,
-    chiTeamLeaderNam: String,
+    chiTeamLeaderName: String,
     teamLeaderContact: String,
     teamLeaderEmail: String,
     debateTopics_1: String,
