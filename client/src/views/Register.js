@@ -4,6 +4,8 @@ import './css/Register.css';
 import logoBase from '../assets/image/yatai 10th logo-10.png';
 import logo from '../assets/image/yatai 10th logo-bian.png';
 
+import Alert from 'react-bootstrap/Alert';
+
 
 const Register = () => {
   const [registerData, setRegisterData] = useState ({engSchoolName : '',chiSchoolName : '',engTeamLeaderName : '',chiTeamLeaderName : '',teamLeaderContact : '',teamLeaderEmail : '',debateTopics_1 : '',debateTopics_2 : ''});
@@ -16,8 +18,17 @@ const Register = () => {
   const[changed_7,setChanged_7] = useState(false);
   const[changed_8,setChanged_8] = useState(false);
 
+  const[isEmail1,setIsEmail1] = useState(false);
+
+
+  const [showS, setShowS] = useState(false);
+  const [showF, setShowF] = useState(false);
+
+
+
+
   const addRegisterData = async (registerData) =>{
-    const res = await fetch ('http://localhost:5000/register',{
+    const res = await fetch ('https://apicdt.herokuapp.com/register',{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
@@ -28,12 +39,33 @@ const Register = () => {
     console.log(data);
     console.log('res', res) ;
     if (res.status === 201){
-
+      setShowS(true);
+      setShowF(false);
     }
+    else{
+      setShowF(true);
+      setShowS(false);
+    }
+  }
+  
+  const isEmail=(val)=>{
+    let regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    // let regEmail = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
+    if(regEmail.test(val)){
+      setIsEmail1(true);
+    }
+    else{
+      setIsEmail1(false);
+    }
+    // console.log(isEmail1);
   }
 
   const onSubmit = (e) =>{
     e.preventDefault()
+
+    isEmail(registerData.teamLeaderEmail);
+    
+    // console.log(isEmail1);
 
     if(registerData.engSchoolName === '' ||
     registerData.chiSchoolName === '' ||
@@ -42,13 +74,26 @@ const Register = () => {
     registerData.teamLeaderContact === '' ||
     registerData.teamLeaderEmail === '' ||
     registerData.debateTopics_1 === '' ||
-    registerData.debateTopics_2 ==='' ){
+    registerData.debateTopics_2 ==='' ||
+    isEmail1 === false){
+      setShowF(true);
+      setShowS(false);
       return;
     }
+
+    
 
 
     addRegisterData(registerData);
     setRegisterData ({engSchoolName : '',chiSchoolName : '',engTeamLeaderName : '',chiTeamLeaderName : '',teamLeaderContact : '',teamLeaderEmail : '',debateTopics_1 : '',debateTopics_2 : ''});
+    setChanged_1(false);
+    setChanged_2(false);
+    setChanged_3(false);
+    setChanged_4(false);
+    setChanged_5(false);
+    setChanged_6(false);
+    setChanged_7(false);
+    setChanged_8(false);
 
 
   }
@@ -56,6 +101,12 @@ const Register = () => {
   return (
     <section className="header-gradient"> 
       <div className="container main_block">
+        <Alert show={showS} class= "alert" variant="success" onClose={() => setShowS(false)} dismissible>
+          <Alert.Heading class = "alertHeading"> 提交成功 ！/ Registration Successful ！ </Alert.Heading>
+        </Alert>
+        <Alert show={showF} class= "alert" variant="danger" onClose={() => setShowF(false)} dismissible>
+          <Alert.Heading class = "alertHeading"> 提交失败 ！/ Registration Failed ！ </Alert.Heading>
+        </Alert>
         <div className="register_header">
             <span className = "englishF"> Register / </span> <span> 注册 </span>
         </div>
@@ -68,9 +119,6 @@ const Register = () => {
               <div className="row schoolPartForm">
                 <div className="mb-3 col-6">
                   <input type="text" className={`form-control englsihF  ${registerData.engSchoolName ? "is-valid" : ""} ${(!registerData.engSchoolName && changed_1) ? "is-invalid" : ""}`}  value={registerData.engSchoolName} placeholder="Name of School" onChange={(e) => setChanged_1(true) & setRegisterData({ ...registerData, engSchoolName: e.target.value })} />
-                </div>
-                <div class="valid-feedback">
-                  Looks good!
                 </div>
                 <div className="mb-3 col-6">
                   <input type="text" className= {`form-control ${registerData.chiSchoolName ? "is-valid" : ""} ${(!registerData.chiSchoolName && changed_2) ? "is-invalid" : ""}`}  value={registerData.chiSchoolName} placeholder="学校名称" onChange={(e) => setChanged_2(true) & setRegisterData({ ...registerData, chiSchoolName: e.target.value })} />
@@ -93,7 +141,7 @@ const Register = () => {
                 <input type="text" className={`form-control   ${registerData.teamLeaderContact ? "is-valid" : ""} ${(!registerData.teamLeaderContact && changed_5) ? "is-invalid" : ""}`}  value={registerData.teamLeaderContact} placeholder="队长联络电话" onChange={(e) => setChanged_5(true) & setRegisterData({ ...registerData, teamLeaderContact: e.target.value })}/>
               </div>
               <div className="mb-3">
-                <input type="email" className={`form-control   ${registerData.teamLeaderEmail ? "is-valid" : ""} ${(!registerData.teamLeaderEmail && changed_6) ? "is-invalid" : ""}`} value={registerData.teamLeaderEmail} placeholder="队长电邮地址" onChange={(e) => setChanged_6(true) & setRegisterData({ ...registerData, teamLeaderEmail: e.target.value })}/>
+                <input type="email" className={`form-control   ${(registerData.teamLeaderEmail && isEmail1) ? "is-valid" : ""} ${(!registerData.teamLeaderEmail && changed_6) ? "is-invalid" : ""}`} value={registerData.teamLeaderEmail} placeholder="队长电邮地址" onChange={(e) =>   setChanged_6(true) & setRegisterData({ ...registerData, teamLeaderEmail: e.target.value }) & isEmail(registerData.teamLeaderEmail)}/>
               </div>
             </div>
             <div className="topics container">
@@ -111,14 +159,13 @@ const Register = () => {
               <div className="form-text remarks englishF">Remarks: The topics submitted will be used for this tournament. </div>
               <div className="form-text remarks">备注：所提交之辩题将会作为本赛事之用 </div>
             </div>
-            <button  type="submit" className="btn btn-primary" value='Save Form'>
+            <button  type="submit" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" value='Save Form'>
               <span className = "englishF"> Submit / </span> <span> 提交 </span>
             </button>
           </form>
-          <div className="col-4 register-page-logo-div">
+          <div className="col-4 logo">
             <img src= {logoBase} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="register-page-logo ten-logo" width="80%" />
             <img src= {logo} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="register-page-logo bian-logo" width="80%" />
-            
           </div>
         </div>
       </div>
