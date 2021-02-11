@@ -30,7 +30,8 @@ const Register = () => {
 
 
   const addRegisterData = async (registerData) =>{
-    const res = await fetch ('https://apicdt.herokuapp.com/register',{
+    // https://apicdt.herokuapp.com/register
+    const res = await fetch ('http://localhost:5000/register',{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
@@ -64,11 +65,8 @@ const Register = () => {
 
   const onSubmit = (e) =>{
     e.preventDefault()
-
     isEmail(registerData.teamLeaderEmail);
-    
     // console.log(isEmail1);
-
     if(registerData.engSchoolName === '' ||
     registerData.chiSchoolName === '' ||
     registerData.engTeamLeaderName === '' ||
