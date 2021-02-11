@@ -3,11 +3,20 @@ import logoBase from '../assets/image/yatai 10th logo-10.png';
 import logoTop1 from '../assets/image/yatai 10th logo-bian.png';
 import './css/HomeHeader.css'
 
+import Particles from 'react-particles-js';
+
+import particleJSConfig from "./json/particlejs-config.json";
+
 class HomeHeader extends Component {
     state = {  }
     render() { 
         return (  
             <header className="logo-block container-fluid">
+                <Particles id="particles-js" canvasClassName="example"
+            params={{
+                ...particleJSConfig   
+            }}    
+        />
                     <div className="row h-100" > 
                         <div className="col-sm-6 h-sm-50 d-inline-block align-self-center text-center text-sm-right">
                             <img src={logoBase} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="ten-logo"  width="50%" />

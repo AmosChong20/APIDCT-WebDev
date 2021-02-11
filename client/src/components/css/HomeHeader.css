@@ -1,21 +1,13 @@
 /*The first section, which contain logo and title*/
 .logo-block{
 	height:100vh;
-  background-color: #F5F5F5;
-  background-image:   
-	url("../../assets/image/bg-top.png"), 
-	url("../../assets/image/bg-middle.png"),
-	url("../../assets/image/bg-bottom.png");
-  background-repeat: repeat-x;
-  background-position: 
-	0 20%,
-	0 10%,
-	0 50%;
-  background-size: 
-	100%,100%,100%;
-  animation: 50s para infinite linear;
-	background-attachment: fixed;
-  }
+  	background-color: #F5F5F5;
+}
+
+.example{
+	z-index:100;
+	position:absolute !important;
+}
 
 /*parallel animation of header background*/
 @keyframes para {
