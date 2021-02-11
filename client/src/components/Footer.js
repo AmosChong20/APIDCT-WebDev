@@ -13,13 +13,15 @@ class Footer extends Component {
                     <h4>联系方式</h4>
                     <dl>
                         <dt>咨询电话:</dt>
-                        <dd>+65 12345678</dd>
-                        <dd>+65 01234567</dd>
+                        <dd>何佳萱：+65 83148709</dd>
+                        <dd>何智圆：+65 86500569</dd>
+                        <dd>沈佳欣：+65 91087660</dd>
                     </dl>
                     <dl>
                         <dt>邮箱:</dt>
-                        <dd><a href="mailto:someone@email.com">someone1@email.com</a></dd>
-                        <dd><a href="mailto:someone@email.com">someone2@email.com</a></dd>
+                        <dd><a href="mailto:ho0012an@e.ntu.edu.sg">ho0012an@e.ntu.edu.sg</a></dd>
+                        <dd><a href="mailto:c190024@e.ntu.edu.sg">c190024@e.ntu.edu.sg</a></dd>
+                        <dd><a href="mailto:jsim029@e.ntu.edu.sg">jsim029@e.ntu.edu.sg</a></dd>
                     </dl>
                   </div>
                 </div>
