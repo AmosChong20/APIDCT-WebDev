@@ -3,4 +3,4 @@ dotenv.config();
 
 let serverURL = process.env.SERVER_URL
 
-export {serverURL}
+export {serverURL};

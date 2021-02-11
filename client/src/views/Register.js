@@ -5,7 +5,7 @@ import logo from '../assets/image/yatai 10th logo.png';
 
 import Alert from 'react-bootstrap/Alert';
 
-import serverURL from '../config'
+import {serverURL} from '../config.js'
 
 const Register = () => {
   const [registerData, setRegisterData] = useState ({engSchoolName : '',chiSchoolName : '',engTeamLeaderName : '',chiTeamLeaderName : '',teamLeaderContact : '',teamLeaderEmail : '',debateTopics_1 : '',debateTopics_2 : ''});
