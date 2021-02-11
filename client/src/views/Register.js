@@ -5,6 +5,8 @@ import logo from '../assets/image/yatai 10th logo.png';
 
 import Alert from 'react-bootstrap/Alert';
 
+import serverURL from '../../config'
+
 const Register = () => {
   const [registerData, setRegisterData] = useState ({engSchoolName : '',chiSchoolName : '',engTeamLeaderName : '',chiTeamLeaderName : '',teamLeaderContact : '',teamLeaderEmail : '',debateTopics_1 : '',debateTopics_2 : ''});
   const[changed_1,setChanged_1] = useState(false);
@@ -28,7 +30,7 @@ const Register = () => {
 
   const addRegisterData = async (registerData) =>{
     // https://apicdt.herokuapp.com/register
-    const res = await fetch ('http://206.189.159.15/register',{
+    const res = await fetch (serverURL,{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
