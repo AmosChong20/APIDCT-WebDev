@@ -9,6 +9,7 @@ const resgisterSchema = mongoose.Schema({
     teamLeaderEmail: String,
     debateTopics_1: String,
     debateTopics_2: String,
+    token: String,
 })
 
 var registerModel = mongoose.model('Register', resgisterSchema);

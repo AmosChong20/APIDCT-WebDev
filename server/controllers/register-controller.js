@@ -1,5 +1,6 @@
 import registerModel from '../models/register-model.js';
 
+var randomToken = require('random-token').create('abcdefghijklmnopqrstuvwxzyABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
 
 export const getRegisterData = async (req, res) => { 
     try {
@@ -11,10 +12,9 @@ export const getRegisterData = async (req, res) => {
 }
 
 export const addRegisterData = async (req, res) => {
-    const { engSchoolName, chiSchoolName, engTeamLeaderName, chiTeamLeaderName, teamLeaderContact, teamLeaderEmail, debateTopics_1, debateTopics_2 } = req.body;
-
-    const newRegisterData = new registerModel({ engSchoolName, chiSchoolName, engTeamLeaderName, chiTeamLeaderName, teamLeaderContact, teamLeaderEmail, debateTopics_1, debateTopics_2 })
-    
+    var token = randomToken(16); 
+    const { engSchoolName, chiSchoolName, engTeamLeaderName, chiTeamLeaderName, teamLeaderContact, teamLeaderEmail, debateTopics_1, debateTopics_2, token } = req.body;
+    const newRegisterData = new registerModel({ engSchoolName, chiSchoolName, engTeamLeaderName, chiTeamLeaderName, teamLeaderContact, teamLeaderEmail, debateTopics_1, debateTopics_2 ,token })
     try {
         console.log(newRegisterData)
         await newRegisterData.save();
