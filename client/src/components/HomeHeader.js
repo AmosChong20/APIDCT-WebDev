@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import logoBase from '../assets/image/yatai 10th logo-10.png';
-import logoTop1 from '../assets/image/yatai 10th logo-bian.png';
+// import logoBase from '../assets/image/yatai 10th logo-10.png';
+// import logoTop1 from '../assets/image/yatai 10th logo-bian.png';
+import logo from '../assets/image/yatai 10th logo.png';
 import './css/HomeHeader.css'
 
 class HomeHeader extends Component {
@@ -10,8 +11,9 @@ class HomeHeader extends Component {
             <header className="logo-block container-fluid">
                     <div className="row h-100" > 
                         <div className="col-sm-6 h-sm-50 d-inline-block align-self-center text-center text-sm-right">
-                            <img src={logoBase} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="ten-logo"  width="50%" />
-                            <img src={logoTop1} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="bian-logo" width="50%" />
+                            <img src={logo} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="bian-logo"  width="50%" />
+                            {/* <img src={logoBase} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="ten-logo"  width="50%" /> */}
+                            {/* <img src={logoTop1} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="bian-logo" width="50%" /> */}
                         </div>
                         <div className="col-sm-6 h-sm-25 d-inline-block align-self-center text-center text-sm-left">
                             <div className="header" >
