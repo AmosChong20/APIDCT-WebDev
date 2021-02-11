@@ -30,6 +30,7 @@ const Register = () => {
 
   const addRegisterData = async (registerData) =>{
     // https://apicdt.herokuapp.com/register
+    console.log(serverURL)
     const res = await fetch (serverURL,{
       method : 'POST',
       headers:{
