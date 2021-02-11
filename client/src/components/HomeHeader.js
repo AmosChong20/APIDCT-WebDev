@@ -13,16 +13,10 @@ class HomeHeader extends Component {
     render() { 
         return (  
             <header className="logo-block container-fluid">
-                <Particles id="particles-js" canvasClassName="example"
-            params={{
-                ...particleJSConfig   
-            }}    
-        />
                     <div className="row h-100" > 
+                        <Particles id="particles-js" canvasClassName="example" params={{...particleJSConfig}}    />
                         <div className="col-sm-6 h-sm-50 d-inline-block align-self-center text-center text-sm-right">
-                            <img src={logo} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="bian-logo"  width="50%" />
-                            {/* <img src={logoBase} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="ten-logo"  width="50%" /> */}
-                            {/* <img src={logoTop1} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="bian-logo" width="50%" /> */}
+                            <img src={logo} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="yatai-logo"  width="50%" />
                         </div>
                         <div className="col-sm-6 h-sm-25 d-inline-block align-self-center text-center text-sm-left">
                             <div className="header" >

@@ -12,15 +12,21 @@ class Footer extends Component {
                   <div>
                     <h4>联系方式</h4>
                     <dl>
-                        <dt>咨询电话:</dt>
                         <dd>何佳萱：+65 83148709</dd>
+                    </dl>
+                    <dl>
+                        <dd><a href="mailto:ho0012an@e.ntu.edu.sg">ho0012an@e.ntu.edu.sg</a></dd>
+                    </dl>
+                    <dl>
                         <dd>何智圆：+65 86500569</dd>
+                    </dl>
+                    <dl>
+                        <dd><a href="mailto:c190024@e.ntu.edu.sg">c190024@e.ntu.edu.sg</a></dd>
+                    </dl>
+                    <dl>
                         <dd>沈佳欣：+65 91087660</dd>
                     </dl>
                     <dl>
-                        <dt>邮箱:</dt>
-                        <dd><a href="mailto:ho0012an@e.ntu.edu.sg">ho0012an@e.ntu.edu.sg</a></dd>
-                        <dd><a href="mailto:c190024@e.ntu.edu.sg">c190024@e.ntu.edu.sg</a></dd>
                         <dd><a href="mailto:jsim029@e.ntu.edu.sg">jsim029@e.ntu.edu.sg</a></dd>
                     </dl>
                   </div>
@@ -35,9 +41,9 @@ class Footer extends Component {
                       </ul>       
                 </div>
               </div>
-              <div className="row">
-                <div className="col-12 copy">
-                  <p className="text-center">&copy; Copyright 2021 - 南洋理工大学中文协会 Nanyang Technological University Chinese Society</p>
+              <div className="row bottom-div">
+                <div className="col-12 bottom-text">
+                  <p className="text-center">南洋理工大学中文协会 Nanyang Technological University Chinese Society</p>
                 </div>
               </div>
             </div>

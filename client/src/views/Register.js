@@ -1,13 +1,9 @@
 import { useState } from 'react'
 import React from 'react'
 import './css/Register.css';
-// import logoBase from '../assets/image/yatai 10th logo-10.png';
-// import logo from '../assets/image/yatai 10th logo-bian.png';
 import logo from '../assets/image/yatai 10th logo.png';
 
-
 import Alert from 'react-bootstrap/Alert';
-
 
 const Register = () => {
   const [registerData, setRegisterData] = useState ({engSchoolName : '',chiSchoolName : '',engTeamLeaderName : '',chiTeamLeaderName : '',teamLeaderContact : '',teamLeaderEmail : '',debateTopics_1 : '',debateTopics_2 : ''});
@@ -175,9 +171,8 @@ const Register = () => {
               <span className = "englishF"> Submit / </span> <span> 提交 </span>
             </button>
           </form>
-          <div className="col-4 logo">
-            {/* <img src= {logoBase} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="register-page-logo ten-logo" width="80%" /> */}
-            <img src= {logo} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="register-page-logo bian-logo" width="80%" />
+          <div className="col-4">
+            <img src= {logo} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="register-page-logo" width="80%" />
           </div>
         </div>
       </div>

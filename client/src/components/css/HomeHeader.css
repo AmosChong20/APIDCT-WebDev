@@ -1,6 +1,7 @@
 /*The first section, which contain logo and title*/
 .logo-block{
 	height:100vh;
+	width: 100vw;
   	background-color: #F5F5F5;
 }
 
@@ -9,53 +10,20 @@
 	position:absolute !important;
 }
 
-/*parallel animation of header background*/
-@keyframes para {
-  100% {
-    background-position: 
-      -5000px 20%,
-      -800px 95%,
-      500px 50%;
-    }
-  }
-
-/*ten logo and its animation*/
-.ten-logo{
-	position: absolute;
-	z-index: 1;
-	animation-name: ten-animation;
-	animation-duration:3s;
-	animation-fill-mode:forwards;
-	animation-timing-function:ease-out;
-}
-
 .img-container{
     margin:auto;
 }
 
-@keyframes ten-animation{
-	0%{
-		opacity: 0;
-	}
-	50%{
-		opacity: 0.5;
-	}
-	100%{
-		opacity: 1;
-	}
-}
-
-/*bian logo and its animation*/
-.bian-logo{
+.yatai-logo{
 	position: relative;
 	z-index: 1;
-	animation-name: bian-animation;
+	animation-name: logo-animation;
 	animation-duration:3s;
 	animation-fill-mode:forwards;
 	animation-timing-function:ease-out;
 }
 
-@keyframes bian-animation{
+@keyframes logo-animation{
 	0%{
 		opacity: 0;
 	}
@@ -79,7 +47,7 @@
 	0%{
 		opacity: 0;
 	}
-	50%{
+	40%{
 		opacity: 0;
 	}
 	100%{
@@ -102,42 +70,15 @@ h1.cn-title-2{
 	font-size: 4vw;
 }
 
-/*The Second Section, contains info*/
-.css-selector {
-    background: linear-gradient(274deg, #fbc2eb, #d4c2ec, #fbc2eb, #a6c1ee);
-    background-size: 800% 800%;
-
-    animation: MovingGradient 15s ease infinite;
-    -moz-animation: MovingGradient 15s ease infinite;
-    animation: MovingGradient 15s ease infinite;
-}
-
-@keyframes MovingGradient {
-    0%{background-position:81% 0%}
-    50%{background-position:20% 100%}
-    100%{background-position:81% 0%}
-}
-@-moz-keyframes MovingGradient {
-    0%{background-position:81% 0%}
-    50%{background-position:20% 100%}
-    100%{background-position:81% 0%}
-}
-@keyframes MovingGradient {
-    0%{background-position:81% 0%}
-    50%{background-position:20% 100%}
-    100%{background-position:81% 0%}
-}
-
-
 /*changes made when screen size is small(bootstrap small)*/
 @media screen and (max-width:576px){
 	h1.eng-title{
 		font-size: 4vw;
 	}
 	h1.cn-title-1{
-		font-size: 12vw;
+		font-size: 11vw;
 	}
 	h1.cn-title-2{
-		font-size: 8vw;
+		font-size: 7vw;
 	}
 }

@@ -22,7 +22,11 @@ dl{
   margin-right: 50px;
 }
 
-.copy {
+.bottom-div{
+  padding-top: 10px;
+}
+
+.bottom-text {
   font-size: 12px;
   padding: 10px;
   border-top: 1px solid #FFFFFF;
@@ -85,9 +89,9 @@ ul.social-network li {
 .social-circle li i {
     position: relative;
     top: 15%;
-  margin: 0;
-  line-height: 30px;
-  text-align: center;
+    margin: 0;
+    line-height: 30px;
+    text-align: center;
 }
 
 .social-circle li a:hover i,
@@ -115,3 +119,5 @@ ul.social-network li {
 .social-network a {
   background-color: #F9F9F9;  
 }
+
+
