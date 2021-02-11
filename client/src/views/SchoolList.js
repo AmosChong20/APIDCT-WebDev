@@ -17,7 +17,7 @@ const SchoolList = () => {
   }, [])
 
   const fetchSchools = async () => {
-    const res = await fetch('http://206.189.159.15/')
+    const res = await fetch('http://206.189.159.15/register')
     const data = await res.json()
 
     return data

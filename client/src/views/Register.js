@@ -32,7 +32,7 @@ const Register = () => {
 
   const addRegisterData = async (registerData) =>{
     // https://apicdt.herokuapp.com/register
-    const res = await fetch ('http://206.189.159.15/',{
+    const res = await fetch ('http://206.189.159.15/register',{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
