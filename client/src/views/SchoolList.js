@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import './css/SchoolList.css'
 import School from '../components/School.js'
+import {serverURL} from '../config'
 
 const SchoolList = () => {
 
@@ -17,7 +18,7 @@ const SchoolList = () => {
   }, [])
 
   const fetchSchools = async () => {
-    const res = await fetch('http://206.189.159.15/register')
+    const res = await fetch(serverURL + '/register')
     const data = await res.json()
 
     return data
