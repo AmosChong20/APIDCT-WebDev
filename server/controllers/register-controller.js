@@ -21,6 +21,9 @@ export const addRegisterData = async (req, res) => {
         await newRegisterData.save();
         res.status(201).json( newRegisterData );
     } catch (error) {
+        if ((error.message)[7]=='d'){
+            res.status(401).json({ message: error.message });
+        }
         res.status(409).json({ message: error.message });
     }
 }

@@ -25,6 +25,7 @@ const Register = () => {
 
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
+  const [showA, setShowA] = useState(false);
 
 
 
@@ -44,10 +45,17 @@ const Register = () => {
     if (res.status === 201){
       setShowS(true);
       setShowF(false);
+      setShowA(false);
+    }
+    else if (res.status === 401){
+      setShowS(false);
+      setShowF(false);
+      setShowA(true);
     }
     else{
       setShowF(true);
       setShowS(false);
+      setShowA(false);
     }
   }
   
@@ -78,6 +86,7 @@ const Register = () => {
     isEmail1 === false){
       setShowF(true);
       setShowS(false);
+      setShowA(false);
       return;
     }
 
@@ -106,6 +115,9 @@ const Register = () => {
         </Alert>
         <Alert show={showF} class= "alert" variant="danger" onClose={() => setShowF(false)} dismissible>
           <Alert.Heading class = "alertHeading"> 提交失败 ！/ Registration Failed ！ </Alert.Heading>
+        </Alert>
+        <Alert show={showA} class= "alert" variant="danger" onClose={() => setShowA(false)} dismissible>
+          <Alert.Heading class = "alertHeading"> 电子邮件重复 ！/ Email Duplicated ！ </Alert.Heading>
         </Alert>
         <div className="register_header">
             <span className = "englishF"> Register / </span> <span> 报名 </span>
