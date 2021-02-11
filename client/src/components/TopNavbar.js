@@ -54,9 +54,8 @@ function TopNavbar() {
             <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
                 <Nav className="" onClick={closeExpanded}>
                     <NavLink to="/" exact className="nav-link" activeClassName="router-link-exact-active"> 主页 </NavLink>
-                    <NavLink to="/register" exact className="nav-link" activeClassName="router-link-exact-active"> 注册 </NavLink>
+                    <NavLink to="/register" exact className="nav-link" activeClassName="router-link-exact-active"> 报名 </NavLink>
                     <NavLink to="/schoolList" exact className="nav-link" activeClassName="router-link-exact-active"> 查看报名学校 </NavLink>
-                    <NavLink to="/page2" exact className="nav-link" activeClassName="router-link-exact-active"> 页面二 </NavLink>
                 </Nav>
                {/*} <Nav className="" onClick={closeExpanded}>
                     <AuthButton/>

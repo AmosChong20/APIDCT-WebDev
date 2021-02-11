@@ -110,7 +110,7 @@ const Register = () => {
           <Alert.Heading class = "alertHeading"> 提交失败 ！/ Registration Failed ！ </Alert.Heading>
         </Alert>
         <div className="register_header">
-            <span className = "englishF"> Register / </span> <span> 注册 </span>
+            <span className = "englishF"> Register / </span> <span> 报名 </span>
         </div>
         <div className="regBlock row">
           <form className="col-md-8 col-12 regForm" noValidate onSubmit = {onSubmit}>
