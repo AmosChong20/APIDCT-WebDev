@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import React from 'react'
 import './css/Register.css';
-import logoBase from '../assets/image/yatai 10th logo-10.png';
-import logo from '../assets/image/yatai 10th logo-bian.png';
+// import logoBase from '../assets/image/yatai 10th logo-10.png';
+// import logo from '../assets/image/yatai 10th logo-bian.png';
+import logo from '../assets/image/yatai 10th logo.png';
+
 
 import Alert from 'react-bootstrap/Alert';
 
@@ -23,12 +25,14 @@ const Register = () => {
 
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
+  const [showA, setShowA] = useState(false);
 
 
 
 
   const addRegisterData = async (registerData) =>{
-    const res = await fetch ('https://apicdt.herokuapp.com/register',{
+    // https://apicdt.herokuapp.com/register
+    const res = await fetch ('http://206.189.159.15/register',{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
@@ -41,10 +45,17 @@ const Register = () => {
     if (res.status === 201){
       setShowS(true);
       setShowF(false);
+      setShowA(false);
+    }
+    else if (res.status === 401){
+      setShowS(false);
+      setShowF(false);
+      setShowA(true);
     }
     else{
       setShowF(true);
       setShowS(false);
+      setShowA(false);
     }
   }
   
@@ -62,11 +73,8 @@ const Register = () => {
 
   const onSubmit = (e) =>{
     e.preventDefault()
-
     isEmail(registerData.teamLeaderEmail);
-    
     // console.log(isEmail1);
-
     if(registerData.engSchoolName === '' ||
     registerData.chiSchoolName === '' ||
     registerData.engTeamLeaderName === '' ||
@@ -78,6 +86,7 @@ const Register = () => {
     isEmail1 === false){
       setShowF(true);
       setShowS(false);
+      setShowA(false);
       return;
     }
 
@@ -107,8 +116,11 @@ const Register = () => {
         <Alert show={showF} class= "alert" variant="danger" onClose={() => setShowF(false)} dismissible>
           <Alert.Heading class = "alertHeading"> 提交失败 ！/ Registration Failed ！ </Alert.Heading>
         </Alert>
+        <Alert show={showA} class= "alert" variant="danger" onClose={() => setShowA(false)} dismissible>
+          <Alert.Heading class = "alertHeading"> 电子邮件重复 ！/ Email Duplicated ！ </Alert.Heading>
+        </Alert>
         <div className="register_header">
-            <span className = "englishF"> Register / </span> <span> 注册 </span>
+            <span className = "englishF"> Register / </span> <span> 报名 </span>
         </div>
         <div className="regBlock row">
           <form className="col-md-8 col-12 regForm" noValidate onSubmit = {onSubmit}>
@@ -164,7 +176,7 @@ const Register = () => {
             </button>
           </form>
           <div className="col-4 logo">
-            <img src= {logoBase} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="register-page-logo ten-logo" width="80%" />
+            {/* <img src= {logoBase} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="register-page-logo ten-logo" width="80%" /> */}
             <img src= {logo} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="register-page-logo bian-logo" width="80%" />
           </div>
         </div>
