@@ -4,6 +4,8 @@ import './css/Register.css';
 import logo from '../assets/image/yatai 10th logo.png';
 
 import Alert from 'react-bootstrap/Alert';
+import Form from 'react-bootstrap/Form';
+import inis from "../components/json/inis.json";
 
 import {serverURL} from '../config.js'
 
@@ -18,6 +20,8 @@ const Register = () => {
   const[changed_7,setChanged_7] = useState(false);
   const[changed_8,setChanged_8] = useState(false);
 
+  const[prefix,setPrefix] = useState('');
+
   const[isEmail1,setIsEmail1] = useState(false);
 
 
@@ -29,7 +33,7 @@ const Register = () => {
 
 
   const addRegisterData = async (registerData) =>{
-    const res = await fetch (serverURL+ '/register',{
+    const res = await fetch ("https://apicdt-server.com/register",{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
@@ -37,7 +41,7 @@ const Register = () => {
       body: JSON.stringify(registerData),
     })
     const data = await res.json()
-    // console.log(data);
+    console.log(prefix);
     // console.log('res', res) ;
     if (res.status === 201){
       setShowS(true);
@@ -68,6 +72,10 @@ const Register = () => {
     // console.log(isEmail1);
   }
 
+  const getSelection=(event)=>{
+    setPrefix(event.target.value);
+  }
+
   const onSubmit = (e) =>{
     e.preventDefault()
     isEmail(registerData.teamLeaderEmail);
@@ -80,15 +88,15 @@ const Register = () => {
     registerData.teamLeaderEmail === '' ||
     registerData.debateTopics_1 === '' ||
     registerData.debateTopics_2 ==='' ||
+    prefix ==='' ||
     isEmail1 === false){
       setShowF(true);
       setShowS(false);
       setShowA(false);
       return;
     }
-
     
-
+    registerData.teamLeaderContact = prefix+registerData.teamLeaderContact
 
     addRegisterData(registerData);
     setRegisterData ({engSchoolName : '',chiSchoolName : '',engTeamLeaderName : '',chiTeamLeaderName : '',teamLeaderContact : '',teamLeaderEmail : '',debateTopics_1 : '',debateTopics_2 : ''});
@@ -107,14 +115,14 @@ const Register = () => {
   return (
     <section className="header-gradient"> 
       <div className="container main_block">
-        <Alert show={showS} class= "alert" variant="success" onClose={() => setShowS(false)} dismissible>
-          <Alert.Heading class = "alertHeading"> 提交成功 ！/ Registration Successful ！ </Alert.Heading>
+        <Alert show={showS} className= "alert" variant="success" onClose={() => setShowS(false)} dismissible>
+          <Alert.Heading className = "alertHeading"> 提交成功 ！/ Registration Successful ！ </Alert.Heading>
         </Alert>
-        <Alert show={showF} class= "alert" variant="danger" onClose={() => setShowF(false)} dismissible>
-          <Alert.Heading class = "alertHeading"> 提交失败 ！/ Registration Failed ！ </Alert.Heading>
+        <Alert show={showF} className= "alert" variant="danger" onClose={() => setShowF(false)} dismissible>
+          <Alert.Heading className = "alertHeading"> 提交失败 ！/ Registration Failed ！ </Alert.Heading>
         </Alert>
-        <Alert show={showA} class= "alert" variant="danger" onClose={() => setShowA(false)} dismissible>
-          <Alert.Heading class = "alertHeading"> 电子邮件重复 ！/ Email Duplicated ！ </Alert.Heading>
+        <Alert show={showA} className= "alert" variant="danger" onClose={() => setShowA(false)} dismissible>
+          <Alert.Heading className = "alertHeading"> 电子邮件重复 ！/ Email Duplicated ！ </Alert.Heading>
         </Alert>
         <div className="register_header">
             <span className = "englishF"> Register / </span> <span> 报名 </span>
@@ -146,8 +154,19 @@ const Register = () => {
                   <input type="text" className={`form-control   ${registerData.chiTeamLeaderName ? "is-valid" : ""} ${(!registerData.chiTeamLeaderName && changed_4) ? "is-invalid" : ""}`} value={registerData.chiTeamLeaderName} placeholder="队长姓名" onChange={(e) => setChanged_4(true) & setRegisterData({ ...registerData, chiTeamLeaderName: e.target.value })}/>
                 </div>
               </div>
-              <div className="mb-3">
-                <input type="text" className={`form-control   ${registerData.teamLeaderContact ? "is-valid" : ""} ${(!registerData.teamLeaderContact && changed_5) ? "is-invalid" : ""}`}  value={registerData.teamLeaderContact} placeholder="队长联络电话" onChange={(e) => setChanged_5(true) & setRegisterData({ ...registerData, teamLeaderContact: e.target.value })}/>
+              <div className="row mb-3">
+                <Form.Control
+                  as="select"
+                  className="col-2 mr-sm-2 selec"
+                  id="inlineFormCustomSelect"
+                  onChange={(e) => getSelection(e)}
+                >
+                  <option className = "prefix" value="">电话区号</option>
+                  {inis.map(ini => (
+                    <option value={ini.no} >{ini.no}</option>
+                  ))}
+                </Form.Control>
+                <input type="text" className={`col contact form-control   ${registerData.teamLeaderContact ? "is-valid" : ""} ${(!registerData.teamLeaderContact && changed_5) ? "is-invalid" : ""}`}  value={registerData.teamLeaderContact} placeholder="队长联络电话" onChange={(e) => setChanged_5(true) & setRegisterData({ ...registerData, teamLeaderContact: e.target.value })}/>
               </div>
               <div className="mb-3">
                 <input type="email" className={`form-control   ${(registerData.teamLeaderEmail && isEmail1) ? "is-valid" : ""} ${(!registerData.teamLeaderEmail && changed_6) ? "is-invalid" : ""}`} value={registerData.teamLeaderEmail} placeholder="队长电邮地址" onChange={(e) =>   setChanged_6(true) & setRegisterData({ ...registerData, teamLeaderEmail: e.target.value }) & isEmail(registerData.teamLeaderEmail)}/>
@@ -168,7 +187,7 @@ const Register = () => {
               <div className="form-text remarks englishF">Remarks: The topics submitted will be used for this tournament. </div>
               <div className="form-text remarks">备注：所提交之辩题将会作为本赛事之用 </div>
             </div>
-            <button  type="submit" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" value='Save Form'>
+            <button  type="submit" className="btn sub btn btn-primary" data-toggle="modal" data-target="#exampleModal" value='Save Form'>
               <span className = "englishF"> Submit / </span> <span> 提交 </span>
             </button>
           </form>
