@@ -37,8 +37,8 @@ const Register = () => {
       body: JSON.stringify(registerData),
     })
     const data = await res.json()
-    console.log(data);
-    console.log('res', res) ;
+    // console.log(data);
+    // console.log('res', res) ;
     if (res.status === 201){
       setShowS(true);
       setShowF(false);
