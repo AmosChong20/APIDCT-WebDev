@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import React from 'react'
 import './css/Register.css';
-import logo from '../assets/image/yatai 10th logo.png';
+import logo from '../assets/image/yatai 10th logo700.png';
 
 import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
@@ -33,7 +33,7 @@ const Register = () => {
 
 
   const addRegisterData = async (registerData) =>{
-    const res = await fetch ("https://apicdt-server.com/register",{
+    const res = await fetch ((serverURL + '/register'),{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
@@ -41,8 +41,6 @@ const Register = () => {
       body: JSON.stringify(registerData),
     })
     const data = await res.json()
-    console.log(prefix);
-    // console.log('res', res) ;
     if (res.status === 201){
       setShowS(true);
       setShowF(false);
