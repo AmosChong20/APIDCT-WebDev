@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import logoBase from '../assets/image/yatai 10th logo-10.png';
 // import logoTop1 from '../assets/image/yatai 10th logo-bian.png';
-import logo from '../assets/image/yatai 10th logo.png';
+import logo from '../assets/image/yatai 10th logo700.png';
 import './css/HomeHeader.css'
 
 import Particles from 'react-particles-js';
