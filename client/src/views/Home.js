@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import HomeHeader from '../components/HomeHeader'
 import Info from '../components/Info'
-import Footer from '../components/Footer'
 import Timeline from '../components/Timeline'
+import Footer from '../components/Footer'
 
 class Home extends Component {
     state = {  }
@@ -12,7 +12,6 @@ class Home extends Component {
                 <HomeHeader />
                 <Info />
                 <Timeline />
-                <Footer />
             </div>
         );
     }

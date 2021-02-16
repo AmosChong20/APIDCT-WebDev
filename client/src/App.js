@@ -5,6 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import TopNavbar from './components/TopNavbar'
 import Loading from './components/Loading'
 import ProtectedRoute from './auth/ProtectedRoute'
+import Footer from './components/Footer'
 
 import Home from './views/Home'
 import Register from './views/Register'
@@ -21,16 +22,18 @@ const App = () => {
 
     
     return (
-        <div id="app" className="d-flex flex-column h-100">
-            <TopNavbar />
-            <Switch>
-                <Route path="/" exact component={Home} />
-                {/*<ProtectedRoute path="/page2" exact component={Page2} /> */}
-                <Route path="/register" exact component={Register} />
-                <Route path="/schoolList" exact component={SchoolList} />
-            </Switch>
-        </div>
-
+        <section>
+            <div id="app">
+                <TopNavbar />
+                <Switch>
+                    <Route path="/" exact component={Home} />
+                    {/*<ProtectedRoute path="/page2" exact component={Page2} /> */}
+                    <Route path="/register" exact component={Register} />
+                    <Route path="/schoolList" exact component={SchoolList} />
+                </Switch>
+                <Footer />
+            </div>
+        </section>
     );
     
 
