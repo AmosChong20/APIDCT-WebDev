@@ -43,7 +43,7 @@ class Footer extends Component {
               </div>
               <div className="row bottom-div">
                 <div className="col-12 bottom-text">
-                  <p className="text-center">南洋理工大学中文协会 Nanyang Technological University Chinese Society</p>
+                  <p className="text-center">南洋理工大学中文学会 Nanyang Technological University Chinese Society</p>
                 </div>
               </div>
             </div>
