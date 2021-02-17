@@ -9,8 +9,10 @@ import ProtectedRoute from './auth/ProtectedRoute'
 import Home from './views/Home'
 import Register from './views/Register'
 import SchoolList from './views/SchoolList'
+import Portfolio from './views/Portfolio';
 
 import './App.css';
+
 
 const App = () => {
     // const { isLoading } = useAuth0();
@@ -28,6 +30,7 @@ const App = () => {
                 {/*<ProtectedRoute path="/page2" exact component={Page2} /> */}
                 <Route path="/register" exact component={Register} />
                 <Route path="/schoolList" exact component={SchoolList} />
+                <Route path="/portfolio" exact component={Portfolio} />
             </Switch>
         </div>
 

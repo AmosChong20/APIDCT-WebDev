@@ -107,7 +107,6 @@ const Register = () => {
     setChanged_7(false);
     setChanged_8(false);
 
-
   }
   
   return (
@@ -155,11 +154,11 @@ const Register = () => {
               <div className="row mb-3">
                 <Form.Control
                   as="select"
-                  className="col-2 mr-sm-2 selec"
+                  className="col-3 mr-sm-2 selec"
                   id="inlineFormCustomSelect"
                   onChange={(e) => getSelection(e)}
                 >
-                  <option className = "prefix" value="">电话区号</option>
+                  <option className = "prefix" value="">国际电话区号</option>
                   {inis.map(ini => (
                     <option value={ini.no} >{ini.no}</option>
                   ))}
