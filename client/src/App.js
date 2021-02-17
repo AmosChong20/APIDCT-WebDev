@@ -5,6 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import TopNavbar from './components/TopNavbar'
 import Loading from './components/Loading'
 import ProtectedRoute from './auth/ProtectedRoute'
+import Footer from './components/Footer'
 
 import Home from './views/Home'
 import Register from './views/Register'

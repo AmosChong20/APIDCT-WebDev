@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import './css/SchoolList.css'
 import School from '../components/School.js'
+import Footer from '../components/Footer'
 import {serverURL} from '../config'
 
 const SchoolList = () => {
@@ -27,12 +28,12 @@ const SchoolList = () => {
 
 
   return (
-    <div className="container schoolsBlock" >
+    <div className="schoolsBlock container" >
       <div className = "listHeader">
         报名学校列表
       </div>
       {schools.map((school, index) => (
-        <School key={index} school={school} />
+        <School key={index} school={school}/>
       ))}
     </div>
   )

@@ -9,6 +9,8 @@ import inis from "../components/json/inis.json";
 
 import {serverURL} from '../config.js'
 
+import Footer from '../components/Footer'
+
 const Register = () => {
   const [registerData, setRegisterData] = useState ({engSchoolName : '',chiSchoolName : '',engTeamLeaderName : '',chiTeamLeaderName : '',teamLeaderContact : '',teamLeaderEmail : '',debateTopics_1 : '',debateTopics_2 : ''});
   const[changed_1,setChanged_1] = useState(false);
