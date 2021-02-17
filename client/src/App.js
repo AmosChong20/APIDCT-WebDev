@@ -33,7 +33,7 @@ const App = () => {
                 <Route path="/schoolList" exact component={SchoolList} />
                 <Route path="/portfolio" exact component={Portfolio} />
             </Switch>
-            <Footer />
+            {/* <Footer /> */}
         </div>
 
     );
