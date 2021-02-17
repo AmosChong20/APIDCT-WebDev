@@ -24,18 +24,18 @@ const App = () => {
 
     
     return (
-        <div id="app" className="d-flex flex-column h-100">
-            <TopNavbar />
-            <Switch>
-                <Route path="/" exact component={Home} />
-                {/*<ProtectedRoute path="/page2" exact component={Page2} /> */}
-                <Route path="/register" exact component={Register} />
-                <Route path="/schoolList" exact component={SchoolList} />
-                <Route path="/portfolio" exact component={Portfolio} />
-            </Switch>
-            {/* <Footer /> */}
-        </div>
-
+        <section>
+            <div id="app">
+                <TopNavbar />
+                <Switch>
+                    <Route path="/" exact component={Home} />
+                    {/*<ProtectedRoute path="/page2" exact component={Page2} /> */}
+                    <Route path="/register" exact component={Register} />
+                    <Route path="/schoolList" exact component={SchoolList} />
+                </Switch>
+                <Footer />
+            </div>
+        </section>
     );
     
 
