@@ -18,7 +18,7 @@ class Footer extends Component {
                         <dd><a href="mailto:ho0012an@e.ntu.edu.sg">ho0012an@e.ntu.edu.sg</a></dd>
                     </dl>
                     <dl>
-                        <dd>何智圆：+65 86500569</dd>
+                        <dd>何智圆：+65 86500369</dd>
                     </dl>
                     <dl>
                         <dd><a href="mailto:c190024@e.ntu.edu.sg">c190024@e.ntu.edu.sg</a></dd>
