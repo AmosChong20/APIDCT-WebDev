@@ -32,8 +32,8 @@ const App = () => {
                     <Route path="/" exact component={Home} />
                     {/*<ProtectedRoute path="/page2" exact component={Page2} /> */}
                     <Route path="/register" exact component={Register} />
-                    {/* <Route path="/schoolList" exact component={SchoolList} /> */}
-                    <Route path="/starwars" exact component={StarWars} />
+                    <Route path="/schoolList" exact component={SchoolList} />
+                    {/* <Route path="/starwars" exact component={StarWars} /> */}
                     {/* <Route path="/portfolio" exact component={Portfolio} /> */}
                 </Switch>
                 <Footer />
