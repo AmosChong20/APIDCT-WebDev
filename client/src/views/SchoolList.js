@@ -21,7 +21,6 @@ const SchoolList = () => {
   const fetchSchools = async () => {
     const res = await fetch(serverURL + '/register')
     const data = await res.json()
-
     return data
   }
 

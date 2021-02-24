@@ -15,7 +15,9 @@ const resgisterSchema = mongoose.Schema({
 })
 
 // registerModel.plugin(uniqueValidator);
+resgisterSchema.index({ token: "text" });
 var registerModel = mongoose.model('Register', resgisterSchema);
+
 
 export default registerModel;
 

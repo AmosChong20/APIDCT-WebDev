@@ -13,6 +13,7 @@ import SchoolList from './views/SchoolList'
 import Portfolio from './views/Portfolio';
 
 import './App.css';
+import StarWars from './views/StarWars';
 
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
                     {/*<ProtectedRoute path="/page2" exact component={Page2} /> */}
                     <Route path="/register" exact component={Register} />
                     <Route path="/schoolList" exact component={SchoolList} />
+                    <Route path="/starwars" exact component={StarWars} />
                 </Switch>
                 <Footer />
             </div>

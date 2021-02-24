@@ -35,7 +35,9 @@ html,body
 
 
 
-*{font-family:  sans-serif ,'cwTeXKai','Ma Shan Zheng', cursive;}
+*{
+	font-family:  sans-serif ,'Ma Shan Zheng', 'cwTeXKai', cursive;
+}
 
 
 

@@ -27,3 +27,23 @@ export const addRegisterData = async (req, res) => {
         res.status(409).json({ message: error.message });
     }
 }
+
+export const findTZ = async (req, res) =>{
+    var query = req.params.query;
+    console.log(query)
+    registerModel.find({
+        $text: {
+            $search: query
+        }
+    }, function(err, result) {
+        if (err) throw err;
+        if (result) {
+            console.log(result);
+            res.json(result)
+        } else {
+            res.send(JSON.stringify({
+                error : 'Error'
+            }))
+        }
+    })
+}
