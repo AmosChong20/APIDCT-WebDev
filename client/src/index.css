@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
+@import url('https://fonts.googleapis.com/earlyaccess/cwtexkai.css');
 
 html, body, #root, #app, #app>div {
 	height: 100%
@@ -34,7 +35,7 @@ html,body
 
 
 
-*{font-family:  sans-serif ,'Ma Shan Zheng', cursive;}
+*{font-family:  sans-serif ,'cwTeXKai','Ma Shan Zheng', cursive;}
 
 
 
