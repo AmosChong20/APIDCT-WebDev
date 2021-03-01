@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import './css/StarWars.css'
+import { useHistory } from "react-router-dom";
 
 import Alert from 'react-bootstrap/Alert';
 import {serverURL} from '../config'
@@ -65,9 +66,10 @@ const StarWars = () => {
     }
   }
 
-  
+  const history = useHistory();
   const onSubmit = async (e) =>{
     e.preventDefault()
+    setTimeout(() => history.push('/starwarslist'), 1000);
     setChanged(true);
 
     //check area & time
@@ -97,6 +99,7 @@ const StarWars = () => {
         setShowU(false);
         setShowI(false);
         setShowA(false);
+        
       }
       else{
         console.log("token invalid");
