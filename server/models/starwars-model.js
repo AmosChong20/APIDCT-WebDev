@@ -2,7 +2,9 @@ import mongoose from 'mongoose';
 
 const starwarsSchema = mongoose.Schema({
     token: String,
-    time: Array,
+    time1: String,
+    time2: String,
+    name: String,
 })
 
 // registerModel.plugin(uniqueValidator);

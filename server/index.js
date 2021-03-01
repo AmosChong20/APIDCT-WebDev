@@ -5,6 +5,7 @@ import cors from 'cors';
 import { port , mongoConnectionString} from "./config.js";
 
 import registerRoutes from './routes/register.js';
+import registerTestRoutes from './routes/registerTest.js';
 import starwarsRoutes from './routes/starwars.js';
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(bodyParser.urlencoded({limit:"30mb", extended:true}));
 app.use(cors());
 
 app.use('/register',registerRoutes);
+app.use('/registerTest',registerTestRoutes);
 app.use('/starwars',starwarsRoutes);
 
 

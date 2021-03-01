@@ -9,11 +9,13 @@ import Footer from './components/Footer'
 
 import Home from './views/Home'
 import Register from './views/Register'
+import RegisterTest from './views/RegisterTest'
 import SchoolList from './views/SchoolList'
 import Portfolio from './views/Portfolio';
 
 import './App.css';
 import StarWars from './views/StarWars';
+import StarwarsList from './views/StarwarsList';
 
 
 const App = () => {
@@ -32,8 +34,10 @@ const App = () => {
                     <Route path="/" exact component={Home} />
                     {/*<ProtectedRoute path="/page2" exact component={Page2} /> */}
                     <Route path="/register" exact component={Register} />
+                    <Route path="/registerTest" exact component={RegisterTest} />
                     <Route path="/schoolList" exact component={SchoolList} />
-                    {/* <Route path="/starwars" exact component={StarWars} /> */}
+                    <Route path="/starwars" exact component={StarWars} />
+                    <Route path="/starwarslist" exact component={StarwarsList} />
                     {/* <Route path="/portfolio" exact component={Portfolio} /> */}
                 </Switch>
                 <Footer />

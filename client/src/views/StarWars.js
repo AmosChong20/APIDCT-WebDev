@@ -1,41 +1,58 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import './css/StarWars.css'
+
+import Alert from 'react-bootstrap/Alert';
 import {serverURL} from '../config'
 
 const StarWars = () => {
   const [offS, setOffS] = useState(0);
-  const [starwarsData,setStarwarsData] = useState({token : ''});
+  const [starwarsData,setStarwarsData] = useState({token : '',name :''});
   const [dataf,setDataf] = useState([]);
   const [datac,setDatac] = useState([]);
   const [second,setSecond] = useState(0);
   const [minute,setMinute] = useState(0);
   const [hour,setHour] = useState(0);
-  const [tokenUsed, setTokenUsed] =useState(false);
   const currentOS = -480;
+
+  const [showU, setShowU] = useState(false);
+  const [showS, setShowS] = useState(false);
+  const [showI, setShowI] = useState(false);
+  const [showA, setShowA] = useState(false);
+  const [changed, setChanged] = useState(false);
 
 
   useEffect(() => {
     var offset = new Date().getTimezoneOffset();
     setOffS(offset);
     startTime();
+    if(changed){
+      fetchTZ(starwarsData.token);
+      checkUsed(starwarsData.token);
+      setChanged(false);
+    }
   })
 
   const fetchTZ = async (token) => {
-    const res = await fetch(('http://localhost:5000/register/'+token))
+    if(token === ''){
+      return;
+    }
+    const res = await fetch(serverURL + '/registerTest/'+token)
     const data = await res.json()
-    // console.log(data);
-    setDataf (data)
+    setDataf (data);
   }
 
   const checkUsed= async (token) => {
-    const res = await fetch(('http://localhost:5000/starwars/'+token))
+    if(token === ''){
+      return;
+    }
+    const res = await fetch(serverURL + '/starwars/'+token)
     const data = await res.json()
     setDatac (data)
   }
 
   const addStarwarsData = async (starwarsData) =>{
-    const res = await fetch ('http://localhost:5000/starwars',{
+    const res = await fetch ((serverURL + '/starwars'),{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
@@ -48,38 +65,53 @@ const StarWars = () => {
     }
   }
 
-
-  const onSubmit = (e) =>{
-    e.preventDefault()
-    fetchTZ(starwarsData.token);
-    checkUsed(starwarsData.token);
-    // console.log(token);
   
-    if(offS != currentOS){
-      return;
-    }
-    // if(second != 50){
+  const onSubmit = async (e) =>{
+    e.preventDefault()
+    setChanged(true);
+
+    //check area & time
+    // if (dataf[0].area==="my"){
     //   return;
     // }
-    // console.log(second)
-    // console.log(datac[0].token)
-    try{
-      if(datac[0].token){
-        setTokenUsed(true);
-      }
-      
-    } catch(error){
-      setTokenUsed(false);
-    }
+    // if((hour != 21)||(minute <=34)||(minute >= 40)){
+    //   return;
+    // }
 
     try{
-      if((dataf[0].token) && !tokenUsed){
+      if(datac[0].token){
+        setShowU(true);
+        setShowS(false);
+        setShowI(false);
+        setShowA(false);
+        return;
+      }
+    } catch(error){
+      // setTokenUsed(true);
+    }
+    try{
+      if (dataf[0].token){
+        starwarsData.name = dataf[0].chiTeamLeaderName;
         addStarwarsData(starwarsData);
-        console.log(dataf[0])
+        setShowS(true);
+        setShowU(false);
+        setShowI(false);
+        setShowA(false);
+      }
+      else{
+        console.log("token invalid");
+        setShowI(true);
+        setShowU(false);
+        setShowS(false);
+        setShowA(false);
       }
     } catch (error) {
-      console.log(error)
-      console.log("token invalid");
+      // console.log(error)
+      console.log("token invalid!!!");
+      setShowI(true);
+      setShowU(false);
+      setShowS(false);
+      setShowA(false);
     }
   
 
@@ -120,10 +152,22 @@ const StarWars = () => {
           <div id="time-box"><em id="current-time" /></div>
         </div>
         <section className="SWsection">
+          <Alert show={showS} className= "alert" variant="success" onClose={() => setShowS(false)} dismissible>
+            <Alert.Heading className = "alertHeading"> Submit Successful ！ </Alert.Heading>
+          </Alert>
+          <Alert show={showU} className= "alert" variant="danger" onClose={() => setShowU(false)} dismissible>
+            <Alert.Heading className = "alertHeading"> Token Used ！ </Alert.Heading>
+          </Alert>
+          <Alert show={showI} className= "alert" variant="danger" onClose={() => setShowI(false)} dismissible>
+            <Alert.Heading className = "alertHeading"> Token Invalid ！ </Alert.Heading>
+          </Alert>
+          <Alert show={showA} className= "alert" variant="danger" onClose={() => setShowI(false)} dismissible>
+            <Alert.Heading className = "alertHeading"> 地区于时间不相符 ！ </Alert.Heading>
+          </Alert>
           <form className="SWform" onSubmit = {onSubmit}>
-            <input type="text" className={`form-control englsihF`}  value={starwarsData.token} placeholder="请输入代码" onChange={(e) => checkUsed(starwarsData.token) & fetchTZ(starwarsData.token) & setStarwarsData({ ...starwarsData, token: e.target.value })} autoFocus/>
-            <button  type="submit" className="SWbutton " data-toggle="modal" value='Save Form' >
-              <span className = "englishF"> Submit / </span> <span> 提交 </span>
+            <input type="text" className={`form-control englsihF`}  value={starwarsData.token} placeholder="请输入代码" onChange={(e) => setStarwarsData({ ...starwarsData, token: e.target.value }) & setChanged(true) } autoFocus/> 
+            <button  type="submit" className="btn btn-primary SWbutton " data-toggle="modal" value='Save Form' >
+              <span className = "englishF" > Submit / </span> <span> 提交 </span>
             </button>
             {/* <a href="#" target="_blank">忘记代码？</a> */}
           </form>

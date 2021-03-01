@@ -17,7 +17,7 @@ export const addRegisterData = async (req, res) => {
     const newRegisterData = new registerModel({ engSchoolName, chiSchoolName, engTeamLeaderName, chiTeamLeaderName, teamLeaderContact, teamLeaderEmail, debateTopics_1, debateTopics_2,token});
     newRegisterData.token = token_1;
     try {
-        console.log(newRegisterData)
+        // console.log(newRegisterData)
         await newRegisterData.save();
         res.status(201).json( newRegisterData );
     } catch (error) {
@@ -30,7 +30,7 @@ export const addRegisterData = async (req, res) => {
 
 export const findTZ = async (req, res) =>{
     var query = req.params.query;
-    console.log(query)
+    // console.log(query)
     registerModel.find({
         $text: {
             $search: query
@@ -38,7 +38,7 @@ export const findTZ = async (req, res) =>{
     }, function(err, result) {
         if (err) throw err;
         if (result) {
-            console.log(result);
+            // console.log(result);
             res.json(result)
         } else {
             res.send(JSON.stringify({

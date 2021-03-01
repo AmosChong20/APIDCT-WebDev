@@ -12,13 +12,12 @@ export const getStarwarsData = async (req, res) => {
 }
 
 export const addStarwarsData = async (req, res) => {
-    const {token,time} = req.body;
-    const newStarwarsData = new starwarsModel({token,time});
-    // console.log(ptime());
-    newStarwarsData.time=ptime();
-    // newStarwarsData.time = currenttime;
+    const {token,time1,time2,name} = req.body;
+    const newStarwarsData = new starwarsModel({token,time1,time2,name});
+    newStarwarsData.time1=ptime()[0];
+    newStarwarsData.time2=ptime()[1];
     try {
-        console.log(newStarwarsData)
+        // console.log(newStarwarsData)
         await newStarwarsData.save();
         res.status(201).json( newStarwarsData );
     } catch (error) {
@@ -28,7 +27,7 @@ export const addStarwarsData = async (req, res) => {
 
 export const checkUsed = async (req, res) =>{
     var query = req.params.query;
-    console.log(query)
+    // console.log(query)
     starwarsModel.find({
         $text: {
             $search: query
@@ -36,7 +35,7 @@ export const checkUsed = async (req, res) =>{
     }, function(err, result) {
         if (err) throw err;
         if (result) {
-            console.log(result);
+            // console.log(result);
             res.json(result)
         } else {
             res.send(JSON.stringify({
