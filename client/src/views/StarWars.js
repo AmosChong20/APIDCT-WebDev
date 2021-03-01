@@ -69,7 +69,6 @@ const StarWars = () => {
   const history = useHistory();
   const onSubmit = async (e) =>{
     e.preventDefault()
-    setTimeout(() => history.push('/starwarslist'), 1000);
     setChanged(true);
 
     //check area & time
@@ -99,6 +98,7 @@ const StarWars = () => {
         setShowU(false);
         setShowI(false);
         setShowA(false);
+        setTimeout(() => history.push('/starwarslist'), 1000);
         
       }
       else{
@@ -156,13 +156,13 @@ const StarWars = () => {
         </div>
         <section className="SWsection">
           <Alert show={showS} className= "alert" variant="success" onClose={() => setShowS(false)} dismissible>
-            <Alert.Heading className = "alertHeading"> Submit Successful ！ </Alert.Heading>
+            <Alert.Heading className = "alertHeading"> 提交成功！ </Alert.Heading>
           </Alert>
           <Alert show={showU} className= "alert" variant="danger" onClose={() => setShowU(false)} dismissible>
-            <Alert.Heading className = "alertHeading"> Token Used ！ </Alert.Heading>
+            <Alert.Heading className = "alertHeading"> 代码已被使用！ </Alert.Heading>
           </Alert>
           <Alert show={showI} className= "alert" variant="danger" onClose={() => setShowI(false)} dismissible>
-            <Alert.Heading className = "alertHeading"> Token Invalid ！ </Alert.Heading>
+            <Alert.Heading className = "alertHeading"> 代码不存在！ </Alert.Heading>
           </Alert>
           <Alert show={showA} className= "alert" variant="danger" onClose={() => setShowI(false)} dismissible>
             <Alert.Heading className = "alertHeading"> 地区于时间不相符 ！ </Alert.Heading>
