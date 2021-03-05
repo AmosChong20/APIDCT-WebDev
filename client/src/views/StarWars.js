@@ -103,9 +103,9 @@ const StarWars = () => {
     // if (area==={dataf[0].area}){
     //   return;
     // }
-    if(starwarsData.day!==startDate){
-      return;
-    }
+    // if(starwarsData.day!==startDate){
+    //   return;
+    // }
     // if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
     //   setShowI(false);
     //   setShowU(false);
@@ -117,7 +117,7 @@ const StarWars = () => {
 
     try{
       if(datac[0].token){
-        // updateToken(datac[0].token);
+        updateToken(datac[0].token);
         setShowU(true);
         setShowS(false);
         setShowI(false);
