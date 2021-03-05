@@ -46,6 +46,8 @@ const StarWars = () => {
     }
   })
 
+
+
   const fetchTZ = async (token) => {
     if(token === ''){
       return;
@@ -92,7 +94,7 @@ const StarWars = () => {
     //check area & time
     // if (area==={dataf[0].area}){
     //   return;
-    // // }
+    // }
     // if(starwarsData.day!==startDate){
     //   return;
     // }
@@ -127,7 +129,7 @@ const StarWars = () => {
         setShowI(false);
         setShowA(false);
         setTimeout(() => setShowS(false), 3000);
-        // setTimeout(() => history.push('/starwarslist'), 1000);
+        setTimeout(() => history.push('/starwarslist'), 1000);
         
       }
       else{
