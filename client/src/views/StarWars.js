@@ -127,7 +127,7 @@ const StarWars = () => {
         setShowI(false);
         setShowA(false);
         setTimeout(() => setShowS(false), 3000);
-        setTimeout(() => history.push('/starwarslist'), 1000);
+        // setTimeout(() => history.push('/starwarslist'), 1000);
         
       }
       else{
