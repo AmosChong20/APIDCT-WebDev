@@ -15,20 +15,31 @@
   font-size: 3rem;
   /* color: white; */
 }
+.areaSelection{
+  border-radius: 0.1rem ;
+  max-width: 30rem;
+  margin: 0rem auto 1rem;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 4px 4px 0 rgba(0, 0, 0, 0.20);
+}
 .SWsection{
   /* background-color: #43A047; */
   text-align: center;            
   margin: auto;
   margin-left: 10%;
   margin-right: 10%;
-  padding-top: 2%;
-  padding-bottom: 4%;
   margin-bottom: 4%;
   border-radius: 0.2rem;
+  padding : 2% 0 0 2rem;
 }
+
 .counttime{
   text-align: center;
   font-size: 2rem;
+  /* display : none; */
+}
+
+.invi{
+  visibility: hidden;
 }
 
 .time{
@@ -41,7 +52,7 @@
   position: relative;
   z-index: 1;
   background: #FFFFFF;
-  max-width: 360px;
+  max-width: 30rem;
   margin: 40px auto 100px;
   padding: 45px;
   text-align: center;

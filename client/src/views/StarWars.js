@@ -4,40 +4,45 @@ import './css/StarWars.css'
 import { useHistory } from "react-router-dom";
 
 import Alert from 'react-bootstrap/Alert';
+import Form from 'react-bootstrap/Form';
 import {serverURL} from '../config'
+import areas from "../components/json/areas.json";
 
 const StarWars = () => {
-  const [offS, setOffS] = useState(0);
+  // const [offS, setOffS] = useState(0);
   const [starwarsData,setStarwarsData] = useState({token : '',name :'',day:0,hour:0,minute:0,second:0});
   const [dataf,setDataf] = useState([]);
   const [datac,setDatac] = useState([]);
   const currentOS = -480;
 
-  const [area,setArea] = useState("新加坡");
-  const [startDate,setStartDate] = useState(5);
-  const [startHour,setStartHour] = useState(13);
-  const [endHour,setEndHour] =useState(13);
-  const [startMinute,setStartMinute] =useState(50);
-  const [endMinute,setEndMinute] =useState(55);
+  const [areaC,setAreaC] = useState("");
+  const [area,setArea] = useState("");
+
+  const [startDate,setStartDate] = useState(0);
+  const [startHour,setStartHour] = useState(0);
+  const [endHour,setEndHour] =useState(0);
+  const [startMinute,setStartMinute] =useState(0);
+  const [endMinute,setEndMinute] =useState(0);
 
   const [showU, setShowU] = useState(false);
   const [showS, setShowS] = useState(false);
   const [showI, setShowI] = useState(false);
   const [showA, setShowA] = useState(false);
   const [changed, setChanged] = useState(false);
+
   const [submitted, setSubmitted] = useState(false);
+  const [chosen,setChosen] = useState(false);
 
 
   useEffect(() => {
-    var offset = new Date().getTimezoneOffset();
-    setOffS(offset);
+    // var offset = new Date().getTimezoneOffset();
+    // setOffS(offset);
     startTime();
     if(changed){
       fetchTZ(starwarsData.token);
       // setTimeout(() => checkUsed(starwarsData.token), 0);
       checkUsed(starwarsData.token);
       setChanged(false);
-      
     }
   })
 
@@ -81,19 +86,17 @@ const StarWars = () => {
   const history = useHistory();
 
   const onSubmit = async (e) =>{
-    e.preventDefault()
+    e.preventDefault();
     setChanged(true);
-    
-    
 
     //check area & time
-    // if (dataf[0].area==="my"){
+    // if (area==={dataf[0].area}){
     //   return;
     // }
-    if(starwarsData.day!=startDate){
+    if(starwarsData.day!==startDate){
       return;
     }
-    if((starwarsData.hour != startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
+    if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
       setShowI(false);
       setShowU(false);
       setShowS(false);
@@ -144,9 +147,27 @@ const StarWars = () => {
       setShowA(false);
       setTimeout(() => setShowI(false), 3000);
     }
-  
-
-
+  }
+  const getSelection=(event)=>{
+    setChosen(true);
+    setArea(event.target.value);
+    if(event.target.value==="sg"){
+      setAreaC("新加坡");
+      setStartDate (5);
+      setStartHour (13);
+      setEndHour (13);
+      setStartMinute (50);
+      setEndMinute (55);
+    }
+    else{
+      setChosen(false);
+      setAreaC("");
+      setStartDate (0);
+      setStartHour (0);
+      setEndHour (0);
+      setStartMinute (0);
+      setEndMinute (0);
+    }
   }
   
   const startTime = () => {
@@ -166,6 +187,7 @@ const StarWars = () => {
     }
   
     var t = setTimeout(startTime, 500);
+    
     starwarsData.second = s;
     starwarsData.minute = m;
     starwarsData.hour = h;
@@ -195,25 +217,36 @@ const StarWars = () => {
         <div className="time">
           <div id="time-box"><em id="current-time" /></div>
         </div>
-        
-        <div className="counttime">
+
+        <div className={`counttime ${!chosen ? "invi" : ""}`}>
           <div className = "area">
-            <span>{area}</span>
+            <span>{areaC}</span>
             <span>地区抽签时段</span>
           </div>
           <div className="start">
-            <span>开始时间</span>
+            <span>开始时间 </span>
             <span>{startHour}:{startMinute}:00</span>
           </div>
           <div className="end">
-            <span>结束时间</span>
+            <span>结束时间 </span>
             <span>{endHour}:{endMinute}:00</span>
           </div>
         </div>
         <section className="SWsection">
+          <Form.Control
+            as="select"
+            className="areaSelection"
+            id="inlineFormCustomSelect"
+            onChange={(e) => getSelection(e)}
+          >
+            <option className = "area" value="">请选择地区</option>
+            {areas.map(area => (
+              <option value={area.value} >{area.area}</option>
+            ))}
+          </Form.Control>
           <form className="SWform" onSubmit = {onSubmit}>
-            <input type="text" className={`form-control englsihF`}  value={starwarsData.token} placeholder="请输入代码" onChange={(e) => setStarwarsData({ ...starwarsData, token: e.target.value }) & setChanged(true) } autoFocus/> 
-            <button  type="submit" className="btn btn-primary SWbutton " data-toggle="modal" value='Save Form' disabled={submitted}>
+            <input type="text" className={`form-control englsihF`}  value={starwarsData.token} placeholder="请输入代码" onChange={(e) => setStarwarsData({ ...starwarsData, token: e.target.value }) & setChanged(true) } autoFocus disabled={!chosen}/> 
+            <button  type="submit" className="btn btn-primary SWbutton " data-toggle="modal" value='Save Form' disabled={submitted||!chosen}>
               <span className = "englishF" > Submit / </span> <span> 提交 </span>
             </button>
             {/* <a href="#" target="_blank">忘记代码？</a> */}
