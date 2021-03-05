@@ -50,7 +50,7 @@ const StarWars = () => {
     if(token === ''){
       return;
     }
-    const res = await fetch('http://localhost:5000/registerTest/'+token)
+    const res = await fetch(serverURL+'/registerTest/'+token)
     // const res = await fetch('https://apicdt-server.com/registerTest/'+token)
     const data = await res.json()
     setDataf (data);
@@ -61,7 +61,7 @@ const StarWars = () => {
     if(token === ''){
       return;
     }
-    const res = await fetch('http://localhost:5000/starwars/'+token)
+    const res = await fetch(serverURL+'/starwars/'+token)
     // const res = await fetch('https://apicdt-server.com/starwars/'+token)
     const data = await res.json()
     // console.log(data[0].count);
@@ -70,7 +70,7 @@ const StarWars = () => {
 
 
   const addStarwarsData = async (starwarsData) =>{
-    const res = await fetch (('https://apicdt-server.com/starwars'),{
+    const res = await fetch ((serverURL+'/starwars'),{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
