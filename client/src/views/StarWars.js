@@ -46,8 +46,6 @@ const StarWars = () => {
     }
   })
 
-
-
   const fetchTZ = async (token) => {
     if(token === ''){
       return;
@@ -95,9 +93,9 @@ const StarWars = () => {
     // if (area==={dataf[0].area}){
     //   return;
     // }
-    // if(starwarsData.day!==startDate){
-    //   return;
-    // }
+    if(starwarsData.day!==startDate){
+      return;
+    }
     // if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
     //   setShowI(false);
     //   setShowU(false);
@@ -156,10 +154,10 @@ const StarWars = () => {
     if(event.target.value==="sg"){
       setAreaC("新加坡");
       setStartDate (5);
-      setStartHour (21);
-      setEndHour (21);
-      setStartMinute (20);
-      setEndMinute (25);
+      setStartHour (20);
+      setEndHour (20);
+      setStartMinute (0);
+      setEndMinute (5);
     }
     else{
       setChosen(false);
@@ -188,7 +186,7 @@ const StarWars = () => {
       return;
     }
   
-    var t = setTimeout(startTime, 1);
+    var t = setTimeout(startTime, 500);
     
     starwarsData.second = s;
     starwarsData.minute = m;
