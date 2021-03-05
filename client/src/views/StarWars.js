@@ -156,8 +156,8 @@ const StarWars = () => {
       setStartDate (5);
       setStartHour (20);
       setEndHour (20);
-      setStartMinute (40);
-      setEndMinute (42);
+      setStartMinute (45);
+      setEndMinute (48);
     }
     else{
       setChosen(false);
