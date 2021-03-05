@@ -244,7 +244,7 @@ const StarWars = () => {
               <option value={area.value} >{area.area}</option>
             ))}
           </Form.Control>
-          <form className="SWform" onSubmit = {onSubmit & setChanged(true)}>
+          <form className="SWform" onSubmit = {onSubmit}>
             <input type="text" className={`form-control englsihF`}  value={starwarsData.token} placeholder="请输入代码" onChange={(e) => setStarwarsData({ ...starwarsData, token: e.target.value }) } autoFocus disabled={!chosen}/> 
             <button  type="submit" className="btn btn-primary SWbutton " data-toggle="modal" value='Save Form' disabled={submitted||!chosen}>
               <span className = "englishF" > Submit / </span> <span> 提交 </span>
