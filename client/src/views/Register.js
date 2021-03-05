@@ -35,7 +35,7 @@ const Register = () => {
 
 
   const addRegisterData = async (registerData) =>{
-    const res = await fetch ((serverURL+'/register'),{
+    const res = await fetch ((serverURL+'register'),{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
