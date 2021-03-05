@@ -64,8 +64,18 @@ const StarWars = () => {
     const res = await fetch(serverURL+'starwars/'+token)
     // const res = await fetch('https://apicdt-server.com/starwars/'+token)
     const data = await res.json()
-    console.log("sadsdd");
     setDatac (data)
+  }
+
+  const updateToken= async (token) => {
+    if(token === ''){
+      return;
+    }
+    const res = await fetch(serverURL+'starwars/'+token)
+    // const res = await fetch('https://apicdt-server.com/starwars/'+token)
+    const data = await res.json()
+    console.log("sadsdd");
+
   }
 
 
@@ -87,7 +97,7 @@ const StarWars = () => {
 
   const onSubmit = async (e) =>{
     e.preventDefault();
-  
+    setChanged(true);
 
     //check area & time
     // if (area==={dataf[0].area}){
@@ -107,6 +117,7 @@ const StarWars = () => {
 
     try{
       if(datac[0].token){
+        updateToken(datac[0].token)
         setShowU(true);
         setShowS(false);
         setShowI(false);
