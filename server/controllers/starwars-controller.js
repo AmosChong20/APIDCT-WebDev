@@ -44,7 +44,7 @@ export const checkUsed = async (req, res) =>{
             catch(err){
                 console.log(err);
             }
-            console.log(result[0].count);
+            // console.log(result[0].count);
             res.json(result)
         } else {
             res.send(JSON.stringify({
