@@ -35,7 +35,7 @@ const Register = () => {
 
 
   const addRegisterData = async (registerData) =>{
-    const res = await fetch (('https://apicdt-server.com/' + '/register'),{
+    const res = await fetch (('https://apicdt-server.com/register'),{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
