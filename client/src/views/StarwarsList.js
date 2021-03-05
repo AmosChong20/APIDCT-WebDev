@@ -19,9 +19,19 @@ const StarwarsList = () => {
 
   const fetchWinners = async () => {
     const res = await fetch(serverURL + '/starwars')
+    // const res = await fetch('http://localhost:5000' + '/starwars')
     const data = await res.json()
-    console.log(data)
-    return data
+    var temp = data.length;
+    var i;
+    for (i = 0; i < temp; i++) {
+      if((data[i].count)>3){
+        delete data[i]
+      }
+    }
+    var array = data.filter(function () { return true });
+
+    console.log(array)
+    return array
   }
 
 

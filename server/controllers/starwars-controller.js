@@ -12,8 +12,9 @@ export const getStarwarsData = async (req, res) => {
 }
 
 export const addStarwarsData = async (req, res) => {
-    const {token,time1,time2,name} = req.body;
-    const newStarwarsData = new starwarsModel({token,time1,time2,name});
+    const {token,time1,time2,name,count,day,hour,minute,second} = req.body;
+    const newStarwarsData = new starwarsModel({token,time1,time2,name,count,day,hour,minute,second});
+    newStarwarsData.count = 0;
     newStarwarsData.time1=ptime()[0];
     newStarwarsData.time2=ptime()[1];
     try {
@@ -25,6 +26,7 @@ export const addStarwarsData = async (req, res) => {
     }
 }
 
+
 export const checkUsed = async (req, res) =>{
     var query = req.params.query;
     // console.log(query)
@@ -35,7 +37,14 @@ export const checkUsed = async (req, res) =>{
     }, function(err, result) {
         if (err) throw err;
         if (result) {
-            // console.log(result);
+            // try{
+            //     result[0].count+=1;
+            //     result[0].save();
+            // }
+            // catch(err){
+            //     console.log(err);
+            // }
+            // console.log(result[0].count);
             res.json(result)
         } else {
             res.send(JSON.stringify({
@@ -44,3 +53,4 @@ export const checkUsed = async (req, res) =>{
         }
     })
 }
+

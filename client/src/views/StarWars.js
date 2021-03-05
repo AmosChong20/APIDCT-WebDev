@@ -8,19 +8,24 @@ import {serverURL} from '../config'
 
 const StarWars = () => {
   const [offS, setOffS] = useState(0);
-  const [starwarsData,setStarwarsData] = useState({token : '',name :''});
+  const [starwarsData,setStarwarsData] = useState({token : '',name :'',day:0,hour:0,minute:0,second:0});
   const [dataf,setDataf] = useState([]);
   const [datac,setDatac] = useState([]);
-  const [second,setSecond] = useState(0);
-  const [minute,setMinute] = useState(0);
-  const [hour,setHour] = useState(0);
   const currentOS = -480;
+
+  const [area,setArea] = useState("新加坡");
+  const [startDate,setStartDate] = useState(5);
+  const [startHour,setStartHour] = useState(13);
+  const [endHour,setEndHour] =useState(13);
+  const [startMinute,setStartMinute] =useState(50);
+  const [endMinute,setEndMinute] =useState(55);
 
   const [showU, setShowU] = useState(false);
   const [showS, setShowS] = useState(false);
   const [showI, setShowI] = useState(false);
   const [showA, setShowA] = useState(false);
   const [changed, setChanged] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
 
   useEffect(() => {
@@ -29,8 +34,10 @@ const StarWars = () => {
     startTime();
     if(changed){
       fetchTZ(starwarsData.token);
+      // setTimeout(() => checkUsed(starwarsData.token), 0);
       checkUsed(starwarsData.token);
       setChanged(false);
+      
     }
   })
 
@@ -38,22 +45,27 @@ const StarWars = () => {
     if(token === ''){
       return;
     }
+    // const res = await fetch('http://localhost:5000/registerTest/'+token)
     const res = await fetch(serverURL + '/registerTest/'+token)
     const data = await res.json()
     setDataf (data);
   }
 
+
   const checkUsed= async (token) => {
     if(token === ''){
       return;
     }
+    // const res = await fetch('http://localhost:5000/starwars/'+token)
     const res = await fetch(serverURL + '/starwars/'+token)
     const data = await res.json()
+    // console.log(data[0].count);
     setDatac (data)
   }
 
+
   const addStarwarsData = async (starwarsData) =>{
-    const res = await fetch ((serverURL + '/starwars'),{
+    const res = await fetch ((serverURL+'/starwars'),{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
@@ -67,17 +79,28 @@ const StarWars = () => {
   }
 
   const history = useHistory();
+
   const onSubmit = async (e) =>{
     e.preventDefault()
     setChanged(true);
+    
+    
 
     //check area & time
     // if (dataf[0].area==="my"){
     //   return;
     // }
-    // if((hour != 21)||(minute <=34)||(minute >= 40)){
-    //   return;
-    // }
+    if(starwarsData.day!=startDate){
+      return;
+    }
+    if((starwarsData.hour != startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
+      setShowI(false);
+      setShowU(false);
+      setShowS(false);
+      setShowA(true);
+      setTimeout(() => setShowA(false), 3000);
+      return;
+    }
 
     try{
       if(datac[0].token){
@@ -85,6 +108,7 @@ const StarWars = () => {
         setShowS(false);
         setShowI(false);
         setShowA(false);
+        setTimeout(() => setShowU(false), 3000);
         return;
       }
     } catch(error){
@@ -93,11 +117,13 @@ const StarWars = () => {
     try{
       if (dataf[0].token){
         starwarsData.name = dataf[0].chiTeamLeaderName;
+        setSubmitted(true);
         addStarwarsData(starwarsData);
         setShowS(true);
         setShowU(false);
         setShowI(false);
         setShowA(false);
+        setTimeout(() => setShowS(false), 3000);
         setTimeout(() => history.push('/starwarslist'), 1000);
         
       }
@@ -107,6 +133,7 @@ const StarWars = () => {
         setShowU(false);
         setShowS(false);
         setShowA(false);
+        setTimeout(() => setShowI(false), 3000);
       }
     } catch (error) {
       // console.log(error)
@@ -115,6 +142,7 @@ const StarWars = () => {
       setShowU(false);
       setShowS(false);
       setShowA(false);
+      setTimeout(() => setShowI(false), 3000);
     }
   
 
@@ -138,9 +166,10 @@ const StarWars = () => {
     }
   
     var t = setTimeout(startTime, 500);
-    setSecond(s);
-    setMinute(m);
-    setHour(h);
+    starwarsData.second = s;
+    starwarsData.minute = m;
+    starwarsData.hour = h;
+    starwarsData.day = today.getDay()
   }
 
   function checkTime(i) {
@@ -149,27 +178,42 @@ const StarWars = () => {
   }
 
   return (
-      <div>
+      <div className = "starwarscont">
+        <Alert show={showS} className= "swalert" variant="success" onClose={() => setShowS(false)} dismissible>
+          <Alert.Heading className = "alertHeading"> 提交成功！ </Alert.Heading>
+        </Alert>
+        <Alert show={showU} className= "swalert" variant="danger" onClose={() => setShowU(false)} dismissible>
+          <Alert.Heading className = "alertHeading"> 代码已被使用！ </Alert.Heading>
+        </Alert>
+        <Alert show={showI} className= "swalert" variant="danger" onClose={() => setShowI(false)} dismissible>
+          <Alert.Heading className = "alertHeading"> 代码不存在！ </Alert.Heading>
+        </Alert>
+        <Alert show={showA} className= "swalert" variant="danger" onClose={() => setShowA(false)} dismissible>
+          <Alert.Heading className = "alertHeading"> 地区与时间不相符 ！ </Alert.Heading>
+        </Alert>
         <header className="SWtitle">电子抽签</header>
         <div className="time">
           <div id="time-box"><em id="current-time" /></div>
         </div>
+        
+        <div className="counttime">
+          <div className = "area">
+            <span>{area}</span>
+            <span>地区抽签时段</span>
+          </div>
+          <div className="start">
+            <span>开始时间</span>
+            <span>{startHour}:{startMinute}:00</span>
+          </div>
+          <div className="end">
+            <span>结束时间</span>
+            <span>{endHour}:{endMinute}:00</span>
+          </div>
+        </div>
         <section className="SWsection">
-          <Alert show={showS} className= "alert" variant="success" onClose={() => setShowS(false)} dismissible>
-            <Alert.Heading className = "alertHeading"> 提交成功！ </Alert.Heading>
-          </Alert>
-          <Alert show={showU} className= "alert" variant="danger" onClose={() => setShowU(false)} dismissible>
-            <Alert.Heading className = "alertHeading"> 代码已被使用！ </Alert.Heading>
-          </Alert>
-          <Alert show={showI} className= "alert" variant="danger" onClose={() => setShowI(false)} dismissible>
-            <Alert.Heading className = "alertHeading"> 代码不存在！ </Alert.Heading>
-          </Alert>
-          <Alert show={showA} className= "alert" variant="danger" onClose={() => setShowI(false)} dismissible>
-            <Alert.Heading className = "alertHeading"> 地区于时间不相符 ！ </Alert.Heading>
-          </Alert>
           <form className="SWform" onSubmit = {onSubmit}>
             <input type="text" className={`form-control englsihF`}  value={starwarsData.token} placeholder="请输入代码" onChange={(e) => setStarwarsData({ ...starwarsData, token: e.target.value }) & setChanged(true) } autoFocus/> 
-            <button  type="submit" className="btn btn-primary SWbutton " data-toggle="modal" value='Save Form' >
+            <button  type="submit" className="btn btn-primary SWbutton " data-toggle="modal" value='Save Form' disabled={submitted}>
               <span className = "englishF" > Submit / </span> <span> 提交 </span>
             </button>
             {/* <a href="#" target="_blank">忘记代码？</a> */}

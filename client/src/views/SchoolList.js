@@ -13,14 +13,14 @@ const SchoolList = () => {
       const schoolsDB = await fetchSchools()
       setSchools(schoolsDB)
     }
-
     getSchools()
   }, [])
 
   const fetchSchools = async () => {
     const res = await fetch((serverURL + '/register'))
+    // const res = await fetch('http://localhost:5000' + '/register')
     const data = await res.json()
-    console.log(data)
+    // console.log(data)
     return data
   }
 
