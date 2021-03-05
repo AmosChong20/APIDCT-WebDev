@@ -37,7 +37,13 @@ export const checkUsed = async (req, res) =>{
     }, function(err, result) {
         if (err) throw err;
         if (result) {
-
+            try{
+                result[0].count+=1;
+                result[0].save();
+            }
+            catch(err){
+                console.log(err);
+            }
             // console.log(result[0].count);
             res.json(result)
         } else {
@@ -66,7 +72,6 @@ export const updateToken = async (req, res) =>{
                 console.log(err);
             }
             // console.log(result[0].count);
-            console.log("Sadsadsasd");
             res.json(result)
         } else {
             res.send(JSON.stringify({
