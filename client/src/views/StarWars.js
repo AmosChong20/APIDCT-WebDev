@@ -87,7 +87,7 @@ const StarWars = () => {
 
   const onSubmit = async (e) =>{
     e.preventDefault();
-    setChanged(true);
+  
 
     //check area & time
     // if (area==={dataf[0].area}){
@@ -244,7 +244,7 @@ const StarWars = () => {
               <option value={area.value} >{area.area}</option>
             ))}
           </Form.Control>
-          <form className="SWform" onSubmit = {onSubmit}>
+          <form className="SWform" onSubmit ={() => setChanged(true) & onSubmit()}>
             <input type="text" className={`form-control englsihF`}  value={starwarsData.token} placeholder="请输入代码" onChange={(e) => setStarwarsData({ ...starwarsData, token: e.target.value }) } autoFocus disabled={!chosen}/> 
             <button  type="submit" className="btn btn-primary SWbutton " data-toggle="modal" value='Save Form' disabled={submitted||!chosen}>
               <span className = "englishF" > Submit / </span> <span> 提交 </span>
