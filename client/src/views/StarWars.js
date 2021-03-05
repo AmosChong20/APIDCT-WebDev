@@ -96,14 +96,14 @@ const StarWars = () => {
     if(starwarsData.day!==startDate){
       return;
     }
-    if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
-      setShowI(false);
-      setShowU(false);
-      setShowS(false);
-      setShowA(true);
-      // setTimeout(() => setShowA(false), 3000);
-      return;
-    }
+    // if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
+    //   setShowI(false);
+    //   setShowU(false);
+    //   setShowS(false);
+    //   setShowA(true);
+    //   // setTimeout(() => setShowA(false), 3000);
+    //   return;
+    // }
 
     try{
       if(datac[0].token){
