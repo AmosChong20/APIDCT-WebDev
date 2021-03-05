@@ -17,7 +17,7 @@ const SchoolList = () => {
   }, [])
 
   const fetchSchools = async () => {
-    const res = await fetch(('https://apicdt-server.com/' + '/register'))
+    const res = await fetch('https://apicdt-server.com/register')
     // const res = await fetch('http://localhost:5000' + '/register')
     const data = await res.json()
     // console.log(data)
