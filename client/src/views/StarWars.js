@@ -46,35 +46,6 @@ const StarWars = () => {
     }
   })
 
-  // var xmlHttp;
-  // function srvTime(){
-  //     try {
-  //         //FF, Opera, Safari, Chrome
-  //         xmlHttp = new XMLHttpRequest();
-  //     }
-  //     catch (err1) {
-  //         //IE
-  //         try {
-  //             xmlHttp = new ActiveXObject('Msxml2.XMLHTTP');
-  //         }
-  //         catch (err2) {
-  //             try {
-  //                 xmlHttp = new ActiveXObject('Microsoft.XMLHTTP');
-  //             }
-  //             catch (eerr3) {
-  //                 //AJAX not supported, use CPU time.
-  //                 alert("AJAX not supported");
-  //             }
-  //         }
-  //     }
-  //     xmlHttp.open('HEAD',window.location.href.toString(),false);
-  //     xmlHttp.setRequestHeader("Content-Type", "text/html");
-  //     xmlHttp.send('');
-  //     return xmlHttp.getResponseHeader("Date");
-  // }
-
-  // var st = srvTime();
-
   const fetchTZ = async (token) => {
     if(token === ''){
       return;
@@ -121,18 +92,18 @@ const StarWars = () => {
     //check area & time
     // if (area==={dataf[0].area}){
     //   return;
+    // // }
+    // if(starwarsData.day!==startDate){
+    //   return;
     // }
-    if(starwarsData.day!==startDate){
-      return;
-    }
-    if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
-      setShowI(false);
-      setShowU(false);
-      setShowS(false);
-      setShowA(true);
-      // setTimeout(() => setShowA(false), 3000);
-      return;
-    }
+    // if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
+    //   setShowI(false);
+    //   setShowU(false);
+    //   setShowS(false);
+    //   setShowA(true);
+    //   // setTimeout(() => setShowA(false), 3000);
+    //   return;
+    // }
 
     try{
       if(datac[0].token){
