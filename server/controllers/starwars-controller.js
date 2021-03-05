@@ -66,6 +66,7 @@ export const updateToken = async (req, res) =>{
                 console.log(err);
             }
             // console.log(result[0].count);
+            console.log("Sadsadsasd");
             res.json(result)
         } else {
             res.send(JSON.stringify({

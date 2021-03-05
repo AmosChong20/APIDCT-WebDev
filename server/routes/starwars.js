@@ -11,7 +11,7 @@ router.get('/', getStarwarsData);
 
 router.get('/:query', checkUsed);
 
-router.patch('/:query', updateToken);
+router.get('/:query', updateToken);
 
 
 

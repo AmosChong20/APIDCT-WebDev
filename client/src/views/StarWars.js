@@ -41,9 +41,9 @@ const StarWars = () => {
     if(changed){
       fetchTZ(starwarsData.token);
       // setTimeout(() => checkUsed(starwarsData.token), 0);
-      checkUsed(starwarsData.token);
       updateToken(starwarsData.token);
-      
+      checkUsed(starwarsData.token);
+
       setChanged(false);
     }
   })
