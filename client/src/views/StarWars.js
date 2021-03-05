@@ -101,7 +101,7 @@ const StarWars = () => {
       setShowU(false);
       setShowS(false);
       setShowA(true);
-      setTimeout(() => setShowA(false), 3000);
+      // setTimeout(() => setShowA(false), 3000);
       return;
     }
 
@@ -154,10 +154,10 @@ const StarWars = () => {
     if(event.target.value==="sg"){
       setAreaC("新加坡");
       setStartDate (5);
-      setStartHour (13);
-      setEndHour (13);
-      setStartMinute (50);
-      setEndMinute (55);
+      setStartHour (20);
+      setEndHour (20);
+      setStartMinute (0);
+      setEndMinute (5);
     }
     else{
       setChosen(false);
