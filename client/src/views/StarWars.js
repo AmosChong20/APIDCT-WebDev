@@ -75,7 +75,7 @@ const StarWars = () => {
     // const res = await fetch('https://apicdt-server.com/starwars/'+token)
     const data = await res.json()
     console.log("sadsdd");
-
+    setDatac (data)
   }
 
 
@@ -117,7 +117,7 @@ const StarWars = () => {
 
     try{
       if(datac[0].token){
-        updateToken(datac[0].token)
+        // updateToken(datac[0].token);
         setShowU(true);
         setShowS(false);
         setShowI(false);
@@ -256,7 +256,7 @@ const StarWars = () => {
             ))}
           </Form.Control>
           <form className="SWform" onSubmit = {onSubmit}>
-            <input type="text" className={`form-control englsihF`}  value={starwarsData.token} placeholder="请输入代码" onChange={(e) => setStarwarsData({ ...starwarsData, token: e.target.value }) & setChanged(true)} autoFocus disabled={!chosen}/> 
+            <input type="text" className={`form-control englsihF`}  value={starwarsData.token} placeholder="请输入代码" onChange={(e) => setChanged(true) & setStarwarsData({ ...starwarsData, token: e.target.value }) } autoFocus disabled={!chosen}/> 
             <button  type="submit" className="btn btn-primary SWbutton " data-toggle="modal" value='Save Form' disabled={submitted||!chosen}>
               <span className = "englishF" > Submit / </span> <span> 提交 </span>
             </button>
