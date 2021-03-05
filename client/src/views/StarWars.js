@@ -64,7 +64,7 @@ const StarWars = () => {
     const res = await fetch(serverURL+'starwars/'+token)
     // const res = await fetch('https://apicdt-server.com/starwars/'+token)
     const data = await res.json()
-    console.log(data[0].count);
+    console.log("sadsdd");
     setDatac (data)
   }
 
