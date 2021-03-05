@@ -41,7 +41,6 @@ const StarWars = () => {
     if(changed){
       fetchTZ(starwarsData.token);
       // setTimeout(() => checkUsed(starwarsData.token), 0);
-      updateToken(starwarsData.token);
       checkUsed(starwarsData.token);
       setChanged(false);
     }
@@ -75,7 +74,7 @@ const StarWars = () => {
     const res = await fetch(serverURL+'starwars/'+token)
     // const res = await fetch('https://apicdt-server.com/starwars/'+token)
     const data = await res.json()
-    console.log("sadsdd");
+    // console.log(data[0].count);
     // setDatac (data)
   }
 
@@ -118,12 +117,12 @@ const StarWars = () => {
 
     try{
       if(datac[0].token){
-        updateToken(datac[0].token);
         setShowU(true);
         setShowS(false);
         setShowI(false);
         setShowA(false);
         setTimeout(() => setShowU(false), 3000);
+        updateToken(datac[0].token);
         return;
       }
     } catch(error){
