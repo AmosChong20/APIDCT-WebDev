@@ -27,33 +27,6 @@ export const addStarwarsData = async (req, res) => {
 }
 
 
-export const checkUsed = async (req, res) =>{
-    var query = req.params.query;
-    // console.log(query)
-    starwarsModel.find({
-        $text: {
-            $search: query
-        }
-    }, function(err, result) {
-        if (err) throw err;
-        if (result) {
-            try{
-                result[0].count+=1;
-                result[0].save();
-            }
-            catch(err){
-                console.log(err);
-            }
-            // console.log(result[0].count);
-            res.json(result)
-        } else {
-            res.send(JSON.stringify({
-                error : 'Error'
-            }))
-        }
-    })
-}
-
 export const updateToken = async (req, res) =>{
     var query = req.params.query;
     // console.log(query)
@@ -80,5 +53,28 @@ export const updateToken = async (req, res) =>{
         }
     })
 }
+
+export const checkUsed = async (req, res) =>{
+    var query = req.params.query;
+    // console.log(query)
+    starwarsModel.find({
+        $text: {
+            $search: query
+        }
+    }, function(err, result) {
+        if (err) throw err;
+        if (result) {
+
+            // console.log(result[0].count);
+            res.json(result)
+        } else {
+            res.send(JSON.stringify({
+                error : 'Error'
+            }))
+        }
+    })
+}
+
+
 
 
