@@ -13,7 +13,7 @@ const RegisterTest= () => {
 
 
   const addRegisterTestData = async (registerTestData) =>{
-    const res = await fetch (('https://apicdt-server.com/'+ '/registerTest'),{
+    const res = await fetch (('https://apicdt-server.com/registerTest'),{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
