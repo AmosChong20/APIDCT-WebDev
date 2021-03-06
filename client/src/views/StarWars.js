@@ -14,6 +14,7 @@ const StarWars = () => {
   const [dataf,setDataf] = useState([]);
   const [datac,setDatac] = useState([]);
   const currentOS = -480;
+  const [offS,setOffS] = useState(0);
 
   const [areaC,setAreaC] = useState("");
   const [area,setArea] = useState("");
@@ -35,8 +36,8 @@ const StarWars = () => {
 
 
   useEffect(() => {
-    // var offset = new Date().getTimezoneOffset();
-    // setOffS(offset);
+    var offset = new Date().getTimezoneOffset();
+    setOffS(offset);
     startTime();
     if(changed){
       fetchTZ(starwarsData.token);
@@ -184,11 +185,12 @@ const StarWars = () => {
   const startTime = () => {
     var today = new Date();
     var h = today.getHours();
-    var m = today.getMinutes();
-    var s = today.getSeconds();
+    var m = today.getUTCMinutes();
+    var s = today.getUTCSeconds();
     var n = Intl.DateTimeFormat().resolvedOptions().timeZone
     m = checkTime(m);
     s = checkTime(s);
+    // h=h-(offS/60);
     try {
       document.getElementById('current-time').innerHTML =
       h + ":" + m + ":" + s;
@@ -197,7 +199,7 @@ const StarWars = () => {
       return;
     }
   
-    var t = setTimeout(startTime, 500);
+    var t = setTimeout(startTime, 300);
     
     starwarsData.second = s;
     starwarsData.minute = m;
@@ -212,6 +214,12 @@ const StarWars = () => {
 
   return (
       <div className = "starwarscont">
+        {/* <script type="text/javascript">
+            function myCallback(json) {
+                  alert(new Date(json.dateString));
+            }
+        </script> */}
+        {/* <script type="text/javascript" src="http://timeapi.org/utc/now.json?callback=myCallback"></script> */}
         <Alert show={showS} className= "swalert" variant="success" onClose={() => setShowS(false)} dismissible>
           <Alert.Heading className = "alertHeading"> 提交成功！ </Alert.Heading>
         </Alert>
