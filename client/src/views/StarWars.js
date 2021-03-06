@@ -199,7 +199,7 @@ const StarWars = () => {
       return;
     }
   
-    var t = setTimeout(startTime, 300);
+    var t = setTimeout(startTime, 200);
     
     starwarsData.second = s;
     starwarsData.minute = m;
