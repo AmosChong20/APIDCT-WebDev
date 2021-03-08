@@ -145,7 +145,8 @@ const StarWars = () => {
         starwarsData.name = datac[0].name;
         setSubmitted(true);
         addStarwarsData(starwarsData);
-        setTimeout(() => history.push('/starwarslist'), 1000);
+        // setTimeout(() => history.push('/starwarslist'), 1000);
+        console.log("ADSdsdsdsasddsadsa");
         return;
       }
     } catch(error){
@@ -161,7 +162,7 @@ const StarWars = () => {
         setShowI(false);
         setShowA(false);
         setTimeout(() => setShowS(false), 3000);
-        setTimeout(() => history.push('/starwarslist'), 1000);
+        // setTimeout(() => history.push('/starwarslist'), 1000);
         
       }
       else{
