@@ -142,10 +142,13 @@ const StarWars = () => {
         setShowA(false);
         setTimeout(() => setShowU(false), 3000);
         updateToken(datac[0].token);
-        // return;
+        starwarsData.name = datac[0].chiTeamLeaderName;
+        setSubmitted(true);
+        addStarwarsData(starwarsData);
+        return;
       }
     } catch(error){
-      // setTokenUsed(true);
+      return;
     }
     try{
       if (dataf[0].token){
@@ -237,7 +240,7 @@ const StarWars = () => {
           <Alert.Heading className = "alertHeading"> 提交成功！ </Alert.Heading>
         </Alert>
         <Alert show={showU} className= "swalert" variant="danger" onClose={() => setShowU(false)} dismissible>
-          <Alert.Heading className = "alertHeading"> 代码已被使用！ </Alert.Heading>
+          <Alert.Heading className = "alertHeading"> 代码已被使用！成绩将按照此次提交时间为准！ </Alert.Heading>
         </Alert>
         <Alert show={showI} className= "swalert" variant="danger" onClose={() => setShowI(false)} dismissible>
           <Alert.Heading className = "alertHeading"> 代码不存在！ </Alert.Heading>
