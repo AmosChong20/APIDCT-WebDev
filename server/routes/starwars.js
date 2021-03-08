@@ -9,9 +9,9 @@ router.post('/', addStarwarsData);
 
 router.get('/', getStarwarsData);
 
-router.get('/:query', updateToken);
+router.patch('/:query', updateToken);
 
-router.patch('/:query', checkUsed);
+router.get('/:query', checkUsed);
 
 // router.get('/:query', updateToken);
 
