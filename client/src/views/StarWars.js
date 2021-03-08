@@ -104,7 +104,7 @@ const StarWars = () => {
     starwarsData.second = today.getUTCSeconds();
     starwarsData.minute = today.getUTCMinutes();
     starwarsData.hour = today.getHours();
-    starwarsData.day = today.getDay();
+    starwarsData.day = today.getDate();
     // starwarsData.time1 = ptime()[0];
     // starwarsData.time2 = ptime()[1];
 
@@ -118,6 +118,11 @@ const StarWars = () => {
     //   return;
     // }
     if(starwarsData.day!==startDate){
+      setShowI(false);
+      setShowU(false);
+      setShowS(false);
+      setShowA(true);
+      console.log("day not same");
       return;
     }
     if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
