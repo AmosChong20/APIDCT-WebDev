@@ -7,6 +7,7 @@ import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
 import {serverURL} from '../config'
 import areas from "../components/json/areas.json";
+import ptime from 'precision-timestamp';
 
 const StarWars = () => {
   // const [offS, setOffS] = useState(0);
@@ -36,8 +37,8 @@ const StarWars = () => {
 
 
   useEffect(() => {
-    var offset = new Date().getTimezoneOffset();
-    setOffS(offset);
+    // var offset = new Date().getTimezoneOffset();
+    // setOffS(offset);
     startTime();
     if(changed){
       fetchTZ(starwarsData.token);
@@ -99,6 +100,18 @@ const StarWars = () => {
   const onSubmit = async (e) =>{
     e.preventDefault();
     setChanged(true);
+    var today = new Date();
+    starwarsData.second = today.getUTCSeconds();
+    starwarsData.minute = today.getUTCMinutes();
+    starwarsData.hour = today.getHours();
+    starwarsData.day = today.getDay();
+    // starwarsData.time1 = ptime()[0];
+    // starwarsData.time2 = ptime()[1];
+
+
+    // console.log(starwarsData.second);
+    // console.log(starwarsData.time2);
+  
 
     //check area & time
     // if (area==={dataf[0].area}){
@@ -139,7 +152,7 @@ const StarWars = () => {
         setShowI(false);
         setShowA(false);
         setTimeout(() => setShowS(false), 3000);
-        setTimeout(() => history.push('/starwarslist'), 1000);
+        // setTimeout(() => history.push('/starwarslist'), 1000);
         
       }
       else{
@@ -165,7 +178,7 @@ const StarWars = () => {
     setArea(event.target.value);
     if(event.target.value==="sg"){
       setAreaC("新加坡");
-      setStartDate (5);
+      setStartDate (8);
       setStartHour (20);
       setEndHour (20);
       setStartMinute (0);
@@ -200,11 +213,6 @@ const StarWars = () => {
     }
   
     var t = setTimeout(startTime, 200);
-    
-    starwarsData.second = s;
-    starwarsData.minute = m;
-    starwarsData.hour = h;
-    starwarsData.day = today.getDay()
   }
 
   function checkTime(i) {
