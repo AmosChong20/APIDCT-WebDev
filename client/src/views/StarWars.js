@@ -7,7 +7,7 @@ import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
 import {serverURL} from '../config'
 import areas from "../components/json/areas.json";
-import ptime from 'precision-timestamp';
+
 
 const StarWars = () => {
   // const [offS, setOffS] = useState(0);
