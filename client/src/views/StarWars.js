@@ -142,7 +142,7 @@ const StarWars = () => {
         setShowA(false);
         setTimeout(() => setShowU(false), 3000);
         updateToken(datac[0].token);
-        return;
+        // return;
       }
     } catch(error){
       // setTokenUsed(true);
