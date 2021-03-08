@@ -25,7 +25,7 @@ const App = () => {
     //     return <Loading />;
     // }
 
-    
+     
     return (
         <section>
             <div id="app">
@@ -33,7 +33,7 @@ const App = () => {
                 <Switch>
                     <Route path="/" exact component={Home} />
                     {/*<ProtectedRoute path="/page2" exact component={Page2} /> */}
-                    <Route path="/register" exact component={Register} />
+                    {/* <Route path="/register" exact component={Register} /> */}
                     <Route path="/registerTest" exact component={RegisterTest} />
                     <Route path="/schoolList" exact component={SchoolList} />
                     <Route path="/starwars" exact component={StarWars} />
