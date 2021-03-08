@@ -142,13 +142,14 @@ const StarWars = () => {
         setShowA(false);
         setTimeout(() => setShowU(false), 3000);
         updateToken(datac[0].token);
-        starwarsData.name = datac[0].chiTeamLeaderName;
+        starwarsData.name = datac[0].name;
         setSubmitted(true);
         addStarwarsData(starwarsData);
+        setTimeout(() => history.push('/starwarslist'), 1000);
         return;
       }
     } catch(error){
-      return;
+        // nothing here
     }
     try{
       if (dataf[0].token){
