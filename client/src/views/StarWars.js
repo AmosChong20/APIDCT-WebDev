@@ -119,22 +119,22 @@ const StarWars = () => {
     // if (area==={dataf[0].area}){
     //   return;
     // }
-    // if(starwarsData.day!==startDate){
-    //   setShowI(false);
-    //   setShowU(false);
-    //   setShowS(false);
-    //   setShowA(true);
-    //   console.log("day not same");
-    //   return;
-    // }
-    // if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
-    //   setShowI(false);
-    //   setShowU(false);
-    //   setShowS(false);
-    //   setShowA(true);
-    //   // setTimeout(() => setShowA(false), 3000);
-    //   return;
-    // }
+    if(starwarsData.day!==startDate){
+      setShowI(false);
+      setShowU(false);
+      setShowS(false);
+      setShowA(true);
+      console.log("day not same");
+      return;
+    }
+    if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
+      setShowI(false);
+      setShowU(false);
+      setShowS(false);
+      setShowA(true);
+      // setTimeout(() => setShowA(false), 3000);
+      return;
+    }
 
     try{
       if(datac[0].token){
@@ -147,8 +147,7 @@ const StarWars = () => {
         starwarsData.name = datac[0].name;
         setSubmitted(true);
         addStarwarsData(starwarsData);
-        // setTimeout(() => history.push('/starwarslist'), 1000);
-        console.log("ADSdsdsdsasddsadsa");
+        setTimeout(() => history.push('/starwarslist'), 1000);
         return;
       }
     } catch(error){
@@ -164,7 +163,7 @@ const StarWars = () => {
         setShowI(false);
         setShowA(false);
         setTimeout(() => setShowS(false), 3000);
-        // setTimeout(() => history.push('/starwarslist'), 1000);
+        setTimeout(() => history.push('/starwarslist'), 1000);
         
       }
       else{
