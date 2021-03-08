@@ -26,7 +26,7 @@ const StarwarsList = () => {
     var temp = data.length;
     var i;
     for (i = 0; i < temp; i++) {
-      if((data[i].count)>1){
+      if((data[i].count)>2){
         delete data[i]
       }
     }
