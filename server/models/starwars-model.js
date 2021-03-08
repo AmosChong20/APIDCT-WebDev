@@ -5,7 +5,7 @@ const starwarsSchema = mongoose.Schema({
     time1: String,
     time2: String,
     name: String,
-    count: Number,
+    count: Boolean,
     day: Number,
     hour: Number,
     minute: Number,

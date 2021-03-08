@@ -14,7 +14,7 @@ export const getStarwarsData = async (req, res) => {
 export const addStarwarsData = async (req, res) => {
     const {token,time1,time2,name,count,day,hour,minute,second} = req.body;
     const newStarwarsData = new starwarsModel({token,time1,time2,name,count,day,hour,minute,second});
-    newStarwarsData.count = 0;
+    newStarwarsData.count = true;
     newStarwarsData.time1=ptime()[0];
     newStarwarsData.time2=ptime()[1];
     try {
@@ -38,7 +38,7 @@ export const updateToken = async (req, res) =>{
         if (err) throw err;
         if (result) {
             try{
-                result[0].count+=1;
+                result[0].count = false;
                 result[0].save();
             }
             catch(err){
