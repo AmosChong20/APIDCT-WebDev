@@ -117,17 +117,17 @@ const StarWars = () => {
     // if (area==={dataf[0].area}){
     //   return;
     // }
-    // if(starwarsData.day!==startDate){
-    //   return;
-    // }
-    // if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
-    //   setShowI(false);
-    //   setShowU(false);
-    //   setShowS(false);
-    //   setShowA(true);
-    //   // setTimeout(() => setShowA(false), 3000);
-    //   return;
-    // }
+    if(starwarsData.day!==startDate){
+      return;
+    }
+    if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
+      setShowI(false);
+      setShowU(false);
+      setShowS(false);
+      setShowA(true);
+      // setTimeout(() => setShowA(false), 3000);
+      return;
+    }
 
     try{
       if(datac[0].token){
@@ -152,7 +152,7 @@ const StarWars = () => {
         setShowI(false);
         setShowA(false);
         setTimeout(() => setShowS(false), 3000);
-        // setTimeout(() => history.push('/starwarslist'), 1000);
+        setTimeout(() => history.push('/starwarslist'), 1000);
         
       }
       else{
@@ -179,8 +179,8 @@ const StarWars = () => {
     if(event.target.value==="sg"){
       setAreaC("新加坡");
       setStartDate (8);
-      setStartHour (20);
-      setEndHour (20);
+      setStartHour (21);
+      setEndHour (21);
       setStartMinute (0);
       setEndMinute (5);
     }
