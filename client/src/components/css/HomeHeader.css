@@ -59,9 +59,9 @@ h1{
 	text-shadow: 2px 2px 2px #3b454c;
 }
 h1.eng-title{
-	font-family: Constantia, 'Lucida Bright', 'DejaVu Serif', Georgia, 'serif';
 	line-height: 0.8;
 	font-size: 2vw;
+	text-shadow: 1px 1px 1px #3b454c;
 }
 h1.cn-title-1{
 	font-size: 6vw;
