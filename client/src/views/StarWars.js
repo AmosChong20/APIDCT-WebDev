@@ -62,6 +62,7 @@ const StarWars = () => {
     const res = await fetch(serverURL+'starwars/')
     const data = await res.json()
     console.log(data);
+    // return data;
   }
 
 
@@ -255,8 +256,6 @@ const StarWars = () => {
     //   // console.log(result.data.datetime.substring(14,16));
     //   // console.log(result.data.datetime.substring(17,19));
     // })
-    getStarwarsData();
-
     // var offset = new Date().getTimezoneOffset();
     // setOffS(offset);
 
@@ -276,22 +275,23 @@ const StarWars = () => {
     // catch(error){
     //   console.log(error);
     // }
-    
-    // var today = new Date();
-    // var h = (today.getUTCHours()+8)%24;
-    // var m = today.getUTCMinutes();
-    // var s = today.getUTCSeconds();
-    // var n = Intl.DateTimeFormat().resolvedOptions().timeZone
-    // m = checkTime(m);
-    // s = checkTime(s);
-    // h=h-(offS/60);
-    //   try {
-    //     document.getElementById('current-time').innerHTML =
-    //     h + ":" + m + ":" + s;
-    //   } catch(error){
-    //     console.log(error);
-    //     return;
-    //   }
+    // getStarwarsData();
+    var today = new Date();
+    console.log(today);
+    var h = (today.getUTCHours()+8)%24;
+    var m = today.getUTCMinutes();
+    var s = today.getUTCSeconds();
+    var n = Intl.DateTimeFormat().resolvedOptions().timeZone
+    m = checkTime(m);
+    s = checkTime(s);
+    h=h-(offS/60);
+      try {
+        document.getElementById('current-time').innerHTML =
+        h + ":" + m + ":" + s;
+      } catch(error){
+        console.log(error);
+        return;
+      }
     var t = setTimeout(startTime, 100);
   }
 
