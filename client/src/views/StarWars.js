@@ -61,8 +61,8 @@ const StarWars = () => {
   const getStarwarsData = async () => {
     const res = await fetch(serverURL+'starwars/')
     const data = await res.json()
-    console.log(data);
-    // return data;
+    // console.log(data);
+    return data;
   }
 
 
@@ -94,21 +94,6 @@ const StarWars = () => {
   //   return axios.get(link);
   // }
 
-  // const getTime = () =>{
-  //   var link = "http://worldtimeapi.org/api/ip";
-  //   fetch(link).then(res => res.json())
-  //   .then(
-  //     (result) =>{
-  //       // return result;
-  //       console.log(result);
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     }
-  //   )
-  // }
-
-
   const addStarwarsData = async (starwarsData) =>{
     const res = await fetch ((serverURL+'starwars'),{
       method : 'POST',
@@ -132,22 +117,23 @@ const StarWars = () => {
     // console.log(getTime());
 
     setChanged(true);
+    getStarwarsData().then(result=>{
+      starwarsData.second = result.second;
+      starwarsData.minute = result.minute;
+      starwarsData.hour = result.hour;
+    })
     var today = new Date();
-    console.log(today);
-    starwarsData.second = today.getUTCSeconds();
-    starwarsData.minute = today.getUTCMinutes();
-    starwarsData.hour = today.getHours();
     starwarsData.day = today.getDate();
     // starwarsData.time1 = ptime()[0];
     // starwarsData.time2 = ptime()[1];
-
-
-    // console.log(starwarsData.second);
-    // console.log(starwarsData.time2);
   
-
     //check area & time
     // if (area==={dataf[0].area}){
+      // setShowI(false);
+      // setShowU(false);
+      // setShowS(false);
+      // setShowA(true);
+      // console.log("area not same");
     //   return;
     // }
     if(starwarsData.day!==startDate){
@@ -235,15 +221,13 @@ const StarWars = () => {
   }
   
   const startTime = () => {
-    var today = getStarwarsData();
-    // console.log(Date());
-    var h = today.hour;
-    var m = today.minute;
-    var s = today.second;
-    // var n = Intl.DateTimeFormat().resolvedOptions().timeZone
-    m = checkTime(m);
-    s = checkTime(s);
-    // h=h-(offS/60);
+    getStarwarsData().then(result=>{
+      // console.log(result);
+      var h = result.hour;
+      var m = result.minute;
+      var s = result.second;
+      m = checkTime(m);
+      s = checkTime(s);
       try {
         document.getElementById('current-time').innerHTML =
         h + ":" + m + ":" + s;
@@ -251,6 +235,8 @@ const StarWars = () => {
         console.log(error);
         return;
       }
+    });
+    // var n = Intl.DateTimeFormat().resolvedOptions().timeZone
     var t = setTimeout(startTime, 100);
   }
 
