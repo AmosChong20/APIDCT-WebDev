@@ -113,9 +113,7 @@ const StarWars = () => {
 
   const onSubmit = async (e) =>{
     e.preventDefault();
-
     // console.log(getTime());
-
     setChanged(true);
     getStarwarsData().then(result=>{
       starwarsData.second = result.second;
@@ -264,6 +262,9 @@ const StarWars = () => {
         </Alert>
         <header className="SWtitle">电子抽签</header>
         <div className="time">
+          <div className = "sgtime">
+            新加坡时间
+          </div>
           <div id="time-box"><em id="current-time" /></div>
         </div>
 
