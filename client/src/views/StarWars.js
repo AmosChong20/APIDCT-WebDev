@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 import {serverURL} from '../config'
 import areas from "../components/json/areas.json";
 
-// import axios from "axios";
+import axios from "axios";
 
 
 const StarWars = () => {
@@ -58,6 +58,12 @@ const StarWars = () => {
     setDataf (data);
   }
 
+  const getStarwarsData = async () => {
+    const res = await fetch(serverURL+'starwars/')
+    const data = await res.json()
+    console.log(data);
+  }
+
 
   const checkUsed= async (token) => {
     if(token === ''){
@@ -82,10 +88,10 @@ const StarWars = () => {
     // setDatac (data)
   }
 
-  // const getTime = () =>{
-  //   var link = "http://worldtimeapi.org/api/ip";
-  //   return axios.get(link);
-  // }
+  const getTime = () =>{
+    var link = "http://worldtimeapi.org/api/timezone/Asia/Singapore";
+    return axios.get(link);
+  }
 
   // const getTime = () =>{
   //   var link = "http://worldtimeapi.org/api/ip";
@@ -229,8 +235,8 @@ const StarWars = () => {
   
   const startTime = () => {
     // getTime().then(result=>{
-    //   console.log(result);
-    //   console.log(result.data.datetime);
+    //   // console.log(result);
+    //   // console.log(result.data.datetime);
     //   // format:2021-03-09T01:49:45.785092+08:00
     //   // 11,13
     //   // 14,16
@@ -249,24 +255,44 @@ const StarWars = () => {
     //   // console.log(result.data.datetime.substring(14,16));
     //   // console.log(result.data.datetime.substring(17,19));
     // })
+    getStarwarsData();
+
     // var offset = new Date().getTimezoneOffset();
     // setOffS(offset);
-    var today = new Date();
-    var h = (today.getUTCHours()+8)%24;
-    var m = today.getUTCMinutes();
-    var s = today.getUTCSeconds();
-    var n = Intl.DateTimeFormat().resolvedOptions().timeZone
-    m = checkTime(m);
-    s = checkTime(s);
-    h=h-(offS/60);
-      try {
-        document.getElementById('current-time').innerHTML =
-        h + ":" + m + ":" + s;
-      } catch(error){
-        console.log(error);
-        return;
-      }
-    var t = setTimeout(startTime, 200);
+
+    // try{
+    //   if(document.getElementById('times')!=null){
+    //     const iframe = document.getElementById("times");
+    //     const elmnt = iframe.contentDocument;
+    //     // elmnt.style.display = "none";
+    //     // console.log(document.getElementById('times'))
+    //     console.log(iframe);
+    //     console.log(elmnt);
+    //   } 
+    //   else{
+    //     console.log("boom");
+    //   }
+    // }
+    // catch(error){
+    //   console.log(error);
+    // }
+    
+    // var today = new Date();
+    // var h = (today.getUTCHours()+8)%24;
+    // var m = today.getUTCMinutes();
+    // var s = today.getUTCSeconds();
+    // var n = Intl.DateTimeFormat().resolvedOptions().timeZone
+    // m = checkTime(m);
+    // s = checkTime(s);
+    // h=h-(offS/60);
+    //   try {
+    //     document.getElementById('current-time').innerHTML =
+    //     h + ":" + m + ":" + s;
+    //   } catch(error){
+    //     console.log(error);
+    //     return;
+    //   }
+    var t = setTimeout(startTime, 100);
   }
 
   function checkTime(i) {
@@ -276,12 +302,9 @@ const StarWars = () => {
 
   return (
       <div className = "starwarscont">
-        {/* <script type="text/javascript">
-            function myCallback(json) {
-                  alert(new Date(json.dateString));
-            }
-        </script> */}
-        {/* <script type="text/javascript" src="http://timeapi.org/utc/now.json?callback=myCallback"></script> */}
+
+        {/* <iframe id = "times" src="https://freesecure.timeanddate.com/clock/i7plm3sb/n236/fn7/fs20/tct/pct/ftb/th1" frameBorder="0" width="93" height="30" allowtransparency="true"></iframe> */}
+
         <Alert show={showS} className= "swalert" variant="success" onClose={() => setShowS(false)} dismissible>
           <Alert.Heading className = "alertHeading"> 提交成功！ </Alert.Heading>
         </Alert>
