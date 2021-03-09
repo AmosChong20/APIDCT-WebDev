@@ -7,9 +7,9 @@ export const getStarwarsData = async (req, res) => {
     var today = new Date();
     var data = {day:'',hour:'',minute:'',second:''}
     data.day = today.getDate();
-    data.hour = today.getHours();
-    data.minute = today.getMinutes();
-    data.second = today.getSeconds();
+    data.hour = (today.getUTCHours()+8)%24;
+    data.minute = today.getUTCMinutes();
+    data.second = today.getUTCSeconds();
     res.status(200).json(data);
   } catch (error) {
       res.status(404).json({ message: error.message });

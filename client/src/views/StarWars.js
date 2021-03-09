@@ -235,56 +235,15 @@ const StarWars = () => {
   }
   
   const startTime = () => {
-    // getTime().then(result=>{
-    //   // console.log(result);
-    //   // console.log(result.data.datetime);
-    //   // format:2021-03-09T01:49:45.785092+08:00
-    //   // 11,13
-    //   // 14,16
-    //   // 18,20
-    //   var h = result.data.datetime.substring(11,13);
-    //   var m = result.data.datetime.substring(14,16);
-    //   var s = result.data.datetime.substring(17,19);
-    //   try {
-    //     document.getElementById('current-time').innerHTML =
-    //     h + ":" + m + ":" + s;
-    //   } catch(error){
-    //     console.log(error);
-    //     return;
-    //   }
-    //   // console.log(result.data.datetime.substring(11,13));
-    //   // console.log(result.data.datetime.substring(14,16));
-    //   // console.log(result.data.datetime.substring(17,19));
-    // })
-    // var offset = new Date().getTimezoneOffset();
-    // setOffS(`offset);
-
-    // try{
-    //   if(document.getElementById('times')!=null){
-    //     const iframe = document.getElementById("times");
-    //     const elmnt = iframe.contentDocument;
-    //     // elmnt.style.display = "none";
-    //     // console.log(document.getElementById('times'))
-    //     console.log(iframe);
-    //     console.log(elmnt);
-    //   } 
-    //   else{
-    //     console.log("boom");
-    //   }
-    // }
-    // catch(error){
-    //   console.log(error);
-    // }
-    getStarwarsData();
-    var today = new Date();
-    console.log(Date());
-    var h = (today.getUTCHours()+8)%24;
-    var m = today.getUTCMinutes();
-    var s = today.getUTCSeconds();
-    var n = Intl.DateTimeFormat().resolvedOptions().timeZone
+    var today = getStarwarsData();
+    // console.log(Date());
+    var h = today.hour;
+    var m = today.minute;
+    var s = today.second;
+    // var n = Intl.DateTimeFormat().resolvedOptions().timeZone
     m = checkTime(m);
     s = checkTime(s);
-    h=h-(offS/60);
+    // h=h-(offS/60);
       try {
         document.getElementById('current-time').innerHTML =
         h + ":" + m + ":" + s;
