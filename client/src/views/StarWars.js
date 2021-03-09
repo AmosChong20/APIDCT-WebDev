@@ -257,7 +257,7 @@ const StarWars = () => {
     //   // console.log(result.data.datetime.substring(17,19));
     // })
     // var offset = new Date().getTimezoneOffset();
-    // setOffS(offset);
+    // setOffS(`offset);
 
     // try{
     //   if(document.getElementById('times')!=null){
@@ -275,9 +275,9 @@ const StarWars = () => {
     // catch(error){
     //   console.log(error);
     // }
-    // getStarwarsData();
+    getStarwarsData();
     var today = new Date();
-    console.log(today);
+    // console.log(today);
     var h = (today.getUTCHours()+8)%24;
     var m = today.getUTCMinutes();
     var s = today.getUTCSeconds();

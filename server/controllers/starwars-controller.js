@@ -4,8 +4,8 @@ import ptime from 'precision-timestamp';
 
 export const getStarwarsData = async (req, res) => { 
   try {
-    var today = new Date();
-    res.status(200).json(today.getDay());
+    // var today = new Date();
+    res.status(200).json(new Date());
   } catch (error) {
       res.status(404).json({ message: error.message });
   }
