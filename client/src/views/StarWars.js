@@ -8,6 +8,8 @@ import Form from 'react-bootstrap/Form';
 import {serverURL} from '../config'
 import areas from "../components/json/areas.json";
 
+// import axios from "axios";
+
 
 const StarWars = () => {
   // const [offS, setOffS] = useState(0);
@@ -37,8 +39,6 @@ const StarWars = () => {
 
 
   useEffect(() => {
-    // var offset = new Date().getTimezoneOffset();
-    // setOffS(offset);
     startTime();
     if(changed){
       fetchTZ(starwarsData.token);
@@ -82,6 +82,25 @@ const StarWars = () => {
     // setDatac (data)
   }
 
+  // const getTime = () =>{
+  //   var link = "http://worldtimeapi.org/api/ip";
+  //   return axios.get(link);
+  // }
+
+  // const getTime = () =>{
+  //   var link = "http://worldtimeapi.org/api/ip";
+  //   fetch(link).then(res => res.json())
+  //   .then(
+  //     (result) =>{
+  //       // return result;
+  //       console.log(result);
+  //     },
+  //     (error) => {
+  //       console.log(error);
+  //     }
+  //   )
+  // }
+
 
   const addStarwarsData = async (starwarsData) =>{
     const res = await fetch ((serverURL+'starwars'),{
@@ -93,7 +112,8 @@ const StarWars = () => {
     })
     // const data = await res.json()
     if(res.status === 201){
-      console.log("added successfully!")
+      console.log("added successfully!");
+      setTimeout(() => history.push('/starwarslist'), 1000);
     }
   }
 
@@ -101,8 +121,12 @@ const StarWars = () => {
 
   const onSubmit = async (e) =>{
     e.preventDefault();
+
+    // console.log(getTime());
+
     setChanged(true);
     var today = new Date();
+    console.log(today);
     starwarsData.second = today.getUTCSeconds();
     starwarsData.minute = today.getUTCMinutes();
     starwarsData.hour = today.getHours();
@@ -147,7 +171,6 @@ const StarWars = () => {
         starwarsData.name = datac[0].name;
         setSubmitted(true);
         addStarwarsData(starwarsData);
-        setTimeout(() => history.push('/starwarslist'), 1000);
         return;
       }
     } catch(error){
@@ -163,8 +186,6 @@ const StarWars = () => {
         setShowI(false);
         setShowA(false);
         setTimeout(() => setShowS(false), 3000);
-        setTimeout(() => history.push('/starwarslist'), 1000);
-        
       }
       else{
         console.log("token invalid");
@@ -207,27 +228,49 @@ const StarWars = () => {
   }
   
   const startTime = () => {
+    // getTime().then(result=>{
+    //   console.log(result);
+    //   console.log(result.data.datetime);
+    //   // format:2021-03-09T01:49:45.785092+08:00
+    //   // 11,13
+    //   // 14,16
+    //   // 18,20
+    //   var h = result.data.datetime.substring(11,13);
+    //   var m = result.data.datetime.substring(14,16);
+    //   var s = result.data.datetime.substring(17,19);
+    //   try {
+    //     document.getElementById('current-time').innerHTML =
+    //     h + ":" + m + ":" + s;
+    //   } catch(error){
+    //     console.log(error);
+    //     return;
+    //   }
+    //   // console.log(result.data.datetime.substring(11,13));
+    //   // console.log(result.data.datetime.substring(14,16));
+    //   // console.log(result.data.datetime.substring(17,19));
+    // })
+    // var offset = new Date().getTimezoneOffset();
+    // setOffS(offset);
     var today = new Date();
-    var h = today.getHours();
+    var h = (today.getUTCHours()+8)%24;
     var m = today.getUTCMinutes();
     var s = today.getUTCSeconds();
     var n = Intl.DateTimeFormat().resolvedOptions().timeZone
     m = checkTime(m);
     s = checkTime(s);
-    // h=h-(offS/60);
-    try {
-      document.getElementById('current-time').innerHTML =
-      h + ":" + m + ":" + s;
-    } catch(error){
-      console.log(error);
-      return;
-    }
-  
+    h=h-(offS/60);
+      try {
+        document.getElementById('current-time').innerHTML =
+        h + ":" + m + ":" + s;
+      } catch(error){
+        console.log(error);
+        return;
+      }
     var t = setTimeout(startTime, 200);
   }
 
   function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    if (i < 10) {i = '0' + i};  // add zero in front of numbers < 10
     return i;
   }
 
