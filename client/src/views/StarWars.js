@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 import {serverURL} from '../config'
 import areas from "../components/json/areas.json";
 
-import axios from "axios";
+// import axios from "axios";
 
 
 const StarWars = () => {
@@ -88,10 +88,10 @@ const StarWars = () => {
     // setDatac (data)
   }
 
-  const getTime = () =>{
-    var link = "http://worldtimeapi.org/api/timezone/Asia/Singapore";
-    return axios.get(link);
-  }
+  // const getTime = () =>{
+  //   var link = "http://worldtimeapi.org/api/timezone/Asia/Singapore";
+  //   return axios.get(link);
+  // }
 
   // const getTime = () =>{
   //   var link = "http://worldtimeapi.org/api/ip";
