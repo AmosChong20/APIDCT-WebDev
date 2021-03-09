@@ -277,7 +277,7 @@ const StarWars = () => {
     // }
     getStarwarsData();
     var today = new Date();
-    // console.log(today);
+    console.log(Date());
     var h = (today.getUTCHours()+8)%24;
     var m = today.getUTCMinutes();
     var s = today.getUTCSeconds();
