@@ -42,6 +42,11 @@ const StarWars = () => {
     startTime();
     if(changed){
       fetchTZ(starwarsData.token);
+      getTime().then(result=>{
+        starwarsData.second = result.second;
+        starwarsData.minute = result.minute;
+        starwarsData.hour = result.hour;
+      })
       // setTimeout(() => checkUsed(starwarsData.token), 0);
       checkUsed(starwarsData.token);
       setChanged(false);
@@ -58,8 +63,8 @@ const StarWars = () => {
     setDataf (data);
   }
 
-  const getStarwarsData = async () => {
-    const res = await fetch(serverURL+'starwars/')
+  const getTime = async () => {
+    const res = await fetch(serverURL+'starwars/time')
     const data = await res.json()
     // console.log(data);
     return data;
@@ -115,11 +120,6 @@ const StarWars = () => {
     e.preventDefault();
     // console.log(getTime());
     setChanged(true);
-    getStarwarsData().then(result=>{
-      starwarsData.second = result.second;
-      starwarsData.minute = result.minute;
-      starwarsData.hour = result.hour;
-    })
     var today = new Date();
     starwarsData.day = today.getDate();
     // starwarsData.time1 = ptime()[0];
@@ -134,22 +134,22 @@ const StarWars = () => {
       // console.log("area not same");
     //   return;
     // }
-    if(starwarsData.day!==startDate){
-      setShowI(false);
-      setShowU(false);
-      setShowS(false);
-      setShowA(true);
-      console.log("day not same");
-      return;
-    }
-    if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
-      setShowI(false);
-      setShowU(false);
-      setShowS(false);
-      setShowA(true);
-      // setTimeout(() => setShowA(false), 3000);
-      return;
-    }
+    // if(starwarsData.day!==startDate){
+    //   setShowI(false);
+    //   setShowU(false);
+    //   setShowS(false);
+    //   setShowA(true);
+    //   console.log("day not same");
+    //   return;
+    // }
+    // if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
+    //   setShowI(false);
+    //   setShowU(false);
+    //   setShowS(false);
+    //   setShowA(true);
+    //   // setTimeout(() => setShowA(false), 3000);
+    //   return;
+    // }
 
     try{
       if(datac[0].token){
@@ -219,7 +219,7 @@ const StarWars = () => {
   }
   
   const startTime = () => {
-    getStarwarsData().then(result=>{
+    getTime().then(result=>{
       // console.log(result);
       var h = result.hour;
       var m = result.minute;
