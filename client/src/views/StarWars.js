@@ -201,9 +201,9 @@ const StarWars = () => {
     setArea(event.target.value);
     if(event.target.value==="sg"){
       setAreaC("新加坡");
-      setStartDate (8);
-      setStartHour (21);
-      setEndHour (21);
+      setStartDate (10);
+      setStartHour (20);
+      setEndHour (20);
       setStartMinute (0);
       setEndMinute (5);
     }
