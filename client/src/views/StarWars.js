@@ -199,13 +199,61 @@ const StarWars = () => {
   const getSelection=(event)=>{
     setChosen(true);
     setArea(event.target.value);
-    if(event.target.value==="sg"){
+    if(event.target.value==="my"){
+      setAreaC("马来西亚");
+      setStartDate (13);
+      setStartHour (9);
+      setEndHour (9);
+      setStartMinute (0);
+      setEndMinute (30);
+    }
+    else if(event.target.value==="sg"){
       setAreaC("新加坡");
       setStartDate (10);
       setStartHour (20);
       setEndHour (20);
       setStartMinute (0);
       setEndMinute (5);
+    }
+    else if(event.target.value==="hk"){
+      setAreaC("香港");
+      setStartDate (13);
+      setStartHour (11);
+      setEndHour (11);
+      setStartMinute (0);
+      setEndMinute (30);
+    }
+    else if(event.target.value==="mc"){
+      setAreaC("澳门");
+      setStartDate (13);
+      setStartHour (14);
+      setEndHour (14);
+      setStartMinute (0);
+      setEndMinute (30);
+    }
+    else if(event.target.value==="au"){
+      setAreaC("澳大利亚");
+      setStartDate (13);
+      setStartHour (15);
+      setEndHour (15);
+      setStartMinute (0);
+      setEndMinute (30);
+    }
+    else if(event.target.value==="cm"){
+      setAreaC("中国大陆");
+      setStartDate (13);
+      setStartHour (16);
+      setEndHour (16);
+      setStartMinute (0);
+      setEndMinute (30);
+    }
+    else if(event.target.value==="uk"){
+      setAreaC("英国");
+      setStartDate (13);
+      setStartHour (17);
+      setEndHour (17);
+      setStartMinute (0);
+      setEndMinute (30);
     }
     else{
       setChosen(false);
