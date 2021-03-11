@@ -214,7 +214,7 @@ const StarWars = () => {
     }
     else if(event.target.value==="sg"){
       setAreaC("新加坡");
-      setStartDate (10);
+      setStartDate (11);
       setStartHour (20);
       setEndHour (20);
       setStartMinute (0);
@@ -319,7 +319,7 @@ const StarWars = () => {
         <Alert show={showA} className= "swalert" variant="danger" onClose={() => setShowA(false)} dismissible>
           <Alert.Heading className = "alertHeading"> 地区与时间不相符 ！ </Alert.Heading>
         </Alert>
-        <header className="SWtitle">电子抽签AAA</header>
+        <header className="SWtitle">电子抽签</header>
         <div className="time">
           <div className = "sgtime">
             新加坡时间
