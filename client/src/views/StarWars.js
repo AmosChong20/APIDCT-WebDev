@@ -36,10 +36,15 @@ const StarWars = () => {
 
   const [submitted, setSubmitted] = useState(false);
   const [chosen,setChosen] = useState(false);
+  const [st,setSt] = useState(true);
 
 
   useEffect(() => {
-    startTime();
+    if(st){
+      startTime();
+      setSt(false);
+    }
+    
     if(changed){
       fetchTZ(starwarsData.token);
       try{
