@@ -295,7 +295,7 @@ const StarWars = () => {
     }
 
     // var n = Intl.DateTimeFormat().resolvedOptions().timeZone
-    var t = setTimeout(startTime, 250);
+    var t = setTimeout(startTime, 500);
   }
 
   function checkTime(i) {
