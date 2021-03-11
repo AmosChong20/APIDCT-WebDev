@@ -49,7 +49,7 @@ const StarWars = () => {
           starwarsData.hour = result.hour;
         })
       }
-      catch{error}{
+      catch(error){
         return;
       }
       // setTimeout(() => checkUsed(starwarsData.token), 0);
