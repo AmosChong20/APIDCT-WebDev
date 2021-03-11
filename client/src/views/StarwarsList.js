@@ -31,8 +31,6 @@ const StarwarsList = () => {
       }
     }
     var array = data.filter(function () { return true });
-
-    console.log(array)
     return array
   }
 
