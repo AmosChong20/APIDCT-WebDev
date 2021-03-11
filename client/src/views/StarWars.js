@@ -50,6 +50,7 @@ const StarWars = () => {
         })
       }
       catch(error){
+        console.log(1);
         return;
       }
       // setTimeout(() => checkUsed(starwarsData.token), 0);
@@ -215,10 +216,10 @@ const StarWars = () => {
     else if(event.target.value==="sg"){
       setAreaC("新加坡");
       setStartDate (11);
-      setStartHour (20);
-      setEndHour (20);
+      setStartHour (16);
+      setEndHour (16);
       setStartMinute (0);
-      setEndMinute (5);
+      setEndMinute (59);
     }
     else if(event.target.value==="hk"){
       setAreaC("香港");
@@ -294,7 +295,7 @@ const StarWars = () => {
     }
 
     // var n = Intl.DateTimeFormat().resolvedOptions().timeZone
-    var t = setTimeout(startTime, 100);
+    var t = setTimeout(startTime, 250);
   }
 
   function checkTime(i) {
