@@ -9,8 +9,6 @@ const SchoolList = () => {
   const [schools, setSchools] = useState([]);
 
   useEffect(() => {
-    console.log("Saadsds");
-    console.log(serverURL);
     const getSchools = async () => {
       const schoolsDB = await fetchSchools()
       setSchools(schoolsDB)
