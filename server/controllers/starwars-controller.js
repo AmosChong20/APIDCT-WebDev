@@ -56,7 +56,7 @@ export const updateToken = async (req, res) =>{
                 result[0].save();
             }
             catch(err){
-                console.log(err);
+                // console.log(err);
             }
             // console.log(result[0].count);
             res.json(result)

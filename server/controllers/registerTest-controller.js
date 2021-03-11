@@ -17,7 +17,7 @@ export const addRegisterTestData = async (req, res) => {
     const newRegisterTestData = new registerTestModel({chiTeamLeaderName,token});
     newRegisterTestData.token = token_1;
     try {
-        console.log(newRegisterTestData)
+        // console.log(newRegisterTestData)
         await newRegisterTestData.save();
         res.status(201).json( newRegisterTestData );
     } catch (error) {

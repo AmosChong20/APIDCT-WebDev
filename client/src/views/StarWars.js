@@ -42,11 +42,16 @@ const StarWars = () => {
     startTime();
     if(changed){
       fetchTZ(starwarsData.token);
-      getTime().then(result=>{
-        starwarsData.second = result.second;
-        starwarsData.minute = result.minute;
-        starwarsData.hour = result.hour;
-      })
+      try{
+        getTime().then(result=>{
+          starwarsData.second = result.second;
+          starwarsData.minute = result.minute;
+          starwarsData.hour = result.hour;
+        })
+      }
+      catch{error}{
+        return;
+      }
       // setTimeout(() => checkUsed(starwarsData.token), 0);
       checkUsed(starwarsData.token);
       setChanged(false);
@@ -109,7 +114,7 @@ const StarWars = () => {
     })
     // const data = await res.json()
     if(res.status === 201){
-      console.log("added successfully!");
+      // console.log("added successfully!");
       setTimeout(() => history.push('/starwarslist'), 1000);
     }
   }
@@ -139,7 +144,7 @@ const StarWars = () => {
       setShowU(false);
       setShowS(false);
       setShowA(true);
-      console.log("day not same");
+      // console.log("day not same");
       return;
     }
     if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
@@ -179,7 +184,7 @@ const StarWars = () => {
         setTimeout(() => setShowS(false), 3000);
       }
       else{
-        console.log("token invalid");
+        // console.log("token invalid");
         setShowI(true);
         setShowU(false);
         setShowS(false);
@@ -188,7 +193,7 @@ const StarWars = () => {
       }
     } catch (error) {
       // console.log(error)
-      console.log("token invalid!!!");
+      // console.log("token invalid!!!");
       setShowI(true);
       setShowU(false);
       setShowS(false);
@@ -267,21 +272,27 @@ const StarWars = () => {
   }
   
   const startTime = () => {
-    getTime().then(result=>{
-      // console.log(result);
-      var h = result.hour;
-      var m = result.minute;
-      var s = result.second;
-      m = checkTime(m);
-      s = checkTime(s);
-      try {
-        document.getElementById('current-time').innerHTML =
-        h + ":" + m + ":" + s;
-      } catch(error){
-        console.log(error);
-        return;
-      }
-    });
+    try{
+      getTime().then(result=>{
+        // console.log(result);
+        var h = result.hour;
+        var m = result.minute;
+        var s = result.second;
+        m = checkTime(m);
+        s = checkTime(s);
+        try {
+          document.getElementById('current-time').innerHTML =
+          h + ":" + m + ":" + s;
+        } catch(error){
+          // console.log(error);
+          return;
+        }
+      });
+    }
+    catch(error){
+      return;
+    }
+
     // var n = Intl.DateTimeFormat().resolvedOptions().timeZone
     var t = setTimeout(startTime, 100);
   }
