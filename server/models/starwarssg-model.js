@@ -2,8 +2,7 @@ import mongoose from 'mongoose';
 
 const starwarsSchema = mongoose.Schema({
     token: String,
-    time1: String,
-    time2: String,
+    time: String,
     name: String,
     count: Boolean,
     day: Number,

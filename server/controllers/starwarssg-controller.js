@@ -12,11 +12,12 @@ export const getStarwarsData = async (req, res) => {
 }
 
 export const addStarwarsData = async (req, res) => {
-    const {token,time1,time2,name,count,day,hour,minute,second} = req.body;
-    const newStarwarsData = new starwarsModel({token,time1,time2,name,count,day,hour,minute,second});
+    const {token,time,name,count,day,hour,minute,second} = req.body;
+    const newStarwarsData = new starwarsModel({token,time,name,count,day,hour,minute,second});
     newStarwarsData.count = true;
-    newStarwarsData.time1=ptime()[0];
-    newStarwarsData.time2=ptime()[1];
+    time1=ptime()[0];
+    time2=ptime()[1];
+    time = time1 + time2;
     try {
         // console.log(newStarwarsData)
         await newStarwarsData.save();
