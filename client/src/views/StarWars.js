@@ -70,7 +70,7 @@ const StarWars = () => {
     if(token === ''){
       return;
     }
-    const res = await fetch(serverURL+'registerTest/'+token)
+    const res = await fetch(serverURL+'register/'+token)
     // const res = await fetch('https://apicdt-server.com/registerTest/'+token)
     const data = await res.json()
     setDataf (data);
