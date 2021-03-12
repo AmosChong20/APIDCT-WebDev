@@ -12,6 +12,7 @@ class Home extends Component {
                 <HomeHeader />
                 <Info />
                 <Timeline />
+                <Footer />
             </div>
         );
     }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState} from 'react'
 import './css/SchoolList.css'
 import Winner from '../components/Winner.js'
 import {serverURL} from '../config'
@@ -9,11 +9,13 @@ import areas from "../components/json/areas.json";
 const StarwarsList = () => {
 
   const [winners, setWinners] = useState([]);
-  const [area,setArea] = useState("");
   const [areaC,setAreaC] = useState("");
+  const [chosen,setChosen] = useState(false);
+  const [empty,setEmpty] = useState(false);
 
 
   const getSelection=(event)=>{
+    setChosen(true);
     fetchWinners(event.target.value);
     if(event.target.value==="my"){
       setAreaC("马来西亚");
@@ -38,6 +40,8 @@ const StarwarsList = () => {
     }
     else{
       setAreaC("");
+      setChosen(false);
+      setEmpty(false);
     }
   }
 
@@ -48,6 +52,13 @@ const StarwarsList = () => {
 
     const data = await res.json()
     var temp = data.length;
+    console.log(temp);
+    if(temp>0){
+      setEmpty(false);
+    }
+    else{
+      setEmpty(true);
+    }
     var i;
     for (i = 0; i < temp; i++) {
       if(!(data[i].count)){
@@ -81,8 +92,11 @@ const StarwarsList = () => {
       ))}
       </Form.Control>
    
-      <div className = "listHeader">
-        电子抽签报名成功队伍
+      <div className = {`listHeader ${!chosen ? "invi" : ""}`} >
+        {areaC}地区电子抽签报名成功队伍
+      </div>
+      <div className = {`${!empty ? "invi" : ""}`}>
+        暂无报名队伍
       </div>
       {winners.map((winner, index) => (
         <Winner index={index} winner={winner}/>

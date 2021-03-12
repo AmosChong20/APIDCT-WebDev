@@ -4,6 +4,7 @@ import './css/Register.css';
 import logo from '../assets/image/yatai 10th logo700.png';
 import Alert from 'react-bootstrap/Alert';
 import {serverURL} from '../config.js'
+import Footer from '../components/Footer'
 
 const RegisterTest= () => {
   const [registerTestData, setRegisterTestData] = useState ({chiTeamLeaderName : ''});
@@ -77,6 +78,7 @@ const RegisterTest= () => {
           </div>
         </div>
       </div>
+      <Footer />
     </section>
   );
 }

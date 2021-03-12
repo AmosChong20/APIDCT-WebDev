@@ -8,6 +8,8 @@ import Form from 'react-bootstrap/Form';
 import {serverURL} from '../config'
 import areas from "../components/json/areas.json";
 
+import Footer from '../components/Footer'
+
 // import axios from "axios";
 
 
@@ -17,7 +19,7 @@ const StarWars = () => {
   const [dataf,setDataf] = useState([]);
   const [datac,setDatac] = useState([]);
   const currentOS = -480;
-  const [offS,setOffS] = useState(0);
+  // const [offS,setOffS] = useState(0);
 
   const [areaC,setAreaC] = useState("");
   const [area,setArea] = useState("");
@@ -145,6 +147,7 @@ const StarWars = () => {
       // console.log("area not same");
     //   return;
     // }
+    
     if(starwarsData.day!==startDate){
       setShowI(false);
       setShowU(false);
@@ -367,6 +370,7 @@ const StarWars = () => {
             {/* <a href="#" target="_blank">忘记代码？</a> */}
           </form>
         </section>
+        <Footer />
       </div>
   )
 }

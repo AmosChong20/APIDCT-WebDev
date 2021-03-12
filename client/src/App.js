@@ -55,7 +55,7 @@ const App = () => {
                     <Route path="/starwarslistuk" exact component={StarwarsListuk} />
                     {/* <Route path="/portfolio" exact component={Portfolio} /> */}
                 </Switch>
-                <Footer />
+                {/* <Footer /> */}
             </div>
         </section>
     );
