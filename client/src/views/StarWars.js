@@ -57,7 +57,7 @@ const StarWars = () => {
         })
       }
       catch(error){
-        console.log(1);
+        // console.log(1);
         return;
       }
       // setTimeout(() => checkUsed(starwarsData.token), 0);
