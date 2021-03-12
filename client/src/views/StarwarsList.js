@@ -52,7 +52,6 @@ const StarwarsList = () => {
 
     const data = await res.json()
     var temp = data.length;
-    console.log(temp);
     if(temp>0){
       setEmpty(false);
     }
