@@ -17,7 +17,7 @@ export const addStarwarsData = async (req, res) => {
     newStarwarsData.count = true;
     time1=ptime()[0];
     time2=ptime()[1];
-    time = time1 + time2;
+    newStarwarsData.time = time1 + time2;
     try {
         // console.log(newStarwarsData)
         await newStarwarsData.save();
