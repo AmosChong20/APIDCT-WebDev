@@ -17,6 +17,13 @@ import './App.css';
 import StarWars from './views/StarWars';
 import StarwarsList from './views/StarwarsList';
 
+import StarwarsListmy from './views/StarwarsListmy';
+import StarwarsListsg from './views/StarwarsListsg';
+import StarwarsListhk from './views/StarwarsListhk';
+import StarwarsListmc from './views/StarwarsListmc';
+import StarwarsListau from './views/StarwarsListau';
+import StarwarsListcm from './views/StarwarsListcm';
+import StarwarsListuk from './views/StarwarsListuk';
 
 const App = () => {
     // const { isLoading } = useAuth0();
@@ -35,9 +42,17 @@ const App = () => {
                     {/*<ProtectedRoute path="/page2" exact component={Page2} /> */}
                     {/* <Route path="/register" exact component={Register} /> */}
                     <Route path="/registerTest" exact component={RegisterTest} />
-                    <Route path="/schoolList" exact component={SchoolList} />
+                    <Route path="/schoolList" exact component={SchoolList} />z
                     <Route path="/starwars" exact component={StarWars} />
                     <Route path="/starwarslist" exact component={StarwarsList} />
+
+                    <Route path="/starwarslistmy" exact component={StarwarsListmy} />
+                    <Route path="/starwarslistsg" exact component={StarwarsListsg} />
+                    <Route path="/starwarslisthk" exact component={StarwarsListhk} />
+                    <Route path="/starwarslistmc" exact component={StarwarsListmc} />
+                    <Route path="/starwarslistau" exact component={StarwarsListau} />
+                    <Route path="/starwarslistcm" exact component={StarwarsListcm} />
+                    <Route path="/starwarslistuk" exact component={StarwarsListuk} />
                     {/* <Route path="/portfolio" exact component={Portfolio} /> */}
                 </Switch>
                 <Footer />

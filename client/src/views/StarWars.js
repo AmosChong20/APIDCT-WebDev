@@ -86,7 +86,7 @@ const StarWars = () => {
     if(token === ''){
       return;
     }
-    const res = await fetch(serverURL+'starwars/'+area+token)
+    const res = await fetch(serverURL+'starwars'+area+'/'+token)
     // const res = await fetch('https://apicdt-server.com/starwars/'+token)
     const data = await res.json()
     setDatac (data)
@@ -96,7 +96,7 @@ const StarWars = () => {
     if(token === ''){
       return;
     }
-    const res = await fetch((serverURL+'starwars/'+area+token),{
+    const res = await fetch((serverURL+'starwars'+area+'/'+token),{
       method: 'PUT',
     })
     // const res = await fetch('https://apicdt-server.com/starwars/'+token)
@@ -121,7 +121,7 @@ const StarWars = () => {
     // const data = await res.json()
     if(res.status === 201){
       // console.log("added successfully!");
-      setTimeout(() => history.push('/starwarslist'), 1000);
+      setTimeout(() => history.push('/starwarslist'+area), 1000);
     }
   }
 
