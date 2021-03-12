@@ -95,9 +95,9 @@ const StarwarsList = () => {
       <div className = {`listHeader ${!chosen ? "invi" : ""}`} >
         {areaC}地区电子抽签报名成功队伍
       </div>
-      <div className = {`${!empty ? "invi" : ""}`}>
+      <h3 className = {`${!empty ? "invi" : ""} `}>
         暂无报名队伍
-      </div>
+      </h3>
       {winners.map((winner, index) => (
         <Winner index={index} winner={winner}/>
       ))}
