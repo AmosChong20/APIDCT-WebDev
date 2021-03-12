@@ -20,7 +20,7 @@ const StarwarsList = () => {
   const fetchWinners = async () => {
     // const res = await fetch('https://apicdt-server.com/starwars')
     // const res = await fetch('http://localhost:5000' + '/starwars')
-    const res = await fetch(serverURL + 'starwarsau')
+    const res = await fetch(serverURL + 'starwarsmc')
 
     const data = await res.json()
     var temp = data.length;
@@ -32,7 +32,7 @@ const StarwarsList = () => {
     }
     
     var array = data.filter(function () { return true });
-    
+
     array.sort(function (a, b) {
       return a.time - b.time;
     });
