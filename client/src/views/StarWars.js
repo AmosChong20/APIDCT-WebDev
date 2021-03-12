@@ -183,7 +183,7 @@ const StarWars = () => {
     }
     try{
       if (dataf[0].token){
-        starwarsData.name = dataf[0].chiTeamLeaderName;
+        starwarsData.name = dataf[0].chiSchoolName;
         setSubmitted(true);
         addStarwarsData(starwarsData);
         setShowS(true);
