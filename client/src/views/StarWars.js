@@ -145,22 +145,22 @@ const StarWars = () => {
       // console.log("area not same");
     //   return;
     // }
-    if(starwarsData.day!==startDate){
-      setShowI(false);
-      setShowU(false);
-      setShowS(false);
-      setShowA(true);
-      // console.log("day not same");
-      return;
-    }
-    if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
-      setShowI(false);
-      setShowU(false);
-      setShowS(false);
-      setShowA(true);
-      // setTimeout(() => setShowA(false), 3000);
-      return;
-    }
+    // if(starwarsData.day!==startDate){
+    //   setShowI(false);
+    //   setShowU(false);
+    //   setShowS(false);
+    //   setShowA(true);
+    //   // console.log("day not same");
+    //   return;
+    // }
+    // if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
+    //   setShowI(false);
+    //   setShowU(false);
+    //   setShowS(false);
+    //   setShowA(true);
+    //   // setTimeout(() => setShowA(false), 3000);
+    //   return;
+    // }
 
     try{
       if(datac[0].token){
