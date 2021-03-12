@@ -32,7 +32,12 @@ const StarwarsList = () => {
     }
     
     var array = data.filter(function () { return true });
-    console.log(array)
+
+    array.sort(function (a, b) {
+      return a.time - b.time;
+    });
+
+    // console.log(array)
     return array
   }
 
