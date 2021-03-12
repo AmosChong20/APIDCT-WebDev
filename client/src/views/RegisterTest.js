@@ -13,7 +13,7 @@ const RegisterTest= () => {
 
 
   const addRegisterTestData = async (registerTestData) =>{
-    const res = await fetch ((serverURL+'registerTest'),{
+    const res = await fetch ((serverURL+'registerTesthehe'),{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
