@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 const starwarsSchema = mongoose.Schema({
     token: String,
     time: String,
+    time1: String,
+    time2: String,
     name: String,
     count: Boolean,
     day: Number,

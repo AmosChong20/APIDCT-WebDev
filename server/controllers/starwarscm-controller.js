@@ -12,11 +12,12 @@ export const getStarwarsData = async (req, res) => {
 }
 
 export const addStarwarsData = async (req, res) => {
-    const {token,time1,time2,name,count,day,hour,minute,second} = req.body;
-    const newStarwarsData = new starwarsModel({token,time1,time2,name,count,day,hour,minute,second});
+    const {token,time,time1,time2,name,count,day,hour,minute,second} = req.body;
+    const newStarwarsData = new starwarsModel({token,time,time1,time2,name,count,day,hour,minute,second});
     newStarwarsData.count = true;
     newStarwarsData.time1=ptime()[0];
     newStarwarsData.time2=ptime()[1];
+    newStarwarsData.time = newStarwarsData.time1 + newStarwarsData.time2;
     try {
         // console.log(newStarwarsData)
         await newStarwarsData.save();
@@ -25,7 +26,6 @@ export const addStarwarsData = async (req, res) => {
         res.status(409).json({ message: error.message });
     }
 }
-
 
 export const updateToken = async (req, res) =>{
     var query = req.params.query;
