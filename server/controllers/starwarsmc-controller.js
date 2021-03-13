@@ -17,7 +17,25 @@ export const addStarwarsData = async (req, res) => {
     newStarwarsData.count = true;
     newStarwarsData.time1=ptime()[0];
     newStarwarsData.time2=ptime()[1];
+
+    if(((newStarwarsData.time2).length)===5){
+        newStarwarsData.time2 = '0'+newStarwarsData.time2;
+    }
+    if(((newStarwarsData.time2).length)===4){
+        newStarwarsData.time2 = '00'+newStarwarsData.time2;
+    }
+    if(((newStarwarsData.time2).length)===3){
+        newStarwarsData.time2 = '000'+newStarwarsData.time2;
+    }
+    if(((newStarwarsData.time2).length)===2){
+        newStarwarsData.time2 = '0000'+newStarwarsData.time2;
+    }
+    if(((newStarwarsData.time2).length)===1){
+        newStarwarsData.time2 = '00000'+newStarwarsData.time2;
+    }
+
     newStarwarsData.time = newStarwarsData.time1 + newStarwarsData.time2;
+    
     try {
         // console.log(newStarwarsData)
         await newStarwarsData.save();
