@@ -133,8 +133,10 @@ const StarWars = () => {
     e.preventDefault();
     // console.log(getTime());
     setChanged(true);
-    var today = new Date();
-    starwarsData.day = today.getDate();
+    // var today = new Date();
+    // starwarsData.day = today.getDate();
+    // console.log(starwarsData.day);
+    // console.log(startDate);
     // starwarsData.time1 = ptime()[0];
     // starwarsData.time2 = ptime()[1];
   
@@ -148,14 +150,14 @@ const StarWars = () => {
     //   return;
     // }
     
-    if(starwarsData.day!==startDate){
-      setShowI(false);
-      setShowU(false);
-      setShowS(false);
-      setShowA(true);
-      // console.log("day not same");
-      return;
-    }
+    // if(starwarsData.day!==startDate){
+    //   setShowI(false);
+    //   setShowU(false);
+    //   setShowS(false);
+    //   setShowA(true);
+    //   console.log("day not same");
+    //   return;
+    // }
     if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
       setShowI(false);
       setShowU(false);
