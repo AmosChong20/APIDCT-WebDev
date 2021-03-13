@@ -132,7 +132,6 @@ const StarWars = () => {
   const onSubmit = async (e) =>{
     e.preventDefault();
     // console.log(getTime());
-    console.log(e.target.value);
     setChanged(true);
     var today = new Date();
     starwarsData.day = today.getDate();
@@ -184,6 +183,7 @@ const StarWars = () => {
     }
     try{
       if (dataf[0].token){
+        // starwarsData.name = dataf[0].chiSchoolName;
         starwarsData.name = dataf[0].chiSchoolName;
         setSubmitted(true);
         addStarwarsData(starwarsData);
@@ -216,7 +216,7 @@ const StarWars = () => {
     setArea(event.target.value);
     if(event.target.value==="my"){
       setAreaC("马来西亚");
-      setStartDate (13);
+      setStartDate (15);
       setStartHour (9);
       setEndHour (9);
       setStartMinute (0);
@@ -224,7 +224,7 @@ const StarWars = () => {
     }
     else if(event.target.value==="sg"){
       setAreaC("新加坡");
-      setStartDate (13);
+      setStartDate (15);
       setStartHour (10);
       setEndHour (10);
       setStartMinute (0);
@@ -232,7 +232,7 @@ const StarWars = () => {
     }
     else if(event.target.value==="hk"){
       setAreaC("香港");
-      setStartDate (13);
+      setStartDate (15);
       setStartHour (11);
       setEndHour (11);
       setStartMinute (0);
@@ -240,7 +240,7 @@ const StarWars = () => {
     }
     else if(event.target.value==="mc"){
       setAreaC("澳门");
-      setStartDate (13);
+      setStartDate (15);
       setStartHour (14);
       setEndHour (14);
       setStartMinute (0);
@@ -248,7 +248,7 @@ const StarWars = () => {
     }
     else if(event.target.value==="au"){
       setAreaC("澳大利亚");
-      setStartDate (13);
+      setStartDate (15);
       setStartHour (15);
       setEndHour (15);
       setStartMinute (0);
@@ -256,15 +256,15 @@ const StarWars = () => {
     }
     else if(event.target.value==="cm"){
       setAreaC("中国大陆");
-      setStartDate (13);
-      setStartHour (16);
-      setEndHour (16);
+      setStartDate (14);
+      setStartHour (10);
+      setEndHour (10);
       setStartMinute (0);
       setEndMinute (30);
     }
     else if(event.target.value==="uk"){
       setAreaC("英国");
-      setStartDate (13);
+      setStartDate (15);
       setStartHour (17);
       setEndHour (17);
       setStartMinute (0);
@@ -288,6 +288,9 @@ const StarWars = () => {
         var h = result.hour;
         var m = result.minute;
         var s = result.second;
+        starwarsData.second = result.second;
+        starwarsData.minute = result.minute;
+        starwarsData.hour = result.hour;
         m = checkTime(m);
         s = checkTime(s);
         try {
