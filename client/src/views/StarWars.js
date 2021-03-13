@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import './css/StarWars.css'
 import { useHistory } from "react-router-dom";
 
@@ -41,30 +41,7 @@ const StarWars = () => {
   const [st,setSt] = useState(true);
 
 
-  useEffect(() => {
-    if(st){
-      startTime();
-      setSt(false);
-    }
-    
-    if(changed){
-      fetchTZ(starwarsData.token);
-      try{
-        getTime().then(result=>{
-          starwarsData.second = result.second;
-          starwarsData.minute = result.minute;
-          starwarsData.hour = result.hour;
-        })
-      }
-      catch(error){
-        // console.log(1);
-        return;
-      }
-      // setTimeout(() => checkUsed(starwarsData.token), 0);
-      checkUsed(starwarsData.token);
-      setChanged(false);
-    }
-  })
+
 
   const fetchTZ = async (token) => {
     if(token === ''){
@@ -84,7 +61,8 @@ const StarWars = () => {
   }
 
 
-  const checkUsed= async (token) => {
+
+  const checkUsed = useCallback( async (token) => {
     if(token === ''){
       return;
     }
@@ -92,7 +70,7 @@ const StarWars = () => {
     // const res = await fetch('https://apicdt-server.com/starwars/'+token)
     const data = await res.json()
     setDatac (data)
-  }
+  },[area])
 
   const updateToken= async (token) => {
     if(token === ''){
@@ -185,7 +163,6 @@ const StarWars = () => {
     }
     try{
       if (dataf[0].token){
-        // starwarsData.name = dataf[0].chiSchoolName;
         starwarsData.name = dataf[0].chiSchoolName;
         setSubmitted(true);
         addStarwarsData(starwarsData);
@@ -283,16 +260,16 @@ const StarWars = () => {
     }
   }
   
-  const startTime = () => {
+  const startTime = useCallback(() => {
     try{
       getTime().then(result=>{
         // console.log(result);
         var h = result.hour;
         var m = result.minute;
         var s = result.second;
-        starwarsData.second = result.second;
-        starwarsData.minute = result.minute;
-        starwarsData.hour = result.hour;
+        // starwarsData.second = result.second;
+        // starwarsData.minute = result.minute;
+        // starwarsData.hour = result.hour;
         m = checkTime(m);
         s = checkTime(s);
         try {
@@ -309,13 +286,40 @@ const StarWars = () => {
     }
 
     // var n = Intl.DateTimeFormat().resolvedOptions().timeZone
-    var t = setTimeout(startTime, 100);
-  }
+    var t = setTimeout(startTime, 1000);
+  },[])
 
   function checkTime(i) {
     if (i < 10) {i = '0' + i};  // add zero in front of numbers < 10
     return i;
   }
+
+  useEffect(() => {
+
+    if(st){
+      startTime();
+      setSt(false);
+    }
+    
+    if(changed){
+      fetchTZ(starwarsData.token);
+      try{
+        getTime().then(result=>{
+          starwarsData.second = result.second;
+          starwarsData.minute = result.minute;
+          starwarsData.hour = result.hour;
+        })
+      }
+      catch(error){
+        // console.log(1);
+        return;
+      }
+      // setTimeout(() => checkUsed(starwarsData.token), 0);
+      checkUsed(starwarsData.token);
+      setChanged(false);
+    }
+  },[st, changed, startTime, starwarsData, checkUsed])
+
 
   return (
       <div className = "starwarscont">
