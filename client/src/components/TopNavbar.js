@@ -56,8 +56,8 @@ function TopNavbar() {
                     <NavLink to="/" exact className="nav-link" activeClassName="router-link-exact-active"> 主页 </NavLink>
                     {/* <NavLink to="/register" exact className="nav-link" activeClassName="router-link-exact-active"> 报名 </NavLink> */}
                     <NavLink to="/schoolList" exact className="nav-link" activeClassName="router-link-exact-active"> 查看报名学校 </NavLink>
-                    <NavLink to="/starwars" exact className="nav-link" activeClassName="router-link-exact-active"> 电子抽签 </NavLink>
-                    <NavLink to="/starwarslist" exact className="nav-link" activeClassName="router-link-exact-active"> 查看电子抽签成绩 </NavLink>
+                    {/* <NavLink to="/starwars" exact className="nav-link" activeClassName="router-link-exact-active"> 电子抽签 </NavLink>
+                    <NavLink to="/starwarslist" exact className="nav-link" activeClassName="router-link-exact-active"> 查看电子抽签成绩 </NavLink> */}
                 </Nav>
                {/*} <Nav className="" onClick={closeExpanded}>
                     <AuthButton/>

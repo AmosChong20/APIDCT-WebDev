@@ -132,6 +132,7 @@ const StarWars = () => {
   const onSubmit = async (e) =>{
     e.preventDefault();
     // console.log(getTime());
+    console.log(e.target.value);
     setChanged(true);
     var today = new Date();
     starwarsData.day = today.getDate();
