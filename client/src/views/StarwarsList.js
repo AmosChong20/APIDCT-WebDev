@@ -98,7 +98,7 @@ const StarwarsList = () => {
         暂无报名队伍
       </h3>
       {winners.map((winner, index) => (
-        <Winner index={index} winner={winner}/>
+        <Winner key={winner} index={index} winner={winner}/>
       ))}
     </div>
   )

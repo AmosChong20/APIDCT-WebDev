@@ -368,7 +368,7 @@ const StarWars = () => {
           >
             <option className = "area" value="">请选择地区</option>
             {areas.map(area => (
-              <option value={area.value} >{area.area}</option>
+              <option key={area.value} value={area.value} >{area.area}</option>
             ))}
           </Form.Control>
           <form className="SWform" onSubmit = {onSubmit}>

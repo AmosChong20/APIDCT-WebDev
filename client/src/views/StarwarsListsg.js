@@ -49,7 +49,7 @@ const StarwarsList = () => {
         电子抽签报名成功队伍
       </div>
       {winners.map((winner, index) => (
-        <Winner index={index} winner={winner}/>
+        <Winner key={winner} index={index} winner={winner}/>
       ))}
     </div>
   )
