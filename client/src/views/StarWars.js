@@ -136,14 +136,14 @@ const StarWars = () => {
     //   console.log("day not same");
     //   return;
     // }
-    // if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
-    //   setShowI(false);
-    //   setShowU(false);
-    //   setShowS(false);
-    //   setShowA(true);
-    //   // setTimeout(() => setShowA(false), 3000);
-    //   return;
-    // }
+    if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
+      setShowI(false);
+      setShowU(false);
+      setShowS(false);
+      setShowA(true);
+      // setTimeout(() => setShowA(false), 3000);
+      return;
+    }
 
     try{
       if(datac[0].token){
@@ -235,11 +235,11 @@ const StarWars = () => {
     }
     else if(event.target.value==="cm"){
       setAreaC("中国大陆");
-      setStartDate (14);
-      setStartHour (0);
-      setEndHour (23);
+      setStartDate (15);
+      setStartHour (16);
+      setEndHour (16);
       setStartMinute (0);
-      setEndMinute (59);
+      setEndMinute (30);
     }
     else if(event.target.value==="uk"){
       setAreaC("英国");
