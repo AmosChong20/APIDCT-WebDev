@@ -11,7 +11,7 @@ import Home from './views/Home'
 import Register from './views/Register'
 import RegisterTest from './views/RegisterTest'
 import SchoolList from './views/SchoolList'
-import Portfolio from './views/Portfolio';
+// import Portfolio from './views/Portfolio';
 
 import './App.css';
 import StarWars from './views/StarWars';

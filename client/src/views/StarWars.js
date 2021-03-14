@@ -18,7 +18,6 @@ const StarWars = () => {
   const [starwarsData,setStarwarsData] = useState({token : '',name :'',day:0,hour:0,minute:0,second:0});
   const [dataf,setDataf] = useState([]);
   const [datac,setDatac] = useState([]);
-  const currentOS = -480;
   // const [offS,setOffS] = useState(0);
 
   const [areaC,setAreaC] = useState("");
@@ -302,7 +301,7 @@ const StarWars = () => {
     }
     
     if(changed){
-      fetchTZ(starwarsData.token);
+      fetchTZ(starwarsData.token); 
       try{
         getTime().then(result=>{
           starwarsData.second = result.second;
