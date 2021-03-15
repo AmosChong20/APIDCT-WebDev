@@ -1,14 +1,14 @@
 import React from 'react'
 import { useState} from 'react'
 import './css/SchoolList.css'
-import Winner from '../components/Winner.js'
+import Winnerf from '../components/Winnerf.js'
 import {serverURL} from '../config'
 import Form from 'react-bootstrap/Form';
 import areas from "../components/json/areas.json";
 
-const StarwarsList = () => {
+const StarwarsListTemp = () => {
 
-  const [winners, setWinners] = useState([]);
+  const [winnerfs, setWinnerfs] = useState([]);
   const [areaC,setAreaC] = useState("");
   const [area,setArea] = useState("");
   const [chosen,setChosen] = useState(false);
@@ -75,7 +75,7 @@ const StarwarsList = () => {
     });
 
     // console.log(array)
-    setWinners(array);
+    setWinnerfs(array);
   }
 
 
@@ -100,11 +100,11 @@ const StarwarsList = () => {
       <h3 className = {`${!empty ? "invi" : ""} `}>
         暂无报名队伍
       </h3>
-      {winners.map((winner, index) => (
-        <Winner area={area} key={index} index={index} winner={winner}/>
+      {winnerfs.map((winnerf, index) => (
+        <Winnerf area={area} key={index} index={index} winnerf={winnerf}/>
       ))}
     </div>
   )
 }
 
-export default StarwarsList
+export default StarwarsListTemp

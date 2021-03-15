@@ -16,6 +16,7 @@ import SchoolList from './views/SchoolList'
 import './App.css';
 import StarWars from './views/StarWars';
 import StarwarsList from './views/StarwarsList';
+import StarwarsListTemp from './views/StarwarsListTemp';
 
 import StarwarsListmy from './views/StarwarsListmy';
 import StarwarsListsg from './views/StarwarsListsg';
@@ -45,6 +46,7 @@ const App = () => {
                     <Route path="/schoolList" exact component={SchoolList} />z
                     <Route path="/starwars" exact component={StarWars} />
                     <Route path="/starwarslist" exact component={StarwarsList} />
+                    <Route path="/starwarslisttemp" exact component={StarwarsListTemp} />
 
                     <Route path="/starwarslistmy" exact component={StarwarsListmy} />
                     <Route path="/starwarslistsg" exact component={StarwarsListsg} />
