@@ -232,9 +232,9 @@ const StarWars = () => {
         var h = result.hour;
         var m = result.minute;
         var s = result.second;
-        // starwarsData.second = result.second;
-        // starwarsData.minute = result.minute;
-        // starwarsData.hour = result.hour;
+        starwarsData.second = result.second;
+        starwarsData.minute = result.minute;
+        starwarsData.hour = result.hour;
         m = checkTime(m);
         s = checkTime(s);
         try {
@@ -251,7 +251,7 @@ const StarWars = () => {
     }
 
     // var n = Intl.DateTimeFormat().resolvedOptions().timeZone
-    var t = setTimeout(startTime, 1000);
+    var t = setTimeout(startTime, 500);
   },[])
 
   function checkTime(i) {
