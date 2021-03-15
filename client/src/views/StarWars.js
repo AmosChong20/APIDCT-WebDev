@@ -14,11 +14,9 @@ import Footer from '../components/Footer'
 
 
 const StarWars = () => {
-  // const [offS, setOffS] = useState(0);
   const [starwarsData,setStarwarsData] = useState({token : '',name :'',day:0,hour:0,minute:0,second:0});
   const [dataf,setDataf] = useState([]);
   const [datac,setDatac] = useState([]);
-  // const [offS,setOffS] = useState(0);
 
   const [areaC,setAreaC] = useState("");
   const [area,setArea] = useState("");
@@ -80,14 +78,7 @@ const StarWars = () => {
     })
     // const res = await fetch('https://apicdt-server.com/starwars/'+token)
     const data = await res.json()
-    // console.log(data[0].count);
-    // setDatac (data)
   }
-
-  // const getTime = () =>{
-  //   var link = "http://worldtimeapi.org/api/timezone/Asia/Singapore";
-  //   return axios.get(link);
-  // }
 
   const addStarwarsData = async (starwarsData) =>{
     const res = await fetch ((serverURL+'starwars'+area),{
@@ -108,33 +99,8 @@ const StarWars = () => {
 
   const onSubmit = async (e) =>{
     e.preventDefault();
-    // console.log(getTime());
     setChanged(true);
-    // var today = new Date();
-    // starwarsData.day = today.getDate();
-    // console.log(starwarsData.day);
-    // console.log(startDate);
-    // starwarsData.time1 = ptime()[0];
-    // starwarsData.time2 = ptime()[1];
-  
-    //check area & time
-    // if (area==={dataf[0].area}){
-      // setShowI(false);
-      // setShowU(false);
-      // setShowS(false);
-      // setShowA(true);
-      // console.log("area not same");
-    //   return;
-    // }
-    
-    // if(starwarsData.day!==startDate){
-    //   setShowI(false);
-    //   setShowU(false);
-    //   setShowS(false);
-    //   setShowA(true);
-    //   console.log("day not same");
-    //   return;
-    // }
+ 
     if((starwarsData.hour !== startHour)||(starwarsData.minute <startMinute)||(starwarsData.minute >= endMinute)){
       setShowI(false);
       setShowU(false);
