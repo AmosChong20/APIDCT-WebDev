@@ -2,9 +2,10 @@ import React from 'react'
 import { useState} from 'react'
 import './css/SchoolList.css'
 import Winnerf from '../components/Winnerf.js'
+import Seed from '../components/Seed.js'
 import {serverURL} from '../config'
 import Form from 'react-bootstrap/Form';
-import areas from "../components/json/areas.json";
+import areafs from "../components/json/areafs.json";
 
 const StarwarsListTemp = () => {
 
@@ -13,13 +14,17 @@ const StarwarsListTemp = () => {
   const [area,setArea] = useState("");
   const [chosen,setChosen] = useState(false);
   const [empty,setEmpty] = useState(false);
+  const [hideseed,setHideseed] = useState(true);
 
 
   const getSelection=(event)=>{
     setChosen(true);
     fetchWinners(event.target.value);
     setArea(event.target.value);
-    if(event.target.value==="my"){
+    if(event.target.value==="seed"){
+      setHideseed(false);
+    }
+    else if(event.target.value==="my"){
       setAreaC("马来西亚");
     }
     else if(event.target.value==="sg"){
@@ -50,6 +55,12 @@ const StarwarsListTemp = () => {
   const fetchWinners = async (area1) => {
     // const res = await fetch('https://apicdt-server.com/starwars')
     // const res = await fetch('http://localhost:5000' + '/starwars')
+    if(area1 === "seed"){
+      const res = await fetch(serverURL + 'starwarsseed')
+      const data = await res.json()
+      setWinnerfs(data);
+      return;
+    } 
     const res = await fetch(serverURL + 'starwars'+area1)
 
     const data = await res.json()
@@ -89,8 +100,8 @@ const StarwarsListTemp = () => {
       onChange={(e) => getSelection(e)}
       >
       <option className = "area" value="">请选择地区</option>
-      {areas.map(area => (
-        <option value={area.value} >{area.area}</option>
+      {areafs.map(areaf => (
+        <option value={areaf.value} >{areaf.area}</option>
       ))}
       </Form.Control>
    
@@ -100,9 +111,17 @@ const StarwarsListTemp = () => {
       <h3 className = {`${!empty ? "invi" : ""} `}>
         暂无报名队伍
       </h3>
-      {winnerfs.map((winnerf, index) => (
-        <Winnerf area={area} key={index} index={index} winnerf={winnerf}/>
-      ))}
+      <div className = {`${hideseed ? "dis" : ""}`} >
+        {winnerfs.map((winnerf, index) => (
+          <Winnerf area={area} key={index} index={index} winnerf={winnerf}/>
+        ))}
+      </div>
+      <div className = {`${!hideseed ? "dis" : ""}`}>
+        {winnerfs.map((winnerf, index) => (
+          <Seed key={index} index={index} winnerf={winnerf}/>
+        ))}
+      </div>
+ 
     </div>
   )
 }
