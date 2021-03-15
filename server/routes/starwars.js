@@ -1,13 +1,13 @@
 import express from 'express';
 
-import {getTime} from '../controllers/starwars-controller.js';
+import {getTime, getStarwarsData} from '../controllers/starwars-controller.js';
 
 const router = express.Router();
 
 
 // router.post('/', addStarwarsData);
 
-// router.get('/', getStarwarsData);
+router.get('/', getStarwarsData);
 
 router.get('/time', getTime);
 

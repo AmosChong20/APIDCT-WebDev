@@ -2,14 +2,14 @@ import starwarsModel from '../models/starwars-model.js';
 import ptime from 'precision-timestamp';
 
 
-// export const getStarwarsData = async (req, res) => { 
-//   try {
-//       const starwarsData = await starwarsModel.find();
-//       res.status(200).json(starwarsData);
-//   } catch (error) {
-//       res.status(404).json({ message: error.message });
-//   }
-// }
+export const getStarwarsData = async (req, res) => { 
+  try {
+      const starwarsData = await starwarsModel.find();
+      res.status(200).json(starwarsData);
+  } catch (error) {
+      res.status(404).json({ message: error.message });
+  }
+}
 
 export const getTime= async (req, res) => { 
     try {
