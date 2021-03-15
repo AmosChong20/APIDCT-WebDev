@@ -7,7 +7,7 @@ const router = express.Router();
 
 // router.post('/', addStarwarsData);
 
-router.get('/', getStarwarsData);
+// router.get('/', getStarwarsData);
 
 router.get('/time', getTime);
 
