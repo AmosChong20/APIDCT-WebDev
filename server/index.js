@@ -15,7 +15,6 @@ import starwarsmcRoutes from './routes/starwarsmc.js';
 import starwarsauRoutes from './routes/starwarsau.js';
 import starwarscmRoutes from './routes/starwarscm.js';
 import starwarsukRoutes from './routes/starwarsuk.js';
-import starwarsseedRoutes from './routes/starwarsseed.js';
 
 const app = express();
 app.use(bodyParser.json({limit:"30mb", extended:true}));
@@ -33,7 +32,6 @@ app.use('/starwarsmc',starwarsmcRoutes);
 app.use('/starwarsau',starwarsauRoutes);
 app.use('/starwarscm',starwarscmRoutes);
 app.use('/starwarsuk',starwarsukRoutes);
-app.use('/starwarsseed',starwarsseedRoutes);
 
 
 

@@ -29,8 +29,8 @@ const Winnerf = ({area,winnerf,index}) => {
   
   return (
     <div className=" row schoolBlock">
-      <div className = "col-2" >{index}</div>
-      <div className = "col-6" >学校名称：{winnerf.name}</div>
+      <div className = "col-1" >{index}</div>
+      <div className = "col-7" >学校名称：{winnerf.name}</div>
       <div className = "col-4" >相差秒数：{dif} </div>
     </div>
   )
