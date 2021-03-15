@@ -65,7 +65,13 @@ const StarwarsListTemp = () => {
     if(area == "seed"){
       return;
     }
-    const res = await fetch(serverURL + 'starwars'+area1)
+    try{
+      const res = await fetch(serverURL+'starwars'+area1)
+    }
+    catch(error){
+      //
+    }
+    
 
     const data = await res.json()
     var temp = data.length;
