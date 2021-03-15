@@ -1,10 +1,11 @@
 import React from 'react'
-import { useState} from 'react'
+import { useState, useEffect} from 'react'
 import './css/SchoolList.css'
 import Winnerf from '../components/Winnerf.js'
 import {serverURL} from '../config'
 import Form from 'react-bootstrap/Form';
 import areafs from "../components/json/areafs.json";
+
 
 const StarwarsListTemp = () => {
 
@@ -95,6 +96,10 @@ const StarwarsListTemp = () => {
     // console.log(array)
     setWinnerfs(array);
   }
+
+  useEffect(() => {
+    document.title = "查看电子抽签成绩"
+  }, []);
 
 
 
