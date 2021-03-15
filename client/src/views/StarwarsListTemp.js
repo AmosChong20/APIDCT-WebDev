@@ -128,6 +128,7 @@ const StarwarsListTemp = () => {
             <Winnerf area={area} key={index} index={index} winnerf={winnerf}/>
           ))}
         </div>
+        <div className = "ps" > 备注：蓝色标记队伍入围第十届亚太大专华语辩论公开赛！ </div>
       </div>
 
       <div className = {`${hideseed ? "dis" : ""}`}> 
@@ -184,10 +185,10 @@ const StarwarsListTemp = () => {
             <div className = "col-1"> </div>
             <div className = "col-11" >学校名称：墨尔本大学  </div>
           </div>
-
       </div>
-
- 
+      <div className = "ps invi">
+            nothing here
+      </div>
     </div>
   )
 }

@@ -16,3 +16,12 @@
 .dis{
   display: none;
 }
+
+.ps{
+  margin-top: 1rem;
+  padding-bottom :2.5rem;
+}
+
+.invi{
+  visibility: hidden;
+}
