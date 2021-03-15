@@ -52,8 +52,8 @@ const Winnerf = ({area,winnerf,index}) => {
   return (
     <div className={`row schoolBlock ${suc ? "succ" : ""}`}>
       <div className = "col-1" >{index}</div>
-      <div className = "col-7" >学校名称：{winnerf.name}</div>
-      <div className = "col-4" >花费总时长（秒）：{dif} </div>
+      <div className = "col-6" >学校名称：{winnerf.name}</div>
+      <div className = "col-5" >花费总时长（秒）：{dif} </div>
     </div>
   )
 }
