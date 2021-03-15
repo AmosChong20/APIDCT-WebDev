@@ -14,7 +14,7 @@ const StarwarsListTemp = () => {
   const [area,setArea] = useState("");
   const [chosen,setChosen] = useState(false);
   const [empty,setEmpty] = useState(false);
-  const [hideseed,setHideseed] = useState(true);
+  const [hideseed,setHideseed] = useState(false);
   const [none,setNone] = useState(true);
 
 
@@ -111,7 +111,7 @@ const StarwarsListTemp = () => {
       id="inlineFormCustomSelect"
       onChange={(e) => getSelection(e)}
       >
-      <option className = "area" value="">请选择地区</option>
+      {/* <option className = "area" value="">请选择地区</option> */}
       {areafs.map(areaf => (
         <option value={areaf.value} >{areaf.area}</option>
       ))}
