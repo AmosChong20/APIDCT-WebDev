@@ -19,6 +19,7 @@ const StarwarsListTemp = () => {
 
 
   const getSelection=(event)=>{
+    console.log(serverURL);
     setChosen(true);
     fetchWinners(event.target.value);
     setArea(event.target.value);
