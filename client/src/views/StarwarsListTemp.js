@@ -19,7 +19,7 @@ const StarwarsListTemp = () => {
 
 
   const getSelection=(event)=>{
-    console.log(serverURL);
+    // console.log(serverURL);
     setChosen(true);
     fetchWinners(event.target.value);
     setArea(event.target.value);
@@ -64,7 +64,7 @@ const StarwarsListTemp = () => {
   const fetchWinners = async (area1) => {
     // const res = await fetch('https://apicdt-server.com/starwars')
     // const res = await fetch('http://localhost:5000' + '/starwars')
-    if(area1 == "seed"){
+    if(area1 === "seed"){
       return;
     }
 
