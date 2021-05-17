@@ -25,6 +25,8 @@ import StarwarsListmc from './views/StarwarsListmc';
 import StarwarsListau from './views/StarwarsListau';
 import StarwarsListcm from './views/StarwarsListcm';
 import StarwarsListuk from './views/StarwarsListuk';
+import RegisterJudge from './views/RegisterJudge';
+import RegisterTopic from './views/RegisterTopic';
 
 const App = () => {
     // const { isLoading } = useAuth0();
@@ -47,6 +49,8 @@ const App = () => {
                     {/* <Route path="/starwars" exact component={StarWars} /> */}
                     {/* <Route path="/starwarslist" exact component={StarwarsList} /> */}
                     <Route path="/starwarslisttemp" exact component={StarwarsListTemp} />
+                    <Route path="/registerJudge" exact component={RegisterJudge} />
+                    <Route path="/registerTopic" exact component={RegisterTopic} />
 
                     {/* <Route path="/starwarslistmy" exact component={StarwarsListmy} />
                     <Route path="/starwarslistsg" exact component={StarwarsListsg} />

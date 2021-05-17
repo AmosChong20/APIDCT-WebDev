@@ -1,0 +1,164 @@
+import { useState, useEffect} from 'react'
+import React from 'react'
+import './css/RegisterJudge.css';
+import logo from '../assets/image/yatai 10th logo700.png';
+
+import Alert from 'react-bootstrap/Alert';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/BUtton';
+import inis from "../components/json/inis.json";
+
+
+import {serverURL} from '../config.js'
+
+import Footer from '../components/Footer'
+import StopicList from '../components/StopicList.js';
+
+const RegisterJudge = () => {
+  const [registerJudgeData, setRegisterJudgeData] = useState ({judgeChiName : '',indexA : [] });
+  const[changed_1,setChanged_1] = useState(false);
+  const[changed_2,setChanged_2] = useState(false);
+  const[prefix,setPrefix] = useState('');
+  const[topics,setTopics] = useState([]);
+  const[stopics,setStopics] = useState([]);
+  const [start,setStart] = useState(true);
+
+
+  var temptopic = '';
+
+
+  const [showS, setShowS] = useState(false);
+  const [showF, setShowF] = useState(false);
+
+
+
+  useEffect(() => {
+    if(start){
+      fetchTopic();
+      setStart(false);
+    }
+  });
+
+  const addRegisterJudgeData = async (registerJudgeData) =>{
+    const res = await fetch (('http://localhost:5000'+'/registerJudge'),{
+      method : 'POST',
+      headers:{
+        'Content-type':'application/json',
+      },
+      body: JSON.stringify(registerJudgeData),
+    })
+    const data = await res.json()
+    if (res.status === 201){
+      setShowS(true);
+      setShowF(false);
+    }
+    else{
+      setShowF(true);
+      setShowS(false);
+    }
+  }
+  
+
+  const fetchTopic = async () => {
+    // const res = await fetch('https://apicdt-server.com/registerTopic')
+    const res = await fetch('http://localhost:5000' + '/registerTopic')
+    // const res = await fetch(serverURL+'registerTopic')
+    const data = await res.json()
+    setTopics(data);
+  }
+
+  const getSelection=(event)=>{
+    temptopic=(event.target.value);
+    console.log(temptopic);
+  }
+
+  const addSelection=(event)=>{
+    event.preventDefault()
+    console.log(temptopic);
+    // stopics.push({text : temptopic});
+
+    setStopics([
+      ...stopics,
+      {topic: temptopic}
+    ]);
+    console.log(stopics);
+
+  }
+
+  const onSubmit = (e) =>{
+    e.preventDefault()
+    // console.log(isEmail1);
+    registerJudgeData.indexA = stopics;
+    if(registerJudgeData.judgeChiName === '' ||
+    registerJudgeData.indexA === []){
+      setShowF(true);
+      setShowS(false);
+      return;
+    }
+
+    addRegisterJudgeData(registerJudgeData);
+    setRegisterJudgeData ({judgeChiName : '',indexA : []});
+    setChanged_1(false);
+    setChanged_2(false);
+
+
+  }
+  
+  return (
+    <section className="header-gradient"> 
+      <div className="container main_block">
+        <Alert show={showS} className= "alert" variant="success" onClose={() => setShowS(false)} dismissible>
+          <Alert.Heading className = "alertHeading"> 提交成功 ！/ Registration Successful ！ </Alert.Heading>
+        </Alert>
+        <Alert show={showF} className= "alert" variant="danger" onClose={() => setShowF(false)} dismissible>
+          <Alert.Heading className = "alertHeading"> 提交失败 ！/ Registration Failed ！ </Alert.Heading>
+        </Alert>
+
+        <div className="register_header">
+           <span> 评审资料记录 </span>
+        </div>
+        <div className="regBlock row">
+          <form className="col-md-8 col-12 regForm" noValidate onSubmit = {onSubmit}>
+
+            <div className="school container">
+              <div className="schoolPart formHeader">
+                  <span className = "englishF"> Particulars of Judge / </span> <span> 评审资料 </span>
+              </div>
+              <div className="row schoolPartForm">
+                <div className="mb-3 col-12">
+                  <input type="text" className={`form-control englsihF  ${registerJudgeData.judgeChiName ? "is-valid" : ""} ${(!registerJudgeData.judgeChiName && changed_1) ? "is-invalid" : ""}`}  value={registerJudgeData.judgeChiName} placeholder="评审姓名" onChange={(e) => setChanged_1(true) & setRegisterJudgeData({ ...registerJudgeData, judgeChiName: e.target.value })} />
+                </div>
+              </div>
+              <div className = "row">
+                <Form.Control  className=" TopicSel col-9" as="select" onChange={(e) => getSelection(e)}>
+                    <option value = '0' >
+                      请选择辩题
+                    </option>
+                    {topics.map(topic => (
+                      <option key = {topic.indexT} value={topic.indexT} >{topic.indexT} {topic.topic}</option>
+                    ))}
+      
+                </Form.Control>
+                <button  onClick={(e) => addSelection(e)} type="submit" className="JudgeBtn  col-2" >
+                    <span> Add </span>
+                </button>
+              </div>
+
+              <StopicList stopics={stopics}  />
+            </div>
+ 
+            <button  type="submit" className="btn sub btn btn-primary" data-toggle="modal" data-target="#exampleModal" value='Save Form'>
+              <span className = "englishF"> Submit / </span> <span> 提交 </span>
+            </button>
+          </form>
+          <div className="col-4">
+            <img src= {logo} alt="Asia-Pacific Intervarsity Chinese Debate Tournament" className="register-page-logo" width="80%" />
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </section>
+  );
+}
+
+export default RegisterJudge;

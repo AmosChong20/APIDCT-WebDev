@@ -7,6 +7,9 @@ import { port , mongoConnectionString} from "./config.js";
 import registerRoutes from './routes/register.js';
 import registerTestRoutes from './routes/registerTest.js';
 
+import registerTopicRoutes from './routes/registerTopic.js';
+import registerJudgeRoutes from './routes/registerJudge.js';
+
 import starwarsRoutes from './routes/starwars.js';
 import starwarsmyRoutes from './routes/starwarsmy.js';
 import starwarssgRoutes from './routes/starwarssg.js';
@@ -24,6 +27,9 @@ app.use(cors());
 app.use('/register',registerRoutes);
 app.use('/registerTest',registerTestRoutes);
 app.use('/starwars',starwarsRoutes);
+
+app.use('/registerTopic',registerTopicRoutes);
+app.use('/registerJudge',registerJudgeRoutes);
 
 app.use('/starwarsmy',starwarsmyRoutes);
 app.use('/starwarssg',starwarssgRoutes);
