@@ -27,6 +27,10 @@ import StarwarsListcm from './views/StarwarsListcm';
 import StarwarsListuk from './views/StarwarsListuk';
 import RegisterJudge from './views/RegisterJudge';
 import RegisterTopic from './views/RegisterTopic';
+import Vote from './views/Vote';
+import Test from './views/Test';
+
+import JudgeLogin from './views/JudgeLogin';
 
 const App = () => {
     // const { isLoading } = useAuth0();
@@ -51,6 +55,10 @@ const App = () => {
                     <Route path="/starwarslisttemp" exact component={StarwarsListTemp} />
                     <Route path="/registerJudge" exact component={RegisterJudge} />
                     <Route path="/registerTopic" exact component={RegisterTopic} />
+
+                    <Route path="/judgeLogin" exact component={JudgeLogin} />
+                    <Route path="/test" exact component={Test} />
+                    <Route path="/vote" exact component={Vote} />
 
                     {/* <Route path="/starwarslistmy" exact component={StarwarsListmy} />
                     <Route path="/starwarslistsg" exact component={StarwarsListsg} />

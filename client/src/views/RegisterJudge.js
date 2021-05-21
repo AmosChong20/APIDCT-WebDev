@@ -29,6 +29,7 @@ const RegisterJudge = () => {
 
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
+  const [showT, setShowT] = useState(false);
 
 
 
@@ -50,6 +51,7 @@ const RegisterJudge = () => {
     const data = await res.json()
     if (res.status === 201){
       setShowS(true);
+      setTimeout(() => setShowS(false), 1000);
       setShowF(false);
     }
     else{
@@ -75,6 +77,11 @@ const RegisterJudge = () => {
   const addSelection=(event)=>{
     event.preventDefault()
     console.log(temptopic);
+    if((temptopic === 0) || (temptopic === '')){
+      setShowT(true);
+      setTimeout(() => setShowT(false), 1000);
+      return;
+    }
     // stopics.push({text : temptopic});
 
     setStopics([
@@ -89,6 +96,7 @@ const RegisterJudge = () => {
     e.preventDefault()
     // console.log(isEmail1);
     registerJudgeData.indexA = stopics;
+
     if(registerJudgeData.judgeChiName === '' ||
     registerJudgeData.indexA === []){
       setShowF(true);
@@ -97,7 +105,11 @@ const RegisterJudge = () => {
     }
 
     addRegisterJudgeData(registerJudgeData);
+
+    
     setRegisterJudgeData ({judgeChiName : '',indexA : []});
+    setStopics([]);
+
     setChanged_1(false);
     setChanged_2(false);
 
@@ -112,6 +124,9 @@ const RegisterJudge = () => {
         </Alert>
         <Alert show={showF} className= "alert" variant="danger" onClose={() => setShowF(false)} dismissible>
           <Alert.Heading className = "alertHeading"> 提交失败 ！/ Registration Failed ！ </Alert.Heading>
+        </Alert>
+        <Alert show={showT} className= "alert" variant="danger" onClose={() => setShowT(false)} dismissible>
+          <Alert.Heading className = "alertHeading"> 添加失败 ！ </Alert.Heading>
         </Alert>
 
         <div className="register_header">

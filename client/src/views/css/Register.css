@@ -97,6 +97,15 @@
   margin-top:1%;
 }
 
+.TopicType{
+  margin: auto !important;
+}
+
+.topicbtn{
+  margin-left: 1.5rem !important;
+  margin-right: 1.5rem !important;
+}
+
 .form-control{
   font-size: 1rem !important;
   height: 2.3rem !important;
