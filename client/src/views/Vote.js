@@ -6,6 +6,7 @@ import './css/JudgeLogin.css'
 
 const Vote = () => {
   const [voteData,setVoteData] = useState({indexT: '', affVote: '', negVote: ''});
+  const [time,setTime] = useState({hour:'',minute:'',day:''});
   const [changed, setChanged] = useState(false);
   const [changed_1, setChanged_1] = useState(false);
   const [changed_2, setChanged_2] = useState(false);
@@ -37,6 +38,13 @@ const Vote = () => {
     }
   }
 
+  const getTime = async () => {
+    const res = await fetch('http://localhost:5000/'+'starwars/time')
+    const data = await res.json()
+    // console.log(data);
+    return data;
+  }
+
   const onSubmit = async (e) =>{
     e.preventDefault()
 
@@ -62,16 +70,33 @@ const Vote = () => {
     // const res = await fetch(serverURL+'registerTopic')
     const data = await res.json()
 
-
     var temp = data.length;
     var i;
     for (i = 0; i < temp; i++) {
       if(!(data[i].isRoadShow)){
         delete data[i]
       }
+
     }
     var array = data.filter(function () { return true });
-    setTopics(array);
+
+    getTime().then(result=>{
+      time.hour = result.hour;
+      time.minute = result.minute;
+      time.day = result.day;
+      var min = ((time.hour*60)+ time.minute);
+
+      temp = array.length;
+      for (i = 0; i < temp; i++) {
+        var temps = ((array[i].stimeh)*60)+(array[i].stimem);
+        var tempe = ((array[i].etimeh)*60)+(array[i].etimem);
+        if(((temps>min)||(tempe<min))||(array[i].day!==time.day)){
+          delete array[i];
+        }
+      }
+      array = array.filter(function () { return true });
+      setTopics(array);
+    });
   }
 
   useEffect(() => {

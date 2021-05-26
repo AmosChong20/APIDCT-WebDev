@@ -35,22 +35,44 @@ const JudgeLogin = () => {
     try{
       if(dataf[0].token){
         var len = (dataf[0].indexA).length
-        if(len === 0){  
-          setShowI(false);
-          setShowS(false);
-          setShowF(true);
-          setTimeout(() => setShowF(false), 1000);
-        }
         for (var i = 0; i < len; i++){
+          
           fetchTZTopic((dataf[0].indexA)[i].topic)
+          console.log(judgeLoginData)
         }
-        setShowI(false);
-        setShowS(false);
-        setTimeout(() => setShowF(true), 1000);
-        setTimeout(() => setShowF(false), 1000);
-        return;
         
+        // try{
+          if(judgeLoginData.indexT){
+            if(judgeLoginData.isRoadShow){
+              setTimeout(() => history.push({
+                pathname: '/test',
+                judge: judgeLoginData.token,
+                topic: judgeLoginData.indexT
+              }), 1000);
+            }
+            else{
+              setTimeout(() => history.push({
+                pathname: '/test',
+                judge: judgeLoginData .token,
+                topic: judgeLoginData.indexT
+              }), 1000);
+            }
+            setShowI(false);
+            setShowS(true);
+            setShowF(false);
+            setTimeout(() => setShowS(true), 1000);
+            return;
+          }
+          else{
+            setShowI(false);
+            setShowS(false);
+            setShowF(true);
+            setTimeout(() => setShowF(false), 1000);
+            return;
+          }
+        // } catch(err){
 
+        // }
       }
     } catch(error){
       setShowI(true);
@@ -58,7 +80,6 @@ const JudgeLogin = () => {
       setShowF(false);
       setTimeout(() => setShowI(false), 1000);
     }
-    
   }
 
   const getTime = async () => {
@@ -97,30 +118,18 @@ const JudgeLogin = () => {
       var temps = ((data[0].stimeh*60)+ data[0].stimem);
       var tempe = ((data[0].etimeh*60)+ data[0].etimem);
 
+      // console.log(temps)
+      // console.log(min)
+      // console.log(tempe)
+
       if((temps<=min)&&(tempe>=min)&&(data[0].date===time.day)){
+        // setJudgeLoginData({ ...judgeLoginData, indexT: data[0].indexT })
+        // setJudgeLoginData({ ...judgeLoginData, isRoadShow: data[0].isRoadShow })
         judgeLoginData.indexT = data[0].indexT;
         judgeLoginData.isRoadShow = data[0].isRoadShow;
-        console.log(judgeLoginData)
-        if(judgeLoginData.isRoadShow){
-          setTimeout(() => history.push({
-            pathname: '/test',
-            judge: judgeLoginData.token,
-            topic: judgeLoginData.indexT
-          }), 1000);
-        }
-        else{
-          setTimeout(() => history.push({
-            pathname: '/test',
-            judge: judgeLoginData .token,
-            topic: judgeLoginData.indexT
-          }), 1000);
-        }
-        setShowI(false);
-        setShowS(true);
-        setShowF(false);
-        setTimeout(() => setShowS(true), 500);
-        return;
+
       }
+      
     });
 
 

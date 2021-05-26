@@ -26,6 +26,7 @@ import StarwarsListau from './views/StarwarsListau';
 import StarwarsListcm from './views/StarwarsListcm';
 import StarwarsListuk from './views/StarwarsListuk';
 import RegisterJudge from './views/RegisterJudge';
+import UpdateJudge from './views/UpdateJudge'
 import RegisterTopic from './views/RegisterTopic';
 import Vote from './views/Vote';
 import Test from './views/Test';
@@ -54,6 +55,7 @@ const App = () => {
                     {/* <Route path="/starwarslist" exact component={StarwarsList} /> */}
                     <Route path="/starwarslisttemp" exact component={StarwarsListTemp} />
                     <Route path="/registerJudge" exact component={RegisterJudge} />
+                    <Route path="/updateJudge" exact component={UpdateJudge} />
                     <Route path="/registerTopic" exact component={RegisterTopic} />
 
                     <Route path="/judgeLogin" exact component={JudgeLogin} />
