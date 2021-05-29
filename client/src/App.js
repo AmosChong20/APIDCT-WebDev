@@ -26,12 +26,17 @@ import StarwarsListau from './views/StarwarsListau';
 import StarwarsListcm from './views/StarwarsListcm';
 import StarwarsListuk from './views/StarwarsListuk';
 import RegisterJudge from './views/RegisterJudge';
+import UpdateJudge from './views/UpdateJudge'
 import RegisterTopic from './views/RegisterTopic';
 import GradingTable from './views/GradingTable';
 import GradingImpression from './views/GradingImpression';
 import GradingBestCand from './views/GradingBestCand';
 import GradingSummary from './views/GradingSummary';
 import GradingBestFinal from './views/GradingBestFinal';
+import Vote from './views/Vote';
+import Test from './views/Test';
+
+import JudgeLogin from './views/JudgeLogin';
 
 const App = () => {
     // const { isLoading } = useAuth0();
@@ -55,6 +60,7 @@ const App = () => {
                     {/* <Route path="/starwarslist" exact component={StarwarsList} /> */}
                     <Route path="/starwarslisttemp" exact component={StarwarsListTemp} />
                     <Route path="/registerJudge" exact component={RegisterJudge} />
+                    <Route path="/updateJudge" exact component={UpdateJudge} />
                     <Route path="/registerTopic" exact component={RegisterTopic} />
                     <Route path="/gradingTable" exact component={GradingTable} />
                     <Route path="/gradingImpression" exact component={GradingImpression} />
@@ -62,6 +68,10 @@ const App = () => {
                     <Route path="/gradingSummary" exact component={GradingSummary} />
                     <Route path="/gradingBestFinal" exact component={GradingBestFinal} />
 
+
+                    <Route path="/judgeLogin" exact component={JudgeLogin} />
+                    <Route path="/test" exact component={Test} />
+                    <Route path="/vote" exact component={Vote} />
 
                     {/* <Route path="/starwarslistmy" exact component={StarwarsListmy} />
                     <Route path="/starwarslistsg" exact component={StarwarsListsg} />

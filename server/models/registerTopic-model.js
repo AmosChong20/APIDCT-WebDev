@@ -3,11 +3,13 @@ import uniqueValidator from 'mongoose-unique-validator';
 
 const resgisterTopicSchema = mongoose.Schema({
     topic : String,
-    indexT : Number,
+    indexT : String,
     stimeh : Number,
     stimem : Number,
     etimeh : Number,
     etimem : Number,
+    date : Number,
+    isRoadShow : Boolean,
 })
 
 // registerModel.plugin(uniqueValidator);

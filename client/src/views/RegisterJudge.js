@@ -17,27 +17,11 @@ import StopicList from '../components/StopicList.js';
 const RegisterJudge = () => {
   const [registerJudgeData, setRegisterJudgeData] = useState ({judgeChiName : '',indexA : [] });
   const[changed_1,setChanged_1] = useState(false);
-  const[changed_2,setChanged_2] = useState(false);
-  const[prefix,setPrefix] = useState('');
-  const[topics,setTopics] = useState([]);
-  const[stopics,setStopics] = useState([]);
   const [start,setStart] = useState(true);
-
-
-  var temptopic = '';
-
 
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
-
-
-
-  useEffect(() => {
-    if(start){
-      fetchTopic();
-      setStart(false);
-    }
-  });
+  const [showT, setShowT] = useState(false);
 
   const addRegisterJudgeData = async (registerJudgeData) =>{
     const res = await fetch (('http://localhost:5000'+'/registerJudge'),{
@@ -50,6 +34,7 @@ const RegisterJudge = () => {
     const data = await res.json()
     if (res.status === 201){
       setShowS(true);
+      setTimeout(() => setShowS(false), 1000);
       setShowF(false);
     }
     else{
@@ -59,36 +44,11 @@ const RegisterJudge = () => {
   }
   
 
-  const fetchTopic = async () => {
-    // const res = await fetch('https://apicdt-server.com/registerTopic')
-    const res = await fetch('http://localhost:5000' + '/registerTopic')
-    // const res = await fetch(serverURL+'registerTopic')
-    const data = await res.json()
-    setTopics(data);
-  }
-
-  const getSelection=(event)=>{
-    temptopic=(event.target.value);
-    console.log(temptopic);
-  }
-
-  const addSelection=(event)=>{
-    event.preventDefault()
-    console.log(temptopic);
-    // stopics.push({text : temptopic});
-
-    setStopics([
-      ...stopics,
-      {topic: temptopic}
-    ]);
-    console.log(stopics);
-
-  }
 
   const onSubmit = (e) =>{
     e.preventDefault()
     // console.log(isEmail1);
-    registerJudgeData.indexA = stopics;
+
     if(registerJudgeData.judgeChiName === '' ||
     registerJudgeData.indexA === []){
       setShowF(true);
@@ -97,10 +57,11 @@ const RegisterJudge = () => {
     }
 
     addRegisterJudgeData(registerJudgeData);
-    setRegisterJudgeData ({judgeChiName : '',indexA : []});
-    setChanged_1(false);
-    setChanged_2(false);
 
+    
+    setRegisterJudgeData ({judgeChiName : '',indexA : []});
+
+    setChanged_1(false);
 
   }
   
@@ -112,6 +73,9 @@ const RegisterJudge = () => {
         </Alert>
         <Alert show={showF} className= "alert" variant="danger" onClose={() => setShowF(false)} dismissible>
           <Alert.Heading className = "alertHeading"> 提交失败 ！/ Registration Failed ！ </Alert.Heading>
+        </Alert>
+        <Alert show={showT} className= "alert" variant="danger" onClose={() => setShowT(false)} dismissible>
+          <Alert.Heading className = "alertHeading"> 添加失败 ！ </Alert.Heading>
         </Alert>
 
         <div className="register_header">
@@ -129,22 +93,6 @@ const RegisterJudge = () => {
                   <input type="text" className={`form-control englsihF  ${registerJudgeData.judgeChiName ? "is-valid" : ""} ${(!registerJudgeData.judgeChiName && changed_1) ? "is-invalid" : ""}`}  value={registerJudgeData.judgeChiName} placeholder="评审姓名" onChange={(e) => setChanged_1(true) & setRegisterJudgeData({ ...registerJudgeData, judgeChiName: e.target.value })} />
                 </div>
               </div>
-              <div className = "row">
-                <Form.Control  className=" TopicSel col-9" as="select" onChange={(e) => getSelection(e)}>
-                    <option value = '0' >
-                      请选择辩题
-                    </option>
-                    {topics.map(topic => (
-                      <option key = {topic.indexT} value={topic.indexT} >{topic.indexT} {topic.topic}</option>
-                    ))}
-      
-                </Form.Control>
-                <button  onClick={(e) => addSelection(e)} type="submit" className="JudgeBtn  col-2" >
-                    <span> Add </span>
-                </button>
-              </div>
-
-              <StopicList stopics={stopics}  />
             </div>
  
             <button  type="submit" className="btn sub btn btn-primary" data-toggle="modal" data-target="#exampleModal" value='Save Form'>

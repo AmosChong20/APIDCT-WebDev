@@ -155,6 +155,7 @@ const StarWars = () => {
       setTimeout(() => setShowI(false), 3000);
     }
   }
+
   const getSelection=(event)=>{
     setChosen(true);
     setArea(event.target.value);

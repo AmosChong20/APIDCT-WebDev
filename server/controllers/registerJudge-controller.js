@@ -44,3 +44,29 @@ export const findTZJudge = async (req, res) =>{
         }
     })
 }
+
+export const updateJudge = async (req, res) =>{
+    var query = req.params.query;
+    registerJudgeModel.find({
+        $text: {
+            $search: query
+        }
+    }, function(err, result) {
+        if (err) throw err;
+        if (result) {
+            try{
+                result[0].indexA= req.body.indexA;
+                result[0].save();
+            }
+            catch(err){
+                // console.log(err);
+            }
+            // console.log(result[0].count);
+            res.status(200).json(result);
+        } else {
+            res.send(JSON.stringify({
+                error : 'Error'
+            }))
+        }
+    })
+}

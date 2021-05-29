@@ -11,12 +11,13 @@ import {serverURL} from '../config.js'
 import Footer from '../components/Footer'
 
 const RegisterTopic = () => {
-  const [registerTopicData, setRegisterTopicData] = useState ({topic : '', indexT: '' , stimeh : '', stimem : '', etimeh : '', etimem : ''});
+  const [registerTopicData, setRegisterTopicData] = useState ({topic : '', indexT: '' , stimeh : '', stimem : '', etimeh : '', etimem : '', date: '',isRoadShow: ''});
   const[changed_1,setChanged_1] = useState(false);
   const[changed_2,setChanged_2] = useState(false);
   const[changed_3,setChanged_3] = useState(false);
   const[changed_4,setChanged_4] = useState(false);
   const[changed_5,setChanged_5] = useState(false);
+  const[changed_6,setChanged_6] = useState(false);
   
   const [start,setStart] = useState(true);
 
@@ -69,7 +70,13 @@ const RegisterTopic = () => {
 
   }
   
+  const original = () =>{
+    registerTopicData.isRoadShow = false;
+  }
 
+  const roadshow = () =>{
+    registerTopicData.isRoadShow = true;
+  }
 
   
 
@@ -80,7 +87,9 @@ const RegisterTopic = () => {
     registerTopicData.stimeh === '' ||
     registerTopicData.stimem === '' ||
     registerTopicData.etimeh === '' ||
-    registerTopicData.etimem === '' ){
+    registerTopicData.etimem === '' ||
+    registerTopicData.date === ''  ||
+    registerTopicData.isRoadShow === '' ){
       setShowF(true);
       setShowS(false);
       return;
@@ -88,12 +97,13 @@ const RegisterTopic = () => {
   
     addRegisterTopicData(registerTopicData);
     // console.log(registerTopicData);
-    setRegisterTopicData ({topic : '', indexT: 0 , stimeh : '', stimem : '', etimeh : '', etimem : ''});
+    setRegisterTopicData ({topic : '', indexT: 0 , stimeh : '', stimem : '', etimeh : '', etimem : '', date :'', isRoadShow: ''});
     setChanged_1(false);
     setChanged_2(false);
     setChanged_3(false);
     setChanged_4(false);
     setChanged_5(false);
+    setChanged_6(false);
   }
 
 
@@ -140,6 +150,15 @@ const RegisterTopic = () => {
                 </div>
                 <div className="mb-3 col-6">
                   <input type="text" className= {`form-control ${registerTopicData.etimem ? "is-valid" : ""} ${(!registerTopicData.etimem && changed_5) ? "is-invalid" : ""}`}  value={registerTopicData.etimem} placeholder="结束时间（分钟）" onChange={(e) => setChanged_5(true) & setRegisterTopicData({ ...registerTopicData, etimem: e.target.value })} />
+                </div>
+              </div>
+              <input type="text" className= {`form-control ${registerTopicData.date ? "is-valid" : ""} ${(!registerTopicData.date && changed_6) ? "is-invalid" : ""}`}  value={registerTopicData.date} placeholder="日期（几号）" onChange={(e) => setChanged_6(true) & setRegisterTopicData({ ...registerTopicData, date: e.target.value })} />
+              <div className="row TopicType">
+                <div  onClick={original} className="col-5 btn topicbtn btn-primary" >
+                   <span> 正赛 </span>
+                </div>
+                <div onClick={roadshow} className="col-5 btn topicbtn btn-primary" >
+                   <span> 返尔赛 </span>
                 </div>
               </div>
             </div>
