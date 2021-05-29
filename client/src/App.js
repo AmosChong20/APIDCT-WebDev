@@ -27,6 +27,11 @@ import StarwarsListcm from './views/StarwarsListcm';
 import StarwarsListuk from './views/StarwarsListuk';
 import RegisterJudge from './views/RegisterJudge';
 import RegisterTopic from './views/RegisterTopic';
+import GradingTable from './views/GradingTable';
+import GradingImpression from './views/GradingImpression';
+import GradingBestCand from './views/GradingBestCand';
+import GradingSummary from './views/GradingSummary';
+import GradingBestFinal from './views/GradingBestFinal';
 
 const App = () => {
     // const { isLoading } = useAuth0();
@@ -51,6 +56,12 @@ const App = () => {
                     <Route path="/starwarslisttemp" exact component={StarwarsListTemp} />
                     <Route path="/registerJudge" exact component={RegisterJudge} />
                     <Route path="/registerTopic" exact component={RegisterTopic} />
+                    <Route path="/gradingTable" exact component={GradingTable} />
+                    <Route path="/gradingImpression" exact component={GradingImpression} />
+                    <Route path="/gradingBestCand" exact component={GradingBestCand} />
+                    <Route path="/gradingSummary" exact component={GradingSummary} />
+                    <Route path="/gradingBestFinal" exact component={GradingBestFinal} />
+
 
                     {/* <Route path="/starwarslistmy" exact component={StarwarsListmy} />
                     <Route path="/starwarslistsg" exact component={StarwarsListsg} />
