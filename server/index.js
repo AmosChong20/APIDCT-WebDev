@@ -25,6 +25,7 @@ import gradingSummaryRoutes from './routes/gradingSummary.js'
 import gradingImpressionRoutes from './routes/gradingImpression.js'
 import gradingBestCandRoutes from './routes/gradingBestCand.js'
 import gradingBestFinalRoutes from './routes/gradingBestFinal.js'
+import gradingFanRoutes from './routes/gradingFan.js'
 
 const app = express();
 app.use(bodyParser.json({limit:"30mb", extended:true}));
@@ -52,6 +53,7 @@ app.use('/gradinSummary',gradingSummaryRoutes);
 app.use('/gradingImpression',gradingImpressionRoutes);
 app.use('/gradinBestCand',gradingBestCandRoutes);
 app.use('/gradingBestFinal',gradingBestFinalRoutes);
+app.use('/gradingFan',gradingFanRoutes);
 
 
 

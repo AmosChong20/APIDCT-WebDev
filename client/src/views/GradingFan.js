@@ -190,7 +190,7 @@ const GradingTable = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    
+
     addGradingFanData(gradingFanData);
     /*To add */
 
@@ -207,190 +207,188 @@ const GradingTable = () => {
           <Alert.Heading className="alertHeading"> 提交失败 ！/ Registration Failed ！ </Alert.Heading>
         </Alert>
 
-        <div className="register_header">
+        <div className="fan_title">
           <span> 凡尔赛评分 </span>
         </div>
-        <div className="regBlock row">
-          <form className="col-12 regForm" noValidate onSubmit={onSubmit}>
-            <Table  aria-label="caption table">
-              <caption>备注：XXXXX</caption>
-              <colgroup>
-                <col style={{ width: '40%' }} />
-                <col style={{ width: '30%' }} />
-                <col style={{ width: '30%' }} />
-              </colgroup>
-              <TableHead>
-                <TableRow>
-                  <TableCell align="center" ><div><h2>项目</h2></div></TableCell>
-                  <TableCell align="left" ><div><h2>正方</h2></div></TableCell>
-                  <TableCell align="left" ><div><h2>反方</h2></div></TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                <TableRow className = "shade">
-                  <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>立论</div></TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => affChange(e.target.value,1)}/>
-                  </TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => negChange(e.target.value,1)}/>
-                  </TableCell>
-                </TableRow>
-                
-                <TableRow>
-                  <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>质询</div></TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => affChange(e.target.value,2)}/>
-                  </TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => negChange(e.target.value,2)}/>
-                  </TableCell>
-                </TableRow>
+        <form className="col-12 regForm" noValidate onSubmit={onSubmit}>
+          <Table  aria-label="caption table">
+            <caption>备注：XXXXX</caption>
+            <colgroup>
+              <col style={{ width: '40%' }} />
+              <col style={{ width: '30%' }} />
+              <col style={{ width: '30%' }} />
+            </colgroup>
+            <TableHead>
+              <TableRow>
+                <TableCell align="center" ><div><h2>项目</h2></div></TableCell>
+                <TableCell align="left" ><div><h2>正方</h2></div></TableCell>
+                <TableCell align="left" ><div><h2>反方</h2></div></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow className = "shade">
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>立论</div></TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => affChange(e.target.value,1)}/>
+                </TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => negChange(e.target.value,1)}/>
+                </TableCell>
+              </TableRow>
+              
+              <TableRow>
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>质询</div></TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => affChange(e.target.value,2)}/>
+                </TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => negChange(e.target.value,2)}/>
+                </TableCell>
+              </TableRow>
 
-                <TableRow className = "shade">
-                  <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>答辩</div></TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（20分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => affChange(e.target.value,3)}/>
-                  </TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（20分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => negChange(e.target.value,3)}/>
-                  </TableCell>
-                </TableRow>
+              <TableRow className = "shade">
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>答辩</div></TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（20分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => affChange(e.target.value,3)}/>
+                </TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（20分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => negChange(e.target.value,3)}/>
+                </TableCell>
+              </TableRow>
 
-                <TableRow>
-                  <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>驳论</div></TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => affChange(e.target.value,4)}/>
-                  </TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => negChange(e.target.value,4)}/>
-                  </TableCell>
-                </TableRow>
+              <TableRow>
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>驳论</div></TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => affChange(e.target.value,4)}/>
+                </TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => negChange(e.target.value,4)}/>
+                </TableCell>
+              </TableRow>
 
-                <TableRow className = "shade">
-                  <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第一次攻辩</div></TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => affChange(e.target.value,5)}/>
-                  </TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => negChange(e.target.value,5)}/>
-                  </TableCell>
-                </TableRow>
+              <TableRow className = "shade">
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第一次攻辩</div></TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => affChange(e.target.value,5)}/>
+                </TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => negChange(e.target.value,5)}/>
+                </TableCell>
+              </TableRow>
 
-                <TableRow>
-                  <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>陈词</div></TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => affChange(e.target.value,6)}/>
-                  </TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => negChange(e.target.value,6)}/>
-                  </TableCell>
-                </TableRow>
+              <TableRow>
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>陈词</div></TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => affChange(e.target.value,6)}/>
+                </TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => negChange(e.target.value,6)}/>
+                </TableCell>
+              </TableRow>
 
-                <TableRow className = "shade">
-                  <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第二次攻辩</div></TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => affChange(e.target.value,7)}/>
-                  </TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => negChange(e.target.value,7)}/>
-                  </TableCell>
-                </TableRow>
+              <TableRow className = "shade">
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第二次攻辩</div></TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => affChange(e.target.value,7)}/>
+                </TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => negChange(e.target.value,7)}/>
+                </TableCell>
+              </TableRow>
 
-                <TableRow>
-                  <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第一次总结</div></TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => affChange(e.target.value,8)}/>
-                  </TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => negChange(e.target.value,8)}/>
-                  </TableCell>
-                </TableRow>
+              <TableRow>
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第一次总结</div></TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => affChange(e.target.value,8)}/>
+                </TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => negChange(e.target.value,8)}/>
+                </TableCell>
+              </TableRow>
 
-                <TableRow className = "shade">
-                  <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第二次总结</div></TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => affChange(e.target.value,9)}/>
-                  </TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => negChange(e.target.value,9)}/>
-                  </TableCell>
-                </TableRow>
+              <TableRow className = "shade">
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第二次总结</div></TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => affChange(e.target.value,9)}/>
+                </TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => negChange(e.target.value,9)}/>
+                </TableCell>
+              </TableRow>
 
-                <TableRow>
-                  <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>语言风度</div></TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（40分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => affChange(e.target.value,10)}/>
-                  </TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（40分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => negChange(e.target.value,10)}/>
-                  </TableCell>
-                </TableRow>
+              <TableRow>
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>语言风度</div></TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（40分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => affChange(e.target.value,10)}/>
+                </TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（40分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => negChange(e.target.value,10)}/>
+                </TableCell>
+              </TableRow>
 
-                <TableRow className = "shade">
-                  <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>自由辩论</div></TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（80分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => affChange(e.target.value,11) }/>
-                  </TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（80分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => negChange(e.target.value,11)}/>
-                  </TableCell>
-                </TableRow>
+              <TableRow className = "shade">
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>自由辩论</div></TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（80分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => affChange(e.target.value,11) }/>
+                </TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（80分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => negChange(e.target.value,11)}/>
+                </TableCell>
+              </TableRow>
 
-                <TableRow>
-                  <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>团体配合与合作精神</div></TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => affChange(e.target.value,12) }/> 
-                  </TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                    onChange={(e) => negChange(e.target.value,12)}/>
-                  </TableCell>
-                </TableRow>
+              <TableRow>
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>团体配合与合作精神</div></TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => affChange(e.target.value,12) }/> 
+                </TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
+                  onChange={(e) => negChange(e.target.value,12)}/>
+                </TableCell>
+              </TableRow>
 
-                <TableRow className = "shade">
-                  <TableCell align="right" colSpan={1}><div style={{ fontSize: "200%" }}>总分</div></TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>（满分400分）</div> 
-                    <div  style={{ fontSize: "200%" }}>{gradingFanData.affTotal}</div> 
-                  </TableCell>
-                  <TableCell align="left">
-                    <div  style={{ fontSize: "120%" }}>（满分400分）</div> 
-                    <div  style={{ fontSize: "200%" }}>{gradingFanData.negTotal}</div> 
-                  </TableCell>
-                </TableRow>
-          
-              </TableBody>
-            </Table>
+              <TableRow className = "shade">
+                <TableCell align="right" colSpan={1}><div style={{ fontSize: "200%" }}>总分</div></TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>（满分400分）</div> 
+                  <div  style={{ fontSize: "200%" }}>{gradingFanData.affTotal}</div> 
+                </TableCell>
+                <TableCell align="left">
+                  <div  style={{ fontSize: "120%" }}>（满分400分）</div> 
+                  <div  style={{ fontSize: "200%" }}>{gradingFanData.negTotal}</div> 
+                </TableCell>
+              </TableRow>
+        
+            </TableBody>
+          </Table>
 
-            <button type="submit" className="btn sub btn btn-primary">
-              <span className="englishF"> Submit / </span> <span> 提交 </span>
-            </button>
-          </form>
-        </div>
+          <button type="submit" className="btn sub btn btn-primary">
+            <span className="englishF"> Submit / </span> <span> 提交 </span>
+          </button>
+        </form>
       </div>
       <Footer />
     </section>
