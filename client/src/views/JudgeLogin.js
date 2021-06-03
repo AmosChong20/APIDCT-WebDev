@@ -103,7 +103,7 @@ const JudgeLogin = () => {
         console.log(judgeLoginData)
         if(judgeLoginData.isRoadShow){
           setTimeout(() => history.push({
-            pathname: '/test',
+            pathname: '/gradingFan',
             judge: judgeLoginData.token,
             topic: judgeLoginData.indexT
           }), 1000);

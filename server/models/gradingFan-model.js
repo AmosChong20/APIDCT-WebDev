@@ -4,7 +4,6 @@ import uniqueValidator from 'mongoose-unique-validator';
 const gradingFanSchema = mongoose.Schema({
     token: String,
     indexT: String,
-    selected: Array,
     affLilun : Number,
     affZhixun : Number,
     affDabian : Number,
@@ -40,4 +39,3 @@ var gradingFanModel = mongoose.model('GradingFan', gradingFanSchema);
 
 export default gradingFanModel;
 
-{token,indexT,selecte,affLilun ,affZhixun ,affDabian ,affBolun ,affFirstAttack ,affChenci ,affSecondAttack ,affFirstFinal ,affSecondFinal ,affLanguage ,affFree ,affTeamwork ,affTotal ,negLilun ,negZhixun ,negDabian ,negBolun ,negFirstAttack ,negChenci ,negSecondAttack ,negFirstFinal ,negSecondFinal ,negLanguage ,negFree ,negTeamwork ,negTotal}

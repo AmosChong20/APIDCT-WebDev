@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { addGradingBestFinalData, getGradingBestFinalData ,findGradingBestFinal} from '../controllers/gradingBestFinal-controller';
+import { addGradingBestFinalData, getGradingBestFinalData ,findGradingBestFinal} from '../controllers/gradingBestFinal-controller.js';
 
 const router = express.Router();
 

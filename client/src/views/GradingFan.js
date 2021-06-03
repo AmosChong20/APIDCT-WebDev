@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import React from 'react'
+import { useLocation } from "react-router-dom";
 import './css/RegisterJudge.css';
 import Alert from 'react-bootstrap/Alert';
 import { serverURL } from '../config.js'
@@ -17,7 +18,10 @@ import './css/GradingFan.css';
 const GradingTable = () => {
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
+  const location = useLocation();
   const [gradingFanData, setGradingFanData] = useState({
+    token: location.judge,
+    indexT: location.topic,
     affLilun : 0,
     affZhixun : 0,
     affDabian : 0,

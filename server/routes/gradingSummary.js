@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { addGradingSummaryData, getGradingSummaryData ,findGradingSummary} from '../controllers/gradingSummary-controller';
+import { addGradingSummaryData, getGradingSummaryData ,findGradingSummary} from '../controllers/gradingSummary-controller.js';
 
 const router = express.Router();
 
