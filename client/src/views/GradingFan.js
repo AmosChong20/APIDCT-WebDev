@@ -12,6 +12,8 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Input from "@material-ui/core/Input";
+import StepperFan from '../components/StepperFan';
+import {useHistory} from 'react-router';
 import './css/GradingFan.css';
 
 
@@ -20,8 +22,8 @@ const GradingTable = () => {
   const [showF, setShowF] = useState(false);
   const location = useLocation();
   const [gradingFanData, setGradingFanData] = useState({
-    token: location.judge,
-    indexT: location.topic,
+    token: location.token,
+    indexT: location.indexT,
     affLilun : 0,
     affZhixun : 0,
     affDabian : 0,
@@ -49,7 +51,7 @@ const GradingTable = () => {
     negTeamwork : 0,
     negTotal : 0
   })
-
+  const history = useHistory();
 
 
   const affChange = (e,a) => {
@@ -196,8 +198,12 @@ const GradingTable = () => {
     e.preventDefault()
 
     addGradingFanData(gradingFanData);
-    /*To add */
 
+    setTimeout(() => history.push({
+      pathname: '/gradingSummaryFan',
+      token: gradingFanData.token,
+      indexT: gradingFanData.indexT
+    }), 1000);
 
   }
 
@@ -210,9 +216,9 @@ const GradingTable = () => {
         <Alert show={showF} className="alert" variant="danger" onClose={() => setShowF(false)} dismissible>
           <Alert.Heading className="alertHeading"> 提交失败 ！/ Registration Failed ！ </Alert.Heading>
         </Alert>
-
+        <StepperFan step={1} />
         <div className="fan_title">
-          <span> 凡尔赛评分 </span>
+          <span> 分数票 </span>
         </div>
         <form className="col-12 regForm" noValidate onSubmit={onSubmit}>
           <Table  aria-label="caption table">

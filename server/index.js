@@ -23,6 +23,8 @@ import starwarsukRoutes from './routes/starwarsuk.js';
 import gradingTableRoutes from './routes/gradingTable.js'
 import gradingSummaryRoutes from './routes/gradingSummary.js'
 import gradingImpressionRoutes from './routes/gradingImpression.js'
+import gradingSummaryFanRoutes from './routes/gradingSummaryFan.js'
+import gradingImpressionFanRoutes from './routes/gradingImpressionFan.js'
 import gradingBestCandRoutes from './routes/gradingBestCand.js'
 import gradingBestFinalRoutes from './routes/gradingBestFinal.js'
 import gradingFanRoutes from './routes/gradingFan.js'
@@ -51,9 +53,12 @@ app.use('/starwarsuk',starwarsukRoutes);
 app.use('/gradingTable',gradingTableRoutes);
 app.use('/gradinSummary',gradingSummaryRoutes);
 app.use('/gradingImpression',gradingImpressionRoutes);
+app.use('/gradinSummaryFan',gradingSummaryFanRoutes);
+app.use('/gradingImpressionFan',gradingImpressionFanRoutes);
 app.use('/gradinBestCand',gradingBestCandRoutes);
 app.use('/gradingBestFinal',gradingBestFinalRoutes);
 app.use('/gradingFan',gradingFanRoutes);
+
 
 
 

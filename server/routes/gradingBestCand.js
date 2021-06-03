@@ -1,14 +1,14 @@
 import express from 'express';
 
-import { addGradingTableData, getGradingTableData ,findGradingTable} from '../controllers/gradingTable-controller.js';
+import { addGradingBestCandData, getGradingBestCandData ,findGradingBestCand} from '../controllers/gradingBestCand-controller.js';
 
 const router = express.Router();
 
 
-router.post('/', addGradingTableData);
+router.post('/', addGradingBestCandData);
 
-router.get('/', getGradingTableData);
+router.get('/', getGradingBestCandData);
 
-router.get('/:query', findGradingTable);
+router.get('/:query', findGradingBestCand);
 
 export default router;

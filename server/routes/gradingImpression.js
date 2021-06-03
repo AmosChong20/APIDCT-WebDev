@@ -1,14 +1,14 @@
 import express from 'express';
 
-import { addGradingBestCandData, getGradingBestCandData ,findGradingBestCand} from '../controllers/gradingBestCand-controller.js';
+import { addGradingImpressionData, getGradingImpressionData ,findGradingImpression} from '../controllers/gradingImpression-controller.js';
 
 const router = express.Router();
 
 
-router.post('/', addGradingBestCandData);
+router.post('/', addGradingImpressionData);
 
-router.get('/', getGradingBestCandData);
+router.get('/', getGradingImpressionData);
 
-router.get('/:query', findGradingBestCand);
+router.get('/:query', findGradingImpression);
 
 export default router;
