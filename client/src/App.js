@@ -33,6 +33,7 @@ import GradingImpression from './views/GradingImpression';
 import GradingBestCand from './views/GradingBestCand';
 import GradingSummary from './views/GradingSummary';
 import GradingBestFinal from './views/GradingBestFinal';
+import GradingFan from './views/GradingFan';
 import Vote from './views/Vote';
 import Test from './views/Test';
 
@@ -67,6 +68,7 @@ const App = () => {
                     <Route path="/gradingBestCand" exact component={GradingBestCand} />
                     <Route path="/gradingSummary" exact component={GradingSummary} />
                     <Route path="/gradingBestFinal" exact component={GradingBestFinal} />
+                    <Route path="/gradingFan" exact component={GradingFan} />
 
 
                     <Route path="/judgeLogin" exact component={JudgeLogin} />
