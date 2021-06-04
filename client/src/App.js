@@ -34,7 +34,7 @@ import GradingBestCand from './views/GradingBestCand';
 import GradingSummary from './views/GradingSummary';
 import GradingBestFinal from './views/GradingBestFinal';
 import GradingFan from './views/GradingFan';
-import GradingSummaryFan from './views/GraddingSummaryFan';
+import GradingSummaryFan from './views/GradingSummaryFan';
 import GradingImpressionFan from './views/GradingImpressionFan';
 import Vote from './views/Vote';
 import Test from './views/Test';

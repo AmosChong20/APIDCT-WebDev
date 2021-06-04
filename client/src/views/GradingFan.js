@@ -17,7 +17,7 @@ import {useHistory} from 'react-router';
 import './css/GradingFan.css';
 
 
-const GradingTable = () => {
+const GradingFan = () => {
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
   const location = useLocation();
@@ -198,7 +198,7 @@ const GradingTable = () => {
     e.preventDefault()
 
     addGradingFanData(gradingFanData);
-
+    // console.log(gradingFanData)
     setTimeout(() => history.push({
       pathname: '/gradingSummaryFan',
       token: gradingFanData.token,
@@ -405,4 +405,4 @@ const GradingTable = () => {
   );
 }
 
-export default GradingTable;
+export default GradingFan;

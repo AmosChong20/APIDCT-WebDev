@@ -51,9 +51,9 @@ app.use('/starwarscm',starwarscmRoutes);
 app.use('/starwarsuk',starwarsukRoutes);
 
 app.use('/gradingTable',gradingTableRoutes);
-app.use('/gradinSummary',gradingSummaryRoutes);
+app.use('/gradingSummary',gradingSummaryRoutes);
 app.use('/gradingImpression',gradingImpressionRoutes);
-app.use('/gradinSummaryFan',gradingSummaryFanRoutes);
+app.use('/gradingSummaryFan',gradingSummaryFanRoutes);
 app.use('/gradingImpressionFan',gradingImpressionFanRoutes);
 app.use('/gradinBestCand',gradingBestCandRoutes);
 app.use('/gradingBestFinal',gradingBestFinalRoutes);
