@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import React from 'react'
 import './css/RegisterJudge.css';
-
+import { useLocation, useHistory } from "react-router-dom";
 import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/BUtton';
@@ -22,6 +22,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Input from "@material-ui/core/Input";
 import Stepper from '../components/Stepper';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,19 +37,19 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const createData = (name, team, mark1, mark2, mark3, mark4) => ({
-  id: team?name+"aff":name+"neg",
+  id: team ? name + "aff" : name + "neg",
   team,
   name,
-  mark1: 0,
-  mark2: 0,
-  mark3: 0,
-  mark4: 0,
+  mark1: NaN,
+  mark2: NaN,
+  mark3: NaN,
+  mark4: NaN,
   subt: 0,
   isEditMode: false
 });
 
 const title = {
-  "1st": { "mark1": "立论(30分)", "mark2": "质询(20分)", "mark3": "答辩(20分)", "mark4": "语言风度(10分)", "subt": "得分" },
+  "1st": { "mark1": "立论(30分)", "mark2": "质询(20分)", "mark3": "答辩(10分)", "mark4": "语言风度(10分)", "subt": "得分" },
   "2nd": { "mark1": "驳论(30分)", "mark2": "质询(30分)", "mark3": "-", "mark4": "语言风度(10分)", "subt": "得分" },
   "3rd": { "mark1": "陈词(30分)", "mark2": "攻辩(30分)", "mark3": "-", "mark4": "语言风度(10分)", "subt": "得分" },
   "4th": { "mark1": "总结(60分)", "mark2": "-", "mark3": "-", "mark4": "语言风度(10分)", "subt": "得分" },
@@ -55,21 +57,35 @@ const title = {
 
 const speaker = { "1st": "一辩", "2nd": "二辩", "3rd": "三辩", "4th": "四辩" };
 
-const CustomTableCell = ({ row, id, name, onChange }) => {
-  const classes = useStyles();
-  const { isEditMode } = row;
+const CustomTableCell = ({ row, id, name, onChange, handleChange, checkState }) => {
   const t = title[row[id]][name];
   return (
     <TableCell align="left">
       <div style={{ fontSize: "120%" }}>{t}</div>
       {(t != "-") ?
         (name != "subt") ?
-          <Input
-            type="number"
-            value={row[name]}
-            name={name}
-            onChange={e => onChange(e, row)}
-          />
+          <div class="d-flex flex-row align-items-center">
+            {(name != "mark4") ?
+                <Checkbox
+                  checked={checkState}
+                  onChange={e => handleChange(e, row, name)}
+                  color="primary"
+                />
+              :<div></div>}
+              <div>{
+                checkState ?
+                  <div>0</div> :
+                  <Input
+                    type="number"
+                    value={row[name]}
+                    name={name}
+                    id={id}
+                    onChange={e => onChange(e, row)}
+                    placeholder="0"
+                    inputProps={{ min: 0, max: parseInt(t.slice(-4, -2)) }}
+                  />}</div>
+            <div>{checkState}</div>
+          </div>
           : <div style={{ fontSize: "150%", fontWeight: "bold" }}>{row[name]}</div>
         : <div>-</div>}
     </TableCell>
@@ -85,6 +101,7 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 const GradingTable = () => {
+  const location = useLocation();
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
   const [rows, setRows] = React.useState([
@@ -97,22 +114,42 @@ const GradingTable = () => {
     createData("3rd", 0, 0, 0, 0),
     createData("4th", 0, 0, 0, 0)
   ]);
-  const [affDef,setAffDef]=useState(0);
-  const [affFree,setAffFree]=useState(0);
-  const [affTeamwork,setAffTeamwork]=useState(0);
-  const [negDef,setNegDef]=useState(0);
-  const [negFree,setNegFree]=useState(0);
-  const [negTeamwork,setNegTeamwork]=useState(0);
+  const [affDef, setAffDef] = useState();
+  const [affFree, setAffFree] = useState();
+  const [affTeamwork, setAffTeamwork] = useState();
+  const [negDef, setNegDef] = useState();
+  const [negFree, setNegFree] = useState();
+  const [negTeamwork, setNegTeamwork] = useState();
   const [affTotal, setAffTotal] = useState(0);
   const [negTotal, setNegTotal] = useState(0);
 
   const [previous, setPrevious] = React.useState({});
   const classes = useStyles();
 
-  function total(rows,t) {
-    const subtotal=t?(parseInt(affDef)+parseInt(affFree)+parseInt(affTeamwork)):(negDef+negFree+negTeamwork);
-    return rows.map(row => {if (row.team===t) return row.subt; else return 0}).reduce((sum, i) => sum + i, 0)+parseInt(subtotal);
+  const [timeout, setTimeout] = useState([]);
+
+  const handleChange = (e, row, name) => {
+    if (timeout.includes(row.id + name)) {
+      setTimeout(timeout.filter(e => e !== row.id + name));
+    }
+    else
+      setTimeout([...timeout, row.id + name]);
+  };
+
+  function total(rows, t, opt = 0) {
+    var subtotal = 0;
+    const def = t ? affDef : negDef;
+    const free = t ? affFree : negFree;
+    const tw = t ? affTeamwork : negTeamwork;
+    subtotal += parseInt(def) ? parseInt(def) : 0;
+    subtotal += parseInt(free) ? parseInt(free) : 0;
+    subtotal += parseInt(tw) ? parseInt(tw) : 0;
+    return rows.map(row => { if (row.team === t) return row.subt; else return 0 }).reduce((sum, i) => sum + i, 0) + subtotal;
   }
+
+  React.useEffect(
+    () => { setAffTotal(total(rows, 1)); setNegTotal(total(rows, 0)) }
+  )
 
   const onChange = (e, row) => {
     if (!previous[row.id]) {
@@ -120,6 +157,12 @@ const GradingTable = () => {
     }
     const value = e.target.value;
     const name = e.target.name;
+
+    if (value > parseInt(title[row[e.target.id]][name].slice(-4, -2))) {
+      setRows(rows);
+      return;
+    }
+
     const { id } = row;
     const newRows = rows.map(row => {
       if (row.id === id) {
@@ -130,25 +173,54 @@ const GradingTable = () => {
       return row;
     });
     setRows(newRows);
-    setAffTotal(total(newRows,1));
-    setNegTotal(total(newRows,0));
   };
+
+  const addGradingTableData = async (rows, affDef, affFree, affTeamwork, negDef, negFree, negTeamwork, affTotal, negTotal) => {
+    const res = await fetch(('http://localhost:5000' + '/gradingTable'), {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        token: location.token,
+        indexT: location.indexT,
+        rows: rows,
+        affDef: affDef,
+        affFree: affFree,
+        affTeamwork: affTeamwork,
+        negDef: negDef,
+        negFree: negFree,
+        negTeamwork: negTeamwork,
+        affTotal: affTotal,
+        negTotal: negTotal
+      }),
+    })
+    const data = await res.json()
+    if (res.status === 201) {
+      setShowS(true);
+      setTimeout(() => setShowS(false), 1000);
+      setShowF(false);
+    }
+    else {
+      setShowF(true);
+      setShowS(false);
+    }
+  }
 
   const onSubmit = (e) => {
     e.preventDefault()
-    // console.log(isEmail1);
-    // registerJudgeData.indexA = stopics;
-    // if(registerJudgeData.judgeChiName === '' ||
-    // registerJudgeData.indexA === []){
-    //   setShowF(true);
-    //   setShowS(false);
-    //   return;
-    // }
 
-    /*To add */
+    addGradingTableData(rows, affDef, affFree, affTeamwork, negDef, negFree, negTeamwork, affTotal, negTotal);
+    setTimeout(() => history.push({
+      pathname: '/gradingImpression',
+      token: location.token,
+      indexT: location.indexT
+    }), 1000);
 
 
   }
+
+  const history = useHistory();
 
   return (
     <section className="header-gradient">
@@ -168,7 +240,7 @@ const GradingTable = () => {
           <form className="col-12 regForm" noValidate onSubmit={onSubmit}>
 
             <Table className={classes.table} aria-label="caption table">
-              <caption>备注备注备注备注备注备注</caption>
+              <caption></caption>
               <colgroup>
                 <col style={{ width: '15%' }} />
                 <col style={{ width: '15%' }} />
@@ -179,43 +251,44 @@ const GradingTable = () => {
               </colgroup>
               <TableHead>
                 <TableRow>
-                  <TableCell><div><h3>正方</h3></div></TableCell>
+                  <TableCell colSpan={5}><div><h3>正方</h3><h5 style={{ fontSize: "120%", color: "grey" }}>若选手掉线超过缓冲时间，请在对应环节的分数栏打勾‘✔’，则该辩手在该环节的分数直接计为零分。</h5></div></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {rows.slice(0, 4).map(row => (
                   <StyledTableRow key={row.id}>
                     <TableCell align='center'>
-                      <div style={{ fontSize: "150%" }}>{speaker[row.name]}</div>
+                      <div style={{ fontSize: "150%" }}>
+                        {speaker[row.name]}</div>
                     </TableCell>
-                    <CustomTableCell {...{ row, id: "name", name: "mark1", onChange }} />
-                    <CustomTableCell {...{ row, id: "name", name: "mark2", onChange }} />
-                    <CustomTableCell {...{ row, id: "name", name: "mark3", onChange }} />
-                    <CustomTableCell {...{ row, id: "name", name: "mark4", onChange }} />
-                    <CustomTableCell {...{ row, id: "name", name: "subt", onChange }} />
+                    <CustomTableCell {...{ row, id: "name", name: "mark1", onChange, handleChange, checkState: (timeout.includes(row.id + "mark1")) }} />
+                    <CustomTableCell {...{ row, id: "name", name: "mark2", onChange, handleChange, checkState: (timeout.includes(row.id + "mark2")) }} />
+                    <CustomTableCell {...{ row, id: "name", name: "mark3", onChange, handleChange, checkState: (timeout.includes(row.id + "mark3")) }} />
+                    <CustomTableCell {...{ row, id: "name", name: "mark4", onChange, handleChange, checkState: (timeout.includes(row.id + "mark4")) }} />
+                    <CustomTableCell {...{ row, id: "name", name: "subt", onChange, handleChange, checkState: (timeout.includes(row.id + "subt")) }} />
                   </StyledTableRow>
                 ))}
                 <TableRow>
-                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>答辩（10分)</div></TableCell>
-                  <TableCell align="left"><Input type="number" value={affDef} onChange={e => {setAffDef(e.target.value);if(parseInt(e.target.value)&& !setAffDef(e.target.value))setAffTotal(total(rows,1))}}/></TableCell>
+                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>答辩(10分)</div></TableCell>
+                  <TableCell align="left"><Input type="number" value={affDef} placeholder="0" inputProps={{ min: 0, max: 10 }} onChange={e => { setAffDef(e.target.value > 10 ? affDef : e.target.value) }} /></TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>自由辩论</div></TableCell>
-                  <TableCell align="left"><div style={{ fontSize: "120%", fontWeight: "bolder" }}>{affFree}</div></TableCell>
+                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>自由辩论(80分)</div></TableCell>
+                  <TableCell align="left"><Input type="number" value={affFree} placeholder="0" inputProps={{ min: 0, max: 80 }} onChange={e => { setAffFree(e.target.value > 80 ? affFree : e.target.value) }} /></TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>团体配合与合作精神</div></TableCell>
-                  <TableCell align="left"><div style={{ fontSize: "120%", fontWeight: "bolder" }}>{affTeamwork}</div></TableCell>
+                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>团体配合与合作精神(30分)</div></TableCell>
+                  <TableCell align="left"><Input type="number" value={affTeamwork} placeholder="0" inputProps={{ min: 0, max: 30 }} onChange={e => { setAffTeamwork(e.target.value > 30 ? affTeamwork : e.target.value) }} /></TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "170%" }}>总分</div></TableCell>
+                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "170%" }}>总分(400分)</div></TableCell>
                   <TableCell align="left"><div style={{ fontSize: "170%", fontWeight: "bolder" }}>{affTotal}</div></TableCell>
                 </TableRow>
               </TableBody>
             </Table>
 
             <Table className={classes.table} aria-label="caption table">
-              <caption>记得改这里哈哈哈哈哈哈</caption>
+              <caption></caption>
               <colgroup>
                 <col style={{ width: '15%' }} />
                 <col style={{ width: '15%' }} />
@@ -226,24 +299,36 @@ const GradingTable = () => {
               </colgroup>
               <TableHead>
                 <TableRow>
-                  <TableCell><div><h3>反方</h3></div></TableCell>
+                  <TableCell colspan="5"><div><h3>反方</h3><h5 style={{ fontSize: "120%", color: "grey" }}>若选手掉线超过缓冲时间，请在对应环节的分数栏打勾‘✔’，则该辩手在该环节的分数直接计为零分。</h5></div></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.slice(4,8).map(row => (
+                {rows.slice(4, 8).map(row => (
                   <StyledTableRow key={row.id}>
                     <TableCell align="center">
                       <div style={{ fontSize: "150%" }}>{speaker[row.name]}</div>
                     </TableCell>
-                    <CustomTableCell {...{ row, id: "name", name: "mark1", onChange }} />
-                    <CustomTableCell {...{ row, id: "name", name: "mark2", onChange }} />
-                    <CustomTableCell {...{ row, id: "name", name: "mark3", onChange }} />
-                    <CustomTableCell {...{ row, id: "name", name: "mark4", onChange }} />
-                    <CustomTableCell {...{ row, id: "name", name: "subt", onChange }} />
+                    <CustomTableCell {...{ row, id: "name", name: "mark1", onChange, handleChange, checkState: (timeout.includes(row.id + "mark1")) }} />
+                    <CustomTableCell {...{ row, id: "name", name: "mark2", onChange, handleChange, checkState: (timeout.includes(row.id + "mark2")) }} />
+                    <CustomTableCell {...{ row, id: "name", name: "mark3", onChange, handleChange, checkState: (timeout.includes(row.id + "mark3")) }} />
+                    <CustomTableCell {...{ row, id: "name", name: "mark4", onChange, handleChange, checkState: (timeout.includes(row.id + "mark4")) }} />
+                    <CustomTableCell {...{ row, id: "name", name: "subt", onChange, handleChange, checkState: (timeout.includes(row.id + "subt")) }} />
                   </StyledTableRow>
                 ))}
                 <TableRow>
-                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "170%" }}>总分</div></TableCell>
+                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>答辩(10分)</div></TableCell>
+                  <TableCell align="left"><Input type="number" value={negDef} placeholder="0" inputProps={{ min: 0, max: 10 }} onChange={e => { setNegDef(e.target.value > 10 ? negDef : e.target.value) }} /></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>自由辩论(80分)</div></TableCell>
+                  <TableCell align="left"><Input type="number" value={negFree} placeholder="0" inputProps={{ min: 0, max: 80 }} onChange={e => { setNegFree(e.target.value > 80 ? negFree : e.target.value) }} /></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>团体配合与合作精神(30分)</div></TableCell>
+                  <TableCell align="left"><Input type="number" value={negTeamwork} placeholder="0" inputProps={{ min: 0, max: 30 }} onChange={e => { setNegTeamwork(e.target.value > 30 ? negTeamwork : e.target.value) }} /></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "170%" }}>总分(400分)</div></TableCell>
                   <TableCell align="left"><div style={{ fontSize: "170%", fontWeight: "bolder" }}>{negTotal}</div></TableCell>
                 </TableRow>
               </TableBody>

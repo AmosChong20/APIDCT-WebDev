@@ -12,9 +12,11 @@ import Footer from '../components/Footer'
 import './css/GradingBestCand.css'
 import Stepper from '../components/Stepper';
 import {useHistory} from 'react-router';
+import {useLocation} from 'react-router-dom'
 
 const GradingBestCand = () => {
-    const [speakers, setSpeakers] = useState([{ indexT: 'A1', 'name': "李阿华" }]);
+    const location = useLocation();
+    const [speakers, setSpeakers] = useState([{ 'name': "正方一辩" },{ 'name': "正方二辩" },{ 'name': "正方三辩" },{ 'name': "正方四辩" },{ 'name': "反方一辩" },{ 'name': "反方二辩" },{ 'name': "反方三辩" },{ 'name': "反方四辩" }]);
     const [selected, setSelected] = useState(['', '', ''])
 
 
@@ -30,12 +32,14 @@ const GradingBestCand = () => {
     }
 
     const addGradingBestCand = async (selected) => {
-        const res = await fetch((serverURL + 'gradingBestCand'), {
+        const res = await fetch(('http://localhost:5000/' + 'gradingBestCand'), {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
             },
-            body: JSON.stringify(selected),
+            body: JSON.stringify({selected:selected,
+                token:location.token,
+                indexT:location.indexT}),
         })
         const data = await res.json()
         if (res.status === 201) {
@@ -50,7 +54,7 @@ const GradingBestCand = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        if (selected.includes('')) {
+        if (selected.includes('')|| new Set(selected).size !== selected.length) {
             setShowF(true);
             setShowS(false);
             return;
@@ -59,10 +63,14 @@ const GradingBestCand = () => {
         setShowF(false);
         setShowS(true);
 
-        //addGradingBestCand(selected);
+        addGradingBestCand(selected);
         setSelected(['','','']);
 
-        setTimeout(() => history.push('/gradingSummary'), 1000);
+        setTimeout(() => history.push({
+            pathname:'/gradingSummary',
+            token:location.token,
+            indexT:location.indexT
+    }), 1000);
     }
 
     const history = useHistory();
@@ -90,7 +98,7 @@ const GradingBestCand = () => {
                                     第一位候选人
                                 </option>
                                 {speakers.map(speaker => (
-                                    <option key={speaker.indexT} value={speaker.name} >{speaker.indexT} {speaker.name}</option>
+                                    <option key={speaker.name} value={speaker.name} >{speaker.name}</option>
                                 ))}
 
                             </Form.Control>
@@ -100,7 +108,7 @@ const GradingBestCand = () => {
                                     第二位候选人
                                 </option>
                                 {speakers.map(speaker => (
-                                    <option key={speaker.indexT} value={speaker.name} >{speaker.indexT} {speaker.name}</option>
+                                    <option key={speaker.name} value={speaker.name} >{speaker.name}</option>
                                 ))}
 
                             </Form.Control>
@@ -110,11 +118,10 @@ const GradingBestCand = () => {
                                     第三位候选人
                                 </option>
                                 {speakers.map(speaker => (
-                                    <option key={speaker.indexT} value={speaker.name} >{speaker.indexT} {speaker.name}</option>
+                                    <option key={speaker.name} value={speaker.name} >{speaker.name}</option>
                                 ))}
 
                             </Form.Control>
-                            {selected.map((x)=>x)}
                         </div>
 
                         <button type="submit" className="btn sub btn btn-primary" data-toggle="modal" data-target="#exampleModal" value='Save Form'>

@@ -5,18 +5,17 @@ import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
 import inis from "../components/json/inis.json";
 
-
 import {serverURL} from '../config.js'
 
 import Footer from '../components/Footer'
 import Button from '@material-ui/core/Button';
 import './css/GradingImpression.css';
 import Stepper from '../components/Stepper';
-import {useHistory} from 'react-router';
+import {useHistory, useLocation} from 'react-router';
 
 const GradingImpression = () => {
   const [impression, setImpression] = useState (0);
-
+  const location = useLocation();
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
 
@@ -27,12 +26,15 @@ const GradingImpression = () => {
   }
 
   const addGradingImpression = async (impression) =>{
-    const res = await fetch ((serverURL+'gradingImpression'),{
+    const res = await fetch (('http://localhost:5000/'+'gradingImpression'),{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
       },
-      body: JSON.stringify(impression),
+      body: JSON.stringify({
+        impression:impression,
+        token:location.token,
+        indexT:location.indexT}),
     })
     const data = await res.json()
     if (res.status === 201){
@@ -56,10 +58,14 @@ const GradingImpression = () => {
     setShowF(false);
     setShowS(true);
 
-    //addGradingImpression(impression);
+    addGradingImpression(impression);
     setImpression(0);
 
-    setTimeout(() => history.push('/gradingBestCand'), 1000);
+    setTimeout(() => history.push({
+      pathname:'/gradingBestCand',
+      token: location.token,
+      indexT: location.indexT
+    }), 1000);
   }
   
   const history = useHistory();
