@@ -64,29 +64,26 @@ const CustomTableCell = ({ row, id, name, onChange, handleChange, checkState }) 
       <div style={{ fontSize: "120%" }}>{t}</div>
       {(t != "-") ?
         (name != "subt") ?
-          <div>
+          <div class="d-flex flex-row align-items-center">
             {(name != "mark4") ?
-              <div class="d-flex flex-row align-items-center">
                 <Checkbox
                   checked={checkState}
                   onChange={e => handleChange(e, row, name)}
                   color="primary"
                 />
-                <div>{
-                  checkState ?
-                    <div>0</div> :
-                    <Input
-                      type="number"
-                      value={row[name]}
-                      name={name}
-                      id={id}
-                      onChange={e => onChange(e, row)}
-                      placeholder="0"
-                      inputProps={{ min: 0, max: parseInt(t.slice(-4, -2)) }}
-                    />}</div>
-              </div> 
-              :<div></div>
-          }
+              :<div></div>}
+              <div>{
+                checkState ?
+                  <div>0</div> :
+                  <Input
+                    type="number"
+                    value={row[name]}
+                    name={name}
+                    id={id}
+                    onChange={e => onChange(e, row)}
+                    placeholder="0"
+                    inputProps={{ min: 0, max: parseInt(t.slice(-4, -2)) }}
+                  />}</div>
             <div>{checkState}</div>
           </div>
           : <div style={{ fontSize: "150%", fontWeight: "bold" }}>{row[name]}</div>
