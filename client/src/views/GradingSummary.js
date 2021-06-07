@@ -13,11 +13,11 @@ import Button from '@material-ui/core/Button';
 import './css/GradingImpression.css';
 import Stepper from '../components/Stepper.js';
 import GradingBestCand from './GradingBestCand';
-import { useHistory } from 'react-router';
+import { useHistory,useLocation } from 'react-router';
 
 const GradingSummary = () => {
   const [summary, setSummary] = useState (0);
-
+  const location = useLocation();
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
 
@@ -28,12 +28,15 @@ const GradingSummary = () => {
   }
 
   const addGradingSummary = async (summary) =>{
-    const res = await fetch ((serverURL+'gradingSummary'),{
+    const res = await fetch (('http://localhost:5000/'+'gradingSummary'),{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
       },
-      body: JSON.stringify(summary),
+      body: JSON.stringify({
+        summary:summary,
+        token:location.token,
+        indexT:location.indexT}),
     })
     const data = await res.json()
     if (res.status === 201){
@@ -57,10 +60,14 @@ const GradingSummary = () => {
     setShowF(false);
     setShowS(true);
 
-    //addGradingSummary(summary);
+    addGradingSummary(summary);
     setSummary(0);
 
-    setTimeout(() => history.push('/gradingBestFinal'), 1000);
+    setTimeout(() => history.push({
+      pathname:'/gradingBestFinal',
+      token:location.token,
+      indexT:location.indexT}
+      ), 1000);
   }
   
   const history = useHistory();

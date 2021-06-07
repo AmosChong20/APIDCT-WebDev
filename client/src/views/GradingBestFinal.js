@@ -11,11 +11,12 @@ import { serverURL } from '../config.js'
 import Footer from '../components/Footer'
 import './css/GradingBestCand.css'
 import Stepper from '../components/Stepper';
+import {useLocation} from 'react-router-dom';
 
 const GradingBestCand = () => {
-    const [speakers, setSpeakers] = useState([{ indexT: 'A1', 'name': "李阿华" }]);
+    const [speakers, setSpeakers] = useState([{ 'name': "正方一辩" },{ 'name': "正方二辩" },{ 'name': "正方三辩" },{ 'name': "正方四辩" },{ 'name': "反方一辩" },{ 'name': "反方二辩" },{ 'name': "反方三辩" },{ 'name': "反方四辩" }]);
     const [selected,setSelected]=useState([])
-
+    const location = useLocation();
 
     const [showS, setShowS] = useState(false);
     const [showF, setShowF] = useState(false);
@@ -28,13 +29,16 @@ const GradingBestCand = () => {
         setSelected(newS);
       }
 
-      const addGradingBestCand = async (selected) => {
-        const res = await fetch((serverURL + 'gradingBestFinal'), {
+      const addGradingBestFinal = async (selected) => {
+        const res = await fetch(('http://localhost:5000/' + 'gradingBestFinal'), {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
             },
-            body: JSON.stringify(selected),
+            body: JSON.stringify({
+                selected:selected,
+                token:location.token,
+                indexT:location.indexT}),
         })
         const data = await res.json()
         if (res.status === 201) {
@@ -58,7 +62,7 @@ const GradingBestCand = () => {
         setShowF(false);
         setShowS(true);
 
-        //addGradingBestFinal(selected);
+        addGradingBestFinal(selected);
         setSelected([]);
     }
 
@@ -86,7 +90,7 @@ const GradingBestCand = () => {
                                     请选择最佳辩手
                                 </option>
                                 {speakers.map(speaker => (
-                                    <option key={speaker.indexT} value={speaker.name} >{speaker.indexT} {speaker.name}</option>
+                                    <option key={speaker.name} value={speaker.name} >{speaker.name}</option>
                                 ))}
 
                             </Form.Control>
