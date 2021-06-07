@@ -20,6 +20,15 @@ import starwarsauRoutes from './routes/starwarsau.js';
 import starwarscmRoutes from './routes/starwarscm.js';
 import starwarsukRoutes from './routes/starwarsuk.js';
 
+import gradingTableRoutes from './routes/gradingTable.js'
+import gradingSummaryRoutes from './routes/gradingSummary.js'
+import gradingImpressionRoutes from './routes/gradingImpression.js'
+import gradingSummaryFanRoutes from './routes/gradingSummaryFan.js'
+import gradingImpressionFanRoutes from './routes/gradingImpressionFan.js'
+import gradingBestCandRoutes from './routes/gradingBestCand.js'
+import gradingBestFinalRoutes from './routes/gradingBestFinal.js'
+import gradingFanRoutes from './routes/gradingFan.js'
+
 const app = express();
 app.use(bodyParser.json({limit:"30mb", extended:true}));
 app.use(bodyParser.urlencoded({limit:"30mb", extended:true}));
@@ -40,6 +49,16 @@ app.use('/starwarsmc',starwarsmcRoutes);
 app.use('/starwarsau',starwarsauRoutes);
 app.use('/starwarscm',starwarscmRoutes);
 app.use('/starwarsuk',starwarsukRoutes);
+
+app.use('/gradingTable',gradingTableRoutes);
+app.use('/gradingSummary',gradingSummaryRoutes);
+app.use('/gradingImpression',gradingImpressionRoutes);
+app.use('/gradingSummaryFan',gradingSummaryFanRoutes);
+app.use('/gradingImpressionFan',gradingImpressionFanRoutes);
+app.use('/gradinBestCand',gradingBestCandRoutes);
+app.use('/gradingBestFinal',gradingBestFinalRoutes);
+app.use('/gradingFan',gradingFanRoutes);
+
 
 
 

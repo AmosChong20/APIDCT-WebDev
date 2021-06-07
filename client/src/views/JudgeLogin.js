@@ -100,19 +100,19 @@ const JudgeLogin = () => {
       if((temps<=min)&&(tempe>=min)&&(data[0].date===time.day)){
         judgeLoginData.indexT = data[0].indexT;
         judgeLoginData.isRoadShow = data[0].isRoadShow;
-        console.log(judgeLoginData)
+        // console.log(judgeLoginData)
         if(judgeLoginData.isRoadShow){
           setTimeout(() => history.push({
-            pathname: '/test',
-            judge: judgeLoginData.token,
-            topic: judgeLoginData.indexT
+            pathname: '/gradingImpressionFan',
+            token: judgeLoginData.token,
+            indexT: judgeLoginData.indexT
           }), 1000);
         }
         else{
           setTimeout(() => history.push({
-            pathname: '/test',
-            judge: judgeLoginData .token,
-            topic: judgeLoginData.indexT
+            pathname: '/gradinTable',
+            token: judgeLoginData .token,
+            indexT: judgeLoginData.indexT
           }), 1000);
         }
         setShowI(false);
