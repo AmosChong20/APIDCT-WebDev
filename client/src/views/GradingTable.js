@@ -132,8 +132,18 @@ const GradingTable = () => {
     if (timeout.includes(row.id + name)) {
       setTimeout(timeout.filter(e => e !== row.id + name));
     }
-    else
+    else{
       setTimeout([...timeout, row.id + name]);
+      const { id } = row;
+      const newRows = rows.map(row => {
+        if (row.id === id) {
+          row.subt = parseInt(row[name]) ? row.subt - parseInt(row[name]) : row.subt;
+          return { ...row, [name]: parseInt(0) };
+        }
+        return row;
+      });
+      setRows(newRows);
+    }
   };
 
   function total(rows, t, opt = 0) {
