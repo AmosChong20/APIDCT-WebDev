@@ -85,16 +85,16 @@ const Vote = () => {
       time.minute = result.minute;
       time.day = result.day;
       var min = ((time.hour*60)+ time.minute);
-
       temp = array.length;
       for (i = 0; i < temp; i++) {
         var temps = ((array[i].stimeh)*60)+(array[i].stimem);
         var tempe = ((array[i].etimeh)*60)+(array[i].etimem);
-        if(((temps>min)||(tempe<min))||(array[i].day!==time.day)){
+        if(((temps>min)||(tempe<min))||(array[i].date!==time.day)){
           delete array[i];
         }
       }
       array = array.filter(function () { return true });
+      console.log(array)
       setTopics(array);
     });
   }
