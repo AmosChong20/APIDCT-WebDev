@@ -40,10 +40,10 @@ const createData = (name, team, mark1, mark2, mark3, mark4) => ({
   id: team ? name + "aff" : name + "neg",
   team,
   name,
-  mark1: NaN,
-  mark2: NaN,
-  mark3: NaN,
-  mark4: NaN,
+  mark1: 0,
+  mark2: 0,
+  mark3: 0,
+  mark4: 0,
   subt: 0,
   isEditMode: false
 });
@@ -64,7 +64,7 @@ const CustomTableCell = ({ row, id, name, onChange, handleChange, checkState }) 
       <div style={{ fontSize: "120%" }}>{t}</div>
       {(t != "-") ?
         (name != "subt") ?
-          <div class="d-flex flex-row align-items-center">
+          <div className="d-flex flex-row align-items-center">
             {(name != "mark4") ?
                 <Checkbox
                   checked={checkState}
@@ -77,7 +77,6 @@ const CustomTableCell = ({ row, id, name, onChange, handleChange, checkState }) 
                   <div>0</div> :
                   <Input
                     type="number"
-                    value={row[name]}
                     name={name}
                     id={id}
                     onChange={e => onChange(e, row)}
@@ -114,12 +113,12 @@ const GradingTable = () => {
     createData("3rd", 0, 0, 0, 0),
     createData("4th", 0, 0, 0, 0)
   ]);
-  const [affDef, setAffDef] = useState();
-  const [affFree, setAffFree] = useState();
-  const [affTeamwork, setAffTeamwork] = useState();
-  const [negDef, setNegDef] = useState();
-  const [negFree, setNegFree] = useState();
-  const [negTeamwork, setNegTeamwork] = useState();
+  const [affDef, setAffDef] = useState(0);
+  const [affFree, setAffFree] = useState(0);
+  const [affTeamwork, setAffTeamwork] = useState(0);
+  const [negDef, setNegDef] = useState(0);
+  const [negFree, setNegFree] = useState(0);
+  const [negTeamwork, setNegTeamwork] = useState(0);
   const [affTotal, setAffTotal] = useState(0);
   const [negTotal, setNegTotal] = useState(0);
 
@@ -280,15 +279,15 @@ const GradingTable = () => {
                 ))}
                 <TableRow>
                   <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>答辩(10分)</div></TableCell>
-                  <TableCell align="left"><Input type="number" value={affDef} placeholder="0" inputProps={{ min: 0, max: 10 }} onChange={e => { setAffDef(e.target.value > 10 ? affDef : e.target.value) }} /></TableCell>
+                  <TableCell align="left"><Input type="number"  placeholder="0" inputProps={{ min: 0, max: 10 }} onChange={e => { setAffDef(e.target.value > 10 ? affDef : e.target.value) }} /></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>自由辩论(80分)</div></TableCell>
-                  <TableCell align="left"><Input type="number" value={affFree} placeholder="0" inputProps={{ min: 0, max: 80 }} onChange={e => { setAffFree(e.target.value > 80 ? affFree : e.target.value) }} /></TableCell>
+                  <TableCell align="left"><Input type="number"  placeholder="0" inputProps={{ min: 0, max: 80 }} onChange={e => { setAffFree(e.target.value > 80 ? affFree : e.target.value) }} /></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>团体配合与合作精神(30分)</div></TableCell>
-                  <TableCell align="left"><Input type="number" value={affTeamwork} placeholder="0" inputProps={{ min: 0, max: 30 }} onChange={e => { setAffTeamwork(e.target.value > 30 ? affTeamwork : e.target.value) }} /></TableCell>
+                  <TableCell align="left"><Input type="number"  placeholder="0" inputProps={{ min: 0, max: 30 }} onChange={e => { setAffTeamwork(e.target.value > 30 ? affTeamwork : e.target.value) }} /></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="right" colSpan={5}><div style={{ fontSize: "170%" }}>总分(400分)</div></TableCell>
@@ -309,7 +308,7 @@ const GradingTable = () => {
               </colgroup>
               <TableHead>
                 <TableRow>
-                  <TableCell colspan="5"><div><h3>反方</h3><h5 style={{ fontSize: "120%", color: "grey" }}>若选手掉线超过缓冲时间，请在对应环节的分数栏打勾‘✔’，则该辩手在该环节的分数直接计为零分。</h5></div></TableCell>
+                  <TableCell colSpan={5}><div><h3>反方</h3><h5 style={{ fontSize: "120%", color: "grey" }}>若选手掉线超过缓冲时间，请在对应环节的分数栏打勾‘✔’，则该辩手在该环节的分数直接计为零分。</h5></div></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -327,15 +326,15 @@ const GradingTable = () => {
                 ))}
                 <TableRow>
                   <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>答辩(10分)</div></TableCell>
-                  <TableCell align="left"><Input type="number" value={negDef} placeholder="0" inputProps={{ min: 0, max: 10 }} onChange={e => { setNegDef(e.target.value > 10 ? negDef : e.target.value) }} /></TableCell>
+                  <TableCell align="left"><Input type="number"  placeholder="0" inputProps={{ min: 0, max: 10 }} onChange={e => { setNegDef(e.target.value > 10 ? negDef : e.target.value) }} /></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>自由辩论(80分)</div></TableCell>
-                  <TableCell align="left"><Input type="number" value={negFree} placeholder="0" inputProps={{ min: 0, max: 80 }} onChange={e => { setNegFree(e.target.value > 80 ? negFree : e.target.value) }} /></TableCell>
+                  <TableCell align="left"><Input type="number"  placeholder="0" inputProps={{ min: 0, max: 80 }} onChange={e => { setNegFree(e.target.value > 80 ? negFree : e.target.value) }} /></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>团体配合与合作精神(30分)</div></TableCell>
-                  <TableCell align="left"><Input type="number" value={negTeamwork} placeholder="0" inputProps={{ min: 0, max: 30 }} onChange={e => { setNegTeamwork(e.target.value > 30 ? negTeamwork : e.target.value) }} /></TableCell>
+                  <TableCell align="left"><Input type="number"  placeholder="0" inputProps={{ min: 0, max: 30 }} onChange={e => { setNegTeamwork(e.target.value > 30 ? negTeamwork : e.target.value) }} /></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="right" colSpan={5}><div style={{ fontSize: "170%" }}>总分(400分)</div></TableCell>
