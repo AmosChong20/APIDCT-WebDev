@@ -26,6 +26,9 @@ const GradingFan = () => {
   const [dataF, setDataF] = useState([]);
   const [dataIF, setDataIF] = useState([]);
   const [dataSF, setDataSF] = useState([]);
+  const [scoreF,setScoreF] = useState({ aff : 0, neg : 0});
+  const [scoreIF,setScoreIF] = useState({ aff : 0, neg : 0});
+  const [scoreSF,setScoreSF] = useState({ aff : 0, neg : 0});
   const location = useLocation();
   const history = useHistory();
 
@@ -86,6 +89,33 @@ const GradingFan = () => {
     console.log(dataF)
     console.log(dataIF)
     console.log(dataSF)
+    var lengthIF = dataIF.length;
+    var lengthF = dataF.length;
+    var lengthSF = dataSF.length; 
+    var i;
+  
+    for (i = 0; i < lengthF; i++) {
+      if(dataF[i].affTotal < dataF[i].negTotal){
+        setScoreF({ ...scoreF, neg: (scoreF.neg)+1})
+      }
+      else if(dataF[i].affTotal > dataF[i].negTotal){
+        setScoreF({ ...scoreF, aff: (scoreF.aff)+1})
+      }
+      else{
+        var tempAff = dataF[i].affFree + dataF[i].affTeamwork
+        var tempNeg = dataF[i].negFree + dataF[i].negTeamwork
+
+        if(tempAff < tempNeg){
+          setScoreF({ ...scoreF, neg: (scoreF.neg)+1})
+        }
+        else if(tempAff > tempNeg){
+          setScoreF({ ...scoreF, aff: (scoreF.aff)+1})
+        }
+        else{
+          
+        }
+      }
+    }
   }
 
   if(start){
@@ -94,7 +124,9 @@ const GradingFan = () => {
   }
 
   useEffect(() => {
-    calResult();
+    if((dataT!==[])&&(dataF!==[])&&(dataIF!==[])&&(dataSF!==[])){
+      calResult();
+    }
   })
 
 
@@ -146,10 +178,10 @@ const GradingFan = () => {
             <TableRow className = "shade">
               <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>印象票</div></TableCell>
               <TableCell align="left">
-                <div  style={{ fontSize: "120%" }}>2</div> 
+                <div  style={{ fontSize: "120%" }}>{scoreF.aff}</div> 
               </TableCell>
               <TableCell align="left">
-                <div  style={{ fontSize: "120%" }}>3</div> 
+                <div  style={{ fontSize: "120%" }}>{scoreF.neg}</div> 
               </TableCell>
             </TableRow>
 
