@@ -105,7 +105,7 @@ const JudgeLogin = () => {
       if((temps<=min)&&(tempe>=min)&&(data[0].date===time.day)){
         judgeLoginData.indexT = data[0].indexT;
         judgeLoginData.isRoadShow = data[0].isRoadShow;
-        judgeLoginData.judgeChiName = data[0].judgeChiName;
+        judgeLoginData.judgeChiName = dataf[0].judgeChiName;
         // console.log(judgeLoginData)
         if(judgeLoginData.isRoadShow){
           setTimeout(() => history.push({

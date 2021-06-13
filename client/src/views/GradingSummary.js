@@ -68,8 +68,9 @@ const GradingSummary = () => {
     setTimeout(() => history.push({
       pathname:'/gradingBestFinal',
       token:location.token,
-      indexT:location.indexT}
-      ), 1000);
+      indexT:location.indexT,
+      judgeChiName:location.judgeChiName
+    }), 1000);
   }
   
   const history = useHistory();

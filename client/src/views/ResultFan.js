@@ -29,6 +29,7 @@ const GradingFan = () => {
   const [scoreF,setScoreF] = useState({ aff : 0, neg : 0});
   const [scoreIF,setScoreIF] = useState({ aff : 0, neg : 0});
   const [scoreSF,setScoreSF] = useState({ aff : 0, neg : 0});
+  const [scoreT,setScoreT] = useState({ aff : 0, neg : 0});
   const location = useLocation();
   const history = useHistory();
 
@@ -93,29 +94,91 @@ const GradingFan = () => {
     var lengthF = dataF.length;
     var lengthSF = dataSF.length; 
     var i;
-  
+    var tempFAff =scoreF.aff;
+    var tempFNeg = scoreF.neg;
+    var tempIFAff =scoreIF.aff;
+    var tempIFNeg = scoreIF.neg;
+    var tempSFAff =scoreSF.aff;
+    var tempSFNeg = scoreSF.neg;
+
     for (i = 0; i < lengthF; i++) {
+      // console.log(i)
       if(dataF[i].affTotal < dataF[i].negTotal){
-        setScoreF({ ...scoreF, neg: (scoreF.neg)+1})
+        tempFNeg += 1;
       }
       else if(dataF[i].affTotal > dataF[i].negTotal){
-        setScoreF({ ...scoreF, aff: (scoreF.aff)+1})
+        tempFAff += 1;
       }
       else{
         var tempAff = dataF[i].affFree + dataF[i].affTeamwork
         var tempNeg = dataF[i].negFree + dataF[i].negTeamwork
 
         if(tempAff < tempNeg){
-          setScoreF({ ...scoreF, neg: (scoreF.neg)+1})
+          tempFNeg += 1;
         }
         else if(tempAff > tempNeg){
-          setScoreF({ ...scoreF, aff: (scoreF.aff)+1})
+          tempFAff += 1;
         }
         else{
-          
+          if(dataF[i].affTeamwork < dataF[i].negTeamwork){
+            tempFNeg += 1;
+          }
+          else if(dataF[i].affTeamwork > dataF[i].negTeamwork){
+            tempFAff += 1;
+          }
+          else{
+            var x;
+            for (x = 0; x < lengthSF ; x++){
+              if(dataSF[x].token === dataF[i].token){
+                if(dataSF[x].summary === 1){
+                  tempFAff += 1;
+                }
+                else{
+                  tempFNeg += 1;
+                }
+              }
+            }
+          }
         }
       }
     }
+
+    for (i = 0; i < lengthSF ; i++){
+      if(dataSF[i].summary===1){
+        tempSFAff += 1;
+      }
+      else{
+        tempSFNeg += 1;
+      }
+    }
+
+    for (i = 0; i < lengthIF ; i++){
+      if(dataIF[i].impression===1){
+        tempIFAff += 1;
+      }
+      else{
+        tempIFNeg += 1;
+      }
+    }
+    console.log(tempFNeg)
+    console.log(tempFAff)
+    console.log(tempSFNeg)
+    console.log(tempSFAff)
+    console.log(tempIFNeg)
+    console.log(tempIFAff)
+    
+    scoreF.neg = tempFNeg
+    scoreF.aff = tempFAff
+    // setScoreF({ ...scoreF, neg: tempFNeg})
+    // setScoreF({ ...scoreF, aff: tempFAff})
+    scoreSF.neg = tempSFNeg
+    scoreSF.aff = tempSFAff
+    // setScoreSF({ ...scoreSF, neg: tempSFNeg})
+    // setScoreSF({ ...scoreSF, aff: tempSFAff})
+    scoreIF.neg = tempIFNeg
+    scoreIF.aff = tempIFAff
+    // setScoreIF({ ...scoreIF, neg: tempIFNeg})
+    // setScoreIF({ ...scoreIF, aff: tempIFAff})
   }
 
   if(start){
@@ -124,8 +187,9 @@ const GradingFan = () => {
   }
 
   useEffect(() => {
-    if((dataT!==[])&&(dataF!==[])&&(dataIF!==[])&&(dataSF!==[])){
+    if((dataT.length!==0)&&(dataF.length!==0)&&(dataIF.length!==0)&&(dataSF.length!==0)&&(cal)){
       calResult();
+      setCal(false)
     }
   })
 
@@ -178,30 +242,30 @@ const GradingFan = () => {
             <TableRow className = "shade">
               <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>印象票</div></TableCell>
               <TableCell align="left">
-                <div  style={{ fontSize: "120%" }}>{scoreF.aff}</div> 
+                <div  style={{ fontSize: "120%" }}>{scoreIF.aff}</div> 
               </TableCell>
               <TableCell align="left">
-                <div  style={{ fontSize: "120%" }}>{scoreF.neg}</div> 
+                <div  style={{ fontSize: "120%" }}>{scoreIF.neg}</div> 
               </TableCell>
             </TableRow>
 
             <TableRow >
               <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>总结票</div></TableCell>
               <TableCell align="left">
-                <div  style={{ fontSize: "120%" }}>2</div> 
+                <div  style={{ fontSize: "120%" }}>{scoreSF.aff}</div> 
               </TableCell>
               <TableCell align="left">
-                <div  style={{ fontSize: "120%" }}>3</div> 
+                <div  style={{ fontSize: "120%" }}>{scoreSF.neg}</div> 
               </TableCell>
             </TableRow>
 
             <TableRow className = "shade">
               <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>分数票</div></TableCell>
               <TableCell align="left">
-                <div  style={{ fontSize: "120%" }}>2</div> 
+                <div  style={{ fontSize: "120%" }}>{scoreF.aff}</div> 
               </TableCell>
               <TableCell align="left">
-                <div  style={{ fontSize: "120%" }}>3</div> 
+                <div  style={{ fontSize: "120%" }}>{scoreF.neg}</div> 
               </TableCell>
             </TableRow>
 

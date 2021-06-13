@@ -224,7 +224,8 @@ const GradingTable = () => {
     setTimeout(() => history.push({
       pathname: '/gradingImpression',
       token: location.token,
-      indexT: location.indexT
+      indexT: location.indexT,
+      judgeChiName:location.judgeChiName
     }), 1000);
 
 

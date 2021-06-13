@@ -71,7 +71,8 @@ const GradingBestCand = () => {
         setTimeout(() => history.push({
             pathname:'/gradingSummary',
             token:location.token,
-            indexT:location.indexT
+            indexT:location.indexT,
+            judgeChiName:location.judgeChiName
     }), 1000);
     }
 

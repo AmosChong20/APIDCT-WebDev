@@ -57,7 +57,8 @@ const GradingImpressionFan = () => {
     setTimeout(() => history.push({
       pathname: '/gradingSummaryFan',
       token: gradingImpressionFanData.token,
-      indexT: gradingImpressionFanData.indexT
+      indexT: gradingImpressionFanData.indexT,
+      judgeChiName:gradingImpressionFanData.judgeChiName,
     }), 1000);
   }
   
@@ -73,7 +74,7 @@ const GradingImpressionFan = () => {
           <Alert.Heading className = "alertHeading"> 提交失败 ！/ Submission Failed ！ </Alert.Heading>
         </Alert>
 
-        <StepperFan step={0} />
+        <StepperFan step={1} />
         <div className="register_header d-flex justify-content-center">
            <span> 印象票 </span>
         </div>

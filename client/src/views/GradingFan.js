@@ -330,7 +330,8 @@ const GradingFan = () => {
     setTimeout(() => history.push({
       pathname: '/gradingImpressionFan',
       token: gradingFanData.token,
-      indexT: gradingFanData.indexT
+      indexT: gradingFanData.indexT.indexT,
+      judgeChiName:gradingFanData.judgeChiName,
     }), 1000);
 
   }
@@ -344,7 +345,7 @@ const GradingFan = () => {
         <Alert show={showF} className="alert" variant="danger" onClose={() => setShowF(false)} dismissible>
           <Alert.Heading className="alertHeading"> 提交失败 ！/ Registration Failed ！ </Alert.Heading>
         </Alert>
-        <StepperFan step={1} />
+        <StepperFan step={0} />
         <div className="fan_title">
           <span> 分数票 </span>
         </div>

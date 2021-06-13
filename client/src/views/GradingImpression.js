@@ -66,7 +66,8 @@ const GradingImpression = () => {
     setTimeout(() => history.push({
       pathname:'/gradingBestCand',
       token: location.token,
-      indexT: location.indexT
+      indexT: location.indexT,
+      judgeChiName:location.judgeChiName
     }), 1000);
   }
   
