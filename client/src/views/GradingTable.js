@@ -242,7 +242,9 @@ const GradingTable = () => {
         <Alert show={showF} className="alert" variant="danger" onClose={() => setShowF(false)} dismissible>
           <Alert.Heading className="alertHeading"> 提交失败 ！/ Registration Failed ！ </Alert.Heading>
         </Alert>
-
+        <div className="register_header">
+          <span> 正赛 </span>
+        </div>
         <Stepper step={0} />
         <div className="register_header">
           <span> 分数票 </span>

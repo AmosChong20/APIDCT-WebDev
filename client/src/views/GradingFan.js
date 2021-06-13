@@ -330,7 +330,7 @@ const GradingFan = () => {
     setTimeout(() => history.push({
       pathname: '/gradingImpressionFan',
       token: gradingFanData.token,
-      indexT: gradingFanData.indexT.indexT,
+      indexT: gradingFanData.indexT,
       judgeChiName:gradingFanData.judgeChiName,
     }), 1000);
 
@@ -345,6 +345,9 @@ const GradingFan = () => {
         <Alert show={showF} className="alert" variant="danger" onClose={() => setShowF(false)} dismissible>
           <Alert.Heading className="alertHeading"> 提交失败 ！/ Registration Failed ！ </Alert.Heading>
         </Alert>
+        <div className="fan_title">
+          <span> 返尔赛 </span>
+        </div>
         <StepperFan step={0} />
         <div className="fan_title">
           <span> 分数票 </span>
@@ -357,6 +360,11 @@ const GradingFan = () => {
               <col style={{ width: '30%' }} />
               <col style={{ width: '30%' }} />
             </colgroup>
+            <TableHead>
+                <TableRow>
+                  <TableCell colSpan={3}> <h5 style={{ fontSize: "120%", color: "grey" }}>若选手掉线超过缓冲时间，请在对应环节的分数栏打勾‘✔’，则该辩手在该环节的分数直接计为零分。</h5></TableCell>
+                </TableRow>
+              </TableHead>
             <TableHead>
               <TableRow>
                 <TableCell align="center" ><div><h2>项目</h2></div></TableCell>

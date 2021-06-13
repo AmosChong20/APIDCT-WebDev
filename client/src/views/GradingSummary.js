@@ -84,7 +84,9 @@ const GradingSummary = () => {
         <Alert show={showF} className= "alert" variant="danger" onClose={() => setShowF(false)} dismissible>
           <Alert.Heading className = "alertHeading"> 提交失败 ！/ Submission Failed ！ </Alert.Heading>
         </Alert>
-
+        <div className="register_header">
+          <span> 正赛 </span>
+        </div>
         <Stepper step={3} />
         <div className="register_header d-flex justify-content-center">
            <span> 总结票 </span>

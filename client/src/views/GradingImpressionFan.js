@@ -73,7 +73,9 @@ const GradingImpressionFan = () => {
         <Alert show={showF} className= "alert" variant="danger" onClose={() => setShowF(false)} dismissible>
           <Alert.Heading className = "alertHeading"> 提交失败 ！/ Submission Failed ！ </Alert.Heading>
         </Alert>
-
+        <div className="fan_title">
+          <span> 返尔赛 </span>
+        </div>
         <StepperFan step={1} />
         <div className="register_header d-flex justify-content-center">
            <span> 印象票 </span>

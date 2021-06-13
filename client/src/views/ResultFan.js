@@ -22,6 +22,7 @@ const GradingFan = () => {
   const [cal,setCal] = useState(true);
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
+  const [dataTime, setDataTime] = useState([]);
   const [dataV, setDataV] = useState([]);
   const [dataT, setDataT] = useState([]);
   const [dataF, setDataF] = useState([]);
@@ -83,17 +84,40 @@ const GradingFan = () => {
     setDataV(data)
   }
 
+  const findTime = async (indexT) => {
+    if(indexT === ''){
+      return;
+    }
+    const res = await fetch('http://localhost:5000'+'/time/'+indexT)
+    // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
+    const data = await res.json()
+    // console.log(data)
+    setDataTime(data)
+  }
+
   const fetchData = () =>{
     findTZTopic(location.indexT)
     findGradingSummaryFan(location.indexT);
     findGradingImpressionFan(location.indexT);
     findGradingFan(location.indexT);
     findVote(location.indexT);
+    findTime(location.indexT);
     // console.log(dataT)
     // console.log(dataF)
     // console.log(dataIF)
     // console.log(dataSF)
   }
+  window.onbeforeunload = (event) => {
+    const e = event || window.event;
+    // Cancel the event
+    e.preventDefault();
+    if (e) {
+      e.returnValue = ''; // Legacy method for cross browser support
+    }
+    return ''; // Legacy method for cross browser support
+  };
+
+
 
   const calResult = () =>{
     // console.log(dataT)
@@ -101,6 +125,7 @@ const GradingFan = () => {
     // console.log(dataIF)
     // console.log(dataSF)
     // console.log(dataV)
+    // console.log(dataTime)
 
     var lengthIF = dataIF.length;
     var lengthF = dataF.length;
@@ -217,7 +242,12 @@ const GradingFan = () => {
       scoreT.winner = 2
     }
     else{
-      console.log("hi")
+      if(dataTime[0].affTotalSec < dataTime[0].negTotalSec){
+        scoreT.winner = 1
+      }
+      else{
+        scoreT.winner = 2
+      }
     }
 
     // console.log(scoreT)
@@ -229,7 +259,7 @@ const GradingFan = () => {
   }
 
   useEffect(() => {
-    if((dataT.length!==0)&&(dataF.length!==0)&&(dataIF.length!==0)&&(dataSF.length!==0)&&(dataV.length!==0)&&(cal)){
+    if((dataT.length!==0)&&(dataF.length!==0)&&(dataIF.length!==0)&&(dataSF.length!==0)&&(dataV.length!==0)&&(dataTime.length!==0)&&(cal)){
       calResult();
       setCal(false)
     }
@@ -251,7 +281,7 @@ const GradingFan = () => {
           <TableHead>
             <TableRow className = "shade">
               <TableCell align="center" colSpan={1}><div><h2>题目</h2></div></TableCell>
-              <TableCell align="center" colSpan={2}>{dataT[0] ? <div><h2>{dataT[0].topic}</h2></div> : <div>hi</div>} </TableCell>
+              <TableCell align="center" colSpan={2}>{dataT[0] ? <div><h2>{dataT[0].topic}</h2></div> : <div> </div>} </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -351,8 +381,17 @@ const GradingFan = () => {
               </TableCell>
             </TableRow>
 
+            <TableRow >
+              <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>用时</div></TableCell>
+              <TableCell align="left">
+                {dataTime[0] ? <div  style={{ fontSize: "120%" }}>{dataTime[0].affTimeMin}分 {dataTime[0].affTimeSec}秒</div>  : <div> </div>} 
+              </TableCell>
+              <TableCell align="left">
+                {dataTime[0] ? <div  style={{ fontSize: "120%" }}>{dataTime[0].negTimeMin}分 {dataTime[0].negTimeSec}秒</div>   : <div> </div>} 
+              </TableCell>
+            </TableRow>
 
-            <TableRow>
+            <TableRow className = "shade">
               <TableCell align="right" colSpan={1}><div style={{ fontSize: "200%" }}>总分</div></TableCell>
               <TableCell align="left">
                 <div  style={{ fontSize: "200%" }}>{scoreT.finalAff}%</div> 
@@ -386,7 +425,7 @@ const GradingFan = () => {
           {dataF.map(data => (
             <TableBody>
               <TableRow className ="rowResult">
-                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>哈利珀特</div></TableCell>
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>{data.judgeChiName}</div></TableCell>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>{data.affTotal}</div> </TableCell>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>{data.negTotal}</div> </TableCell>
               </TableRow>
@@ -414,7 +453,7 @@ const GradingFan = () => {
           {dataIF.map(data => (
             <TableBody>
               <TableRow className ="rowResult">
-                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>哈利珀特</div></TableCell>
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>{data.judgeChiName}</div></TableCell>
                 { (data.impression === 1) ? <TableCell align="center" colSpan={2}><div style={{ fontSize: "170%" }}>正方</div></TableCell> : <TableCell align="center" colSpan={2}><div style={{ fontSize: "170%" }}>反方</div></TableCell> }
               </TableRow>
             </TableBody>
