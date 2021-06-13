@@ -26,14 +26,15 @@ const JudgeLogin = () => {
     e.preventDefault()
 
     if(judgeLoginData.token === ''){
-      setShowF(true);
+      setShowF(false);
       setShowS(false);
-      setShowI(false);
+      setShowI(true);
+      setTimeout(() => setShowI(false), 1000);
       return;
     }
 
     try{
-      if(dataf[0].token){
+      if((dataf[0].token)&&(dataf.length<2)){
         var len = (dataf[0].indexA).length
         if(len === 0){  
           setShowI(false);
@@ -49,8 +50,12 @@ const JudgeLogin = () => {
         setTimeout(() => setShowF(true), 1000);
         setTimeout(() => setShowF(false), 1000);
         return;
-        
-
+      }
+      else{
+        setShowF(false);
+        setShowS(false);
+        setShowI(true);
+        setTimeout(() => setShowI(false), 1000);
       }
     } catch(error){
       setShowI(true);
@@ -72,7 +77,7 @@ const JudgeLogin = () => {
     if(token === ''){
       return;
     }
-    
+
     const res = await fetch('http://localhost:5000'+'/registerJudge/'+token)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+token)
     const data = await res.json()
@@ -100,19 +105,22 @@ const JudgeLogin = () => {
       if((temps<=min)&&(tempe>=min)&&(data[0].date===time.day)){
         judgeLoginData.indexT = data[0].indexT;
         judgeLoginData.isRoadShow = data[0].isRoadShow;
+        judgeLoginData.judgeChiName = data[0].judgeChiName;
         // console.log(judgeLoginData)
         if(judgeLoginData.isRoadShow){
           setTimeout(() => history.push({
-            pathname: '/gradingImpressionFan',
+            pathname: '/gradingFan',
             token: judgeLoginData.token,
-            indexT: judgeLoginData.indexT
+            indexT: judgeLoginData.indexT,
+            judgeChiName:judgeLoginData.judgeChiName
           }), 1000);
         }
         else{
           setTimeout(() => history.push({
             pathname: '/gradinTable',
             token: judgeLoginData .token,
-            indexT: judgeLoginData.indexT
+            indexT: judgeLoginData.indexT,
+            judgeChiName:judgeLoginData.judgeChiName
           }), 1000);
         }
         setShowI(false);

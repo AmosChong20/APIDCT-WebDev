@@ -4,6 +4,7 @@ import uniqueValidator from 'mongoose-unique-validator';
 const gradingTableSchema = mongoose.Schema({
     token: String,
     indexT: String,
+    judgeChiName : String,
     rows: Array,
     affDef: Number,
     affFree: Number,

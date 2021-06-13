@@ -10,8 +10,8 @@ export const getGradingTableData = async (req, res) => {
 }
 
 export const addGradingTableData = async (req, res) => {
-    const {token,indexT,rows,affDef,affFree,affTeamwork,negDef,negFree,negTeamwork,affTotal,negTotal} = req.body;
-    const newGradingTableData = new gradingTableModel({token,indexT,rows,affDef,affFree,affTeamwork,negDef,negFree,negTeamwork,affTotal,negTotal});
+    const {token,indexT,judgeChiName,rows,affDef,affFree,affTeamwork,negDef,negFree,negTeamwork,affTotal,negTotal} = req.body;
+    const newGradingTableData = new gradingTableModel({token,indexT,judgeChiName,rows,affDef,affFree,affTeamwork,negDef,negFree,negTeamwork,affTotal,negTotal});
     try {
         await newGradingTableData.save();
         res.status(201).json( newGradingTableData );

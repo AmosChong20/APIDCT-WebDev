@@ -39,6 +39,7 @@ import GradingImpressionFan from './views/GradingImpressionFan';
 import Vote from './views/Vote';
 import Test from './views/Test';
 import ResultChoose from './views/ResultChoose';
+import ResultFan from './views/ResultFan';
 
 
 
@@ -82,6 +83,7 @@ const App = () => {
                     <Route path="/test" exact component={Test} />
                     <Route path="/vote" exact component={Vote} />
                     <Route path="/resultChoose" exact component={ResultChoose} />
+                    <Route path="/resultFan" exact component={ResultFan} />
 
                     {/* <Route path="/starwarslistmy" exact component={StarwarsListmy} />
                     <Route path="/starwarslistsg" exact component={StarwarsListsg} />

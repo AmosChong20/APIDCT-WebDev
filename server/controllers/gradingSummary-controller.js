@@ -10,8 +10,8 @@ export const getGradingSummaryData = async (req, res) => {
 }
 
 export const addGradingSummaryData = async (req, res) => {
-    const {token,indexT,summary} = req.body;
-    const newGradingSummaryData = new gradingSummaryModel({token,indexT,summary});
+    const {token,indexT,judgeChiName,summary} = req.body;
+    const newGradingSummaryData = new gradingSummaryModel({token,indexT,judgeChiName,summary});
     try {
         await newGradingSummaryData.save();
         res.status(201).json( newGradingSummaryData );

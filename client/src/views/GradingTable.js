@@ -193,6 +193,7 @@ const GradingTable = () => {
       body: JSON.stringify({
         token: location.token,
         indexT: location.indexT,
+        judgeChiName:location.judgeChiName,
         rows: rows,
         affDef: affDef,
         affFree: affFree,

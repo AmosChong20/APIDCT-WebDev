@@ -25,6 +25,7 @@ const GradingFan = () => {
   const [gradingFanData, setGradingFanData] = useState({
     token: location.token,
     indexT: location.indexT,
+    judgeChiName:location.judgeChiName,
     affLilun : 0,
     affZhixun : 0,
     affDabian : 0,
@@ -327,7 +328,7 @@ const GradingFan = () => {
     addGradingFanData(gradingFanData);
     // console.log(gradingFanData)
     setTimeout(() => history.push({
-      pathname: '/gradingSummaryFan',
+      pathname: '/gradingImpressionFan',
       token: gradingFanData.token,
       indexT: gradingFanData.indexT
     }), 1000);

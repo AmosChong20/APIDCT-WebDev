@@ -11,7 +11,7 @@ import {useHistory} from 'react-router';
 
 const GradingImpressionFan = () => {
   const location = useLocation();
-  const [gradingImpressionFanData, setGradingImpressionFanData] = useState ({token:location.token, indexT: location.indexT ,impression: 0 });
+  const [gradingImpressionFanData, setGradingImpressionFanData] = useState ({token:location.token, indexT: location.indexT ,judgeChiName:location.judgeChiName, impression: 0 });
 
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
@@ -55,7 +55,7 @@ const GradingImpressionFan = () => {
     setGradingImpressionFanData({ ...gradingImpressionFanData, impression: 0})
 
     setTimeout(() => history.push({
-      pathname: '/gradingFan',
+      pathname: '/gradingSummaryFan',
       token: gradingImpressionFanData.token,
       indexT: gradingImpressionFanData.indexT
     }), 1000);

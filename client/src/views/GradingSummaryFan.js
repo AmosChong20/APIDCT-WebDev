@@ -11,7 +11,7 @@ import {useHistory} from 'react-router';
 
 const GradingSummaryFan = () => {
   const location = useLocation();
-  const [gradingSummaryFanData, setGradingSummaryFanData] = useState ({token:location.token, indexT: location.indexT ,summary: 0 });
+  const [gradingSummaryFanData, setGradingSummaryFanData] = useState ({token:location.token, indexT: location.indexT ,judgeChiName:location.judgeChiName ,summary: 0 });
 
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);

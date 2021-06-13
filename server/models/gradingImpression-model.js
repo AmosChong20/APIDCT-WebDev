@@ -5,6 +5,7 @@ const gradingImpressionSchema = mongoose.Schema({
     token: String,
     indexT: String,
     impression: Number,
+    judgeChiName : String,
 })
 
 // registerModel.plugin(uniqueValidator);

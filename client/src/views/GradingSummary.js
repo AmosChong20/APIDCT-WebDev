@@ -36,7 +36,9 @@ const GradingSummary = () => {
       body: JSON.stringify({
         summary:summary,
         token:location.token,
-        indexT:location.indexT}),
+        indexT:location.indexT,
+        judgeChiName:location.judgeChiName
+      }),
     })
     const data = await res.json()
     if (res.status === 201){
