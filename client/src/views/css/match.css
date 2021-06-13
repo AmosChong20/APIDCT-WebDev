@@ -1,0 +1,111 @@
+* {
+  font-size: x-large;
+}
+
+.cardtitle {
+  margin-top: 20%;
+  background-color: #f8ebf2;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0.5rem 0.5rem 2rem #808080;
+  border-radius: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 96%;
+  border: 1px solid #ddd;
+  margin: 3%;
+  padding: 3%;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+}
+
+tr:nth-child(odd) {
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+th {
+  background-color: #3394d5;
+  text-align: center;
+}
+
+tr:nth-child(odd):hover {
+  background-color: #3394d9;
+  text-align: center;
+}
+
+tr:nth-child(even):hover {
+  background-color: #a569bd;
+}
+
+.group {
+  background-color: #6353f0;
+  width: 15px;
+  border: 0px;
+}
+
+.category {
+  background-color: lightgrey;
+  width: 100px;
+}
+
+.serial {
+  background-color: #6353f0;
+  width: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tableheader {
+  display: block;
+  width: 10%;
+  border: solid lightgrey;
+  margin-top: 2%;
+  padding-left: 1%;
+  padding-right: 1%;
+  margin: 1%;
+  color: white;
+  background-color: #2e4053;
+  position: relative;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.chineseTitle {
+  display: block;
+  text-align: center;
+  font-size: xx-large;
+}
+
+.englishTitle {
+  display: block;
+  padding: 1%;
+  margin: 1%;
+  position: relative;
+  text-align: center;
+  font-size: large;
+}
+
+.resultsTitle {
+  display: block;
+  padding: 1%;
+  margin: 1%;
+  position: relative;
+  text-align: center;
+  font-size: xx-large;
+}
+
+.topic {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}

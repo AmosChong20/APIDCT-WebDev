@@ -11,7 +11,8 @@ import Home from './views/Home'
 import Register from './views/Register'
 import RegisterTest from './views/RegisterTest'
 import SchoolList from './views/SchoolList'
-// import Portfolio from './views/Portfolio';
+import Portfolio from './views/Portfolio';
+import Match from './views/Match';
 
 import './App.css';
 import StarWars from './views/StarWars';
@@ -59,12 +60,12 @@ const App = () => {
                 <TopNavbar />
                 <Switch>
                     <Route path="/" exact component={Home} />
-                    {/*<ProtectedRoute path="/page2" exact component={Page2} /> */}
-                    {/* <Route path="/register" exact component={Register} /> */}
-                    {/* <Route path="/registerTest" exact component={RegisterTest} /> */}
-                    {/* <Route path="/schoolList" exact component={SchoolList} /> */}
-                    {/* <Route path="/starwars" exact component={StarWars} /> */}
-                    {/* <Route path="/starwarslist" exact component={StarwarsList} /> */}
+                    {/* <ProtectedRoute path="/page2" exact component={Page2} /> */}
+                    <Route path="/register" exact component={Register} />
+                    <Route path="/registerTest" exact component={RegisterTest} />
+                    <Route path="/schoolList" exact component={SchoolList} />
+                    <Route path="/starwars" exact component={StarWars} />
+                    <Route path="/starwarslist" exact component={StarwarsList} />
                     <Route path="/starwarslisttemp" exact component={StarwarsListTemp} />
                     <Route path="/registerJudge" exact component={RegisterJudge} />
                     <Route path="/updateJudge" exact component={UpdateJudge} />
@@ -85,14 +86,15 @@ const App = () => {
                     <Route path="/resultChoose" exact component={ResultChoose} />
                     <Route path="/resultFan" exact component={ResultFan} />
 
-                    {/* <Route path="/starwarslistmy" exact component={StarwarsListmy} />
+                    <Route path="/starwarslistmy" exact component={StarwarsListmy} />
                     <Route path="/starwarslistsg" exact component={StarwarsListsg} />
                     <Route path="/starwarslisthk" exact component={StarwarsListhk} />
                     <Route path="/starwarslistmc" exact component={StarwarsListmc} />
                     <Route path="/starwarslistau" exact component={StarwarsListau} />
                     <Route path="/starwarslistcm" exact component={StarwarsListcm} />
-                    <Route path="/starwarslistuk" exact component={StarwarsListuk} /> */}
-                    {/* <Route path="/portfolio" exact component={Portfolio} /> */}
+                    <Route path="/starwarslistuk" exact component={StarwarsListuk} />
+                    <Route path="/portfolio" exact component={Portfolio} />
+                    <Route path="/match" exact component={Match} />
                 </Switch>
                 {/* <Footer /> */}
             </div>
