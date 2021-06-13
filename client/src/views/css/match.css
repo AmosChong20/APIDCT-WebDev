@@ -1,6 +1,6 @@
 /* * {
   font-size: x-large;
-}
+} */
 
 .cardtitle {
   margin-top: 20%;
@@ -12,7 +12,7 @@
   border-radius: 10px;
 }
 
-table {
+/* table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 96%;
@@ -45,7 +45,7 @@ tr:nth-child(odd):hover {
 
 tr:nth-child(even):hover {
   background-color: #a569bd;
-}
+} */
 
 .group {
   background-color: #6353f0;
@@ -108,4 +108,4 @@ tr:nth-child(even):hover {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-} */
+}
