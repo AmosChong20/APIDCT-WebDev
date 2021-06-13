@@ -22,6 +22,7 @@ const GradingFan = () => {
   const [cal,setCal] = useState(true);
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
+  const [dataV, setDataV] = useState([]);
   const [dataT, setDataT] = useState([]);
   const [dataF, setDataF] = useState([]);
   const [dataIF, setDataIF] = useState([]);
@@ -29,7 +30,7 @@ const GradingFan = () => {
   const [scoreF,setScoreF] = useState({ aff : 0, neg : 0});
   const [scoreIF,setScoreIF] = useState({ aff : 0, neg : 0});
   const [scoreSF,setScoreSF] = useState({ aff : 0, neg : 0});
-  const [scoreT,setScoreT] = useState({ aff : 0, neg : 0});
+  const [scoreT,setScoreT] = useState({ aff : 0, neg : 0, affVote : 0, negVote : 0, judgeAff : 0, judgeNeg : 0, voteAff : 0, voteNeg : 0, finalAff : 0, finalNeg : 0, winner : 0});
   const location = useLocation();
   const history = useHistory();
 
@@ -72,13 +73,22 @@ const GradingFan = () => {
     const data = await res.json()
     setDataF(data)
   }
+  const findVote = async (indexT) => {
+    if(indexT === ''){
+      return;
+    }
+    const res = await fetch('http://localhost:5000'+'/vote/'+indexT)
+    // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
+    const data = await res.json()
+    setDataV(data)
+  }
 
   const fetchData = () =>{
     findTZTopic(location.indexT)
-    findTZTopic(location.indexT);
     findGradingSummaryFan(location.indexT);
     findGradingImpressionFan(location.indexT);
     findGradingFan(location.indexT);
+    findVote(location.indexT);
     // console.log(dataT)
     // console.log(dataF)
     // console.log(dataIF)
@@ -86,10 +96,12 @@ const GradingFan = () => {
   }
 
   const calResult = () =>{
-    console.log(dataT)
-    console.log(dataF)
-    console.log(dataIF)
-    console.log(dataSF)
+    // console.log(dataT)
+    // console.log(dataF)
+    // console.log(dataIF)
+    // console.log(dataSF)
+    // console.log(dataV)
+
     var lengthIF = dataIF.length;
     var lengthF = dataF.length;
     var lengthSF = dataSF.length; 
@@ -160,12 +172,12 @@ const GradingFan = () => {
         tempIFNeg += 1;
       }
     }
-    console.log(tempFNeg)
-    console.log(tempFAff)
-    console.log(tempSFNeg)
-    console.log(tempSFAff)
-    console.log(tempIFNeg)
-    console.log(tempIFAff)
+    // console.log(tempFNeg)
+    // console.log(tempFAff)
+    // console.log(tempSFNeg)
+    // console.log(tempSFAff)
+    // console.log(tempIFNeg)
+    // console.log(tempIFAff)
     
     scoreF.neg = tempFNeg
     scoreF.aff = tempFAff
@@ -179,6 +191,36 @@ const GradingFan = () => {
     scoreIF.aff = tempIFAff
     // setScoreIF({ ...scoreIF, neg: tempIFNeg})
     // setScoreIF({ ...scoreIF, aff: tempIFAff})
+
+    scoreT.neg = tempFNeg + tempSFNeg + tempIFNeg
+    scoreT.aff = tempFAff + tempSFAff + tempIFAff
+    scoreT.negVote = dataV[0].negVote
+    scoreT.affVote = dataV[0].affVote
+
+    scoreT.judgeAff = (scoreT.aff)/(scoreT.aff+scoreT.neg)*50
+    scoreT.judgeAff = scoreT.judgeAff.toFixed(2)
+    scoreT.judgeNeg = (scoreT.neg)/(scoreT.aff+scoreT.neg)*50
+    scoreT.judgeNeg = scoreT.judgeNeg.toFixed(2)
+
+    scoreT.voteAff = (scoreT.affVote)/(scoreT.affVote+scoreT.negVote)*50
+    scoreT.voteAff =  scoreT.voteAff.toFixed(2)    
+    scoreT.voteNeg = (scoreT.negVote)/(scoreT.affVote+scoreT.negVote)*50
+    scoreT.voteNeg = scoreT.voteNeg.toFixed(2)
+
+    scoreT.finalAff = parseFloat(scoreT.judgeAff) + parseFloat(scoreT.affVote)
+    scoreT.finalNeg = parseFloat(scoreT.judgeNeg) + parseFloat(scoreT.negVote)
+
+    if(scoreT.finalAff > scoreT.finalNeg){
+      scoreT.winner = 1
+    }
+    else if(scoreT.finalAff < scoreT.finalNeg){
+      scoreT.winner = 2
+    }
+    else{
+      console.log("hi")
+    }
+
+    // console.log(scoreT)
   }
 
   if(start){
@@ -187,7 +229,7 @@ const GradingFan = () => {
   }
 
   useEffect(() => {
-    if((dataT.length!==0)&&(dataF.length!==0)&&(dataIF.length!==0)&&(dataSF.length!==0)&&(cal)){
+    if((dataT.length!==0)&&(dataF.length!==0)&&(dataIF.length!==0)&&(dataSF.length!==0)&&(dataV.length!==0)&&(cal)){
       calResult();
       setCal(false)
     }
@@ -216,7 +258,7 @@ const GradingFan = () => {
             <TableRow className ="rowResult">
               <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>获胜方</div></TableCell>
               <TableCell align="center" colSpan={2}>
-                <div  style={{ fontSize: "170%" }}>反方</div> 
+                {(scoreT.winner === 1) ? <div  style={{ fontSize: "170%" }}>正方</div> :<div  style={{ fontSize: "170%" }}>反方</div>}
               </TableCell>
             </TableRow>
           </TableBody>
@@ -272,50 +314,114 @@ const GradingFan = () => {
             <TableRow>
               <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>总票数</div></TableCell>
               <TableCell align="left">
-                <div  style={{ fontSize: "120%" }}>6</div> 
+                <div  style={{ fontSize: "120%" }}>{scoreT.aff}</div> 
               </TableCell>
               <TableCell align="left">
-                <div  style={{ fontSize: "120%" }}>9</div> 
+                <div  style={{ fontSize: "120%" }}>{scoreT.neg}</div> 
               </TableCell>
             </TableRow>
 
             <TableRow className = "shade">
               <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>评审总分</div></TableCell>
               <TableCell align="left">
-                <div  style={{ fontSize: "120%" }}>{6/15*50}%</div> 
+                <div  style={{ fontSize: "120%" }}>{scoreT.judgeAff}%</div> 
               </TableCell>
               <TableCell align="left">
-                <div  style={{ fontSize: "120%" }}>{9/15*50}%</div> 
+                <div  style={{ fontSize: "120%" }}>{scoreT.judgeNeg}%</div> 
               </TableCell>
             </TableRow>
 
             <TableRow>
-              <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>观众投票分</div></TableCell>
+              <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>观众投票数</div></TableCell>
               <TableCell align="left">
-                <div  style={{ fontSize: "120%" }}>25%</div> 
+                <div  style={{ fontSize: "120%" }}>{scoreT.affVote}</div> 
               </TableCell>
               <TableCell align="left">
-                <div  style={{ fontSize: "120%" }}>25%</div> 
+                <div  style={{ fontSize: "120%" }}>{scoreT.negVote}</div> 
+              </TableCell>
+            </TableRow>
+
+            <TableRow className = "shade">
+              <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>观众投票分</div></TableCell>
+              <TableCell align="left">
+                <div  style={{ fontSize: "120%" }}>{scoreT.voteAff}%</div> 
+              </TableCell>
+              <TableCell align="left">
+                <div  style={{ fontSize: "120%" }}>{scoreT.voteNeg}%</div> 
               </TableCell>
             </TableRow>
 
 
-            <TableRow className = "shade">
+            <TableRow>
               <TableCell align="right" colSpan={1}><div style={{ fontSize: "200%" }}>总分</div></TableCell>
               <TableCell align="left">
-                <div  style={{ fontSize: "200%" }}>45%</div> 
+                <div  style={{ fontSize: "200%" }}>{scoreT.finalAff}%</div> 
               </TableCell>
               <TableCell align="left">
-                <div  style={{ fontSize: "200%" }}>55%</div> 
+                <div  style={{ fontSize: "200%" }}>{scoreT.finalNeg}%</div> 
               </TableCell>
             </TableRow>
       
           </TableBody>
         </Table>
-
-
-
       </div>
+
+      <div className="container subBlockResult">
+        <div className="fan_title">
+          <span> 分数票总分 </span>
+        </div>
+        <Table  aria-label="caption table">
+          <colgroup>
+            <col style={{ width: '40%' }} />
+            <col style={{ width: '30%' }} />
+            <col style={{ width: '30%' }} />
+          </colgroup>
+          <TableHead>
+            <TableRow>
+              <TableCell align="center" colSpan={1}><div><h2>评审姓名</h2></div></TableCell>
+              <TableCell align="center" colSpan={1}><div><h2>正方</h2></div></TableCell>
+              <TableCell align="center" colSpan={1}><div><h2>反方</h2></div></TableCell>
+            </TableRow>
+          </TableHead>
+          {dataF.map(data => (
+            <TableBody>
+              <TableRow className ="rowResult">
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>哈利珀特</div></TableCell>
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>{data.affTotal}</div> </TableCell>
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>{data.negTotal}</div> </TableCell>
+              </TableRow>
+            </TableBody>
+          ))}
+        </Table>
+      </div>
+
+      <div className="container subBlockResult">
+        <div className="fan_title">
+          <span> 印象票 </span>
+        </div>
+        <Table  aria-label="caption table">
+          <colgroup>
+            <col style={{ width: '40%' }} />
+            <col style={{ width: '30%' }} />
+            <col style={{ width: '30%' }} />
+          </colgroup>
+          <TableHead>
+            <TableRow>
+              <TableCell align="center" colSpan={1}><div><h2>评审姓名</h2></div></TableCell>
+              <TableCell align="center" colSpan={2}><div><h2>选择</h2></div></TableCell>
+            </TableRow>
+          </TableHead>
+          {dataIF.map(data => (
+            <TableBody>
+              <TableRow className ="rowResult">
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>哈利珀特</div></TableCell>
+                { (data.impression === 1) ? <TableCell align="center" colSpan={2}><div style={{ fontSize: "170%" }}>正方</div></TableCell> : <TableCell align="center" colSpan={2}><div style={{ fontSize: "170%" }}>反方</div></TableCell> }
+              </TableRow>
+            </TableBody>
+          ))}
+        </Table>
+      </div>
+
       <Footer />
     </section>
   );
