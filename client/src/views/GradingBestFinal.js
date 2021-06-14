@@ -11,34 +11,79 @@ import { serverURL } from '../config.js'
 import Footer from '../components/Footer'
 import './css/GradingBestCand.css'
 import Stepper from '../components/Stepper';
-import {useLocation} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const GradingBestCand = () => {
-    const [speakers, setSpeakers] = useState([{ 'name': "正方一辩" },{ 'name': "正方二辩" },{ 'name': "正方三辩" },{ 'name': "正方四辩" },{ 'name': "反方一辩" },{ 'name': "反方二辩" },{ 'name': "反方三辩" },{ 'name': "反方四辩" }]);
-    const [selected,setSelected]=useState([])
+    const [speakers, setSpeakers] = useState([{ 'name': "正方一辩" }, { 'name': "正方二辩" }, { 'name': "正方三辩" }, { 'name': "正方四辩" }, { 'name': "反方一辩" }, { 'name': "反方二辩" }, { 'name': "反方三辩" }, { 'name': "反方四辩" }]);
+    const [selected, setSelected] = useState([])
     const location = useLocation();
 
     const [showS, setShowS] = useState(false);
     const [showF, setShowF] = useState(false);
+    const [table, setTable] = useState();
+    const [bestCand, setBestCand] = useState();
 
-    const getSelection=(e,i)=>{
-        const temp=(e.target.value);
+    React.useEffect(() => {
+        fetchTable();
+        fetchBestCand();
+    });
+
+    const getSelection = (e, i) => {
+        const temp = (e.target.value);
         const newS = selected.map((x) => x);
-        newS[i]=temp;
+        newS[i] = temp;
 
         setSelected(newS);
-      }
+    }
 
-      const addGradingBestFinal = async (selected) => {
+    const fetchBestCand = async () => {
+        const res = await fetch('http://localhost:5000/' + 'gradingBestCand/' + location.indexT)
+        const data = await res.json()
+        setBestCand(data);
+    }
+
+    const fetchTable = async () => {
+        const res = await fetch('http://localhost:5000/' + 'gradingTable/' + location.indexT)
+        const data = await res.json()
+        setTable(data);
+    }
+
+    function determineBest(table, bestcand) {
+        const bestCandList = []
+        bestCand.map((x) => {
+            bestCandList.push(...x.selected)
+        })
+        const top=maxFreq(bestCandList);
+
+
+
+
+    };
+
+    function maxFreq(bestCand) {
+        var occ = {};
+        var topCand = [];
+        var maxi = 0;
+        for (let k of bestCand) {
+            if (occ[k]) occ[k]++; else occ[k] = 1;
+            if (maxi < occ[k]) { maxi=occ[k]; }
+        }
+        Object.keys(occ).map((pos,count) => {
+            if (count==maxi) topCand.push(pos);
+        })
+        return topCand;
+    };
+    const addGradingBestFinal = async (selected) => {
         const res = await fetch(('http://localhost:5000/' + 'gradingBestFinal'), {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
             },
             body: JSON.stringify({
-                selected:selected,
-                token:location.token,
-                indexT:location.indexT}),
+                selected: selected,
+                token: location.token,
+                indexT: location.indexT
+            }),
         })
         const data = await res.json()
         if (res.status === 201) {
@@ -85,7 +130,7 @@ const GradingBestCand = () => {
                     <form className="col-12 regForm" noValidate onSubmit={onSubmit}>
                         <div className="d-flex justify-content-center">请选择一位最佳辩手</div>
                         <div className="school container col d-flex justify-content-center">
-                            <Form.Control className="selectspeaker" as="select" onChange={(e) => getSelection(e,0)} style={{ width: "50vw", margin: "10px" }}>
+                            <Form.Control className="selectspeaker" as="select" onChange={(e) => getSelection(e, 0)} style={{ width: "50vw", margin: "10px" }}>
                                 <option value='0' >
                                     请选择最佳辩手
                                 </option>

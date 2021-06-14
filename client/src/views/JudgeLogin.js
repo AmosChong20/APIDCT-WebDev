@@ -110,7 +110,7 @@ const JudgeLogin = () => {
         }
         else{
           setTimeout(() => history.push({
-            pathname: '/gradinTable',
+            pathname: '/gradingTable',
             token: judgeLoginData .token,
             indexT: judgeLoginData.indexT
           }), 1000);

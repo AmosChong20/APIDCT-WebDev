@@ -44,8 +44,7 @@ const createData = (name, team, mark1, mark2, mark3, mark4) => ({
   mark2: NaN,
   mark3: NaN,
   mark4: NaN,
-  subt: 0,
-  isEditMode: false
+  subt: 0
 });
 
 const title = {
@@ -126,14 +125,14 @@ const GradingTable = () => {
   const [previous, setPrevious] = React.useState({});
   const classes = useStyles();
 
-  const [timeout, setTimeout] = useState([]);
+  const [timeoutlist, setTimeoutlist] = useState([]);
 
   const handleChange = (e, row, name) => {
-    if (timeout.includes(row.id + name)) {
-      setTimeout(timeout.filter(e => e !== row.id + name));
+    if (timeoutlist.includes(row.id + name)) {
+      setTimeoutlist(timeoutlist.filter(e => e !== row.id + name));
     }
     else{
-      setTimeout([...timeout, row.id + name]);
+      setTimeoutlist([...timeoutlist, row.id + name]);
       const { id } = row;
       const newRows = rows.map(row => {
         if (row.id === id) {
@@ -271,11 +270,11 @@ const GradingTable = () => {
                       <div style={{ fontSize: "150%" }}>
                         {speaker[row.name]}</div>
                     </TableCell>
-                    <CustomTableCell {...{ row, id: "name", name: "mark1", onChange, handleChange, checkState: (timeout.includes(row.id + "mark1")) }} />
-                    <CustomTableCell {...{ row, id: "name", name: "mark2", onChange, handleChange, checkState: (timeout.includes(row.id + "mark2")) }} />
-                    <CustomTableCell {...{ row, id: "name", name: "mark3", onChange, handleChange, checkState: (timeout.includes(row.id + "mark3")) }} />
-                    <CustomTableCell {...{ row, id: "name", name: "mark4", onChange, handleChange, checkState: (timeout.includes(row.id + "mark4")) }} />
-                    <CustomTableCell {...{ row, id: "name", name: "subt", onChange, handleChange, checkState: (timeout.includes(row.id + "subt")) }} />
+                    <CustomTableCell {...{ row, id: "name", name: "mark1", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark1")) }} />
+                    <CustomTableCell {...{ row, id: "name", name: "mark2", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark2")) }} />
+                    <CustomTableCell {...{ row, id: "name", name: "mark3", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark3")) }} />
+                    <CustomTableCell {...{ row, id: "name", name: "mark4", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark4")) }} />
+                    <CustomTableCell {...{ row, id: "name", name: "subt", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "subt")) }} />
                   </StyledTableRow>
                 ))}
                 <TableRow>
@@ -318,11 +317,11 @@ const GradingTable = () => {
                     <TableCell align="center">
                       <div style={{ fontSize: "150%" }}>{speaker[row.name]}</div>
                     </TableCell>
-                    <CustomTableCell {...{ row, id: "name", name: "mark1", onChange, handleChange, checkState: (timeout.includes(row.id + "mark1")) }} />
-                    <CustomTableCell {...{ row, id: "name", name: "mark2", onChange, handleChange, checkState: (timeout.includes(row.id + "mark2")) }} />
-                    <CustomTableCell {...{ row, id: "name", name: "mark3", onChange, handleChange, checkState: (timeout.includes(row.id + "mark3")) }} />
-                    <CustomTableCell {...{ row, id: "name", name: "mark4", onChange, handleChange, checkState: (timeout.includes(row.id + "mark4")) }} />
-                    <CustomTableCell {...{ row, id: "name", name: "subt", onChange, handleChange, checkState: (timeout.includes(row.id + "subt")) }} />
+                    <CustomTableCell {...{ row, id: "name", name: "mark1", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark1")) }} />
+                    <CustomTableCell {...{ row, id: "name", name: "mark2", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark2")) }} />
+                    <CustomTableCell {...{ row, id: "name", name: "mark3", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark3")) }} />
+                    <CustomTableCell {...{ row, id: "name", name: "mark4", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark4")) }} />
+                    <CustomTableCell {...{ row, id: "name", name: "subt", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "subt")) }} />
                   </StyledTableRow>
                 ))}
                 <TableRow>
