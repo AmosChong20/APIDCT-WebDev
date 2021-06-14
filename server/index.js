@@ -57,7 +57,7 @@ app.use('/gradingSummary',gradingSummaryRoutes);
 app.use('/gradingImpression',gradingImpressionRoutes);
 app.use('/gradingSummaryFan',gradingSummaryFanRoutes);
 app.use('/gradingImpressionFan',gradingImpressionFanRoutes);
-app.use('/gradinBestCand',gradingBestCandRoutes);
+app.use('/gradingBestCand',gradingBestCandRoutes);
 app.use('/gradingBestFinal',gradingBestFinalRoutes);
 app.use('/gradingFan',gradingFanRoutes);
 
