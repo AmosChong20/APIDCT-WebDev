@@ -3,7 +3,7 @@ import './css/Bracket.css';
 import Footer from '../components/Footer'
 import logo from '../assets/image/yatai 10th logo700.png';
 
-const Match = () => {
+const Bracket = () => {
   return (
       <div className="container">
         <div className="AB">
@@ -83,8 +83,8 @@ const Match = () => {
             <div>&nbsp</div>
             <div>晋级队伍4</div>
           </div>
-        </div>
-      <Footer/>
+        <Footer/>
+      </div>
 
   )
 }

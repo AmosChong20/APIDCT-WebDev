@@ -100,7 +100,7 @@ const App = () => {
                     <Route path="/starwarslistuk" exact component={StarwarsListuk} />
                     <Route path="/portfolio" exact component={Portfolio} />
                     <Route path="/match" exact component={Match} />
-                    <Route path="/Bracket" exact component={Bracket} />
+                    <Route path="/bracket" exact component={Bracket} />
                 </Switch>
                 {/* <Footer /> */}
             </div>
