@@ -107,7 +107,7 @@ const TimeFan = () => {
         }
       }
       array = array.filter(function () { return true });
-      console.log(array)
+      // console.log(array)
       setTopics(array);
     });
   }

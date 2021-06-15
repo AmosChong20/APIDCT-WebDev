@@ -4,7 +4,7 @@ import uniqueValidator from 'mongoose-unique-validator';
 const gradingBestFinalSchema = mongoose.Schema({
     token: String,
     indexT: String,
-    selected: Number,
+    selected: Array,
     judgeChiName : String,
 })
 

@@ -41,6 +41,7 @@ import Vote from './views/Vote';
 import Test from './views/Test';
 import ResultChoose from './views/ResultChoose';
 import ResultFan from './views/ResultFan';
+import Result from './views/Result';
 import TimeFan from './views/TimeFan';
 
 
@@ -86,6 +87,7 @@ const App = () => {
                     <Route path="/vote" exact component={Vote} />
                     <Route path="/resultChoose" exact component={ResultChoose} />
                     <Route path="/resultFan" exact component={ResultFan} />
+                    <Route path="/result" exact component={Result} />
                     <Route path="/timeFan" exact component={TimeFan} />
 
                     <Route path="/starwarslistmy" exact component={StarwarsListmy} />
