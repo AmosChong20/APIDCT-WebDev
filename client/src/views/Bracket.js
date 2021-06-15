@@ -5,7 +5,7 @@ import logo from '../assets/image/yatai 10th logo700.png';
 
 const Bracket = () => {
   return (
-      <div className="container">
+      <div className="containerBracket mainBlockBracket">
         <div className="AB">
             <div>&nbsp</div><div>东吴大学</div><div className="groupName">&nbsp</div>
             <div>A</div><div>苏州大学</div><div className="groupName">&nbsp</div>
@@ -83,7 +83,7 @@ const Bracket = () => {
             <div>&nbsp</div>
             <div>晋级队伍4</div>
           </div>
-        <Footer/>
+        {/* <Footer/> */}
       </div>
 
   )

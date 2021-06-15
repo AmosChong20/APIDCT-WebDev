@@ -1,4 +1,4 @@
-.container {
+.containerBracket {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -10,6 +10,23 @@
     "CD RoundTwoOne Final RoundTwoTwo IJ"
     "EF . SemiFinalTwo . KL"
     "EF . . . KL";
+}
+
+.mainBlockBracket{
+  color:#3B454C;
+  background-color:#FFFFFF;
+  /* margin: auto; */
+  margin-left: 7.5%;
+  margin-right: 7.5%;
+  margin-top: 8%; 
+  border:1px solid #cecece;
+  border-radius: 0.5rem;
+  padding: 5%;
+  padding-top:1%;
+  padding-bottom:3%;
+  margin-bottom:3%;
+  box-shadow: 0rem 0rem 0.5rem #8d8d8d;
+  width: 85% !important;
 }
 
 .AB {
