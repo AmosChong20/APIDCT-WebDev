@@ -88,4 +88,4 @@ const Bracket = () => {
   )
 }
 
-export default Bracker
+export default Bracket
