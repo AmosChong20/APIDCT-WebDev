@@ -12,6 +12,7 @@ import { serverURL } from '../config.js'
 
 import Footer from '../components/Footer'
 import StopicList from '../components/StopicList.js';
+import GradingDialog from '../components/GradingDialog'
 
 import ReactDOM from "react-dom";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
@@ -62,10 +63,10 @@ const CustomTableCell = ({ row, id, name, onChange, handleChange, checkState }) 
   return (
     <TableCell align="left">
       <div style={{ fontSize: "120%" }}>{t}</div>
-      {(t != "-") ?
-        (name != "subt") ?
+      {(t !== "-") ?
+        (name !== "subt") ?
           <div className="d-flex flex-row align-items-center">
-            {(name != "mark4") ?
+            {(name !== "mark4") ?
                 <Checkbox
                   checked={checkState}
                   onChange={e => handleChange(e, row, name)}
@@ -79,9 +80,11 @@ const CustomTableCell = ({ row, id, name, onChange, handleChange, checkState }) 
                     type="number"
                     name={name}
                     id={id}
+                    value={row[name]===0? '':row[name]}
                     onChange={e => onChange(e, row)}
                     placeholder="0"
                     inputProps={{ min: 0, max: parseInt(t.slice(-4, -2)) }}
+                    onWheel={(e) => e.target.blur()}
                   />}</div>
             <div>{checkState}</div>
           </div>
@@ -121,7 +124,7 @@ const GradingTable = () => {
   const [negTeamwork, setNegTeamwork] = useState(0);
   const [affTotal, setAffTotal] = useState(0);
   const [negTotal, setNegTotal] = useState(0);
-
+  const [dialogOpen,setDialogOpen]=useState(false);
   const [previous, setPrevious] = React.useState({});
   const classes = useStyles();
 
@@ -157,7 +160,7 @@ const GradingTable = () => {
   }
 
   React.useEffect(
-    () => { setAffTotal(total(rows, 1)); setNegTotal(total(rows, 0)) }
+    () => { setAffTotal(total(rows, 1)); setNegTotal(total(rows, 0)) },[total,rows]
   )
 
   const onChange = (e, row) => {
@@ -235,6 +238,64 @@ const GradingTable = () => {
 
   return (
     <section className="header-gradient">
+      <GradingDialog open={dialogOpen} setOpen={setDialogOpen} content={<div>
+        <h3>正方</h3>
+        <TableBody>
+          {rows.slice(0, 4).map((row) => (
+            <TableRow key={row.id}>
+              <TableCell component="th" scope="row">
+                {speaker[row.name]}
+              </TableCell>
+              <TableCell align="right"><div>{title[row.name]['mark1'].slice(0,-5)}</div>{row.mark1}</TableCell>
+              <TableCell align="right">{title[row.name]['mark2']==='-'?'-':<div><div>{title[row.name]['mark2'].slice(0,-5)}</div>{row.mark2}</div>}</TableCell>
+              <TableCell align="right">{title[row.name]['mark3']==='-'?'-':<div><div>{title[row.name]['mark3'].slice(0,-5)}</div>{row.mark3}</div>}</TableCell>
+              <TableCell align="right"><div>{title[row.name]['mark4'].slice(0,-5)}</div>{row.mark4}</TableCell>
+              <TableCell align="right">{'总分'}{row.subt}</TableCell>
+            </TableRow>
+          ))}
+          <TableRow>
+            <TableCell align="right" colSpan={5}><div>答辩(10分)</div></TableCell><TableCell align="left">{affDef}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell align="right" colSpan={5}><div>自由辩论(80分)</div></TableCell><TableCell align="left">{affFree}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell align="right" colSpan={5}><div>团体配合与合作精神(30分)</div></TableCell><TableCell align="left">{affTeamwork}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell align="right" colSpan={5}><div style={{ fontSize: "130%" }}>总分(400分)</div></TableCell><TableCell align="left"><div style={{ fontSize: "130%", fontWeight: "bolder" }}>{affTotal}</div></TableCell>
+          </TableRow>
+        </TableBody>
+        <h3>反方</h3>
+        <TableBody>
+          {rows.slice(4, 8).map((row) => (
+            <TableRow key={row.id}>
+              <TableCell component="th" scope="row">
+                {speaker[row.name]}
+              </TableCell>
+              <TableCell align="right"><div>{title[row.name]['mark1'].slice(0,-5)}</div>{row.mark1}</TableCell>
+              <TableCell align="right">{title[row.name]['mark2']==='-'?'-':<div><div>{title[row.name]['mark2'].slice(0,-5)}</div>{row.mark2}</div>}</TableCell>
+              <TableCell align="right">{title[row.name]['mark3']==='-'?'-':<div><div>{title[row.name]['mark3'].slice(0,-5)}</div>{row.mark3}</div>}</TableCell>
+              <TableCell align="right"><div>{title[row.name]['mark4'].slice(0,-5)}</div>{row.mark4}</TableCell>
+              <TableCell align="right"><div>{'总分'}</div>{row.subt}</TableCell>
+            </TableRow>
+          ))}
+          <TableRow>
+            <TableCell align="right" colSpan={5}><div>答辩(10分)</div></TableCell><TableCell align="left">{negDef}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell align="right" colSpan={5}><div>自由辩论(80分)</div></TableCell><TableCell align="left">{negFree}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell align="right" colSpan={5}><div>团体配合与合作精神(30分)</div></TableCell><TableCell align="left">{negTeamwork}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell align="right" colSpan={5}><div style={{ fontSize: "130%" }}>总分(400分)</div></TableCell><TableCell align="left"><div style={{ fontSize: "130%", fontWeight: "bolder" }}>{negTotal}</div></TableCell>
+          </TableRow>
+        </TableBody>
+        </div>
+      } 
+      submit={onSubmit} />
       <div className="container main_block">
         <Alert show={showS} className="alert" variant="success" onClose={() => setShowS(false)} dismissible>
           <Alert.Heading className="alertHeading"> 提交成功 ！/ Registration Successful ！ </Alert.Heading>
@@ -250,7 +311,7 @@ const GradingTable = () => {
           <span> 分数票 </span>
         </div>
         <div className="regBlock row">
-          <form className="col-12 regForm" noValidate onSubmit={onSubmit}>
+          <form className="col-12 regForm" noValidate>
 
             <Table className={classes.table} aria-label="caption table">
               <caption></caption>
@@ -283,15 +344,15 @@ const GradingTable = () => {
                 ))}
                 <TableRow>
                   <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>答辩(10分)</div></TableCell>
-                  <TableCell align="left"><Input type="number"  placeholder="0" inputProps={{ min: 0, max: 10 }} onChange={e => { setAffDef(e.target.value > 10 ? affDef : e.target.value) }} /></TableCell>
+                  <TableCell align="left"><Input type="number" value={affDef===0? '':affDef} onWheel={(e) => e.target.blur()} placeholder="0" inputProps={{ min: 0, max: 10 }} onChange={e => { setAffDef(e.target.value > 10 ? affDef : e.target.value) }} /></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>自由辩论(80分)</div></TableCell>
-                  <TableCell align="left"><Input type="number"  placeholder="0" inputProps={{ min: 0, max: 80 }} onChange={e => { setAffFree(e.target.value > 80 ? affFree : e.target.value) }} /></TableCell>
+                  <TableCell align="left"><Input type="number" value={affFree===0? '':affFree} onWheel={(e) => e.target.blur()} placeholder="0" inputProps={{ min: 0, max: 80 }} onChange={e => { setAffFree(e.target.value > 80 ? affFree : e.target.value) }} /></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>团体配合与合作精神(30分)</div></TableCell>
-                  <TableCell align="left"><Input type="number"  placeholder="0" inputProps={{ min: 0, max: 30 }} onChange={e => { setAffTeamwork(e.target.value > 30 ? affTeamwork : e.target.value) }} /></TableCell>
+                  <TableCell align="left"><Input type="number" value={affTeamwork===0? '':affTeamwork} onWheel={(e) => e.target.blur()} placeholder="0" inputProps={{ min: 0, max: 30 }} onChange={e => { setAffTeamwork(e.target.value > 30 ? affTeamwork : e.target.value) }} /></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="right" colSpan={5}><div style={{ fontSize: "170%" }}>总分(400分)</div></TableCell>
@@ -330,15 +391,15 @@ const GradingTable = () => {
                 ))}
                 <TableRow>
                   <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>答辩(10分)</div></TableCell>
-                  <TableCell align="left"><Input type="number"  placeholder="0" inputProps={{ min: 0, max: 10 }} onChange={e => { setNegDef(e.target.value > 10 ? negDef : e.target.value) }} /></TableCell>
+                  <TableCell align="left"><Input type="number" value={negDef===0? '':negDef} onWheel={(e) => e.target.blur()} placeholder="0" inputProps={{ min: 0, max: 10 }} onChange={e => { setNegDef(e.target.value > 10 ? negDef : e.target.value) }} /></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>自由辩论(80分)</div></TableCell>
-                  <TableCell align="left"><Input type="number"  placeholder="0" inputProps={{ min: 0, max: 80 }} onChange={e => { setNegFree(e.target.value > 80 ? negFree : e.target.value) }} /></TableCell>
+                  <TableCell align="left"><Input type="number" value={negFree===0? '':negFree} onWheel={(e) => e.target.blur()} placeholder="0" inputProps={{ min: 0, max: 80 }} onChange={e => { setNegFree(e.target.value > 80 ? negFree : e.target.value) }} /></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>团体配合与合作精神(30分)</div></TableCell>
-                  <TableCell align="left"><Input type="number"  placeholder="0" inputProps={{ min: 0, max: 30 }} onChange={e => { setNegTeamwork(e.target.value > 30 ? negTeamwork : e.target.value) }} /></TableCell>
+                  <TableCell align="left"><Input type="number" value={negTeamwork===0? '':negTeamwork} onWheel={(e) => e.target.blur()} placeholder="0" inputProps={{ min: 0, max: 30 }} onChange={e => { setNegTeamwork(e.target.value > 30 ? negTeamwork : e.target.value) }} /></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="right" colSpan={5}><div style={{ fontSize: "170%" }}>总分(400分)</div></TableCell>
@@ -347,7 +408,7 @@ const GradingTable = () => {
               </TableBody>
             </Table>
 
-            <button type="submit" className="btn sub btn btn-primary" data-toggle="modal" data-target="#exampleModal" value='Save Form'>
+            <button type="button" onClick={()=>setDialogOpen(true)} className="btn sub btn btn-primary" data-toggle="modal" data-target="#exampleModal" value='Save Form'>
               <span className="englishF"> Submit / </span> <span> 提交 </span>
             </button>
           </form>

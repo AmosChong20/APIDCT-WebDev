@@ -12,6 +12,7 @@ import Footer from '../components/Footer'
 import './css/GradingBestCand.css'
 import Stepper from '../components/Stepper';
 import { useLocation } from 'react-router-dom';
+import GradingDialog from '../components/GradingDialog';
 
 const GradingBestCand = () => {
     const [speakers, setSpeakers] = useState([{ 'name': "正方一辩" }, { 'name': "正方二辩" }, { 'name': "正方三辩" }, { 'name': "正方四辩" }, { 'name': "反方一辩" }, { 'name': "反方二辩" }, { 'name': "反方三辩" }, { 'name': "反方四辩" }]);

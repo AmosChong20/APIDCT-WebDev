@@ -7,28 +7,31 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 export default function GradingDialog(props) {
-  const [open, setOpen] = props.open;
+  const [open, setOpen] = React.useState(props.open);
 
   // const handleClickOpen = () => {
   //   setOpen(true);
   // };
 
   const handleClose = () => {
-    setOpen(false);
+    props.setOpen(false);
   };
 
   return (
     <div>
       <Dialog
-        open={open}
+        open={props.open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"确认提交？"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             {props.content}
+          </DialogContentText>
+          <DialogContentText id="alert-dialog-description">
+            {"请检查清楚才点击“提交”，一旦提交就无法再做修改，也无法重新提交。"}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
