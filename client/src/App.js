@@ -13,6 +13,7 @@ import RegisterTest from './views/RegisterTest'
 import SchoolList from './views/SchoolList'
 import Portfolio from './views/Portfolio';
 import Match from './views/Match';
+import Bracket from './views/Bracket'
 
 import './App.css';
 import StarWars from './views/StarWars';
@@ -43,7 +44,6 @@ import ResultChoose from './views/ResultChoose';
 import ResultFan from './views/ResultFan';
 import Result from './views/Result';
 import TimeFan from './views/TimeFan';
-import MatchUpTable from './views/MatchUpTable';
 
 
 
@@ -100,7 +100,7 @@ const App = () => {
                     <Route path="/starwarslistuk" exact component={StarwarsListuk} />
                     <Route path="/portfolio" exact component={Portfolio} />
                     <Route path="/match" exact component={Match} />
-                    <Route path="/matchUpTable" exact component={MatchUpTable} />
+                    <Route path="/Bracket" exact component={Bracket} />
                 </Switch>
                 {/* <Footer /> */}
             </div>
