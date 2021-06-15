@@ -10,6 +10,7 @@ import registerTestRoutes from './routes/registerTest.js';
 import registerTopicRoutes from './routes/registerTopic.js';
 import registerJudgeRoutes from './routes/registerJudge.js';
 import voteRoutes from './routes/vote.js';
+import timeRoutes from './routes/time.js';
 
 import starwarsRoutes from './routes/starwars.js';
 import starwarsmyRoutes from './routes/starwarsmy.js';
@@ -41,6 +42,7 @@ app.use('/starwars',starwarsRoutes);
 app.use('/registerTopic',registerTopicRoutes);
 app.use('/registerJudge',registerJudgeRoutes);
 app.use('/vote',voteRoutes);
+app.use('/time',timeRoutes);
 
 app.use('/starwarsmy',starwarsmyRoutes);
 app.use('/starwarssg',starwarssgRoutes);

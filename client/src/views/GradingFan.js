@@ -13,6 +13,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Input from "@material-ui/core/Input";
 import StepperFan from '../components/StepperFan';
+import Checkbox from '@material-ui/core/Checkbox';
 import {useHistory} from 'react-router';
 import './css/GradingFan.css';
 
@@ -24,6 +25,7 @@ const GradingFan = () => {
   const [gradingFanData, setGradingFanData] = useState({
     token: location.token,
     indexT: location.indexT,
+    judgeChiName:location.judgeChiName,
     affLilun : 0,
     affZhixun : 0,
     affDabian : 0,
@@ -51,6 +53,24 @@ const GradingFan = () => {
     negTeamwork : 0,
     negTotal : 0
   })
+  const [checked1,setChecked1] = useState(false);
+  const [checked2,setChecked2] = useState(false);
+  const [checked3,setChecked3] = useState(false);
+  const [checked4,setChecked4] = useState(false);
+  const [checked5,setChecked5] = useState(false);
+  const [checked6,setChecked6] = useState(false);
+  const [checked7,setChecked7] = useState(false);
+  const [checked8,setChecked8] = useState(false);
+  const [checked9,setChecked9] = useState(false);
+  const [checked10,setChecked10] = useState(false);
+  const [checked11,setChecked11] = useState(false);
+  const [checked12,setChecked12] = useState(false);
+  const [checked13,setChecked13] = useState(false);
+  const [checked14,setChecked14] = useState(false);
+  const [checked15,setChecked15] = useState(false);
+  const [checked16,setChecked16] = useState(false);
+  const [checked17,setChecked17] = useState(false);
+  const [checked18,setChecked18] = useState(false);
   const history = useHistory();
 
 
@@ -174,6 +194,114 @@ const GradingFan = () => {
     // console.log(temp)
   };
 
+
+  const onChecked = (e,a) => {
+    var temp1 = parseInt(gradingFanData.affLilun) + parseInt(gradingFanData.affZhixun) + parseInt(gradingFanData.affDabian) + parseInt(gradingFanData.affBolun) + parseInt(gradingFanData.affFirstAttack) + parseInt(gradingFanData.affChenci) + parseInt(gradingFanData.affSecondAttack) + parseInt(gradingFanData.affFirstFinal) + parseInt(gradingFanData.affSecondFinal) + parseInt(gradingFanData.affLanguage) + parseInt(gradingFanData.affFree) + parseInt(gradingFanData.affTeamwork)
+    var temp2 = parseInt(gradingFanData.negLilun) + parseInt(gradingFanData.negZhixun) + parseInt(gradingFanData.negDabian) + parseInt(gradingFanData.negBolun) + parseInt(gradingFanData.negFirstAttack) + parseInt(gradingFanData.negChenci) + parseInt(gradingFanData.negSecondAttack) + parseInt(gradingFanData.negFirstFinal) + parseInt(gradingFanData.negSecondFinal) + parseInt(gradingFanData.negLanguage) + parseInt(gradingFanData.negFree) + parseInt(gradingFanData.negTeamwork)
+
+    if(a===1){
+      temp1 = temp1 - parseInt(gradingFanData.affLilun) ;
+      gradingFanData.affLilun = 0;
+      e ? setChecked1(true) : setChecked1(false);
+    }
+    else if(a===2){
+      temp1 = temp1 - parseInt(gradingFanData.affZhixun) ;
+      gradingFanData.affZhixun = 0;
+      e ? setChecked2(true) : setChecked2(false);
+    }
+    else if(a===3){
+      temp1 = temp1 - parseInt(gradingFanData.affDabian) ;
+      gradingFanData.affDabian = 0;
+      e ? setChecked3(true) : setChecked3(false);
+    }
+    else if(a===4){
+      temp1 = temp1 - parseInt(gradingFanData.affBolun) ;
+      gradingFanData.affBolun = 0;
+      e ? setChecked4(true) : setChecked4(false);
+    }
+    else if(a===5){
+      temp1 = temp1 - parseInt(gradingFanData.affFirstAttack) ;
+      gradingFanData.affFirstAttack = 0;
+      e ? setChecked5(true) : setChecked5(false);
+    }
+    else if(a===6){
+      temp1 = temp1 - parseInt(gradingFanData.affChenci) ;
+      gradingFanData.affChenci = 0;
+      e ? setChecked6(true) : setChecked6(false);
+    }
+    else if(a===7){
+      temp1 = temp1 - parseInt(gradingFanData.affSecondAttack) ;
+      gradingFanData.affSecondAttack = 0;
+      e ? setChecked7(true) : setChecked7(false);
+    }
+    else if(a===8){
+      temp1 = temp1 - parseInt(gradingFanData.affFirstFinal) ;
+      gradingFanData.affFirstFinal = 0;
+      e ? setChecked8(true) : setChecked8(false);
+    }
+    else if(a===9){
+      temp1 = temp1 - parseInt(gradingFanData.affSecondFinal) ;
+      gradingFanData.affSecondFinal = 0;
+      e ? setChecked9(true) : setChecked9(false);
+    }
+    else if(a===10){
+      temp2 = temp2 - parseInt(gradingFanData.negLilun) ;
+      gradingFanData.negLilun = 0;
+      e ? setChecked10(true) : setChecked10(false);
+    }
+    else if(a===11){
+      temp2 = temp2 - parseInt(gradingFanData.negZhixun) ;
+      gradingFanData.negZhixun = 0;
+      e ? setChecked11(true) : setChecked11(false);
+    }
+    else if(a===12){
+      temp2 = temp2 - parseInt(gradingFanData.negDabian) ;
+      gradingFanData.negDabian = 0;
+      e ? setChecked12(true) : setChecked12(false);
+    }
+    else if(a===13){
+      temp2 = temp2 - parseInt(gradingFanData.affBolun) ;
+      gradingFanData.affBolun = 0;
+      e ? setChecked13(true) : setChecked13(false);
+    }
+    else if(a===14){
+      temp2 = temp2 - parseInt(gradingFanData.negFirstAttack) ;
+      gradingFanData.negFirstAttack = 0;
+      e ? setChecked14(true) : setChecked14(false);
+    }
+    else if(a===15){
+      temp2 = temp2 - parseInt(gradingFanData.negChenci) ;
+      gradingFanData.negChenci = 0;
+      e ? setChecked15(true) : setChecked15(false);
+    }
+    else if(a===16){
+      temp2 = temp2 - parseInt(gradingFanData.negSecondAttack) ;
+      gradingFanData.negSecondAttack = 0;
+      e ? setChecked16(true) : setChecked16(false);
+    }
+    else if(a===17){
+      temp2 = temp2 - parseInt(gradingFanData.negFirstFinal) ;
+      gradingFanData.negFirstFinal = 0;
+      e ? setChecked17(true) : setChecked17(false);
+    }
+    else if(a===18){
+      temp2 = temp2 - parseInt(gradingFanData.negSecondFinal) ;
+      gradingFanData.negSecondFinal = 0;
+      e ? setChecked18(true) : setChecked18(false);
+    }
+
+    if(a>9){
+      setGradingFanData({ ...gradingFanData, negTotal: temp2 })
+    }
+    else{
+      setGradingFanData({ ...gradingFanData, affTotal: temp1 })
+    }
+    
+
+    // console.log(temp)
+  };
+
+
   const addGradingFanData = async (gradingFanData) =>{
     const res = await fetch (('http://localhost:5000'+'/gradingFan'),{
       method : 'POST',
@@ -200,9 +328,10 @@ const GradingFan = () => {
     addGradingFanData(gradingFanData);
     // console.log(gradingFanData)
     setTimeout(() => history.push({
-      pathname: '/gradingSummaryFan',
+      pathname: '/gradingImpressionFan',
       token: gradingFanData.token,
-      indexT: gradingFanData.indexT
+      indexT: gradingFanData.indexT,
+      judgeChiName:gradingFanData.judgeChiName,
     }), 1000);
 
   }
@@ -216,7 +345,10 @@ const GradingFan = () => {
         <Alert show={showF} className="alert" variant="danger" onClose={() => setShowF(false)} dismissible>
           <Alert.Heading className="alertHeading"> 提交失败 ！/ Registration Failed ！ </Alert.Heading>
         </Alert>
-        <StepperFan step={1} />
+        <div className="fan_title">
+          <span> 返尔赛 </span>
+        </div>
+        <StepperFan step={0} />
         <div className="fan_title">
           <span> 分数票 </span>
         </div>
@@ -229,6 +361,11 @@ const GradingFan = () => {
               <col style={{ width: '30%' }} />
             </colgroup>
             <TableHead>
+                <TableRow>
+                  <TableCell colSpan={3}> <h5 style={{ fontSize: "120%", color: "grey" }}>若选手掉线超过缓冲时间，请在对应环节的分数栏打勾‘✔’，则该辩手在该环节的分数直接计为零分。</h5></TableCell>
+                </TableRow>
+              </TableHead>
+            <TableHead>
               <TableRow>
                 <TableCell align="center" ><div><h2>项目</h2></div></TableCell>
                 <TableCell align="left" ><div><h2>正方</h2></div></TableCell>
@@ -239,108 +376,126 @@ const GradingFan = () => {
               <TableRow className = "shade">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>立论</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                  onChange={(e) => affChange(e.target.value,1)}/>
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,1)}}/>
+                  {checked1  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" placeholder="分数" onChange={(e) => affChange(e.target.value,1)} inputProps={{ min: 0, max: 9999999999999 }}/>}
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                  onChange={(e) => negChange(e.target.value,1)}/>
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,10)}}/>
+                  {checked10  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" placeholder="分数" onChange={(e) => negChange(e.target.value,1)} inputProps={{ min: 0, max: 9999999999999 }}/>}
                 </TableCell>
               </TableRow>
               
               <TableRow>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>质询</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                  onChange={(e) => affChange(e.target.value,2)}/>
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,2)}}/>
+                  {checked2  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" placeholder="分数" onChange={(e) => affChange(e.target.value,2)} inputProps={{ min: 0, max: 9999999999999 }}/>}
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                  onChange={(e) => negChange(e.target.value,2)}/>
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,11)}}/>
+                  {checked11  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" placeholder="分数" onChange={(e) => negChange(e.target.value,2)} inputProps={{ min: 0, max: 9999999999999 }}/>}
                 </TableCell>
               </TableRow>
 
               <TableRow className = "shade">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>答辩</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（20分）</div> <Input type="number" placeholder="分数" 
-                  onChange={(e) => affChange(e.target.value,3)}/>
+                  <div  style={{ fontSize: "120%" }}>分数（20分）</div> 
+                  <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,3)}}/>
+                  {checked3  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" placeholder="分数" onChange={(e) => affChange(e.target.value,3)} inputProps={{ min: 0, max: 9999999999999 }}/>}
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（20分）</div> <Input type="number" placeholder="分数" 
-                  onChange={(e) => negChange(e.target.value,3)}/>
+                  <div  style={{ fontSize: "120%" }}>分数（20分）</div> 
+                  <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,12)}}/>
+                  {checked12  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" placeholder="分数" onChange={(e) => negChange(e.target.value,3)} inputProps={{ min: 0, max: 9999999999999 }}/>}
                 </TableCell>
               </TableRow>
 
               <TableRow>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>驳论</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                  onChange={(e) => affChange(e.target.value,4)}/>
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,4)}}/>
+                  {checked4  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" placeholder="分数" onChange={(e) => affChange(e.target.value,4)} inputProps={{ min: 0, max: 9999999999999 }}/>}
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                  onChange={(e) => negChange(e.target.value,4)}/>
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,13)}}/>
+                  {checked13  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" placeholder="分数" onChange={(e) => negChange(e.target.value,4)} inputProps={{ min: 0, max: 9999999999999 }}/>}
                 </TableCell>
               </TableRow>
 
               <TableRow className = "shade">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第一次攻辩</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                  onChange={(e) => affChange(e.target.value,5)}/>
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,5)}}/>
+                  {checked5  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" placeholder="分数" onChange={(e) => affChange(e.target.value,5)} inputProps={{ min: 0, max: 9999999999999 }}/>}
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                  onChange={(e) => negChange(e.target.value,5)}/>
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,14)}}/>
+                  {checked14  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" placeholder="分数" onChange={(e) => negChange(e.target.value,5)} inputProps={{ min: 0, max: 9999999999999 }}/>}
                 </TableCell>
               </TableRow>
 
               <TableRow>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>陈词</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                  onChange={(e) => affChange(e.target.value,6)}/>
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,6)}}/>
+                  {checked6  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" placeholder="分数" onChange={(e) => affChange(e.target.value,6)} inputProps={{ min: 0, max: 9999999999999 }}/>}
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                  onChange={(e) => negChange(e.target.value,6)}/>
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,15)}}/>
+                  {checked15  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" placeholder="分数" onChange={(e) => negChange(e.target.value,6)} inputProps={{ min: 0, max: 9999999999999 }}/>}
                 </TableCell>
               </TableRow>
 
               <TableRow className = "shade">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第二次攻辩</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                  onChange={(e) => affChange(e.target.value,7)}/>
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,7)}}/>
+                  {checked7  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" placeholder="分数" onChange={(e) => affChange(e.target.value,7)} inputProps={{ min: 0, max: 9999999999999 }}/>}
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                  onChange={(e) => negChange(e.target.value,7)}/>
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,16)}}/>
+                  {checked16  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" placeholder="分数" onChange={(e) => negChange(e.target.value,7)} inputProps={{ min: 0, max: 9999999999999 }}/>}
                 </TableCell>
               </TableRow>
 
               <TableRow>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第一次总结</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                  onChange={(e) => affChange(e.target.value,8)}/>
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,8)}}/>
+                  {checked8  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" placeholder="分数" onChange={(e) => affChange(e.target.value,8)} inputProps={{ min: 0, max: 9999999999999 }}/>}
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                  onChange={(e) => negChange(e.target.value,8)}/>
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,17)}}/>
+                  {checked17  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" placeholder="分数" onChange={(e) => negChange(e.target.value,8)} inputProps={{ min: 0, max: 9999999999999 }}/>}
                 </TableCell>
               </TableRow>
 
               <TableRow className = "shade">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第二次总结</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                  onChange={(e) => affChange(e.target.value,9)}/>
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,9)}}/>
+                  {checked9  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" placeholder="分数" onChange={(e) => affChange(e.target.value,9)} inputProps={{ min: 0, max: 9999999999999 }}/>}
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" placeholder="分数" 
-                  onChange={(e) => negChange(e.target.value,9)}/>
+                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,18)}}/>
+                  {checked18  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" placeholder="分数" onChange={(e) => negChange(e.target.value,9)} inputProps={{ min: 0, max: 9999999999999 }}/>}
                 </TableCell>
               </TableRow>
 

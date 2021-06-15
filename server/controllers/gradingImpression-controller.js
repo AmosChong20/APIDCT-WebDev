@@ -10,8 +10,8 @@ export const getGradingImpressionData = async (req, res) => {
 }
 
 export const addGradingImpressionData = async (req, res) => {
-    const {token,indexT,impression} = req.body;
-    const newGradingImpressionData = new gradingImpressionModel({token,indexT,impression});
+    const {token,indexT,judgeChiName,impression} = req.body;
+    const newGradingImpressionData = new gradingImpressionModel({token,indexT,judgeChiName,impression});
     try {
         await newGradingImpressionData.save();
         res.status(201).json( newGradingImpressionData );

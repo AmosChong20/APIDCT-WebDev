@@ -39,7 +39,9 @@ const GradingBestCand = () => {
             },
             body: JSON.stringify({selected:selected,
                 token:location.token,
-                indexT:location.indexT}),
+                indexT:location.indexT,
+                judgeChiName:location.judgeChiName
+            }),
         })
         const data = await res.json()
         if (res.status === 201) {
@@ -69,7 +71,8 @@ const GradingBestCand = () => {
         setTimeout(() => history.push({
             pathname:'/gradingSummary',
             token:location.token,
-            indexT:location.indexT
+            indexT:location.indexT,
+            judgeChiName:location.judgeChiName
     }), 1000);
     }
 
@@ -84,10 +87,12 @@ const GradingBestCand = () => {
                 <Alert show={showF} className="alert" variant="danger" onClose={() => setShowF(false)} dismissible>
                     <Alert.Heading className="alertHeading"> 提交失败 ！/ Submission Failed ！ </Alert.Heading>
                 </Alert>
-
+                <div className="register_header">
+                    <span> 正赛 </span>
+                </div>
                 <Stepper step={2} />
                 <div className="register_header d-flex justify-content-center">
-                    <span> 印象票 </span>
+                    <span> 最佳辩手候选 </span>
                 </div>
                 <div className="regBlock row">
                     <form className="col-12 regForm" noValidate onSubmit={onSubmit}>

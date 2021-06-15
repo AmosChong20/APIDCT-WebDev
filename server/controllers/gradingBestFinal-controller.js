@@ -10,8 +10,8 @@ export const getGradingBestFinalData = async (req, res) => {
 }
 
 export const addGradingBestFinalData = async (req, res) => {
-    const {token,indexT,selected} = req.body;
-    const newGradingBestFinalData = new gradingBestFinalModel({token,indexT,selected});
+    const {token,indexT,selected,judgeChiName} = req.body;
+    const newGradingBestFinalData = new gradingBestFinalModel({token,indexT,selected,judgeChiName});
     try {
         await newGradingBestFinalData.save();
         res.status(201).json( newGradingBestFinalData );

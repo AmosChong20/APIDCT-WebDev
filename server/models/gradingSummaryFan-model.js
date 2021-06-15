@@ -5,6 +5,7 @@ const gradingSummaryFanSchema = mongoose.Schema({
     token: String,
     indexT: String,
     summary: Number,
+    judgeChiName : String,
 })
 
 // registerModel.plugin(uniqueValidator);

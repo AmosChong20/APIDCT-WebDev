@@ -5,6 +5,7 @@ const gradingBestCandSchema = mongoose.Schema({
     token: String,
     indexT: String,
     selected: Array,
+    judgeChiName : String,
 })
 
 // registerModel.plugin(uniqueValidator);

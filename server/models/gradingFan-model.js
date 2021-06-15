@@ -4,6 +4,7 @@ import uniqueValidator from 'mongoose-unique-validator';
 const gradingFanSchema = mongoose.Schema({
     token: String,
     indexT: String,
+    judgeChiName : String,
     affLilun : Number,
     affZhixun : Number,
     affDabian : Number,

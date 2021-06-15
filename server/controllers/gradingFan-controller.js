@@ -10,8 +10,8 @@ export const getGradingFanData = async (req, res) => {
 }
 
 export const addGradingFanData = async (req, res) => {
-    const {token,indexT,selecte,affLilun ,affZhixun ,affDabian ,affBolun ,affFirstAttack ,affChenci ,affSecondAttack ,affFirstFinal ,affSecondFinal ,affLanguage ,affFree ,affTeamwork ,affTotal ,negLilun ,negZhixun ,negDabian ,negBolun ,negFirstAttack ,negChenci ,negSecondAttack ,negFirstFinal ,negSecondFinal ,negLanguage ,negFree ,negTeamwork ,negTotal}= req.body;
-    const newGradingFanData = new gradingFanModel({token,indexT,selecte,affLilun ,affZhixun ,affDabian ,affBolun ,affFirstAttack ,affChenci ,affSecondAttack ,affFirstFinal ,affSecondFinal ,affLanguage ,affFree ,affTeamwork ,affTotal ,negLilun ,negZhixun ,negDabian ,negBolun ,negFirstAttack ,negChenci ,negSecondAttack ,negFirstFinal ,negSecondFinal ,negLanguage ,negFree ,negTeamwork ,negTotal});
+    const {token,indexT,judgeChiName,affLilun ,affZhixun ,affDabian ,affBolun ,affFirstAttack ,affChenci ,affSecondAttack ,affFirstFinal ,affSecondFinal ,affLanguage ,affFree ,affTeamwork ,affTotal ,negLilun ,negZhixun ,negDabian ,negBolun ,negFirstAttack ,negChenci ,negSecondAttack ,negFirstFinal ,negSecondFinal ,negLanguage ,negFree ,negTeamwork ,negTotal}= req.body;
+    const newGradingFanData = new gradingFanModel({token,indexT,judgeChiName,affLilun ,affZhixun ,affDabian ,affBolun ,affFirstAttack ,affChenci ,affSecondAttack ,affFirstFinal ,affSecondFinal ,affLanguage ,affFree ,affTeamwork ,affTotal ,negLilun ,negZhixun ,negDabian ,negBolun ,negFirstAttack ,negChenci ,negSecondAttack ,negFirstFinal ,negSecondFinal ,negLanguage ,negFree ,negTeamwork ,negTotal});
     try {
         await newGradingFanData.save();
         res.status(201).json( newGradingFanData );

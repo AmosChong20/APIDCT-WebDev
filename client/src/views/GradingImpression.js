@@ -34,7 +34,9 @@ const GradingImpression = () => {
       body: JSON.stringify({
         impression:impression,
         token:location.token,
-        indexT:location.indexT}),
+        indexT:location.indexT,
+        judgeChiName:location.judgeChiName
+      }),
     })
     const data = await res.json()
     if (res.status === 201){
@@ -64,7 +66,8 @@ const GradingImpression = () => {
     setTimeout(() => history.push({
       pathname:'/gradingBestCand',
       token: location.token,
-      indexT: location.indexT
+      indexT: location.indexT,
+      judgeChiName:location.judgeChiName
     }), 1000);
   }
   
@@ -79,7 +82,9 @@ const GradingImpression = () => {
         <Alert show={showF} className= "alert" variant="danger" onClose={() => setShowF(false)} dismissible>
           <Alert.Heading className = "alertHeading"> 提交失败 ！/ Submission Failed ！ </Alert.Heading>
         </Alert>
-
+        <div className="register_header">
+          <span> 正赛 </span>
+        </div>
         <Stepper step={1} />
         <div className="register_header d-flex justify-content-center">
            <span> 印象票 </span>

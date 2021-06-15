@@ -11,7 +11,7 @@ import {useHistory} from 'react-router';
 
 const GradingImpressionFan = () => {
   const location = useLocation();
-  const [gradingImpressionFanData, setGradingImpressionFanData] = useState ({token:location.token, indexT: location.indexT ,impression: 0 });
+  const [gradingImpressionFanData, setGradingImpressionFanData] = useState ({token:location.token, indexT: location.indexT ,judgeChiName:location.judgeChiName, impression: 0 });
 
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
@@ -55,9 +55,10 @@ const GradingImpressionFan = () => {
     setGradingImpressionFanData({ ...gradingImpressionFanData, impression: 0})
 
     setTimeout(() => history.push({
-      pathname: '/gradingFan',
+      pathname: '/gradingSummaryFan',
       token: gradingImpressionFanData.token,
-      indexT: gradingImpressionFanData.indexT
+      indexT: gradingImpressionFanData.indexT,
+      judgeChiName:gradingImpressionFanData.judgeChiName,
     }), 1000);
   }
   
@@ -72,8 +73,10 @@ const GradingImpressionFan = () => {
         <Alert show={showF} className= "alert" variant="danger" onClose={() => setShowF(false)} dismissible>
           <Alert.Heading className = "alertHeading"> 提交失败 ！/ Submission Failed ！ </Alert.Heading>
         </Alert>
-
-        <StepperFan step={0} />
+        <div className="fan_title">
+          <span> 返尔赛 </span>
+        </div>
+        <StepperFan step={1} />
         <div className="register_header d-flex justify-content-center">
            <span> 印象票 </span>
         </div>

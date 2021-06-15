@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['印象票', '分数票','总结票'];
+  return ['分数票','印象票' ,'总结票'];
 }
 
 

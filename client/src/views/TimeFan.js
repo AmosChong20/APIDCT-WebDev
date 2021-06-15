@@ -5,12 +5,14 @@ import Alert from 'react-bootstrap/Alert';
 import './css/JudgeLogin.css'
 import './css/Vote.css'
 
-const Vote = () => {
-  const [voteData,setVoteData] = useState({indexT: '', affVote: '', negVote: ''});
+const TimeFan = () => {
+  const [timeData,setTimeData] = useState({indexT: '', affTimeMin: '', negTimeMin: '', affTimeSec: '', negTimeSec: '', affTotalSec: '', negTotalSec: ''});
   const [time,setTime] = useState({hour:'',minute:'',day:''});
   const [changed, setChanged] = useState(false);
   const [changed_1, setChanged_1] = useState(false);
   const [changed_2, setChanged_2] = useState(false);
+  const [changed_3, setChanged_3] = useState(false);
+  const [changed_4, setChanged_4] = useState(false);
 
   const[topics,setTopics] = useState([]);
   const [start,setStart] = useState(true);
@@ -19,13 +21,13 @@ const Vote = () => {
   const [showF, setShowF] = useState(false);
 
 
-  const addVoteData = async (voteData) =>{
-    const res = await fetch (('http://localhost:5000'+'/vote'),{
+  const addTimeData = async (timeData) =>{
+    const res = await fetch (('http://localhost:5000'+'/time'),{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
       },
-      body: JSON.stringify(voteData),
+      body: JSON.stringify(timeData),
     })
     const data = await res.json()
     if (res.status === 201){
@@ -49,20 +51,30 @@ const Vote = () => {
   const onSubmit = async (e) =>{
     e.preventDefault()
 
-    if(voteData.indexT === '' ||
-      voteData.affVote === '' ||
-      voteData.negVote === ''){
+    if(timeData.indexT === '' ||
+      timeData.affTimeMin === '' ||
+      timeData.negTimeMin === '' ||
+      timeData.affTimeSec === '' ||
+      timeData.negTimeSec === ''){
       setShowF(true);
       setShowS(false);
       return;
     }
-    addVoteData(voteData);
-    setVoteData ({indexT: '', affVote: '', negVote: ''});
+   
+    timeData.affTotalSec = (parseInt(timeData.affTimeMin)*60) + parseInt(timeData.affTimeSec)
+    timeData.negTotalSec = (parseInt(timeData.negTimeMin)*60) + parseInt(timeData.negTimeSec)
+    addTimeData(timeData);
+    // console.log(timeData)
+
+    setTimeData ({indexT: '', affTimeMin: '', negTimeMin: '', affTimeSec: '', negTimeSec: '', affTotalSec: '', negTotalSec: ''});
+    
 
     setTopics([]);
     setChanged(false)
     setChanged_1(false);
     setChanged_2(false);
+    setChanged_3(false);
+    setChanged_4(false);
   }
 
   const fetchTopic = async () => {
@@ -118,11 +130,11 @@ const Vote = () => {
       </Alert>
       <form className="Vform" onSubmit = {onSubmit}>
         <div className="JudgeTitle"> 
-          凡尔赛队伍票数提交
+          凡尔赛队伍用时提交
         </div>
         
 
-        <Form.Control  className="JudgeLoginSel" as="select" onChange={(e) =>  setChanged(true) & setVoteData({ ...voteData, indexT: e.target.value }) }>
+        <Form.Control style = {{marginBottom: 10}} className="JudgeLoginSel" as="select" onChange={(e) =>  setChanged(true) & setTimeData({ ...timeData, indexT: e.target.value }) }>
             <option value = '0' >
               请选择辩题
             </option>
@@ -131,8 +143,10 @@ const Vote = () => {
             ))}
 
         </Form.Control>
-        <input type="text" className={`form-control  ${voteData.affVote ? "is-valid" : ""} ${(!voteData.affVote && changed_1) ? "is-invalid" : ""}`}  value={voteData.affVote} placeholder="正反获得票数" onChange={(e) => setChanged_1(true) & setVoteData({ ...voteData, affVote: e.target.value })} />
-        <input type="text" className={`form-control  ${voteData.negVote ? "is-valid" : ""} ${(!voteData.negVote && changed_2) ? "is-invalid" : ""}`}  value={voteData.negVote} placeholder="反方获得票数" onChange={(e) => setChanged_2(true) & setVoteData({ ...voteData, negVote: e.target.value })} />
+        <input type="text" style = {{marginBottom: 10}} className={`form-control  ${timeData.affTimeMin ? "is-valid" : ""} ${(!timeData.affTimeMin && changed_1) ? "is-invalid" : ""}`}  value={timeData.affTimeMin} placeholder="正方用时（分钟）" onChange={(e) => setChanged_1(true) & setTimeData({ ...timeData, affTimeMin: e.target.value })} />
+        <input type="text" style = {{marginBottom: 10}} className={`form-control  ${timeData.affTimeSec ? "is-valid" : ""} ${(!timeData.affTimeSec && changed_3) ? "is-invalid" : ""}`}  value={timeData.affTimeSec} placeholder="正方用时（秒）" onChange={(e) => setChanged_3(true) & setTimeData({ ...timeData, affTimeSec: e.target.value })} />
+        <input type="text" style = {{marginBottom: 10}} className={`form-control  ${timeData.negTimeMin ? "is-valid" : ""} ${(!timeData.negTimeMin && changed_2) ? "is-invalid" : ""}`}  value={timeData.negTimeMin} placeholder="反方用时（分钟）" onChange={(e) => setChanged_2(true) & setTimeData({ ...timeData, negTimeMin: e.target.value })} />
+        <input type="text" style = {{marginBottom: 10}} className={`form-control  ${timeData.negTimeSec ? "is-valid" : ""} ${(!timeData.negTimeSec && changed_4) ? "is-invalid" : ""}`}  value={timeData.negTimeSec} placeholder="反方用时（秒）" onChange={(e) => setChanged_4(true) & setTimeData({ ...timeData, negTimeSec: e.target.value })} />
 
 
         <button  type="submit" className="btn btn-primary SWbutton " data-toggle="modal" value='Save Form' >
@@ -143,4 +157,4 @@ const Vote = () => {
   )
 }
 
-export default Vote
+export default TimeFan

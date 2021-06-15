@@ -21,10 +21,9 @@ const ResultChoose = () => {
       setShowS(false);
       return;
     }
-    // console.log(resultChooseData)
     if(resultChooseData.isRoadShow){ 
       setTimeout(() => history.push({
-        pathname: '/',
+        pathname: '/resultFan',
         indexT: resultChooseData.indexT
       }), 1000);
     }
@@ -58,8 +57,13 @@ const ResultChoose = () => {
     const res = await fetch('http://localhost:5000'+'/registerTopic/'+indexT)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
-    setResultChooseData({ ...resultChooseData, isRoadShow: data[0].isRoadShow });
-
+    try{
+      setResultChooseData({ ...resultChooseData, isRoadShow: data[0].isRoadShow });
+    }
+    catch(err){
+      return;
+    }
+    
   }
 
   const choose = (e) => {

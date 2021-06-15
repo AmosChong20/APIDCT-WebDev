@@ -54,7 +54,9 @@ const GradingBestCand = () => {
             bestCandList.push(...x.selected)
         })
         const top=maxFreq(bestCandList);
+        if(top.length>1){
 
+        }
 
 
 
@@ -80,9 +82,10 @@ const GradingBestCand = () => {
                 'Content-type': 'application/json',
             },
             body: JSON.stringify({
-                selected: selected,
-                token: location.token,
-                indexT: location.indexT
+                selected:selected,
+                token:location.token,
+                indexT:location.indexT,
+                judgeChiName:location.judgeChiName
             }),
         })
         const data = await res.json()
@@ -121,10 +124,12 @@ const GradingBestCand = () => {
                 <Alert show={showF} className="alert" variant="danger" onClose={() => setShowF(false)} dismissible>
                     <Alert.Heading className="alertHeading"> 提交失败 ！/ Registration Failed ！ </Alert.Heading>
                 </Alert>
-
+                <div className="register_header">
+                    <span> 正赛 </span>
+                </div>
                 <Stepper step={4} />
                 <div className="register_header d-flex justify-content-center">
-                    <span> 印象票 </span>
+                    <span> 最佳辩手 </span>
                 </div>
                 <div className="regBlock row">
                     <form className="col-12 regForm" noValidate onSubmit={onSubmit}>

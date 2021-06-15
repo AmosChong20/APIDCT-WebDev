@@ -11,7 +11,7 @@ import {useHistory} from 'react-router';
 
 const GradingSummaryFan = () => {
   const location = useLocation();
-  const [gradingSummaryFanData, setGradingSummaryFanData] = useState ({token:location.token, indexT: location.indexT ,summary: 0 });
+  const [gradingSummaryFanData, setGradingSummaryFanData] = useState ({token:location.token, indexT: location.indexT ,judgeChiName:location.judgeChiName ,summary: 0 });
 
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
@@ -67,7 +67,9 @@ const GradingSummaryFan = () => {
         <Alert show={showF} className= "alert" variant="danger" onClose={() => setShowF(false)} dismissible>
           <Alert.Heading className = "alertHeading"> 提交失败 ！/ Submission Failed ！ </Alert.Heading>
         </Alert>
-
+        <div className="fan_title">
+          <span> 返尔赛 </span>
+        </div>
         <StepperFan step={2} />
         <div className="register_header d-flex justify-content-center">
            <span> 总结票 </span>
