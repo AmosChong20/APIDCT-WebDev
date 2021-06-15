@@ -29,7 +29,7 @@ const ResultChoose = () => {
     }
     else{
       setTimeout(() => history.push({
-        pathname: '/',
+        pathname: '/result',
         indexT: resultChooseData.indexT
       }), 1000);
     }

@@ -53,6 +53,7 @@ const GradingImpression = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
+    setDialogOpen(false);
     if (!impression) {
       setShowF(true);
       setShowS(false);
@@ -64,6 +65,7 @@ const GradingImpression = () => {
 
     addGradingImpression(impression);
     setImpression(0);
+    
 
     setTimeout(() => history.push({
       pathname: '/gradingBestCand',
@@ -81,7 +83,7 @@ const GradingImpression = () => {
         open={dialogOpen}
         setOpen={setDialogOpen}
         submit={onSubmit}
-        content={<div><div style={{ marginBottom: "10px" }} className="d-flex justify-content-center">您选择的是</div><h3 className="d-flex justify-content-center">{impression === 1 ? "正方" : "反方"}</h3></div>} 
+        content={<div><div style={{ marginBottom: "10px" }} className="d-flex justify-content-center">您选择的是</div><h3 className="d-flex justify-content-center">{impression === 1 ? "正方" : impression===2?"反方":""}</h3></div>} 
         />
       <div className="container main_block">
         <Alert show={showS} className="alert" variant="success" onClose={() => setShowS(false)} dismissible>

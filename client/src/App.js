@@ -13,6 +13,7 @@ import RegisterTest from './views/RegisterTest'
 import SchoolList from './views/SchoolList'
 import Portfolio from './views/Portfolio';
 import Match from './views/Match';
+import Bracket from './views/Bracket'
 
 import './App.css';
 import StarWars from './views/StarWars';
@@ -41,7 +42,9 @@ import Vote from './views/Vote';
 import Test from './views/Test';
 import ResultChoose from './views/ResultChoose';
 import ResultFan from './views/ResultFan';
+import Result from './views/Result';
 import TimeFan from './views/TimeFan';
+import MatchUpTable from './views/MatchUpTable';
 
 
 
@@ -86,6 +89,7 @@ const App = () => {
                     <Route path="/vote" exact component={Vote} />
                     <Route path="/resultChoose" exact component={ResultChoose} />
                     <Route path="/resultFan" exact component={ResultFan} />
+                    <Route path="/result" exact component={Result} />
                     <Route path="/timeFan" exact component={TimeFan} />
 
                     <Route path="/starwarslistmy" exact component={StarwarsListmy} />
@@ -97,6 +101,8 @@ const App = () => {
                     <Route path="/starwarslistuk" exact component={StarwarsListuk} />
                     <Route path="/portfolio" exact component={Portfolio} />
                     <Route path="/match" exact component={Match} />
+                    <Route path="/matchUpTable" exact component={MatchUpTable} />
+                    <Route path="/bracket" exact component={Bracket} />
                 </Switch>
                 {/* <Footer /> */}
             </div>

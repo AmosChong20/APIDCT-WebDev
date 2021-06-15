@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect} from 'react'
 import Footer from '../components/Footer'
 import Alert from 'react-bootstrap/Alert';
 import { useHistory } from "react-router-dom";
@@ -9,13 +9,8 @@ const JudgeLogin = () => {
   const [judgeLoginData,setJudgeLoginData] = useState({token : '', indexT: '',isRoadShow: ''});
   const [time,setTime] = useState({hour:'',minute:'',day:''});
   const [changed, setChanged] = useState(false);
-  const [checked, setChecked] = useState(false);
-  const [changed_1, setChanged_1] = useState(false);
-  const[topics,setTopics] = useState([]);
-  const [start,setStart] = useState(true);
 
   const [dataf,setDataf] = useState([]);
-  const [datat,setDatat] = useState ([]);
   const [showS, setShowS] = useState(false);
   const [showI, setShowI] = useState(false);
   const [showF, setShowF] = useState(false);

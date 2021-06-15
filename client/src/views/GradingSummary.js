@@ -55,6 +55,7 @@ const GradingSummary = () => {
 
   const onSubmit = (e) =>{
     e.preventDefault()
+    setDialogOpen(false);
     if(!summary){
       setShowF(true);
       setShowS(false);
@@ -90,7 +91,7 @@ const GradingSummary = () => {
                     open={dialogOpen}
                     setOpen={setDialogOpen}
                     submit={onSubmit}
-                    content={<div><div style={{marginBottom:"10px"}} className="d-flex justify-content-center">您选择的是</div><h3 className="d-flex justify-content-center">{summary === 1 ? "正方" : "反方"}</h3></div>} 
+                    content={<div><div style={{marginBottom:"10px"}} className="d-flex justify-content-center">您选择的是</div><h3 className="d-flex justify-content-center">{summary === 1 ? "正方" : summary===2?"反方":""}</h3></div>} 
                     />
         <div className="register_header">
           <span> 正赛 </span>

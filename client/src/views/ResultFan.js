@@ -17,7 +17,7 @@ import {useHistory} from 'react-router';
 import './css/ResultFan.css';
 
 
-const GradingFan = () => {
+const ResultFan = () => {
   const [start,setStart] = useState(true);
   const [cal,setCal] = useState(true);
   const [showS, setShowS] = useState(false);
@@ -321,23 +321,24 @@ const GradingFan = () => {
               </TableCell>
             </TableRow>
 
-            <TableRow >
-              <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>总结票</div></TableCell>
-              <TableCell align="left">
-                <div  style={{ fontSize: "120%" }}>{scoreSF.aff}</div> 
-              </TableCell>
-              <TableCell align="left">
-                <div  style={{ fontSize: "120%" }}>{scoreSF.neg}</div> 
-              </TableCell>
-            </TableRow>
 
-            <TableRow className = "shade">
+            <TableRow >
               <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>分数票</div></TableCell>
               <TableCell align="left">
                 <div  style={{ fontSize: "120%" }}>{scoreF.aff}</div> 
               </TableCell>
               <TableCell align="left">
                 <div  style={{ fontSize: "120%" }}>{scoreF.neg}</div> 
+              </TableCell>
+            </TableRow>
+
+            <TableRow className = "shade">
+              <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>总结票</div></TableCell>
+              <TableCell align="left">
+                <div  style={{ fontSize: "120%" }}>{scoreSF.aff}</div> 
+              </TableCell>
+              <TableCell align="left">
+                <div  style={{ fontSize: "120%" }}>{scoreSF.neg}</div> 
               </TableCell>
             </TableRow>
 
@@ -422,8 +423,8 @@ const GradingFan = () => {
               <TableCell align="center" colSpan={1}><div><h2>反方</h2></div></TableCell>
             </TableRow>
           </TableHead>
-          {dataF.map(data => (
-            <TableBody>
+          {dataF.map((data,index) => (
+            <TableBody key = {index}>
               <TableRow className ="rowResult">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>{data.judgeChiName}</div></TableCell>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>{data.affTotal}</div> </TableCell>
@@ -450,8 +451,8 @@ const GradingFan = () => {
               <TableCell align="center" colSpan={2}><div><h2>选择</h2></div></TableCell>
             </TableRow>
           </TableHead>
-          {dataIF.map(data => (
-            <TableBody>
+          {dataIF.map((data,index)  => (
+            <TableBody key = {index}>
               <TableRow className ="rowResult">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>{data.judgeChiName}</div></TableCell>
                 { (data.impression === 1) ? <TableCell align="center" colSpan={2}><div style={{ fontSize: "170%" }}>正方</div></TableCell> : <TableCell align="center" colSpan={2}><div style={{ fontSize: "170%" }}>反方</div></TableCell> }
@@ -466,4 +467,4 @@ const GradingFan = () => {
   );
 }
 
-export default GradingFan;
+export default ResultFan;

@@ -7,12 +7,6 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 export default function GradingDialog(props) {
-  const [open, setOpen] = React.useState(props.open);
-
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
-
   const handleClose = () => {
     props.setOpen(false);
   };

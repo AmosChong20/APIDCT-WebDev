@@ -8,7 +8,6 @@ import './css/Vote.css'
 const Vote = () => {
   const [voteData,setVoteData] = useState({indexT: '', affVote: '', negVote: ''});
   const [time,setTime] = useState({hour:'',minute:'',day:''});
-  const [changed, setChanged] = useState(false);
   const [changed_1, setChanged_1] = useState(false);
   const [changed_2, setChanged_2] = useState(false);
 
@@ -60,7 +59,6 @@ const Vote = () => {
     setVoteData ({indexT: '', affVote: '', negVote: ''});
 
     setTopics([]);
-    setChanged(false)
     setChanged_1(false);
     setChanged_2(false);
   }
@@ -95,7 +93,7 @@ const Vote = () => {
         }
       }
       array = array.filter(function () { return true });
-      console.log(array)
+      // console.log(array)
       setTopics(array);
     });
   }
@@ -105,7 +103,7 @@ const Vote = () => {
       fetchTopic();
       setStart(false);
     }
-  },[start])
+  },[start,fetchTopic])
 
     
   return (
@@ -122,7 +120,7 @@ const Vote = () => {
         </div>
         
 
-        <Form.Control  className="JudgeLoginSel" as="select" onChange={(e) =>  setChanged(true) & setVoteData({ ...voteData, indexT: e.target.value }) }>
+        <Form.Control  className="JudgeLoginSel" as="select" onChange={(e) =>  setVoteData({ ...voteData, indexT: e.target.value }) }>
             <option value = '0' >
               请选择辩题
             </option>

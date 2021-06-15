@@ -239,18 +239,29 @@ const GradingTable = () => {
   return (
     <section className="header-gradient">
       <GradingDialog open={dialogOpen} setOpen={setDialogOpen} content={<div>
-        <h3>正方</h3>
+        <Table aria-label="caption table">
+              <caption></caption>
+              <colgroup>
+                <col style={{ width: '12%' }} />
+                <col style={{ width: '15%' }} />
+                <col style={{ width: '15%' }} />
+                <col style={{ width: '15%' }} />
+                <col style={{ width: '15%' }} />
+                <col style={{ width: '15%' }} />
+              </colgroup>
+              <TableHead>
+                <TableRow>
+                  <TableCell colSpan={6}><div><h4>正方</h4></div></TableCell></TableRow>
+              </TableHead>
         <TableBody>
           {rows.slice(0, 4).map((row) => (
             <TableRow key={row.id}>
-              <TableCell component="th" scope="row">
-                {speaker[row.name]}
-              </TableCell>
+              <TableCell component="th" scope="row"><div>{speaker[row.name]}</div></TableCell>
               <TableCell align="right"><div>{title[row.name]['mark1'].slice(0,-5)}</div>{row.mark1}</TableCell>
               <TableCell align="right">{title[row.name]['mark2']==='-'?'-':<div><div>{title[row.name]['mark2'].slice(0,-5)}</div>{row.mark2}</div>}</TableCell>
               <TableCell align="right">{title[row.name]['mark3']==='-'?'-':<div><div>{title[row.name]['mark3'].slice(0,-5)}</div>{row.mark3}</div>}</TableCell>
               <TableCell align="right"><div>{title[row.name]['mark4'].slice(0,-5)}</div>{row.mark4}</TableCell>
-              <TableCell align="right">{'总分'}{row.subt}</TableCell>
+              <TableCell align="left"><div>{'总分'}</div>{row.subt}</TableCell>
             </TableRow>
           ))}
           <TableRow>
@@ -266,18 +277,30 @@ const GradingTable = () => {
             <TableCell align="right" colSpan={5}><div style={{ fontSize: "130%" }}>总分(400分)</div></TableCell><TableCell align="left"><div style={{ fontSize: "130%", fontWeight: "bolder" }}>{affTotal}</div></TableCell>
           </TableRow>
         </TableBody>
-        <h3>反方</h3>
+        </Table>
+        <Table aria-label="caption table">
+              <caption></caption>
+              <colgroup>
+                <col style={{ width: '12%' }} />
+                <col style={{ width: '15%' }} />
+                <col style={{ width: '15%' }} />
+                <col style={{ width: '15%' }} />
+                <col style={{ width: '15%' }} />
+                <col style={{ width: '15%' }} />
+              </colgroup>
+              <TableHead>
+                <TableRow>
+                  <TableCell colSpan={6}><div><h4>反方</h4></div></TableCell></TableRow>
+              </TableHead>
         <TableBody>
           {rows.slice(4, 8).map((row) => (
             <TableRow key={row.id}>
-              <TableCell component="th" scope="row">
-                {speaker[row.name]}
-              </TableCell>
+              <TableCell component="th" scope="row"><div>{speaker[row.name]}</div></TableCell>
               <TableCell align="right"><div>{title[row.name]['mark1'].slice(0,-5)}</div>{row.mark1}</TableCell>
               <TableCell align="right">{title[row.name]['mark2']==='-'?'-':<div><div>{title[row.name]['mark2'].slice(0,-5)}</div>{row.mark2}</div>}</TableCell>
               <TableCell align="right">{title[row.name]['mark3']==='-'?'-':<div><div>{title[row.name]['mark3'].slice(0,-5)}</div>{row.mark3}</div>}</TableCell>
               <TableCell align="right"><div>{title[row.name]['mark4'].slice(0,-5)}</div>{row.mark4}</TableCell>
-              <TableCell align="right"><div>{'总分'}</div>{row.subt}</TableCell>
+              <TableCell align="left"><div>{'总分'}</div>{row.subt}</TableCell>
             </TableRow>
           ))}
           <TableRow>
@@ -292,7 +315,7 @@ const GradingTable = () => {
           <TableRow>
             <TableCell align="right" colSpan={5}><div style={{ fontSize: "130%" }}>总分(400分)</div></TableCell><TableCell align="left"><div style={{ fontSize: "130%", fontWeight: "bolder" }}>{negTotal}</div></TableCell>
           </TableRow>
-        </TableBody>
+        </TableBody></Table>
         </div>
       } 
       submit={onSubmit} />

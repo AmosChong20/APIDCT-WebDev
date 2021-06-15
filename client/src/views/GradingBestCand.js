@@ -59,6 +59,7 @@ const GradingBestCand = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
+        setDialogOpen(false);
         if (selected.includes('') || new Set(selected).size !== selected.length) {
             setShowF(true);
             setShowS(false);
