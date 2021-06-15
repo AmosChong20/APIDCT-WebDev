@@ -44,6 +44,7 @@ import ResultChoose from './views/ResultChoose';
 import ResultFan from './views/ResultFan';
 import Result from './views/Result';
 import TimeFan from './views/TimeFan';
+import MatchUpTable from './views/MatchUpTable';
 
 
 
@@ -100,6 +101,7 @@ const App = () => {
                     <Route path="/starwarslistuk" exact component={StarwarsListuk} />
                     <Route path="/portfolio" exact component={Portfolio} />
                     <Route path="/match" exact component={Match} />
+                    <Route path="/matchUpTable" exact component={MatchUpTable} />
                     <Route path="/bracket" exact component={Bracket} />
                 </Switch>
                 {/* <Footer /> */}
