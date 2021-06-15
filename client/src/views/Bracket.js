@@ -2,11 +2,11 @@ import React from 'react'
 import './css/match.css';
 import Footer from '../components/Footer'
 
-const Match = () => {
+const Bracket = () => {
   return (
 
       <div className="container">
-      <div className="AB">
+        <div className="AB">
           <div>&nbsp</div><div>东吴大学</div><div className="groupName">&nbsp</div>
           <div>A</div><div>苏州大学</div><div className="groupName">&nbsp</div>
           <div>&nbsp</div><div>UCSI大学</div><div className="groupName">A</div>
@@ -55,7 +55,7 @@ const Match = () => {
           <div className="groupName">&nbsp</div><div>剑桥大学</div><div>&nbsp</div>
         </div>
         <div className="Final">
-          <img src={"https://apicdt.com/static/media/yatai%2010th%20logo700.3a6e5e52.png"}>
+          <img src={"https://apicdt.com/static/media/yatai%2010th%20logo700.3a6e5e52.png"}/>
         </div>
         <div className="SemiFinalOne">
           <div>&nbsp</div><div>&nbsp</div><div>&nbsp</div>
@@ -83,10 +83,9 @@ const Match = () => {
           <div>&nbsp</div>
           <div>晋级队伍4</div>
         </div>
-      </div>
       <Footer/>
-
+    </div>
   )
 }
 
-export default Match
+export default Bracker
