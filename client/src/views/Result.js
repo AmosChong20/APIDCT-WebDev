@@ -36,7 +36,7 @@ const Grading = () => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('http://localhost:5000'+'/registerTopic/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/registerTopic/'+indexT)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     setDataT(data)
@@ -48,7 +48,7 @@ const Grading = () => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('http://localhost:5000'+'/gradingSummary/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/gradingSummary/'+indexT)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     setDataS(data)
@@ -57,7 +57,7 @@ const Grading = () => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('http://localhost:5000'+'/gradingImpression/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/gradingImpression/'+indexT)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     setDataI(data)
@@ -66,7 +66,7 @@ const Grading = () => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('http://localhost:5000'+'/gradingTable/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/gradingTable/'+indexT)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     setDataTable(data)
@@ -75,7 +75,7 @@ const Grading = () => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('http://localhost:5000'+'/gradingBestCand/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/gradingBestCand/'+indexT)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     setDataBC(data)
@@ -84,7 +84,7 @@ const Grading = () => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('http://localhost:5000'+'/gradingBestFinal/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/gradingBestFinal/'+indexT)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     setDataBF(data)

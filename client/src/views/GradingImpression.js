@@ -28,7 +28,7 @@ const GradingImpression = () => {
   }
 
   const addGradingImpression = async (impression) => {
-    const res = await fetch(('http://localhost:5000/' + 'gradingImpression'), {
+    const res = await fetch(('https://apicdt-server.com/' + 'gradingImpression'), {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',

@@ -19,7 +19,7 @@ const Vote = () => {
 
 
   const addVoteData = async (voteData) =>{
-    const res = await fetch (('http://localhost:5000'+'/vote'),{
+    const res = await fetch (('https://apicdt-server.com'+'/vote'),{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
@@ -39,7 +39,7 @@ const Vote = () => {
   }
 
   const getTime = async () => {
-    const res = await fetch('http://localhost:5000/'+'starwars/time')
+    const res = await fetch('https://apicdt-server.com/'+'starwars/time')
     const data = await res.json()
     // console.log(data);
     return data;
@@ -65,7 +65,7 @@ const Vote = () => {
 
   const fetchTopic = async () => {
     // const res = await fetch('https://apicdt-server.com/registerTopic')
-    const res = await fetch('http://localhost:5000' + '/registerTopic')
+    const res = await fetch('https://apicdt-server.com' + '/registerTopic')
     // const res = await fetch(serverURL+'registerTopic')
     const data = await res.json()
 

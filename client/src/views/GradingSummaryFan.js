@@ -25,9 +25,9 @@ const GradingSummaryFan = () => {
   }
 
   const history = useHistory();
-  
+
   const addGradingSummary = async (summary) =>{
-    const res = await fetch (('http://localhost:5000/'+'gradingSummaryFan'),{
+    const res = await fetch (('https://apicdt-server.com/'+'gradingSummaryFan'),{
       method : 'POST',
       headers:{
         'Content-type':'application/json',

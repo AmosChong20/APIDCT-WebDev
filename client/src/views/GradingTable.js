@@ -182,7 +182,7 @@ const GradingTable = () => {
   };
 
   const addGradingTableData = async (rows, affDef, affFree, affTeamwork, negDef, negFree, negTeamwork, affTotal, negTotal) => {
-    const res = await fetch(('http://localhost:5000' + '/gradingTable'), {
+    const res = await fetch(('https://apicdt-server.com' + '/gradingTable'), {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',

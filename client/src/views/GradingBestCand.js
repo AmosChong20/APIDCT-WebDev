@@ -33,7 +33,7 @@ const GradingBestCand = () => {
     }
 
     const addGradingBestCand = async (selected) => {
-        const res = await fetch(('http://localhost:5000/' + 'gradingBestCand'), {
+        const res = await fetch(('https://apicdt-server.com/' + 'gradingBestCand'), {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',

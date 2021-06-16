@@ -47,7 +47,7 @@ const RegisterJudge = () => {
   });
 
   const UpdateJudgeData = async (updateJudgeData) =>{
-    const res = await fetch (('http://localhost:5000'+'/registerJudge/'+updateJudgeData.token),{
+    const res = await fetch (('https://apicdt-server.com'+'/registerJudge/'+updateJudgeData.token),{
       method : 'PUT',
       headers:{
         'Content-type':'application/json',
@@ -71,7 +71,7 @@ const RegisterJudge = () => {
 
   const fetchTopic = async () => {
     // const res = await fetch('https://apicdt-server.com/registerTopic')
-    const res = await fetch('http://localhost:5000' + '/registerTopic')
+    const res = await fetch('https://apicdt-server.com' + '/registerTopic')
     // const res = await fetch(serverURL+'registerTopic')
     const data = await res.json()
     setTopics(data);
@@ -87,7 +87,7 @@ const RegisterJudge = () => {
       return;
     }
     
-    const res = await fetch('http://localhost:5000'+'/registerJudge/'+token)
+    const res = await fetch('https://apicdt-server.com'+'/registerJudge/'+token)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+token)
     const data = await res.json()
 

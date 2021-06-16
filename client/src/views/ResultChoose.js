@@ -40,7 +40,7 @@ const ResultChoose = () => {
 
   const fetchTopic = async () => {
     // const res = await fetch('https://apicdt-server.com/registerTopic')
-    const res = await fetch('http://localhost:5000' + '/registerTopic')
+    const res = await fetch('https://apicdt-server.com' + '/registerTopic')
     // const res = await fetch(serverURL+'registerTopic')
     const data = await res.json()
 
@@ -54,7 +54,7 @@ const ResultChoose = () => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('http://localhost:5000'+'/registerTopic/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/registerTopic/'+indexT)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     try{

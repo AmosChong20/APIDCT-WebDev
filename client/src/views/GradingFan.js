@@ -305,7 +305,7 @@ const GradingFan = () => {
 
 
   const addGradingFanData = async (gradingFanData) =>{
-    const res = await fetch (('http://localhost:5000'+'/gradingFan'),{
+    const res = await fetch (('https://apicdt-server.com'+'/gradingFan'),{
       method : 'POST',
       headers:{
         'Content-type':'application/json',

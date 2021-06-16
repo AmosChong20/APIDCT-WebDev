@@ -30,7 +30,7 @@ const GradingBestCand = () => {
         if (indexT === '') {
             return;
         }
-        const res = await fetch('http://localhost:5000' + '/gradingTable/' + indexT)
+        const res = await fetch('https://apicdt-server.com' + '/gradingTable/' + indexT)
         // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
         const data = await res.json()
         setDataTable(data)
@@ -39,7 +39,7 @@ const GradingBestCand = () => {
         if (indexT === '') {
             return;
         }
-        const res = await fetch('http://localhost:5000' + '/gradingBestCand/' + indexT)
+        const res = await fetch('https://apicdt-server.com' + '/gradingBestCand/' + indexT)
         // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
         const data = await res.json()
         setDataBC(data)
@@ -287,7 +287,7 @@ const GradingBestCand = () => {
     const history = useHistory();
 
     const addGradingBestFinal = async (selected) => {
-        const res = await fetch(('http://localhost:5000/' + 'gradingBestFinal'), {
+        const res = await fetch(('https://apicdt-server.com/' + 'gradingBestFinal'), {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
