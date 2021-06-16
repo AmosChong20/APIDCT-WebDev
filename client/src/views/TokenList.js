@@ -1,63 +1,69 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { React, useState, useEffect } from 'react';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+
+import Footer from '../components/Footer'
 
 const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
+    table: {
+        minWidth: 650,
+    },
 });
-
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const [tokenList,setTokenList]=useState([]);
-
-const fetchToken = async (indexT) => {
-    if (indexT === '') {
-        return;
-    }
-    const res = await fetch('http://localhost:5000' + '/registerJudge/' + indexT)
-    const data = await res.json()
-    setTokenList(data)
-}
-
+const StyledTableRow = withStyles((theme) => ({
+    root: {
+        '&:nth-of-type(odd)': {
+            backgroundColor: theme.palette.action.hover,
+        },
+    },
+}))(TableRow);
 export default function TokenList() {
-  const classes = useStyles();
+    const classes = useStyles();
+    const [tokenList, setTokenList] = useState([]);
+    const [start, setStart] = useState(true);
 
-  return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {tokenList.map((row) => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
+    const fetchToken = async (indexT) => {
+        if (indexT === '') {
+            return;
+        }
+        const res = await fetch('http://localhost:5000' + '/registerJudge')
+        const data = await res.json()
+        setTokenList(data)
+    }
+
+    useEffect(() => {
+        if (start) {
+            fetchToken();
+            setStart(false);
+        }
+    });
+
+    return (
+        <section className="header-gradient"><div className="container main_block">
+            <div className="register_header">
+                <span> 评审代码列表 </span>
+            </div>
+            <Table className={classes.table} aria-label="simple table">
+                <TableHead>
+                    <TableRow>
+                        <TableCell align="center"><div style={{ fontSize: "150%" }}>评审姓名</div></TableCell>
+                        <TableCell align="center"><div style={{ fontSize: "150%" }}>评审代码</div></TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {tokenList.map((row) => (
+                        <StyledTableRow key={row.token}>
+                            <TableCell align="center" component="th" scope="row"><div style={{ fontSize: "130%" }}>{row.judgeChiName}</div></TableCell>
+                            <TableCell align="center"><div style={{ fontSize: "130%" }}>{row.token}</div></TableCell>
+                        </StyledTableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </div>
+            <Footer/>
+            </section>
+    );
 }

@@ -45,6 +45,7 @@ import ResultFan from './views/ResultFan';
 import Result from './views/Result';
 import TimeFan from './views/TimeFan';
 import MatchUpTable from './views/MatchUpTable';
+import TokenList from './views/TokenList';
 
 
 
@@ -103,6 +104,7 @@ const App = () => {
                     <Route path="/match" exact component={Match} />
                     <Route path="/matchUpTable" exact component={MatchUpTable} />
                     <Route path="/bracket" exact component={Bracket} />
+                    <Route path="/tokenlist" exact component={TokenList} />
                 </Switch>
                 {/* <Footer /> */}
             </div>
