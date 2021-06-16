@@ -4,15 +4,11 @@ import './css/RegisterJudge.css';
 import logo from '../assets/image/yatai 10th logo700.png';
 
 import Alert from 'react-bootstrap/Alert';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/BUtton';
-import inis from "../components/json/inis.json";
 
 
 import {serverURL} from '../config.js'
 
 import Footer from '../components/Footer'
-import StopicList from '../components/StopicList.js';
 
 const RegisterJudge = () => {
   const [registerJudgeData, setRegisterJudgeData] = useState ({judgeChiName : '',indexA : [] });
