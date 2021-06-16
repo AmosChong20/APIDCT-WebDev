@@ -71,7 +71,7 @@ const App = () => {
                     {/* <Route path="/starwars" exact component={StarWars} /> */}
                     {/* <Route path="/starwarslist" exact component={StarwarsList} /> */}
                     <Route path="/starwarslisttemp" exact component={StarwarsListTemp} />
-                    {/* <Route path="/registerJudge" exact component={RegisterJudge} />
+                    <Route path="/registerJudge" exact component={RegisterJudge} />
                     <Route path="/updateJudge" exact component={UpdateJudge} />
                     <Route path="/registerTopic" exact component={RegisterTopic} />
                     <Route path="/gradingTable" exact component={GradingTable} />
@@ -81,16 +81,16 @@ const App = () => {
                     <Route path="/gradingBestFinal" exact component={GradingBestFinal} />
                     <Route path="/gradingFan" exact component={GradingFan} />
                     <Route path="/gradingImpressionFan" exact component={GradingImpressionFan} />
-                    <Route path="/gradingSummaryFan" exact component={GradingSummaryFan} /> */}
+                    <Route path="/gradingSummaryFan" exact component={GradingSummaryFan} />
 
 
-                    {/* <Route path="/judgeLogin" exact component={JudgeLogin} />
+                    <Route path="/judgeLogin" exact component={JudgeLogin} />
                     <Route path="/test" exact component={Test} />
                     <Route path="/vote" exact component={Vote} />
                     <Route path="/resultChoose" exact component={ResultChoose} />
                     <Route path="/resultFan" exact component={ResultFan} />
                     <Route path="/result" exact component={Result} />
-                    <Route path="/timeFan" exact component={TimeFan} /> */}
+                    <Route path="/timeFan" exact component={TimeFan} />
 
                     {/* <Route path="/starwarslistmy" exact component={StarwarsListmy} />
                     <Route path="/starwarslistsg" exact component={StarwarsListsg} />
@@ -99,10 +99,10 @@ const App = () => {
                     <Route path="/starwarslistau" exact component={StarwarsListau} />
                     <Route path="/starwarslistcm" exact component={StarwarsListcm} />
                     <Route path="/starwarslistuk" exact component={StarwarsListuk} /> */}
-                    {/* <Route path="/portfolio" exact component={Portfolio} /> */}
-                    {/* <Route path="/match" exact component={Match} /> */}
+                    <Route path="/portfolio" exact component={Portfolio} />
+                    <Route path="/match" exact component={Match} />
                     <Route path="/matchUpTable" exact component={MatchUpTable} />
-                    {/* <Route path="/bracket" exact component={Bracket} /> */}
+                    <Route path="/bracket" exact component={Bracket} />
                 </Switch>
                 {/* <Footer /> */}
             </div>
