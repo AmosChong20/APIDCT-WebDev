@@ -11,7 +11,7 @@ import { serverURL } from '../config.js'
 import Footer from '../components/Footer'
 import './css/GradingBestCand.css'
 import Stepper from '../components/Stepper';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import GradingDialog from '../components/GradingDialog';
 
 const GradingBestCand = () => {
@@ -285,6 +285,8 @@ const GradingBestCand = () => {
         setSelected(newS);
     }
 
+    const history = useHistory();
+
     const addGradingBestFinal = async (selected) => {
         const res = await fetch(('http://localhost:5000/' + 'gradingBestFinal'), {
             method: 'POST',
@@ -302,6 +304,10 @@ const GradingBestCand = () => {
         if (res.status === 201) {
             setShowS(true);
             setShowF(false);
+            setTimeout(() => history.push({
+                pathname: '/',
+            }), 1000);
+    
         }
         else {
             setShowF(true);

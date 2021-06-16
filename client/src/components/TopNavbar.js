@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import logoRed from '../assets/image/logo-red.png'
 import logoWhite from '../assets/image/logo-white.png'
-import AuthButton from "./AuthButton"
+// import AuthButton from "./AuthButton"
 
 function TopNavbar() {
     const [navbarColor, setNavbarColor] = useState("transparent");

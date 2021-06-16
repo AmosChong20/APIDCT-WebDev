@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import React from 'react'
 import { useLocation } from "react-router-dom";
 import './css/RegisterJudge.css';
-import Alert from 'react-bootstrap/Alert';
 import { serverURL } from '../config.js'
 import Footer from '../components/Footer'
 import ReactDOM from "react-dom";
@@ -11,8 +10,6 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Input from "@material-ui/core/Input";
-import Checkbox from '@material-ui/core/Checkbox';
 import {useHistory} from 'react-router';
 import './css/ResultFan.css';
 
@@ -21,8 +18,6 @@ const Grading = () => {
   const [start,setStart] = useState(true);
   const [cal,setCal] = useState(true);
   const [cal1,setCal1] = useState(true);
-  const [showS, setShowS] = useState(false);
-  const [showF, setShowF] = useState(false);
   const [dataT, setDataT] = useState([]);
   const [dataTable, setDataTable] = useState([]);
   const [dataI, setDataI] = useState([]);
@@ -36,7 +31,6 @@ const Grading = () => {
   const [scoreS,setScoreSF] = useState({ aff : 0, neg : 0});
   const [scoreT,setScoreT] = useState({ aff : 0, neg : 0, winner : 0});
   const location = useLocation();
-  const history = useHistory();
 
   const findTZTopic = async (indexT) => {
     if(indexT === ''){

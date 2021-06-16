@@ -23,6 +23,9 @@ const GradingSummaryFan = () => {
       setGradingSummaryFanData({ ...gradingSummaryFanData, summary: parseInt(selectedTeam) })
     }
   }
+
+  const history = useHistory();
+  
   const addGradingSummary = async (summary) =>{
     const res = await fetch (('http://localhost:5000/'+'gradingSummaryFan'),{
       method : 'POST',
@@ -35,6 +38,9 @@ const GradingSummaryFan = () => {
     if (res.status === 201){
       setShowS(true);
       setShowF(false);
+      setTimeout(() => history.push({
+        pathname: '/',
+      }), 1000);
     }
     else{
       setShowF(true);
@@ -42,8 +48,8 @@ const GradingSummaryFan = () => {
     }
   }
 
-  const history = useHistory();
   
+
   const onSubmit = (e) =>{
     e.preventDefault()
     if(!gradingSummaryFanData.summary){
@@ -58,9 +64,7 @@ const GradingSummaryFan = () => {
     addGradingSummary(gradingSummaryFanData);
     setGradingSummaryFanData({ ...gradingSummaryFanData, summary: 0})
 
-    setTimeout(() => history.push({
-      pathname: '/',
-    }), 1000);
+
 
   }
 

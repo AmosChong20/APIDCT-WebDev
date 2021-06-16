@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import React from 'react'
 
 import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
-import inis from "../components/json/inis.json";
 
 
 import { serverURL } from '../config.js'
