@@ -65,13 +65,13 @@ const App = () => {
                 <Switch>
                     <Route path="/" exact component={Home} />
                     {/* <ProtectedRoute path="/page2" exact component={Page2} /> */}
-                    <Route path="/register" exact component={Register} />
+                    {/* <Route path="/register" exact component={Register} />
                     <Route path="/registerTest" exact component={RegisterTest} />
-                    <Route path="/schoolList" exact component={SchoolList} />
-                    <Route path="/starwars" exact component={StarWars} />
-                    <Route path="/starwarslist" exact component={StarwarsList} />
+                    <Route path="/schoolList" exact component={SchoolList} /> */}
+                    {/* <Route path="/starwars" exact component={StarWars} /> */}
+                    {/* <Route path="/starwarslist" exact component={StarwarsList} /> */}
                     <Route path="/starwarslisttemp" exact component={StarwarsListTemp} />
-                    <Route path="/registerJudge" exact component={RegisterJudge} />
+                    {/* <Route path="/registerJudge" exact component={RegisterJudge} />
                     <Route path="/updateJudge" exact component={UpdateJudge} />
                     <Route path="/registerTopic" exact component={RegisterTopic} />
                     <Route path="/gradingTable" exact component={GradingTable} />
@@ -81,28 +81,28 @@ const App = () => {
                     <Route path="/gradingBestFinal" exact component={GradingBestFinal} />
                     <Route path="/gradingFan" exact component={GradingFan} />
                     <Route path="/gradingImpressionFan" exact component={GradingImpressionFan} />
-                    <Route path="/gradingSummaryFan" exact component={GradingSummaryFan} />
+                    <Route path="/gradingSummaryFan" exact component={GradingSummaryFan} /> */}
 
 
-                    <Route path="/judgeLogin" exact component={JudgeLogin} />
+                    {/* <Route path="/judgeLogin" exact component={JudgeLogin} />
                     <Route path="/test" exact component={Test} />
                     <Route path="/vote" exact component={Vote} />
                     <Route path="/resultChoose" exact component={ResultChoose} />
                     <Route path="/resultFan" exact component={ResultFan} />
                     <Route path="/result" exact component={Result} />
-                    <Route path="/timeFan" exact component={TimeFan} />
+                    <Route path="/timeFan" exact component={TimeFan} /> */}
 
-                    <Route path="/starwarslistmy" exact component={StarwarsListmy} />
+                    {/* <Route path="/starwarslistmy" exact component={StarwarsListmy} />
                     <Route path="/starwarslistsg" exact component={StarwarsListsg} />
                     <Route path="/starwarslisthk" exact component={StarwarsListhk} />
                     <Route path="/starwarslistmc" exact component={StarwarsListmc} />
                     <Route path="/starwarslistau" exact component={StarwarsListau} />
                     <Route path="/starwarslistcm" exact component={StarwarsListcm} />
-                    <Route path="/starwarslistuk" exact component={StarwarsListuk} />
-                    <Route path="/portfolio" exact component={Portfolio} />
-                    <Route path="/match" exact component={Match} />
+                    <Route path="/starwarslistuk" exact component={StarwarsListuk} /> */}
+                    {/* <Route path="/portfolio" exact component={Portfolio} /> */}
+                    {/* <Route path="/match" exact component={Match} /> */}
                     <Route path="/matchUpTable" exact component={MatchUpTable} />
-                    <Route path="/bracket" exact component={Bracket} />
+                    {/* <Route path="/bracket" exact component={Bracket} /> */}
                 </Switch>
                 {/* <Footer /> */}
             </div>
