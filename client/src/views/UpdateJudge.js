@@ -111,17 +111,22 @@ const RegisterJudge = () => {
 
   }
 
+  const reset = () => {
+    document.getElementById("my_select").selectedIndex = 0; 
+  }
+
   const onSubmit = (e) =>{
     e.preventDefault()
     // console.log(isEmail1);
     updateJudgeData.indexA = stopics;
+    reset();
 
     if(updateJudgeData.token === '' ||
-    updateJudgeData.indexA === []){
+    updateJudgeData.indexA === [ ] ||
+    stopics === [ ]){
       setShowF(true);
       setShowS(false);
       setShowA(false);
-      console.log("ssss")
       return;
     }
 
@@ -180,8 +185,8 @@ const RegisterJudge = () => {
                 </div>
               </div>
               <div className = "row">
-                <Form.Control  className=" TopicSel col-9" as="select" onChange={(e) => getSelection(e)}>
-                    <option value = '0' >
+                <Form.Control  id = "my_select" className=" TopicSel col-9" as="select" onChange={(e) => getSelection(e)} autocomplete="off">
+                    <option value = '0' autocomplete="off">
                       请选择辩题
                     </option>
                     {topics.map(topic => (
