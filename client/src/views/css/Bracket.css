@@ -12,19 +12,19 @@
     "EF . . . KL";
 }
 
-.mainBlockBracket{
-  color:#3B454C;
-  background-color:#FFFFFF;
+.mainBlockBracket {
+  color: #3b454c;
+  background-color: #ffffff;
   /* margin: auto; */
   margin-left: 7.5%;
   margin-right: 7.5%;
-  margin-top: 8%; 
-  border:1px solid #cecece;
+  margin-top: 8%;
+  border: 1px solid #cecece;
   border-radius: 0.5rem;
   padding: 5%;
-  padding-top:1%;
-  padding-bottom:3%;
-  margin-bottom:3%;
+  padding-top: 1%;
+  padding-bottom: 3%;
+  margin-bottom: 3%;
   box-shadow: 0rem 0rem 0.5rem #8d8d8d;
   width: 85% !important;
 }
@@ -143,7 +143,7 @@
   grid-auto-flow: row;
   grid-template-areas:
     ". . ."
-    ". . ."
+    "bracketSemiFinalTitle bracketSemiFinalTitle bracketSemiFinalTitle"
     ". . ."
     ". . ."
     ". . ."
@@ -198,7 +198,47 @@
 }
 
 .groupName {
-  background-color: purple;
+  background-color: #6353f0;
+}
+
+.bracket6C4 {
+  justify-self: center;
+  align-self: flex-end;
+  font-size: x-large;
+  color: white;
+}
+.bracket6C4 span {
+  background-color: #6353f0;
+  border-radius: 2rem;
+}
+
+.bracketPromotedTeam {
+  justify-self: center;
+  font-size: large;
+}
+
+.bracketPromotedTeam span {
+  border: 1px solid black;
+  color: #6353f0;
+  border-radius: 2rem;
+}
+
+.bracketSemiFinalTitleOne {
+  grid-area: bracketSemiFinalTitle;
+  justify-self: center;
+  align-self: flex-end;
+}
+.bracketSemiFinalTitleOne span {
+  border-radius: 2rem;
+  background-color: lightslategrey;
+  font-size: xx-large;
+  color: white;
+}
+.bracketSemiFinalTitleTwo span {
+  border-radius: 2rem;
+  background-color: lightslategrey;
+  font-size: xx-large;
+  color: white;
 }
 
 /* html, body , .container {
