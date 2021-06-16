@@ -58,6 +58,7 @@ function TopNavbar() {
                     {/* <NavLink to="/schoolList" exact className="nav-link" activeClassName="router-link-exact-active"> 查看报名学校 </NavLink> */}
                     {/* <NavLink to="/starwars" exact className="nav-link" activeClassName="router-link-exact-active"> 电子抽签 </NavLink> */}
                     <NavLink to="/starwarslisttemp" exact className="nav-link" activeClassName="router-link-exact-active"> 查看电子抽签成绩 </NavLink>
+                    <NavLink to="/matchUpTable" exact className="nav-link" activeClassName="router-link-exact-active"> 对垒表 </NavLink>
                 </Nav>
                {/*} <Nav className="" onClick={closeExpanded}>
                     <AuthButton/>
