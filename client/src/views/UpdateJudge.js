@@ -121,6 +121,7 @@ const RegisterJudge = () => {
       setShowF(true);
       setShowS(false);
       setShowA(false);
+      console.log("ssss")
       return;
     }
 
@@ -175,7 +176,7 @@ const RegisterJudge = () => {
               </div>
               <div className="row schoolPartForm">
                 <div className="mb-3 col-12">
-                  <input type="text" className={`form-control englsihF  ${updateJudgeData.token ? "is-valid" : ""} ${(!updateJudgeData.token && changed_1) ? "is-invalid" : ""}`}  value={updateJudgeData.judgeChiName} placeholder="评审代码" onChange={(e) => setChanged_1(true) & setUpdateJudgeData({ ...updateJudgeData, token: e.target.value })} />
+                  <input type="text" className={`form-control englsihF  ${updateJudgeData.token ? "is-valid" : ""} ${(!updateJudgeData.token && changed_1) ? "is-invalid" : ""}`}  value={updateJudgeData.token} placeholder="评审代码" onChange={(e) => setChanged_1(true) & setUpdateJudgeData({ ...updateJudgeData, token: e.target.value })} />
                 </div>
               </div>
               <div className = "row">
