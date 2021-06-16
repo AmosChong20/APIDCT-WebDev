@@ -3,15 +3,10 @@ import React from 'react'
 import './css/RegisterJudge.css';
 import { useLocation, useHistory } from "react-router-dom";
 import Alert from 'react-bootstrap/Alert';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/BUtton';
-import inis from "../components/json/inis.json";
-
 
 import { serverURL } from '../config.js'
 
 import Footer from '../components/Footer'
-import StopicList from '../components/StopicList.js';
 import GradingDialog from '../components/GradingDialog'
 
 import ReactDOM from "react-dom";
@@ -23,7 +18,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Input from "@material-ui/core/Input";
 import Stepper from '../components/Stepper';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
 const useStyles = makeStyles(theme => ({
