@@ -4,7 +4,6 @@ import './css/Register.css';
 import logo from '../assets/image/yatai 10th logo700.png';
 
 import Alert from 'react-bootstrap/Alert';
-import Form from 'react-bootstrap/Form';
 
 import {serverURL} from '../config.js'
 
