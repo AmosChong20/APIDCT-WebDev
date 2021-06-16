@@ -76,6 +76,16 @@ const GradingSummary = () => {
     }), 1000);
   }
   
+  const checkSelected = () =>{
+    if(!summary){
+      setShowF(true);
+      setShowS(false);
+      setTimeout(() => {setShowF(false)}, 1000);
+      return;
+    }
+    setDialogOpen(true)
+  } 
+
   const history = useHistory();
 
   return (
@@ -88,11 +98,11 @@ const GradingSummary = () => {
           <Alert.Heading className = "alertHeading"> 提交失败 ！/ Submission Failed ！ </Alert.Heading>
         </Alert>
         <GradingDialog
-                    open={dialogOpen}
-                    setOpen={setDialogOpen}
-                    submit={onSubmit}
-                    content={<div><div style={{marginBottom:"10px"}} className="d-flex justify-content-center">您选择的是</div><h3 className="d-flex justify-content-center">{summary === 1 ? "正方" : summary===2?"反方":""}</h3></div>} 
-                    />
+          open={dialogOpen}
+          setOpen={setDialogOpen}
+          submit={onSubmit}
+          content={<div><div style={{marginBottom:"10px"}} className="d-flex justify-content-center">您选择的是</div><h3 className="d-flex justify-content-center">{summary === 1 ? "正方" : summary===2?"反方":""}</h3></div>} 
+          />
         <div className="register_header">
           <span> 正赛 </span>
         </div>
@@ -109,7 +119,7 @@ const GradingSummary = () => {
             </div>
             <div className="d-flex justify-content-center">{summary===0?"":<div><span>您选择的是：</span><span>{summary===1?"正方":"反方"}</span></div>}</div>
  
-            <button  type="button" onClick={() => setDialogOpen(true)} className="btn sub btn btn-primary" data-toggle="modal" data-target="#exampleModal" value='Save Form'>
+            <button  type="button" onClick={checkSelected} className="btn sub btn btn-primary" data-toggle="modal" data-target="#exampleModal" value='Save Form'>
               <span className = "englishF"> Submit / </span> <span> 提交 </span>
             </button>
           </form>

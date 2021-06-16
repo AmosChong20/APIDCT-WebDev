@@ -53,15 +53,6 @@ const GradingImpression = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    setDialogOpen(false);
-    if (!impression) {
-      setShowF(true);
-      setShowS(false);
-      return;
-    }
-
-    setShowF(false);
-    setShowS(true);
 
     addGradingImpression(impression);
     setImpression(0);
@@ -74,6 +65,16 @@ const GradingImpression = () => {
       judgeChiName: location.judgeChiName
     }), 1000);
   }
+
+  const checkSelected = () =>{
+    if(!impression){
+      setShowF(true);
+      setShowS(false);
+      setTimeout(() => {setShowF(false)}, 1000);
+      return;
+    }
+    setDialogOpen(true)
+  } 
 
   const history = useHistory();
 
@@ -108,7 +109,7 @@ const GradingImpression = () => {
             </div>
             <div className="d-flex justify-content-center">{impression === 0 ? "" : <div><span>您选择的是：</span><span>{impression === 1 ? "正方" : "反方"}</span></div>}</div>
 
-            <button type="button" className="btn sub btn btn-primary" onClick={() => setDialogOpen(true)} data-toggle="modal" data-target="#exampleModal" value='Save Form'>
+            <button type="button" className="btn sub btn btn-primary" onClick={checkSelected} data-toggle="modal" data-target="#exampleModal" value='Save Form'>
               <span className="englishF"> Submit / </span> <span> 提交 </span>
             </button>
           </form>

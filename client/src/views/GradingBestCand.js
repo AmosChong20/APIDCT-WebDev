@@ -60,14 +60,6 @@ const GradingBestCand = () => {
     const onSubmit = (e) => {
         e.preventDefault()
         setDialogOpen(false);
-        if (selected.includes('') || new Set(selected).size !== selected.length) {
-            setShowF(true);
-            setShowS(false);
-            return;
-        }
-
-        setShowF(false);
-        setShowS(true);
 
         addGradingBestCand(selected);
         setSelected(['', '', '']);
@@ -80,11 +72,21 @@ const GradingBestCand = () => {
         }), 1000);
     }
 
+    const checkSelected = () =>{
+        if (selected.includes('') || new Set(selected).size !== selected.length) {
+            setShowF(true);
+            setShowS(false);
+            setTimeout(() => {setShowF(false)}, 1000);
+            return;
+        }
+        setDialogOpen(true)
+    } 
+
     const history = useHistory();
 
     return (
         <section className="header-gradient">
-                        <div className="container main_block">
+             <div className="container main_block">
 
                 <Alert show={showS} className="alert" variant="success" onClose={() => setShowS(false)} dismissible>
                     <Alert.Heading className="alertHeading"> 提交成功 ！/ Submitted Successfully ！ </Alert.Heading>
@@ -140,7 +142,7 @@ const GradingBestCand = () => {
                             </Form.Control>
                         </div>
 
-                        <button type="button" onClick={() => setDialogOpen(true)} className="btn sub btn btn-primary" data-toggle="modal" data-target="#exampleModal" value='Save Form'>
+                        <button type="button" onClick={checkSelected} className="btn sub btn btn-primary" data-toggle="modal" data-target="#exampleModal" value='Save Form'>
                             <span className="englishF"> Submit / </span> <span> 提交 </span>
                         </button>
                     </form>

@@ -312,18 +312,21 @@ const GradingBestCand = () => {
     const onSubmit = (e) => {
         e.preventDefault()
         setDialogOpen(false);
-        if (selected.includes('')) {
-            setShowF(true);
-            setShowS(false);
-            return;
-        }
-
-        setShowF(false);
-        setShowS(true);
-
+    
         addGradingBestFinal(selected);
         setSelected([]);
     }
+
+    
+    const checkSelected = () =>{
+        if (selected.includes('')) {
+            setShowF(true);
+            setShowS(false);
+            setTimeout(() => {setShowF(false)}, 1000);
+            return;
+        }
+        setDialogOpen(true)
+    } 
 
 
     return (
@@ -363,7 +366,7 @@ const GradingBestCand = () => {
                             </Form.Control>
                         </div>
 
-                        <button type="button" onClick={() => setDialogOpen(true)} className="btn sub btn btn-primary" data-toggle="modal" data-target="#exampleModal" value='Save Form'>
+                        <button type="button" onClick={checkSelected} className="btn sub btn btn-primary" data-toggle="modal" data-target="#exampleModal" value='Save Form'>
                             <span className="englishF"> Submit / </span> <span> 提交 </span>
                         </button>
                     </form>
