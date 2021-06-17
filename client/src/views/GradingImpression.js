@@ -44,6 +44,12 @@ const GradingImpression = () => {
     if (res.status === 201) {
       setShowS(true);
       setShowF(false);
+      setTimeout(() => history.push({
+        pathname: '/gradingBestCand',
+        token: location.token,
+        indexT: location.indexT,
+        judgeChiName: location.judgeChiName
+      }), 1000);
     }
     else {
       setShowF(true);
@@ -55,15 +61,13 @@ const GradingImpression = () => {
     e.preventDefault()
 
     addGradingImpression(impression);
-    setImpression(0);
     
+    setTimeout(() => {
+      setImpression(0)
+    }, 900);
 
-    setTimeout(() => history.push({
-      pathname: '/gradingBestCand',
-      token: location.token,
-      indexT: location.indexT,
-      judgeChiName: location.judgeChiName
-    }), 1000);
+
+  
   }
 
   const checkSelected = () =>{

@@ -57,12 +57,12 @@ const GradingSummaryFan = () => {
       setShowS(false);
       return;
     }
-
-    setShowF(false);
-    setShowS(true);
+    setTimeout(() => {
+      setGradingSummaryFanData({ ...gradingSummaryFanData, summary: 0})
+    }, 900);
     // console.log(gradingSummaryFanData)
     addGradingSummary(gradingSummaryFanData);
-    setGradingSummaryFanData({ ...gradingSummaryFanData, summary: 0})
+    
 
 
 

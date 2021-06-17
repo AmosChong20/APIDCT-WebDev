@@ -49,6 +49,12 @@ const GradingBestCand = () => {
         if (res.status === 201) {
             setShowS(true);
             setShowF(false);
+            setTimeout(() => history.push({
+                pathname: '/gradingSummary',
+                token: location.token,
+                indexT: location.indexT,
+                judgeChiName: location.judgeChiName
+            }), 1000);
         }
         else {
             setShowF(true);
@@ -63,12 +69,7 @@ const GradingBestCand = () => {
         addGradingBestCand(selected);
         setSelected(['', '', '']);
 
-        setTimeout(() => history.push({
-            pathname: '/gradingSummary',
-            token: location.token,
-            indexT: location.indexT,
-            judgeChiName: location.judgeChiName
-        }), 1000);
+
     }
 
     const checkSelected = () =>{

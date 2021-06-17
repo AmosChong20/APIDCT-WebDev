@@ -35,6 +35,12 @@ const GradingImpressionFan = () => {
     if (res.status === 201){
       setShowS(true);
       setShowF(false);
+      setTimeout(() => history.push({
+        pathname: '/gradingSummaryFan',
+        token: gradingImpressionFanData.token,
+        indexT: gradingImpressionFanData.indexT,
+        judgeChiName:gradingImpressionFanData.judgeChiName,
+      }), 1000);
     }
     else{
       setShowF(true);
@@ -46,14 +52,10 @@ const GradingImpressionFan = () => {
     e.preventDefault()
 
     addGradingImpression(gradingImpressionFanData);
-    setGradingImpressionFanData({ ...gradingImpressionFanData, impression: 0})
 
-    setTimeout(() => history.push({
-      pathname: '/gradingSummaryFan',
-      token: gradingImpressionFanData.token,
-      indexT: gradingImpressionFanData.indexT,
-      judgeChiName:gradingImpressionFanData.judgeChiName,
-    }), 1000);
+    setTimeout(() => {
+      setGradingImpressionFanData({ ...gradingImpressionFanData, impression: 0})
+    }, 900);
   }
 
   const checkSelected = () =>{

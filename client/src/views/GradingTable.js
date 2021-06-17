@@ -207,6 +207,12 @@ const GradingTable = () => {
       setShowS(true);
       setTimeout(() => setShowS(false), 1000);
       setShowF(false);
+      setTimeout(() => history.push({
+        pathname: '/gradingImpression',
+        token: location.token,
+        indexT: location.indexT,
+        judgeChiName: location.judgeChiName
+      }), 1000);
     }
     else {
       setShowF(true);
@@ -216,16 +222,7 @@ const GradingTable = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-
     addGradingTableData(rows, affDef, affFree, affTeamwork, negDef, negFree, negTeamwork, affTotal, negTotal);
-    setTimeout(() => history.push({
-      pathname: '/gradingImpression',
-      token: location.token,
-      indexT: location.indexT,
-      judgeChiName: location.judgeChiName
-    }), 1000);
-
-
   }
 
   const history = useHistory();

@@ -317,6 +317,12 @@ const GradingFan = () => {
       setShowS(true);
       setTimeout(() => setShowS(false), 1000);
       setShowF(false);
+      setTimeout(() => history.push({
+        pathname: '/gradingImpressionFan',
+        token: gradingFanData.token,
+        indexT: gradingFanData.indexT,
+        judgeChiName:gradingFanData.judgeChiName,
+      }), 1000);
     }
     else{
       setShowF(true);
@@ -329,12 +335,6 @@ const GradingFan = () => {
 
     addGradingFanData(gradingFanData);
     // console.log(gradingFanData)
-    setTimeout(() => history.push({
-      pathname: '/gradingImpressionFan',
-      token: gradingFanData.token,
-      indexT: gradingFanData.indexT,
-      judgeChiName:gradingFanData.judgeChiName,
-    }), 1000);
 
   }
 
