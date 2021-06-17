@@ -52,6 +52,7 @@ const GradingSummaryFan = () => {
 
   const onSubmit = (e) =>{
     e.preventDefault()
+    setDialogOpen(false);
     if(!gradingSummaryFanData.summary){
       setShowF(true);
       setShowS(false);

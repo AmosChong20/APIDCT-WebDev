@@ -59,7 +59,7 @@ const GradingImpression = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-
+    setDialogOpen(false);
     addGradingImpression(impression);
     
     setTimeout(() => {

@@ -222,6 +222,7 @@ const GradingTable = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
+    setDialogOpen(false);
     addGradingTableData(rows, affDef, affFree, affTeamwork, negDef, negFree, negTeamwork, affTotal, negTotal);
   }
 

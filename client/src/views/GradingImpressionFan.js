@@ -50,7 +50,7 @@ const GradingImpressionFan = () => {
 
   const onSubmit = (e) =>{
     e.preventDefault()
-
+    setDialogOpen(false);
     addGradingImpression(gradingImpressionFanData);
 
     setTimeout(() => {

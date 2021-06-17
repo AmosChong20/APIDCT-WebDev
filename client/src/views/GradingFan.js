@@ -332,7 +332,7 @@ const GradingFan = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-
+    setDialogOpen(false);
     addGradingFanData(gradingFanData);
     // console.log(gradingFanData)
 
