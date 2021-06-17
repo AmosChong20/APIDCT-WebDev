@@ -123,7 +123,7 @@ const TimeFan = () => {
   return (
     <div>
       <Alert show={showS} className= "jalert" variant="success" onClose={() => setShowS(false)} dismissible>
-        <Alert.Heading className = "alertHeading"> 登入成功！ </Alert.Heading>
+        <Alert.Heading className = "alertHeading"> 提交成功！ </Alert.Heading>
       </Alert>
       <Alert show={showF} className= "alert" variant="danger" onClose={() => setShowF(false)} dismissible>
           <Alert.Heading className = "alertHeading"> 提交失败 ！ </Alert.Heading>
