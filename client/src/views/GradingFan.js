@@ -408,11 +408,11 @@ const GradingFan = () => {
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第一次攻辩</div></TableCell>
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.affFisrtAttack} </div> 
+                  <div> {gradingFanData.affFirstAttack} </div> 
                 </TableCell>
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.negFisrtAttack} </div> 
+                  <div> {gradingFanData.negFirstAttack} </div> 
                 </TableCell>
               </TableRow>
 
@@ -558,12 +558,12 @@ const GradingFan = () => {
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
                   <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,1)}}/>
-                  {checked1  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number"  onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.affLilun===0? '':gradingFanData.affLilun} inputProps={{ min: 0, max: 30 }} onChange={(e) => affChange((e.target.value > 30 ? gradingFanData.affLilun : e.target.value),1)}/>}
+                  {checked1  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number"  onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.affLilun===0 ? '' :gradingFanData.affLilun} inputProps={{ min: 0, max: 30 }} onChange={(e) => affChange(((e.target.value > 30 || e.target.value < 0) ? gradingFanData.affLilun : e.target.value),1)}/>}
                 </TableCell>
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
                   <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,10)}}/>
-                  {checked10  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.negLilun===0? '':gradingFanData.negLilun} inputProps={{ min: 0, max: 30 }} onChange={(e) => negChange((e.target.value > 30 ? gradingFanData.negLilun : e.target.value),1)}/>}
+                  {checked10  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.negLilun===0? '' : gradingFanData.negLilun} inputProps={{ min: 0, max: 30 }} onChange={(e) => negChange(((e.target.value > 30 || e.target.value < 0) ? gradingFanData.negLilun : e.target.value),1)}/>}
                 </TableCell>
               </TableRow>
               
@@ -572,12 +572,12 @@ const GradingFan = () => {
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
                   <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,2)}}/>
-                  {checked2  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.affZhixun===0? '':gradingFanData.affZhixun} inputProps={{ min: 0, max: 30 }} onChange={(e) => affChange((e.target.value > 30 ? gradingFanData.affZhixun : e.target.value),2)}/>}
+                  {checked2  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.affZhixun===0? '' : gradingFanData.affZhixun} inputProps={{ min: 0, max: 30 }} onChange={(e) => affChange(((e.target.value > 30 || e.target.value < 0) ? gradingFanData.affZhixun : e.target.value),2)}/>}
                 </TableCell>
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
                   <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,11)}}/>
-                  {checked11  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.negZhixun===0? '':gradingFanData.negZhixun} inputProps={{ min: 0, max: 30 }} onChange={(e) => negChange((e.target.value > 30 ? gradingFanData.negZhixun : e.target.value),2)}/>}
+                  {checked11  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.negZhixun===0? '':gradingFanData.negZhixun} inputProps={{ min: 0, max: 30 }} onChange={(e) => negChange(((e.target.value > 30 || e.target.value < 0) ? gradingFanData.negZhixun : e.target.value),2)}/>}
                 </TableCell>
               </TableRow>
 
@@ -586,12 +586,12 @@ const GradingFan = () => {
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（20分）</div> 
                   <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,3)}}/>
-                  {checked3  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.affDabian===0? '':gradingFanData.affDabian} inputProps={{ min: 0, max: 20 }} onChange={(e) => affChange((e.target.value > 20 ? gradingFanData.affDabian : e.target.value),3)}/>}
+                  {checked3  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.affDabian===0? '':gradingFanData.affDabian} inputProps={{ min: 0, max: 20 }} onChange={(e) => affChange(((e.target.value > 20 || e.target.value < 0) ? gradingFanData.affDabian : e.target.value),3)}/>}
                 </TableCell>
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（20分）</div> 
                   <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,12)}}/>
-                  {checked12  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.negDabian===0? '':gradingFanData.negDabian} inputProps={{ min: 0, max: 20 }} onChange={(e) => negChange((e.target.value > 20 ? gradingFanData.negDabian : e.target.value),3)}/>}
+                  {checked12  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.negDabian===0? '':gradingFanData.negDabian} inputProps={{ min: 0, max: 20 }} onChange={(e) => negChange(((e.target.value > 20 || e.target.value < 0) ? gradingFanData.negDabian : e.target.value),3)}/>}
                 </TableCell>
               </TableRow>
 
@@ -600,12 +600,12 @@ const GradingFan = () => {
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
                   <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,4)}}/>
-                  {checked4  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.affBolun===0? '':gradingFanData.affBolun} inputProps={{ min: 0, max: 30 }} onChange={(e) => affChange((e.target.value > 30 ? gradingFanData.affBolun : e.target.value),4)}/>}
+                  {checked4  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.affBolun===0? '':gradingFanData.affBolun} inputProps={{ min: 0, max: 30 }} onChange={(e) => affChange(((e.target.value > 30 || e.target.value < 0) ? gradingFanData.affBolun : e.target.value),4)}/>}
                 </TableCell>
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
                   <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,13)}}/>
-                  {checked13  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.negBolun===0? '':gradingFanData.negBolun} inputProps={{ min: 0, max: 30 }} onChange={(e) => negChange((e.target.value > 30 ? gradingFanData.negBolun : e.target.value),4)}/>}
+                  {checked13  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.negBolun===0? '':gradingFanData.negBolun} inputProps={{ min: 0, max: 30 }} onChange={(e) => negChange(((e.target.value > 30 || e.target.value < 0) ? gradingFanData.negBolun : e.target.value),4)}/>}
                 </TableCell>
               </TableRow>
 
@@ -614,12 +614,12 @@ const GradingFan = () => {
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
                   <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,5)}}/>
-                  {checked5  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.affFirstAttack===0? '':gradingFanData.affFirstAttack} inputProps={{ min: 0, max: 30 }} onChange={(e) => affChange((e.target.value > 30 ? gradingFanData.affFirstAttack : e.target.value),5)}/>}
+                  {checked5  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.affFirstAttack===0? '':gradingFanData.affFirstAttack} inputProps={{ min: 0, max: 30 }} onChange={(e) => affChange(((e.target.value > 30 || e.target.value < 0) ? gradingFanData.affFirstAttack : e.target.value),5)}/>}
                 </TableCell>
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
                   <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,14)}}/>
-                  {checked14  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.negFirstAttack===0? '':gradingFanData.negFirstAttack} inputProps={{ min: 0, max: 30 }} onChange={(e) => negChange((e.target.value > 30 ? gradingFanData.negFirstAttack : e.target.value),5)}/>}
+                  {checked14  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.negFirstAttack===0? '':gradingFanData.negFirstAttack} inputProps={{ min: 0, max: 30 }} onChange={(e) => negChange(((e.target.value > 30 || e.target.value < 0) ? gradingFanData.negFirstAttack : e.target.value),5)}/>}
                 </TableCell>
               </TableRow>
 
@@ -628,12 +628,12 @@ const GradingFan = () => {
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
                   <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,6)}}/>
-                  {checked6  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.affChenci===0? '':gradingFanData.affChenci} inputProps={{ min: 0, max: 30 }} onChange={(e) => affChange((e.target.value > 30 ? gradingFanData.affChenci : e.target.value),6)}/>}
+                  {checked6  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.affChenci===0? '':gradingFanData.affChenci} inputProps={{ min: 0, max: 30 }} onChange={(e) => affChange(((e.target.value > 30 || e.target.value < 0) ? gradingFanData.affChenci : e.target.value),6)}/>}
                 </TableCell>
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
                   <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,15)}}/>
-                  {checked15  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.negChenci===0? '':gradingFanData.negChenci} inputProps={{ min: 0, max: 30 }} onChange={(e) => negChange((e.target.value > 30 ? gradingFanData.negChenci : e.target.value),6)}/>}
+                  {checked15  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.negChenci===0? '':gradingFanData.negChenci} inputProps={{ min: 0, max: 30 }} onChange={(e) => negChange(((e.target.value > 30 || e.target.value < 0) ? gradingFanData.negChenci : e.target.value),6)}/>}
                 </TableCell>
               </TableRow>
 
@@ -642,12 +642,12 @@ const GradingFan = () => {
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
                   <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,7)}}/>
-                  {checked7  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.affSecondAttack===0? '':gradingFanData.affSecondAttack} inputProps={{ min: 0, max: 30 }} onChange={(e) => affChange((e.target.value > 30 ? gradingFanData.affSecondAttack : e.target.value),7)}/>}
+                  {checked7  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.affSecondAttack===0? '':gradingFanData.affSecondAttack} inputProps={{ min: 0, max: 30 }} onChange={(e) => affChange(((e.target.value > 30 || e.target.value < 0) ? gradingFanData.affSecondAttack : e.target.value),7)}/>}
                 </TableCell>
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
                   <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,16)}}/>
-                  {checked16  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.negSecondAttack===0? '':gradingFanData.negSecondAttack} inputProps={{ min: 0, max: 30 }} onChange={(e) => negChange((e.target.value > 30 ? gradingFanData.negSecondAttack : e.target.value),7)}/>}
+                  {checked16  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.negSecondAttack===0? '':gradingFanData.negSecondAttack} inputProps={{ min: 0, max: 30 }} onChange={(e) => negChange(((e.target.value > 30 || e.target.value < 0) ? gradingFanData.negSecondAttack : e.target.value),7)}/>}
                 </TableCell>
               </TableRow>
 
@@ -656,12 +656,12 @@ const GradingFan = () => {
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
                   <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,8)}}/>
-                  {checked8  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.affFirstFinal===0? '':gradingFanData.affFirstFinal} inputProps={{ min: 0, max: 30 }} onChange={(e) => affChange((e.target.value > 30 ? gradingFanData.affFirstFinal : e.target.value),8)}/>}
+                  {checked8  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.affFirstFinal===0? '':gradingFanData.affFirstFinal} inputProps={{ min: 0, max: 30 }} onChange={(e) => affChange(((e.target.value > 30 || e.target.value < 0) ? gradingFanData.affFirstFinal : e.target.value),8)}/>}
                 </TableCell>
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
                   <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,17)}}/>
-                  {checked17  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.negFirstFinal===0? '':gradingFanData.negFirstFinal} inputProps={{ min: 0, max: 30 }} onChange={(e) => negChange((e.target.value > 30 ? gradingFanData.negFirstFinal : e.target.value),8)}/>}
+                  {checked17  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.negFirstFinal===0? '':gradingFanData.negFirstFinal} inputProps={{ min: 0, max: 30 }} onChange={(e) => negChange(((e.target.value > 30 || e.target.value < 0) ? gradingFanData.negFirstFinal : e.target.value),8)}/>}
                 </TableCell>
               </TableRow>
 
@@ -670,12 +670,12 @@ const GradingFan = () => {
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
                   <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,9)}}/>
-                  {checked9  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.affSecondFinal===0? '':gradingFanData.affSecondFinal} inputProps={{ min: 0, max: 30 }} onChange={(e) => affChange((e.target.value > 30 ? gradingFanData.affSecondFinal : e.target.value),9)}/>}
+                  {checked9  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.affSecondFinal===0? '':gradingFanData.affSecondFinal} inputProps={{ min: 0, max: 30 }} onChange={(e) => affChange(((e.target.value > 30 || e.target.value < 0) ? gradingFanData.affSecondFinal : e.target.value),9)}/>}
                 </TableCell>
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
                   <Checkbox color="primary" onChange={e => {onChecked(e.target.checked,18)}}/>
-                  {checked18  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.negSecondFinal===0? '':gradingFanData.negSecondFinal} inputProps={{ min: 0, max: 30 }} onChange={(e) => negChange((e.target.value > 30 ? gradingFanData.negSecondFinal : e.target.value),9)} />}
+                  {checked18  ? <span style={{ fontSize: "120%" }} > 0 </span> : <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" value={gradingFanData.negSecondFinal===0? '':gradingFanData.negSecondFinal} inputProps={{ min: 0, max: 30 }} onChange={(e) => negChange(((e.target.value > 30 || e.target.value < 0) ? gradingFanData.negSecondFinal : e.target.value),9)} />}
                 </TableCell>
               </TableRow>
 
@@ -683,11 +683,11 @@ const GradingFan = () => {
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>语言风度</div></TableCell>
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（40分）</div> <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" 
-                  value={gradingFanData.affLanguage===0? '':gradingFanData.affLanguage} inputProps={{ min: 0, max: 40 }} onChange={(e) => affChange((e.target.value > 40 ? gradingFanData.affLanguage : e.target.value),10)}/>
+                  value={gradingFanData.affLanguage===0? '':gradingFanData.affLanguage} inputProps={{ min: 0, max: 40 }} onChange={(e) => affChange(((e.target.value > 40 || e.target.value < 0) ? gradingFanData.affLanguage : e.target.value),10)}/>
                 </TableCell>
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（40分）</div> <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" 
-                  value={gradingFanData.negLanguage===0? '':gradingFanData.negLanguage} inputProps={{ min: 0, max: 40 }} onChange={(e) => negChange((e.target.value > 40 ? gradingFanData.negLanguage : e.target.value),10)}/>
+                  value={gradingFanData.negLanguage===0? '':gradingFanData.negLanguage} inputProps={{ min: 0, max: 40 }} onChange={(e) => negChange(((e.target.value > 40 || e.target.value < 0) ? gradingFanData.negLanguage : e.target.value),10)}/>
                 </TableCell>
               </TableRow>
 
@@ -695,11 +695,11 @@ const GradingFan = () => {
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>自由辩论</div></TableCell>
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（80分）</div> <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" 
-                  value={gradingFanData.affFree===0? '':gradingFanData.affFree} inputProps={{ min: 0, max: 80 }} onChange={(e) => affChange((e.target.value > 80 ? gradingFanData.affFree : e.target.value),11)}/>
+                  value={gradingFanData.affFree===0? '':gradingFanData.affFree} inputProps={{ min: 0, max: 80 }} onChange={(e) => affChange(((e.target.value > 80 || e.target.value < 0) ? gradingFanData.affFree : e.target.value),11)}/>
                 </TableCell>
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（80分）</div> <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" 
-                  value={gradingFanData.negFree===0? '':gradingFanData.negFree} inputProps={{ min: 0, max: 80 }} onChange={(e) => negChange((e.target.value > 80 ? gradingFanData.negFree : e.target.value),11)}/>
+                  value={gradingFanData.negFree===0? '':gradingFanData.negFree} inputProps={{ min: 0, max: 80 }} onChange={(e) => negChange(((e.target.value > 80 || e.target.value < 0) ? gradingFanData.negFree : e.target.value),11)}/>
                 </TableCell>
               </TableRow>
 
@@ -707,11 +707,11 @@ const GradingFan = () => {
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>团体配合与合作精神</div></TableCell>
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" 
-                  value={gradingFanData.affTeamwork===0? '':gradingFanData.affTeamwork} inputProps={{ min: 0, max: 30 }} onChange={(e) => affChange((e.target.value > 30 ? gradingFanData.affTeamwork : e.target.value),12)}/> 
+                  value={gradingFanData.affTeamwork===0? '':gradingFanData.affTeamwork} inputProps={{ min: 0, max: 30 }} onChange={(e) => affChange(((e.target.value > 30 || e.target.value < 0) ? gradingFanData.affTeamwork : e.target.value),12)}/> 
                 </TableCell>
                 <TableCell align="left">
                   <div  style={{ fontSize: "120%" }}>分数（30分）</div> <Input type="number" onWheel={(e) => e.target.blur()} placeholder="0" 
-                  value={gradingFanData.negTeamwork===0? '':gradingFanData.negTeamwork} inputProps={{ min: 0, max: 30 }} onChange={(e) => negChange((e.target.value > 30 ? gradingFanData.negTeamwork : e.target.value),12)}/>
+                  value={gradingFanData.negTeamwork===0? '':gradingFanData.negTeamwork} inputProps={{ min: 0, max: 30 }} onChange={(e) => negChange(((e.target.value > 30 || e.target.value < 0) ? gradingFanData.negTeamwork : e.target.value),12)}/>
                 </TableCell>
               </TableRow>
 

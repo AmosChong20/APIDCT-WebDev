@@ -112,7 +112,7 @@ const GradingBestCand = () => {
                         <div className="d-flex justify-content-center">请选择三位最佳辩手候选人(请勿复选)</div>
                         <div className="school container col d-flex justify-content-center">
                             <Form.Control className="selectspeaker" as="select" onChange={(e) => getSelection(e, 0)} style={{ width: "50vw", margin: "10px" }}>
-                                <option value='0' >
+                                <option value='' >
                                     第一位候选人
                                 </option>
                                 {speakers.map(speaker => (
@@ -122,7 +122,7 @@ const GradingBestCand = () => {
                             </Form.Control>
 
                             <Form.Control className="selectspeaker" as="select" onChange={(e) => getSelection(e, 1)} style={{ width: "50vw", margin: "10px" }}>
-                                <option value='0' >
+                                <option value='' >
                                     第二位候选人
                                 </option>
                                 {speakers.map(speaker => (
@@ -132,7 +132,7 @@ const GradingBestCand = () => {
                             </Form.Control>
 
                             <Form.Control className="selectspeaker" as="select" onChange={(e) => getSelection(e, 2)} style={{ width: "50vw", margin: "10px" }}>
-                                <option value='0' >
+                                <option value='' >
                                     第三位候选人
                                 </option>
                                 {speakers.map(speaker => (
