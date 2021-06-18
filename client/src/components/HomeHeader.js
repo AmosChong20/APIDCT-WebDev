@@ -21,8 +21,8 @@ class HomeHeader extends Component {
                         <div className="col-sm-6 h-sm-25 d-inline-block align-self-center text-center text-sm-left">
                             <div className="header" >
                                 <h1 className="cn-title-1">第十届</h1>
-                                <h1 className="cn-title-2">亚太大专</h1>
-                                <h1 className="cn-title-2">华语辩论公开赛</h1>
+                                <h1 className="cn-title-2">工行杯</h1>
+                                <h1 className="cn-title-3">亚太大专华语辩论公开赛</h1>
                                 <h1 className="eng-title"> 10th Asia-Pacific<br/>Intervarsity Chinese Debate Tournament </h1>
                             </div>
                         </div>
