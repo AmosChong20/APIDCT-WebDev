@@ -20,8 +20,6 @@ import './css/ResultFan.css';
 const ResultFan = () => {
   const [start,setStart] = useState(true);
   const [cal,setCal] = useState(true);
-  const [showS, setShowS] = useState(false);
-  const [showF, setShowF] = useState(false);
   const [dataTime, setDataTime] = useState([]);
   const [dataV, setDataV] = useState([]);
   const [dataT, setDataT] = useState([]);
@@ -232,8 +230,8 @@ const ResultFan = () => {
     scoreT.voteNeg = (scoreT.negVote)/(scoreT.affVote+scoreT.negVote)*50
     scoreT.voteNeg = scoreT.voteNeg.toFixed(2)
 
-    scoreT.finalAff = parseFloat(scoreT.judgeAff) + parseFloat(scoreT.affVote)
-    scoreT.finalNeg = parseFloat(scoreT.judgeNeg) + parseFloat(scoreT.negVote)
+    scoreT.finalAff = parseFloat(scoreT.judgeAff) + parseFloat(scoreT.voteAff)
+    scoreT.finalNeg = parseFloat(scoreT.judgeNeg) + parseFloat(scoreT.voteNeg)
 
     if(scoreT.finalAff > scoreT.finalNeg){
       scoreT.winner = 1
@@ -456,6 +454,33 @@ const ResultFan = () => {
               <TableRow className ="rowResult">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>{data.judgeChiName}</div></TableCell>
                 { (data.impression === 1) ? <TableCell align="center" colSpan={2}><div style={{ fontSize: "170%" }}>正方</div></TableCell> : <TableCell align="center" colSpan={2}><div style={{ fontSize: "170%" }}>反方</div></TableCell> }
+              </TableRow>
+            </TableBody>
+          ))}
+        </Table>
+      </div>
+
+      <div className="container subBlockResult">
+        <div className="fan_title">
+          <span> 总结票 </span>
+        </div>
+        <Table  aria-label="caption table">
+          <colgroup>
+            <col style={{ width: '40%' }} />
+            <col style={{ width: '30%' }} />
+            <col style={{ width: '30%' }} />
+          </colgroup>
+          <TableHead>
+            <TableRow>
+              <TableCell align="center" colSpan={1}><div><h2>评审姓名</h2></div></TableCell>
+              <TableCell align="center" colSpan={2}><div><h2>选择</h2></div></TableCell>
+            </TableRow>
+          </TableHead>
+          {dataSF.map((data,index)  => (
+            <TableBody key = {index}>
+              <TableRow className ="rowResult">
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>{data.judgeChiName}</div></TableCell>
+                { (data.summary === 1) ? <TableCell align="center" colSpan={2}><div style={{ fontSize: "170%" }}>正方</div></TableCell> : <TableCell align="center" colSpan={2}><div style={{ fontSize: "170%" }}>反方</div></TableCell> }
               </TableRow>
             </TableBody>
           ))}

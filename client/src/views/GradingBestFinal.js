@@ -361,7 +361,7 @@ const GradingBestCand = () => {
                         <div className="d-flex justify-content-center">请选择一位最佳辩手</div>
                         <div className="school col d-flex justify-content-center">
                             <Form.Control className="selectspeaker" as="select" onChange={(e) => getSelection(e, 0)} style={{ width: "50vw", margin: "10px" }}>
-                                <option value='0' >
+                                <option value='' >
                                     请选择最佳辩手
                                 </option>
                                 {heirList.map(heir => (

@@ -55,11 +55,14 @@ const TimeFan = () => {
       timeData.affTimeMin === '' ||
       timeData.negTimeMin === '' ||
       timeData.affTimeSec === '' ||
-      timeData.negTimeSec === ''){
+      timeData.negTimeSec === '' ||
+      timeData.affTimeMin > 19 ||
+      timeData.negTimeMin > 19 ){
       setShowF(true);
       setShowS(false);
       return;
     }
+
    
     timeData.affTotalSec = (parseInt(timeData.affTimeMin)*60) + parseInt(timeData.affTimeSec)
     timeData.negTotalSec = (parseInt(timeData.negTimeMin)*60) + parseInt(timeData.negTimeSec)

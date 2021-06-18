@@ -784,15 +784,13 @@ const Grading = () => {
           </colgroup>
           <TableHead>
             <TableRow>
-              <TableCell align="center" colSpan={1}><div><h2>辩手</h2></div></TableCell>
-              <TableCell align="center" colSpan={2}><div><h2>个人总分</h2></div></TableCell>
+              <TableCell align="center" colSpan={3}><div><h2>辩手</h2></div></TableCell>
             </TableRow>
           </TableHead>
             {finalList.map((final,index)=> (
               <TableBody key = {index}>
                 <TableRow className ="rowResult">
-                  <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>{final.name}</div></TableCell>
-                  <TableCell align="center" colSpan={2}><div style={{ fontSize: "170%" }}>{final.score}</div></TableCell>
+                  <TableCell align="center" colSpan={3}><div style={{ fontSize: "170%" }}>{final.name}</div></TableCell>
                 </TableRow>
               </TableBody>
             ))}
@@ -854,6 +852,95 @@ const Grading = () => {
           ))}
         </Table>
       </div>
+
+      <div className="container subBlockResult">
+        <div className="fan_title">
+          <span> 最佳辩手候选人 </span>
+        </div>
+        <Table  aria-label="caption table">
+          <colgroup>
+            <col style={{ width: '40%' }} />
+            <col style={{ width: '30%' }} />
+            <col style={{ width: '30%' }} />
+          </colgroup>
+          <TableHead>
+            <TableRow>
+              <TableCell align="center" colSpan={1}><div><h2>评审姓名</h2></div></TableCell>
+              <TableCell align="center" colSpan={2}><div><h2>选择</h2></div></TableCell>
+            </TableRow>
+          </TableHead>
+          {dataBC.map((data,index) => (
+            <TableBody key = {index}>
+              <TableRow className ="rowResult">
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>{data.judgeChiName}</div></TableCell>
+                <TableCell align="center" colSpan={2}>
+                  {(data.selected).map((dataS,indexS) => (
+                    <span key = {indexS} style={{ fontSize: "170%" }}>{dataS} , </span> 
+                  ))} 
+                </TableCell>
+
+              </TableRow>
+            </TableBody>
+          ))}
+        </Table>
+      </div>
+
+
+      <div className="container subBlockResult">
+        <div className="fan_title">
+          <span> 总结票 </span>
+        </div>
+        <Table  aria-label="caption table">
+          <colgroup>
+            <col style={{ width: '40%' }} />
+            <col style={{ width: '30%' }} />
+            <col style={{ width: '30%' }} />
+          </colgroup>
+          <TableHead>
+            <TableRow>
+              <TableCell align="center" colSpan={1}><div><h2>评审姓名</h2></div></TableCell>
+              <TableCell align="center" colSpan={2}><div><h2>选择</h2></div></TableCell>
+            </TableRow>
+          </TableHead>
+          {dataS.map((data,index)  => (
+            <TableBody key = {index}>
+              <TableRow className ="rowResult">
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>{data.judgeChiName}</div></TableCell>
+                { (data.summary === 1) ? <TableCell align="center" colSpan={2}><div style={{ fontSize: "170%" }}>正方</div></TableCell> : <TableCell align="center" colSpan={2}><div style={{ fontSize: "170%" }}>反方</div></TableCell> }
+              </TableRow>
+            </TableBody>
+          ))}
+        </Table>
+      </div>
+
+      <div className="container subBlockResult">
+        <div className="fan_title">
+          <span> 最佳辩手 </span>
+        </div>
+        <Table  aria-label="caption table">
+          <colgroup>
+            <col style={{ width: '40%' }} />
+            <col style={{ width: '30%' }} />
+            <col style={{ width: '30%' }} />
+          </colgroup>
+          <TableHead>
+            <TableRow>
+              <TableCell align="center" colSpan={1}><div><h2>评审姓名</h2></div></TableCell>
+              <TableCell align="center" colSpan={2}><div><h2>选择</h2></div></TableCell>
+            </TableRow>
+          </TableHead>
+          {dataBF.map((data,index) => (
+            <TableBody key = {index}>
+              <TableRow className ="rowResult">
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>{data.judgeChiName}</div></TableCell>
+                <TableCell align="center" colSpan={2}> {(data.selected)[0]} </TableCell>
+              </TableRow>
+            </TableBody>
+          ))}
+        </Table>
+      </div>
+
+      
 
       <Footer />
     </section>
