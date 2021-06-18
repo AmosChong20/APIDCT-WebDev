@@ -90,7 +90,7 @@ const GradingSummary = () => {
 
   return (
     <section className="header-gradient"> 
-      <div className="container main_block">
+      <div className="main_block">
         <Alert show={showS} className= "alert" variant="success" onClose={() => setShowS(false)} dismissible>
           <Alert.Heading className = "alertHeading"> 提交成功 ！/ Submitted Successfully ！ </Alert.Heading>
         </Alert>
@@ -113,7 +113,7 @@ const GradingSummary = () => {
         <div className="regBlock row">
           <form className="col-12 regForm" noValidate >
             <div className="d-flex justify-content-center">请选择正方或反方</div>
-            <div className="school container d-flex justify-content-center">
+            <div className="school d-flex justify-content-center">
               <Button variant="contained" size="large" style={{color:"#fff", margin:"20px"}} className={summary===1?"pressedButton btn-hover":"normalButton btn-hover"} onClick={()=>onClickTeam('1')}><div style={{width:"120%",margin:"20%",fontSize:"250%"}}>正方</div></Button>
               <Button variant="contained" size="large" style={{color:"#fff", margin:"20px"}} className={summary===2?"pressedButton btn-hover":"normalButton btn-hover"} onClick={()=>onClickTeam('2')}><div style={{width:"120%",margin:"20%",fontSize:"250%"}}>反方</div></Button>
             </div>

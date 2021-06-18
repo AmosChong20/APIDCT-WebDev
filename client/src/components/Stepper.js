@@ -7,6 +7,21 @@ import StepLabel from '@material-ui/core/StepLabel';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
+    "& .MuiPaper-root": {
+      backgroundColor:"transparent"
+    },
+    [theme.breakpoints.down('md')]: {
+      "& .MuiStepper-root": {
+        padding:"0"
+      },
+      "& .MuiTypography-body2":{
+        fontSize:"3vw"
+      },
+      "& .MuiStep-horizontal":{
+        paddingLeft: "4px",
+        paddingRight: "8px"
+    }
+    },
   },
   button: {
     marginRight: theme.spacing(1),
