@@ -39,7 +39,7 @@ const ResultFan = () => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('http://localhost:5000'+'/registerTopic/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/registerTopic/'+indexT)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     setDataT(data)
@@ -51,7 +51,7 @@ const ResultFan = () => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('http://localhost:5000'+'/gradingSummaryFan/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/gradingSummaryFan/'+indexT)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     setDataSF(data)
@@ -60,7 +60,7 @@ const ResultFan = () => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('http://localhost:5000'+'/gradingImpressionFan/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/gradingImpressionFan/'+indexT)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     setDataIF(data)
@@ -69,7 +69,7 @@ const ResultFan = () => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('http://localhost:5000'+'/gradingFan/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/gradingFan/'+indexT)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     setDataF(data)
@@ -78,7 +78,7 @@ const ResultFan = () => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('http://localhost:5000'+'/vote/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/vote/'+indexT)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     setDataV(data)
@@ -88,7 +88,7 @@ const ResultFan = () => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('http://localhost:5000'+'/time/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/time/'+indexT)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     // console.log(data)

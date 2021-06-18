@@ -25,9 +25,9 @@ const GradingSummaryFan = () => {
   }
 
   const history = useHistory();
-  
+
   const addGradingSummary = async (summary) =>{
-    const res = await fetch (('http://localhost:5000/'+'gradingSummaryFan'),{
+    const res = await fetch (('https://apicdt-server.com/'+'gradingSummaryFan'),{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
@@ -52,17 +52,18 @@ const GradingSummaryFan = () => {
 
   const onSubmit = (e) =>{
     e.preventDefault()
+    setDialogOpen(false);
     if(!gradingSummaryFanData.summary){
       setShowF(true);
       setShowS(false);
       return;
     }
-
-    setShowF(false);
-    setShowS(true);
+    setTimeout(() => {
+      setGradingSummaryFanData({ ...gradingSummaryFanData, summary: 0})
+    }, 900);
     // console.log(gradingSummaryFanData)
     addGradingSummary(gradingSummaryFanData);
-    setGradingSummaryFanData({ ...gradingSummaryFanData, summary: 0})
+    
 
 
 

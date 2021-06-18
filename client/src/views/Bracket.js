@@ -7,7 +7,7 @@ const Bracket = () => {
   return (
       <div className="containerBracket mainBlockBracket">
         <div className="AB">
-            <div>&nbsp;</div><div>东吴大学</div><div className="groupName">&nbsp;</div>
+            <div>&nbsp;</div><div><span>东吴大学</span></div><div className="groupName">&nbsp;</div>
             <div>A</div><div>苏州大学</div><div className="groupName">&nbsp;</div>
             <div>&nbsp;</div><div>UCSI大学</div><div className="groupName">A</div>
             <div>&nbsp;</div><div>墨尔本大学</div><div className="groupName">B</div>
@@ -59,29 +59,29 @@ const Bracket = () => {
           </div>
           <div className="SemiFinalOne">
             <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
-            <div>&nbsp;</div><div>半决赛O1</div><div>&nbsp;</div>
-            <div>Team3</div><div>&nbsp;</div><div>Team4</div>
+            <div className="bracketSemiFinalTitleOne"><span>半决赛1</span></div>
+            <div className="bracketPromotedTeam"><span>晋级队伍1</span></div><div>&nbsp;</div><div className="bracketPromotedTeam"><span>晋级队伍4</span></div>
           </div>
           <div className="SemiFinalTwo">
             <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
-            <div>&nbsp;</div><div>半决赛O2</div><div>&nbsp;</div>
-            <div>Team3</div><div>&nbsp;</div><div>Team4</div>
+            <div>&nbsp;</div><div className="bracketSemiFinalTitleTwo"><span>半决赛2</span></div><div>&nbsp;</div>
+            <div className="bracketPromotedTeam"><span>晋级队伍2</span></div><div>&nbsp;</div><div className="bracketPromotedTeam"><span>晋级队伍3</span></div>
           </div>
           <div className="RoundTwoOne">
-            <div>6进4排位赛（左）</div>
-            <div>晋级队伍1</div>
+            <div className="bracket6C4"><span>6进4排位赛（左）</span></div>
+            <div className="bracketPromotedTeam"><span>晋级队伍1</span></div>
             <div>&nbsp;</div>
             <div>&nbsp;</div>
             <div>&nbsp;</div>
-            <div>晋级队伍2</div>
+            <div className="bracketPromotedTeam"><span>晋级队伍2</span></div>
           </div>
           <div className="RoundTwoTwo">
-            <div>6进4排位赛（右）</div>
-            <div>晋级队伍3</div>
+            <div className="bracket6C4"><span>6进4排位赛（右）</span></div>
+            <div className="bracketPromotedTeam"><span>晋级队3</span></div>
             <div>&nbsp;</div>
             <div>&nbsp;</div>
             <div>&nbsp;</div>
-            <div>晋级队伍4</div>
+            <div className="bracketPromotedTeam"><span>晋级队伍4</span></div>
           </div>
         {/* <Footer/> */}
       </div>

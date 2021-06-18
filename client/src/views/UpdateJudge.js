@@ -47,7 +47,7 @@ const RegisterJudge = () => {
   });
 
   const UpdateJudgeData = async (updateJudgeData) =>{
-    const res = await fetch (('http://localhost:5000'+'/registerJudge/'+updateJudgeData.token),{
+    const res = await fetch (('https://apicdt-server.com'+'/registerJudge/'+updateJudgeData.token),{
       method : 'PUT',
       headers:{
         'Content-type':'application/json',
@@ -71,7 +71,7 @@ const RegisterJudge = () => {
 
   const fetchTopic = async () => {
     // const res = await fetch('https://apicdt-server.com/registerTopic')
-    const res = await fetch('http://localhost:5000' + '/registerTopic')
+    const res = await fetch('https://apicdt-server.com' + '/registerTopic')
     // const res = await fetch(serverURL+'registerTopic')
     const data = await res.json()
     setTopics(data);
@@ -87,7 +87,7 @@ const RegisterJudge = () => {
       return;
     }
     
-    const res = await fetch('http://localhost:5000'+'/registerJudge/'+token)
+    const res = await fetch('https://apicdt-server.com'+'/registerJudge/'+token)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+token)
     const data = await res.json()
 
@@ -111,13 +111,19 @@ const RegisterJudge = () => {
 
   }
 
+  const reset = () => {
+    document.getElementById("my_select").selectedIndex = 0; 
+  }
+
   const onSubmit = (e) =>{
     e.preventDefault()
     // console.log(isEmail1);
     updateJudgeData.indexA = stopics;
+    reset();
 
     if(updateJudgeData.token === '' ||
-    updateJudgeData.indexA === []){
+    updateJudgeData.indexA === [ ] ||
+    stopics === [ ]){
       setShowF(true);
       setShowS(false);
       setShowA(false);
@@ -175,12 +181,12 @@ const RegisterJudge = () => {
               </div>
               <div className="row schoolPartForm">
                 <div className="mb-3 col-12">
-                  <input type="text" className={`form-control englsihF  ${updateJudgeData.token ? "is-valid" : ""} ${(!updateJudgeData.token && changed_1) ? "is-invalid" : ""}`}  value={updateJudgeData.judgeChiName} placeholder="评审代码" onChange={(e) => setChanged_1(true) & setUpdateJudgeData({ ...updateJudgeData, token: e.target.value })} />
+                  <input type="text" className={`form-control englsihF  ${updateJudgeData.token ? "is-valid" : ""} ${(!updateJudgeData.token && changed_1) ? "is-invalid" : ""}`}  value={updateJudgeData.token} placeholder="评审代码" onChange={(e) => setChanged_1(true) & setUpdateJudgeData({ ...updateJudgeData, token: e.target.value })} />
                 </div>
               </div>
               <div className = "row">
-                <Form.Control  className=" TopicSel col-9" as="select" onChange={(e) => getSelection(e)}>
-                    <option value = '0' >
+                <Form.Control  id = "my_select" className=" TopicSel col-9" as="select" onChange={(e) => getSelection(e)} autocomplete="off">
+                    <option value = '0' autocomplete="off">
                       请选择辩题
                     </option>
                     {topics.map(topic => (

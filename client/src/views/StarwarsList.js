@@ -49,7 +49,7 @@ const StarwarsList = () => {
 
   const fetchWinners = async (area1) => {
     // const res = await fetch('https://apicdt-server.com/starwars')
-    // const res = await fetch('http://localhost:5000' + '/starwars')
+    // const res = await fetch('https://apicdt-server.com' + '/starwars')
     const res = await fetch(serverURL + 'starwars'+area1)
 
     const data = await res.json()

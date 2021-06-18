@@ -28,7 +28,7 @@ const GradingImpression = () => {
   }
 
   const addGradingImpression = async (impression) => {
-    const res = await fetch(('http://localhost:5000/' + 'gradingImpression'), {
+    const res = await fetch(('https://apicdt-server.com/' + 'gradingImpression'), {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -44,6 +44,12 @@ const GradingImpression = () => {
     if (res.status === 201) {
       setShowS(true);
       setShowF(false);
+      setTimeout(() => history.push({
+        pathname: '/gradingBestCand',
+        token: location.token,
+        indexT: location.indexT,
+        judgeChiName: location.judgeChiName
+      }), 1000);
     }
     else {
       setShowF(true);
@@ -53,17 +59,15 @@ const GradingImpression = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-
+    setDialogOpen(false);
     addGradingImpression(impression);
-    setImpression(0);
     
+    setTimeout(() => {
+      setImpression(0)
+    }, 900);
 
-    setTimeout(() => history.push({
-      pathname: '/gradingBestCand',
-      token: location.token,
-      indexT: location.indexT,
-      judgeChiName: location.judgeChiName
-    }), 1000);
+
+  
   }
 
   const checkSelected = () =>{

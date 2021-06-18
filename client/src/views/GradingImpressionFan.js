@@ -24,7 +24,7 @@ const GradingImpressionFan = () => {
     }
   }
   const addGradingImpression = async (impression) =>{
-    const res = await fetch (('http://localhost:5000/'+'gradingImpressionFan'),{
+    const res = await fetch (('https://apicdt-server.com/'+'gradingImpressionFan'),{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
@@ -35,6 +35,12 @@ const GradingImpressionFan = () => {
     if (res.status === 201){
       setShowS(true);
       setShowF(false);
+      setTimeout(() => history.push({
+        pathname: '/gradingSummaryFan',
+        token: gradingImpressionFanData.token,
+        indexT: gradingImpressionFanData.indexT,
+        judgeChiName:gradingImpressionFanData.judgeChiName,
+      }), 1000);
     }
     else{
       setShowF(true);
@@ -44,16 +50,12 @@ const GradingImpressionFan = () => {
 
   const onSubmit = (e) =>{
     e.preventDefault()
-
+    setDialogOpen(false);
     addGradingImpression(gradingImpressionFanData);
-    setGradingImpressionFanData({ ...gradingImpressionFanData, impression: 0})
 
-    setTimeout(() => history.push({
-      pathname: '/gradingSummaryFan',
-      token: gradingImpressionFanData.token,
-      indexT: gradingImpressionFanData.indexT,
-      judgeChiName:gradingImpressionFanData.judgeChiName,
-    }), 1000);
+    setTimeout(() => {
+      setGradingImpressionFanData({ ...gradingImpressionFanData, impression: 0})
+    }, 900);
   }
 
   const checkSelected = () =>{

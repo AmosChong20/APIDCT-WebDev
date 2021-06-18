@@ -38,7 +38,7 @@ const RegisterTopic = () => {
   });
 
   const addRegisterTopicData = async (registerTopicData) =>{
-    const res = await fetch ('http://localhost:5000/registerTopic',{
+    const res = await fetch ('https://apicdt-server.com/registerTopic',{
     // const res = await fetch ((serverURL+'registerTopic'),{
       method : 'POST',
       headers:{
@@ -60,7 +60,7 @@ const RegisterTopic = () => {
 
   const fetchTopic = async () => {
     // const res = await fetch('https://apicdt-server.com/registerTopic')
-    const res = await fetch('http://localhost:5000' + '/registerTopic')
+    const res = await fetch('https://apicdt-server.com' + '/registerTopic')
     // const res = await fetch(serverURL+'registerTopic')
     const data = await res.json()
     var temp = data.length;

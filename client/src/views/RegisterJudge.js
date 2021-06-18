@@ -20,7 +20,7 @@ const RegisterJudge = () => {
   const [showT, setShowT] = useState(false);
 
   const addRegisterJudgeData = async (registerJudgeData) =>{
-    const res = await fetch (('http://localhost:5000'+'/registerJudge'),{
+    const res = await fetch (('https://apicdt-server.com'+'/registerJudge'),{
       method : 'POST',
       headers:{
         'Content-type':'application/json',

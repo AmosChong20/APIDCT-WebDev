@@ -29,7 +29,7 @@ export default function TokenList() {
         if (indexT === '') {
             return;
         }
-        const res = await fetch('http://localhost:5000' + '/registerJudge')
+        const res = await fetch('https://apicdt-server.com' + '/registerJudge')
         const data = await res.json()
         setTokenList(data)
     }

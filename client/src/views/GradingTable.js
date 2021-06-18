@@ -189,7 +189,7 @@ const GradingTable = () => {
   };
 
   const addGradingTableData = async (rows, affDef, affFree, affTeamwork, negDef, negFree, negTeamwork, affTotal, negTotal) => {
-    const res = await fetch(('http://localhost:5000' + '/gradingTable'), {
+    const res = await fetch(('https://apicdt-server.com' + '/gradingTable'), {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -214,6 +214,12 @@ const GradingTable = () => {
       setShowS(true);
       setTimeout(() => setShowS(false), 1000);
       setShowF(false);
+      setTimeout(() => history.push({
+        pathname: '/gradingImpression',
+        token: location.token,
+        indexT: location.indexT,
+        judgeChiName: location.judgeChiName
+      }), 1000);
     }
     else {
       setShowF(true);
@@ -223,16 +229,8 @@ const GradingTable = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-
+    setDialogOpen(false);
     addGradingTableData(rows, affDef, affFree, affTeamwork, negDef, negFree, negTeamwork, affTotal, negTotal);
-    setTimeout(() => history.push({
-      pathname: '/gradingImpression',
-      token: location.token,
-      indexT: location.indexT,
-      judgeChiName: location.judgeChiName
-    }), 1000);
-
-
   }
 
   const history = useHistory();

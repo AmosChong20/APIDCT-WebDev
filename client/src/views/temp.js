@@ -83,7 +83,7 @@ const JudgeLogin = () => {
   }
 
   const getTime = async () => {
-    const res = await fetch('http://localhost:5000/'+'starwars/time')
+    const res = await fetch('https://apicdt-server.com/'+'starwars/time')
     const data = await res.json()
     // console.log(data);
     return data;
@@ -94,7 +94,7 @@ const JudgeLogin = () => {
       return;
     }
     
-    const res = await fetch('http://localhost:5000'+'/registerJudge/'+token)
+    const res = await fetch('https://apicdt-server.com'+'/registerJudge/'+token)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+token)
     const data = await res.json()
     setDataf (data);
@@ -105,7 +105,7 @@ const JudgeLogin = () => {
       return;
     }
 
-    const res = await fetch('http://localhost:5000'+'/registerTopic/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/registerTopic/'+indexT)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     // setDatat(data);

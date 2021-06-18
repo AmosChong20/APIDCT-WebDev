@@ -30,7 +30,7 @@ const GradingSummary = () => {
   }
 
   const addGradingSummary = async (summary) =>{
-    const res = await fetch (('http://localhost:5000/'+'gradingSummary'),{
+    const res = await fetch (('https://apicdt-server.com/'+'gradingSummary'),{
       method : 'POST',
       headers:{
         'Content-type':'application/json',
@@ -46,6 +46,12 @@ const GradingSummary = () => {
     if (res.status === 201){
       setShowS(true);
       setShowF(false);
+      setTimeout(() => history.push({
+        pathname:'/gradingBestFinal',
+        token:location.token,
+        indexT:location.indexT,
+        judgeChiName:location.judgeChiName
+      }), 1000);
     }
     else{
       setShowF(true);
@@ -66,14 +72,12 @@ const GradingSummary = () => {
     setShowS(true);
 
     addGradingSummary(summary);
-    setSummary(0);
 
-    setTimeout(() => history.push({
-      pathname:'/gradingBestFinal',
-      token:location.token,
-      indexT:location.indexT,
-      judgeChiName:location.judgeChiName
-    }), 1000);
+    setTimeout(() => {
+      setSummary(0);
+    }, 900);
+
+
   }
   
   const checkSelected = () =>{
