@@ -336,7 +336,7 @@ const GradingBestCand = () => {
 
     return (
         <section className="header-gradient">
-            <div className="container main_block">
+            <div className="main_block">
                 <Alert show={showS} className="alert" variant="success" onClose={() => setShowS(false)} dismissible>
                     <Alert.Heading className="alertHeading"> 提交成功 ！/ Registration Successful ！ </Alert.Heading>
                 </Alert>
@@ -359,7 +359,7 @@ const GradingBestCand = () => {
                 <div className="regBlock row">
                     <form className="col-12 regForm" noValidate>
                         <div className="d-flex justify-content-center">请选择一位最佳辩手</div>
-                        <div className="school container col d-flex justify-content-center">
+                        <div className="school col d-flex justify-content-center">
                             <Form.Control className="selectspeaker" as="select" onChange={(e) => getSelection(e, 0)} style={{ width: "50vw", margin: "10px" }}>
                                 <option value='' >
                                     请选择最佳辩手

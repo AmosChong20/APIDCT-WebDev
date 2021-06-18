@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import React from 'react'
 import './css/RegisterJudge.css';
+import './css/GradingTable.css';
 import { useLocation, useHistory } from "react-router-dom";
 import Alert from 'react-bootstrap/Alert';
 
@@ -25,9 +26,15 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     marginTop: theme.spacing(3),
     overflowX: "auto"
-  },
+  }
+  ,
   table: {
-    minWidth: 650
+    minWidth: 650,
+    [theme.breakpoints.down('md')]: {
+      "& .MuiTableCell-root": {
+        fontSize: "2.5vw"
+      }
+    }
   }
 }));
 
@@ -310,119 +317,122 @@ const GradingTable = () => {
           </TableBody></Table>
       </div>
       }
-        submit={onSubmit} 
-        />
-      <div className="container main_block">
+        submit={onSubmit}
+      />
+      <div className="main_block">
         <Alert show={showS} className="alert" variant="success" onClose={() => setShowS(false)} dismissible>
           <Alert.Heading className="alertHeading"> 提交成功 ！/ Registration Successful ！ </Alert.Heading>
         </Alert>
         <Alert show={showF} className="alert" variant="danger" onClose={() => setShowF(false)} dismissible>
           <Alert.Heading className="alertHeading"> 提交失败 ！/ Registration Failed ！ </Alert.Heading>
         </Alert>
-        <div className="register_header">
-          <span> 正赛 </span>
+        <div className="row register_header">
+          <div className="col-12">
+            <span> 正赛 </span></div>
         </div>
         <Stepper step={0} />
-        <div className="register_header">
-          <span> 分数票 </span>
+
+        <div className="row register_header">
+          <span className="col-12"> 分数票 </span>
         </div>
         <div className="regBlock row">
           <form className="col-12 regForm" noValidate>
+            <div className="tablecontainer">
+              <Table className={classes.table} aria-label="caption table">
+                <caption></caption>
+                <colgroup>
+                  <col style={{ width: '15%' }} />
+                  <col style={{ width: '15%' }} />
+                  <col style={{ width: '15%' }} />
+                  <col style={{ width: '15%' }} />
+                  <col style={{ width: '15%' }} />
+                  <col style={{ width: '25%' }} />
+                </colgroup>
+                <TableHead>
+                  <TableRow>
+                    <TableCell colSpan={5}><div><h3>正方</h3><h5 style={{ fontSize: "120%", color: "grey" }}>若选手掉线超过缓冲时间，请在对应环节的分数栏打勾‘✔’，则该辩手在该环节的分数直接计为零分。</h5></div></TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {rows.slice(0, 4).map(row => (
+                    <StyledTableRow key={row.id}>
+                      <TableCell align='center'>
+                        <div style={{ fontSize: "150%" }}>
+                          {speaker[row.name]}</div>
+                      </TableCell>
+                      <CustomTableCell {...{ row, id: "name", name: "mark1", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark1")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "mark2", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark2")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "mark3", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark3")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "mark4", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark4")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "subt", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "subt")) }} />
+                    </StyledTableRow>
+                  ))}
+                  <TableRow>
+                    <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>答辩(10分)</div></TableCell>
+                    <TableCell align="left"><Input type="number" value={affDef === 0 ? '' : affDef} onWheel={(e) => e.target.blur()} placeholder="0" inputProps={{ min: 0, max: 10 }} onChange={e => { setAffDef((e.target.value > 10 || e.target.value <0)? affDef : e.target.value) }} /></TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>自由辩论(80分)</div></TableCell>
+                    <TableCell align="left"><Input type="number" value={affFree === 0 ? '' : affFree} onWheel={(e) => e.target.blur()} placeholder="0" inputProps={{ min: 0, max: 80 }} onChange={e => { setAffFree((e.target.value > 80 || e.target.value <0) ? affFree : e.target.value) }} /></TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>团体配合与合作精神(30分)</div></TableCell>
+                    <TableCell align="left"><Input type="number" value={affTeamwork === 0 ? '' : affTeamwork} onWheel={(e) => e.target.blur()} placeholder="0" inputProps={{ min: 0, max: 30 }} onChange={e => { setAffTeamwork((e.target.value > 30 || e.target.value <0) ? affTeamwork : e.target.value) }} /></TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell align="right" colSpan={5}><div style={{ fontSize: "170%" }}>总分(400分)</div></TableCell>
+                    <TableCell align="left"><div style={{ fontSize: "170%", fontWeight: "bolder" }}>{affTotal}</div></TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table></div>
 
-            <Table className={classes.table} aria-label="caption table">
-              <caption></caption>
-              <colgroup>
-                <col style={{ width: '15%' }} />
-                <col style={{ width: '15%' }} />
-                <col style={{ width: '15%' }} />
-                <col style={{ width: '15%' }} />
-                <col style={{ width: '15%' }} />
-                <col style={{ width: '25%' }} />
-              </colgroup>
-              <TableHead>
-                <TableRow>
-                  <TableCell colSpan={5}><div><h3>正方</h3><h5 style={{ fontSize: "120%", color: "grey" }}>若选手掉线超过缓冲时间，请在对应环节的分数栏打勾‘✔’，则该辩手在该环节的分数直接计为零分。</h5></div></TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.slice(0, 4).map(row => (
-                  <StyledTableRow key={row.id}>
-                    <TableCell align='center'>
-                      <div style={{ fontSize: "150%" }}>
-                        {speaker[row.name]}</div>
-                    </TableCell>
-                    <CustomTableCell {...{ row, id: "name", name: "mark1", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark1")) }} />
-                    <CustomTableCell {...{ row, id: "name", name: "mark2", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark2")) }} />
-                    <CustomTableCell {...{ row, id: "name", name: "mark3", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark3")) }} />
-                    <CustomTableCell {...{ row, id: "name", name: "mark4", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark4")) }} />
-                    <CustomTableCell {...{ row, id: "name", name: "subt", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "subt")) }} />
-                  </StyledTableRow>
-                ))}
-                <TableRow>
-                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>答辩(10分)</div></TableCell>
-                  <TableCell align="left"><Input type="number" value={affDef === 0 ? '' : affDef} onWheel={(e) => e.target.blur()} placeholder="0" inputProps={{ min: 0, max: 10 }} onChange={e => { setAffDef((e.target.value > 10 || e.target.value < 0) ? affDef : e.target.value) }} /></TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>自由辩论(80分)</div></TableCell>
-                  <TableCell align="left"><Input type="number" value={affFree === 0 ? '' : affFree} onWheel={(e) => e.target.blur()} placeholder="0" inputProps={{ min: 0, max: 80 }} onChange={e => { setAffFree((e.target.value > 80 || e.target.value < 0) ? affFree : e.target.value) }} /></TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>团体配合与合作精神(30分)</div></TableCell>
-                  <TableCell align="left"><Input type="number" value={affTeamwork === 0 ? '' : affTeamwork} onWheel={(e) => e.target.blur()} placeholder="0" inputProps={{ min: 0, max: 30 }} onChange={e => { setAffTeamwork((e.target.value > 30 || e.target.value < 0) ? affTeamwork : e.target.value) }} /></TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "170%" }}>总分(400分)</div></TableCell>
-                  <TableCell align="left"><div style={{ fontSize: "170%", fontWeight: "bolder" }}>{affTotal}</div></TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-
-            <Table className={classes.table} aria-label="caption table">
-              <caption></caption>
-              <colgroup>
-                <col style={{ width: '15%' }} />
-                <col style={{ width: '15%' }} />
-                <col style={{ width: '15%' }} />
-                <col style={{ width: '15%' }} />
-                <col style={{ width: '15%' }} />
-                <col style={{ width: '25%' }} />
-              </colgroup>
-              <TableHead>
-                <TableRow>
-                  <TableCell colSpan={5}><div><h3>反方</h3><h5 style={{ fontSize: "120%", color: "grey" }}>若选手掉线超过缓冲时间，请在对应环节的分数栏打勾‘✔’，则该辩手在该环节的分数直接计为零分。</h5></div></TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.slice(4, 8).map(row => (
-                  <StyledTableRow key={row.id}>
-                    <TableCell align="center">
-                      <div style={{ fontSize: "150%" }}>{speaker[row.name]}</div>
-                    </TableCell>
-                    <CustomTableCell {...{ row, id: "name", name: "mark1", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark1")) }} />
-                    <CustomTableCell {...{ row, id: "name", name: "mark2", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark2")) }} />
-                    <CustomTableCell {...{ row, id: "name", name: "mark3", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark3")) }} />
-                    <CustomTableCell {...{ row, id: "name", name: "mark4", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark4")) }} />
-                    <CustomTableCell {...{ row, id: "name", name: "subt", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "subt")) }} />
-                  </StyledTableRow>
-                ))}
-                <TableRow>
-                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>答辩(10分)</div></TableCell>
-                  <TableCell align="left"><Input type="number" value={negDef === 0 ? '' : negDef} onWheel={(e) => e.target.blur()} placeholder="0" inputProps={{ min: 0, max: 10 }} onChange={e => { setNegDef((e.target.value > 10 || e.target.value < 0) ? negDef : e.target.value) }} /></TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>自由辩论(80分)</div></TableCell>
-                  <TableCell align="left"><Input type="number" value={negFree === 0 ? '' : negFree} onWheel={(e) => e.target.blur()} placeholder="0" inputProps={{ min: 0, max: 80 }} onChange={e => { setNegFree((e.target.value > 80 || e.target.value < 0) ? negFree : e.target.value) }} /></TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>团体配合与合作精神(30分)</div></TableCell>
-                  <TableCell align="left"><Input type="number" value={negTeamwork === 0 ? '' : negTeamwork} onWheel={(e) => e.target.blur()} placeholder="0" inputProps={{ min: 0, max: 30 }} onChange={e => { setNegTeamwork((e.target.value > 30 || e.target.value < 0) ? negTeamwork : e.target.value) }} /></TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell align="right" colSpan={5}><div style={{ fontSize: "170%" }}>总分(400分)</div></TableCell>
-                  <TableCell align="left"><div style={{ fontSize: "170%", fontWeight: "bolder" }}>{negTotal}</div></TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
+            <div className="tablecontainer">
+              <Table className={classes.table} aria-label="caption table">
+                <caption></caption>
+                <colgroup>
+                  <col style={{ width: '15%' }} />
+                  <col style={{ width: '15%' }} />
+                  <col style={{ width: '15%' }} />
+                  <col style={{ width: '15%' }} />
+                  <col style={{ width: '15%' }} />
+                  <col style={{ width: '25%' }} />
+                </colgroup>
+                <TableHead>
+                  <TableRow>
+                    <TableCell colSpan={5}><div><h3>反方</h3><h5 style={{ fontSize: "120%", color: "grey" }}>若选手掉线超过缓冲时间，请在对应环节的分数栏打勾‘✔’，则该辩手在该环节的分数直接计为零分。</h5></div></TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {rows.slice(4, 8).map(row => (
+                    <StyledTableRow key={row.id}>
+                      <TableCell align="center">
+                        <div style={{ fontSize: "150%" }}>{speaker[row.name]}</div>
+                      </TableCell>
+                      <CustomTableCell {...{ row, id: "name", name: "mark1", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark1")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "mark2", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark2")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "mark3", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark3")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "mark4", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark4")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "subt", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "subt")) }} />
+                    </StyledTableRow>
+                  ))}
+                  <TableRow>
+                    <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>答辩(10分)</div></TableCell>
+                    <TableCell align="left"><Input type="number" value={negDef === 0 ? '' : negDef} onWheel={(e) => e.target.blur()} placeholder="0" inputProps={{ min: 0, max: 10 }} onChange={e => { setNegDef((e.target.value > 10 || e.target.value <0) ? negDef : e.target.value) }} /></TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>自由辩论(80分)</div></TableCell>
+                    <TableCell align="left"><Input type="number" value={negFree === 0 ? '' : negFree} onWheel={(e) => e.target.blur()} placeholder="0" inputProps={{ min: 0, max: 80 }} onChange={e => { setNegFree((e.target.value > 80 || e.target.value <0) ? negFree : e.target.value) }} /></TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell align="right" colSpan={5}><div style={{ fontSize: "120%" }}>团体配合与合作精神(30分)</div></TableCell>
+                    <TableCell align="left"><Input type="number" value={negTeamwork === 0 ? '' : negTeamwork} onWheel={(e) => e.target.blur()} placeholder="0" inputProps={{ min: 0, max: 30 }} onChange={e => { setNegTeamwork((e.target.value > 30 || e.target.value <0) ? negTeamwork : e.target.value) }} /></TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell align="right" colSpan={5}><div style={{ fontSize: "170%" }}>总分(400分)</div></TableCell>
+                    <TableCell align="left"><div style={{ fontSize: "170%", fontWeight: "bolder" }}>{negTotal}</div></TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table></div>
 
             <button type="button" onClick={() => setDialogOpen(true)} className="btn sub btn btn-primary" data-toggle="modal" data-target="#exampleModal" value='Save Form'>
               <span className="englishF"> Submit / </span> <span> 提交 </span>

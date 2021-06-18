@@ -518,7 +518,7 @@ const GradingFan = () => {
       </div>} 
       submit={onSubmit} />
 
-      <div className="container main_block">
+      <div className=" main_block">
         <Alert show={showS} className="alert" variant="success" onClose={() => setShowS(false)} dismissible>
           <Alert.Heading className="alertHeading"> 提交成功 ！/ Registration Successful ！ </Alert.Heading>
         </Alert>

@@ -90,7 +90,7 @@ const GradingImpression = () => {
         submit={onSubmit}
         content={<div><div style={{ marginBottom: "10px" }} className="d-flex justify-content-center">您选择的是</div><h3 className="d-flex justify-content-center">{impression === 1 ? "正方" : impression===2?"反方":""}</h3></div>} 
         />
-      <div className="container main_block">
+      <div className=" main_block">
         <Alert show={showS} className="alert" variant="success" onClose={() => setShowS(false)} dismissible>
           <Alert.Heading className="alertHeading"> 提交成功 ！/ Submitted Successfully ！ </Alert.Heading>
         </Alert>

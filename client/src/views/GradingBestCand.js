@@ -86,7 +86,7 @@ const GradingBestCand = () => {
 
     return (
         <section className="header-gradient">
-             <div className="container main_block">
+             <div className="main_block">
 
                 <Alert show={showS} className="alert" variant="success" onClose={() => setShowS(false)} dismissible>
                     <Alert.Heading className="alertHeading"> 提交成功 ！/ Submitted Successfully ！ </Alert.Heading>
@@ -110,8 +110,8 @@ const GradingBestCand = () => {
                 <div className="regBlock row">
                     <form className="col-12 regForm" noValidate>
                         <div className="d-flex justify-content-center">请选择三位最佳辩手候选人(请勿复选)</div>
-                        <div className="school container col d-flex justify-content-center">
-                            <Form.Control className="selectspeaker" as="select" onChange={(e) => getSelection(e, 0)} style={{ width: "50vw", margin: "10px" }}>
+                        <div className="school col d-flex justify-content-center selection">
+                            <Form.Control className="selectspeaker col-12 col-md-4" as="select" onChange={(e) => getSelection(e, 0)} style={{ width: "50vw", margin: "10px" }}>
                                 <option value='' >
                                     第一位候选人
                                 </option>
@@ -121,7 +121,7 @@ const GradingBestCand = () => {
 
                             </Form.Control>
 
-                            <Form.Control className="selectspeaker" as="select" onChange={(e) => getSelection(e, 1)} style={{ width: "50vw", margin: "10px" }}>
+                            <Form.Control className="selectspeaker col-12 col-md-4" as="select" onChange={(e) => getSelection(e, 1)} style={{ width: "50vw", margin: "10px" }}>
                                 <option value='' >
                                     第二位候选人
                                 </option>
@@ -131,7 +131,7 @@ const GradingBestCand = () => {
 
                             </Form.Control>
 
-                            <Form.Control className="selectspeaker" as="select" onChange={(e) => getSelection(e, 2)} style={{ width: "50vw", margin: "10px" }}>
+                            <Form.Control className="selectspeaker col-12 col-md-4" as="select" onChange={(e) => getSelection(e, 2)} style={{ width: "50vw", margin: "10px" }}>
                                 <option value='' >
                                     第三位候选人
                                 </option>
