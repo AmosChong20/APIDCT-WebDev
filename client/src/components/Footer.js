@@ -33,7 +33,7 @@ class Footer extends Component {
                   </div>
                 </div>
                 <div className="col-12 col-sm-6">
-                <h4>赞助商</h4>
+                <h4>合作伙伴</h4>
                 <img src={sponsor} alt="ICBC" className="ICBC-logo"/>
                   <h4>关注我们</h4>
                       <ul className="social-network social-circle">

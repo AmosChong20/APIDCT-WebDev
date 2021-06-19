@@ -148,6 +148,12 @@ ul.social-network li {
   .ICBC-logo{
     width:70%;
   }
+
+  .footercontainer .row{
+  display: flex;
+    justify-content: center;
+  flex-wrap: wrap;
+  }
 }
 
 @media (min-width: 992px){
