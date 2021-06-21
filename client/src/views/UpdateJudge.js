@@ -190,7 +190,7 @@ const RegisterJudge = () => {
                       请选择辩题
                     </option>
                     {topics.map(topic => (
-                      <option key = {topic.indexT} value={topic.topic} >{topic.indexT} {topic.topic}</option>
+                      <option key = {topic.indexT} value={topic.indexT} >{topic.indexT} {topic.topic}</option>
                     ))}
       
                 </Form.Control>
