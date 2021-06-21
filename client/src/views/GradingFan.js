@@ -314,13 +314,37 @@ const GradingFan = () => {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
+
+  const findGradingFan = async (indexT,token) => {
+    if(indexT === ''){
+      return;
+    }
+    console.log("asdsdaads")
+    const res = await fetch('https://apicdt-server.com'+'/gradingFan/'+indexT+'/'+token)
+    // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
+    const data = await res.json()
+    if(data.length>0){
+      var queryString = "?token=" +token +"&indexT="+indexT+"&judgeChiName="+getParameterByName('judgeChiName');
+      setTimeout(() => {
+        window.location.href = "gradingImpressionFan" + queryString;
+      }, 1000);
+    }
+    else{
+      return;
+    }
+  } 
+
   if(start){
+    findGradingFan(getParameterByName('indexT'),getParameterByName('indexT'))
     gradingFanData.token = getParameterByName('token')
     gradingFanData.indexT = getParameterByName('indexT') 
     setGradingFanData({ ...gradingFanData, judgeChiName: getParameterByName('judgeChiName') })
     setStart(false)
   }
+
   
+
+
 
   const addGradingFanData = async (gradingFanData) =>{
     const res = await fetch (('https://apicdt-server.com'+'/gradingFan'),{

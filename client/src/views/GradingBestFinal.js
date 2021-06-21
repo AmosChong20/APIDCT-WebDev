@@ -21,7 +21,6 @@ const GradingBestCand = () => {
     const [dataTable, setDataTable] = useState([]);
     const [dataBC, setDataBC] = useState([]);
     const location = useLocation();
-
     const [showS, setShowS] = useState(false);
     const [showF, setShowF] = useState(false);
     const [dialogOpen, setDialogOpen] = useState(false);
@@ -58,11 +57,6 @@ const GradingBestCand = () => {
     const fetchData = () => {
         findGradingTable(getParameterByName('indexT'));
         findGradingBestCand(getParameterByName('indexT'));
-    }
-
-    if (start) {
-        fetchData();
-        setStart(false);
     }
 
 
@@ -327,6 +321,29 @@ const GradingBestCand = () => {
             setShowF(true);
             setShowS(false);
         }
+    }
+
+    const findGradingBestFinal = async (indexT,token) => {
+        if(indexT === ''){
+          return;
+        }
+        const res = await fetch('https://apicdt-server.com'+'/gradingBestFinal/'+indexT+'/'+token)
+        // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
+        const data = await res.json()
+        if(data.length>0){
+            setTimeout(() => history.push({
+                pathname: '/',
+            }), 1000);
+        }
+        else{
+          return;
+        }
+    }
+    
+    if(start){
+        findGradingBestFinal(getParameterByName('indexT'),getParameterByName('indexT'));
+        fetchData();
+        setStart(false);
     }
 
     const onSubmit = (e) => {

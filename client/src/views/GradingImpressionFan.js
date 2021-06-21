@@ -34,7 +34,28 @@ const GradingImpressionFan = () => {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
+  
+  const findGradingImpressionFan = async (indexT,token) => {
+    if(indexT === ''){
+      return;
+    }
+    const res = await fetch('https://apicdt-server.com'+'/gradingImpressionFan/'+indexT+'/'+token)
+    // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
+    const data = await res.json()
+    if(data.length>0){
+      console.log("ASD")
+      var queryString = "?token=" +token +"&indexT="+indexT+"&judgeChiName="+getParameterByName('judgeChiName');
+      setTimeout(() => {
+        window.location.href = "gradingSummaryFan" + queryString;
+      }, 1000);
+    }
+    else{
+      return;
+    }
+  } 
+
   if(start){
+    findGradingImpressionFan(getParameterByName('token'),getParameterByName('indexT'))
     gradingImpressionFanData.token = getParameterByName('token')
     gradingImpressionFanData.indexT = getParameterByName('indexT') 
     setGradingImpressionFanData({ ...gradingImpressionFanData, judgeChiName: getParameterByName('judgeChiName') })
@@ -69,6 +90,8 @@ const GradingImpressionFan = () => {
       setShowS(false);
     }
   }
+
+  
 
   const onSubmit = (e) =>{
     e.preventDefault()

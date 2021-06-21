@@ -18,8 +18,7 @@ const GradingBestCand = () => {
     const location = useLocation();
     const [speakers, setSpeakers] = useState([{ 'name': "正方一辩" }, { 'name': "正方二辩" }, { 'name': "正方三辩" }, { 'name': "正方四辩" }, { 'name': "反方一辩" }, { 'name': "反方二辩" }, { 'name': "反方三辩" }, { 'name': "反方四辩" }]);
     const [selected, setSelected] = useState(['', '', ''])
-
-
+    const [start, setStart] = useState(true);
     const [showS, setShowS] = useState(false);
     const [showF, setShowF] = useState(false);
     const [dialogOpen, setDialogOpen] = useState(false);
@@ -77,6 +76,29 @@ const GradingBestCand = () => {
             setShowF(true);
             setShowS(false);
         }
+    }
+
+    const findGradingBestCand = async (indexT,token) => {
+        if(indexT === ''){
+          return;
+        }
+        const res = await fetch('https://apicdt-server.com'+'/gradingBestCand/'+indexT+'/'+token)
+        // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
+        const data = await res.json()
+        if(data.length>0){
+          var queryString = "?token=" +token +"&indexT="+indexT+"&judgeChiName="+getParameterByName('judgeChiName');
+          setTimeout(() => {
+            window.location.href = "gradingSummary" + queryString;
+          }, 1000);
+        }
+        else{
+          return;
+        }
+      }
+    
+    if(start){
+        findGradingBestCand(getParameterByName('indexT'),getParameterByName('indexT'))
+        setStart(false);
     }
 
     const onSubmit = (e) => {

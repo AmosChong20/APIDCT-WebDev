@@ -126,6 +126,7 @@ const GradingTable = () => {
   const [affTotal, setAffTotal] = useState(0);
   const [negTotal, setNegTotal] = useState(0);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [start, setStart] = useState(true);
   const [previous, setPrevious] = React.useState({});
   const classes = useStyles();
 
@@ -247,6 +248,30 @@ const GradingTable = () => {
       setShowF(true);
       setShowS(false);
     }
+  }
+
+  const findGradingTable = async (indexT,token) => {
+    if(indexT === ''){
+      return;
+    } 
+    // console.log(indexT,token)
+    const res = await fetch('https://apicdt-server.com'+'/gradingTable/'+indexT+'/'+token)
+    // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
+    const data = await res.json()
+    if(data.length>0){
+      var queryString = "?token=" +token +"&indexT="+indexT+"&judgeChiName="+getParameterByName('judgeChiName');
+      setTimeout(() => {
+        window.location.href = "gradingImpression" + queryString;
+      }, 1000);
+    }
+    else{
+      return;
+    }
+  }
+
+  if(start){
+    findGradingTable(getParameterByName('indexT'),getParameterByName('indexT'))
+    setStart(false);
   }
 
   const onSubmit = (e) => {

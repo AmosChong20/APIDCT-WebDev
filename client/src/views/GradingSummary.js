@@ -21,6 +21,7 @@ const GradingSummary = () => {
   const location = useLocation();
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
+  const [start, setStart] = useState(true);
   const [dialogOpen,setDialogOpen]=useState(false);
 
   const onClickTeam = (selectedTeam) =>{
@@ -74,6 +75,29 @@ const GradingSummary = () => {
       setShowF(true);
       setShowS(false);
     }
+  }
+
+  const findGradingSummary = async (indexT,token) => {
+    if(indexT === ''){
+      return;
+    }
+    const res = await fetch('https://apicdt-server.com'+'/gradingSummary/'+indexT+'/'+token)
+    // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
+    const data = await res.json()
+    if(data.length>0){
+      var queryString = "?token=" +token +"&indexT="+indexT+"&judgeChiName="+getParameterByName('judgeChiName');
+      setTimeout(() => {
+        window.location.href = "gradingBestFinal" + queryString;
+      }, 1000);
+    }
+    else{
+      return;
+    }
+  }
+
+  if(start){
+      findGradingSummary(getParameterByName('indexT'),getParameterByName('indexT'))
+      setStart(false);
   }
 
   const onSubmit = (e) =>{
