@@ -69,6 +69,9 @@ h1.cn-title-1{
 h1.cn-title-2{
 	font-size: 4vw;
 }
+h1.cn-title-3{
+	font-size: 3vw;
+}
 
 /*changes made when screen size is small(bootstrap small)*/
 @media screen and (max-width:576px){
@@ -80,5 +83,8 @@ h1.cn-title-2{
 	}
 	h1.cn-title-2{
 		font-size: 7vw;
+	}
+	h1.cn-title-3{
+		font-size: 5vw;
 	}
 }
