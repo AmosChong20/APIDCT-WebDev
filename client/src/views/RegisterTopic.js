@@ -82,7 +82,7 @@ const RegisterTopic = () => {
 
   const onSubmit = (e) =>{
     e.preventDefault()
-    // console.log(registerTopicData);
+    console.log(registerTopicData);
     if(registerTopicData.topic === '' ||
     registerTopicData.stimeh === '' ||
     registerTopicData.stimem === '' ||
@@ -96,7 +96,7 @@ const RegisterTopic = () => {
       return;
     }
   
-    // addRegisterTopicData(registerTopicData);
+    addRegisterTopicData(registerTopicData);
     setRegisterTopicData ({topic : '', indexT: 0, judgeNo: '' , stimeh : '', stimem : '', etimeh : '', etimem : '', date :'', isRoadShow: ''});
     setChanged_1(false);
     setChanged_2(false);
