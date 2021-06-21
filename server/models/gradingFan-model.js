@@ -34,7 +34,7 @@ const gradingFanSchema = mongoose.Schema({
 })
 
 // registerModel.plugin(uniqueValidator);
-gradingFanSchema.index({ indexT: "text" });
+gradingFanSchema.index({ indexT: "text" , token: "text"});
 var gradingFanModel = mongoose.model('GradingFan', gradingFanSchema);
 
 

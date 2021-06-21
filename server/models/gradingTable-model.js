@@ -17,7 +17,7 @@ const gradingTableSchema = mongoose.Schema({
 })
 
 // registerModel.plugin(uniqueValidator);
-gradingTableSchema.index({ indexT: "text" });
+gradingTableSchema.index({ indexT: "text" , token: "text"});
 var gradingTableModel = mongoose.model('GradingTable', gradingTableSchema);
 
 

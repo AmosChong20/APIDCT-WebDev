@@ -22,11 +22,12 @@ import './css/GradingFan.css';
 const GradingFan = () => {
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
+  const [start, setStart] = useState(true);
   const location = useLocation();
   const [gradingFanData, setGradingFanData] = useState({
-    token: location.token,
-    indexT: location.indexT,
-    judgeChiName:location.judgeChiName,
+    token: '',
+    indexT: '',
+    judgeChiName:'',
     affLilun : 0,
     affZhixun : 0,
     affDabian : 0,
@@ -304,6 +305,23 @@ const GradingFan = () => {
   };
 
 
+  const getParameterByName= (name, url) => {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
+  if(start){
+    gradingFanData.token = getParameterByName('token')
+    gradingFanData.indexT = getParameterByName('indexT') 
+    setGradingFanData({ ...gradingFanData, judgeChiName: getParameterByName('judgeChiName') })
+    setStart(false)
+  }
+  
+
   const addGradingFanData = async (gradingFanData) =>{
     const res = await fetch (('https://apicdt-server.com'+'/gradingFan'),{
       method : 'POST',
@@ -317,12 +335,17 @@ const GradingFan = () => {
       setShowS(true);
       setTimeout(() => setShowS(false), 1000);
       setShowF(false);
-      setTimeout(() => history.push({
-        pathname: '/gradingImpressionFan',
-        token: gradingFanData.token,
-        indexT: gradingFanData.indexT,
-        judgeChiName:gradingFanData.judgeChiName,
-      }), 1000);
+      var queryString = "?token=" +gradingFanData.token +"&indexT="+gradingFanData.indexT+"&judgeChiName="+gradingFanData.judgeChiName;
+      setTimeout(() => {
+        window.location.href = "gradingImpressionFan" + queryString;
+      }, 1000);
+
+      // setTimeout(() => history.push({
+      //   pathname: '/gradingImpressionFan',
+      //   token: gradingFanData.token,
+      //   indexT: gradingFanData.indexT,
+      //   judgeChiName:gradingFanData.judgeChiName,
+      // }), 1000);
     }
     else{
       setShowF(true);
@@ -337,6 +360,7 @@ const GradingFan = () => {
     // console.log(gradingFanData)
 
   }
+
 
   return (
     <section className="header-gradient">

@@ -9,7 +9,7 @@ const gradingSummarySchema = mongoose.Schema({
 })
 
 // registerModel.plugin(uniqueValidator);
-gradingSummarySchema.index({ indexT: "text" });
+gradingSummarySchema.index({ indexT: "text" , token: "text"});
 var gradingSummaryModel = mongoose.model('GradingSummary', gradingSummarySchema);
 
 

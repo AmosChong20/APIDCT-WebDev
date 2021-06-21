@@ -16,6 +16,7 @@ const GradingSummaryFan = () => {
 
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
+  const [start, setStart] = useState(true);
   const [dialogOpen,setDialogOpen]=useState(false);
 
   const onClickTeam = (selectedTeam) =>{
@@ -25,6 +26,22 @@ const GradingSummaryFan = () => {
   }
 
   const history = useHistory();
+
+  const getParameterByName= (name, url) => {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
+  if(start){
+    gradingSummaryFanData.token = getParameterByName('token')
+    gradingSummaryFanData.indexT = getParameterByName('indexT') 
+    setGradingSummaryFanData({ ...gradingSummaryFanData, judgeChiName: getParameterByName('judgeChiName') })
+    setStart(false)
+  }
 
   const addGradingSummary = async (summary) =>{
     const res = await fetch (('https://apicdt-server.com/'+'gradingSummaryFan'),{
@@ -58,15 +75,11 @@ const GradingSummaryFan = () => {
       setShowS(false);
       return;
     }
-    setTimeout(() => {
-      setGradingSummaryFanData({ ...gradingSummaryFanData, summary: 0})
-    }, 900);
     // console.log(gradingSummaryFanData)
     addGradingSummary(gradingSummaryFanData);
-    
-
-
-
+    setTimeout(() => {
+      setGradingSummaryFanData({ ...gradingSummaryFanData, summary: 0})
+    }, 950);
   }
 
   const checkSelected = () =>{

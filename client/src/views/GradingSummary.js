@@ -29,6 +29,16 @@ const GradingSummary = () => {
     }
   }
 
+  const getParameterByName= (name, url) => {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
+
   const addGradingSummary = async (summary) =>{
     const res = await fetch (('https://apicdt-server.com/'+'gradingSummary'),{
       method : 'POST',
@@ -37,21 +47,28 @@ const GradingSummary = () => {
       },
       body: JSON.stringify({
         summary:summary,
-        token:location.token,
-        indexT:location.indexT,
-        judgeChiName:location.judgeChiName
+        // token:location.token,
+        // indexT:location.indexT,
+        // judgeChiName:location.judgeChiName
+        token: getParameterByName('token'),
+        indexT: getParameterByName('indexT'),
+        judgeChiName: getParameterByName('judgeChiName'),
       }),
     })
     const data = await res.json()
     if (res.status === 201){
       setShowS(true);
       setShowF(false);
-      setTimeout(() => history.push({
-        pathname:'/gradingBestFinal',
-        token:location.token,
-        indexT:location.indexT,
-        judgeChiName:location.judgeChiName
-      }), 1000);
+      var queryString = "?token=" + getParameterByName('token') +"&indexT="+getParameterByName('indexT')+"&judgeChiName="+getParameterByName('judgeChiName');
+      setTimeout(() => {
+        window.location.href = "gradingBestFinal" + queryString;
+      }, 1000);
+      // setTimeout(() => history.push({
+      //   pathname:'/gradingBestFinal',
+      //   token:location.token,
+      //   indexT:location.indexT,
+      //   judgeChiName:location.judgeChiName
+      // }), 1000);
     }
     else{
       setShowF(true);

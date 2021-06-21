@@ -16,6 +16,7 @@ const GradingImpressionFan = () => {
 
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
+  const [start, setStart] = useState(true);
   const [dialogOpen,setDialogOpen]=useState(false);
 
   const onClickTeam = (selectedTeam) =>{
@@ -23,6 +24,23 @@ const GradingImpressionFan = () => {
       setGradingImpressionFanData({ ...gradingImpressionFanData, impression: parseInt(selectedTeam) })
     }
   }
+
+  const getParameterByName= (name, url) => {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
+  if(start){
+    gradingImpressionFanData.token = getParameterByName('token')
+    gradingImpressionFanData.indexT = getParameterByName('indexT') 
+    setGradingImpressionFanData({ ...gradingImpressionFanData, judgeChiName: getParameterByName('judgeChiName') })
+    setStart(false)
+  }
+
   const addGradingImpression = async (impression) =>{
     const res = await fetch (('https://apicdt-server.com/'+'gradingImpressionFan'),{
       method : 'POST',
@@ -35,12 +53,16 @@ const GradingImpressionFan = () => {
     if (res.status === 201){
       setShowS(true);
       setShowF(false);
-      setTimeout(() => history.push({
-        pathname: '/gradingSummaryFan',
-        token: gradingImpressionFanData.token,
-        indexT: gradingImpressionFanData.indexT,
-        judgeChiName:gradingImpressionFanData.judgeChiName,
-      }), 1000);
+      var queryString = "?token=" +gradingImpressionFanData.token +"&indexT="+gradingImpressionFanData.indexT+"&judgeChiName="+gradingImpressionFanData.judgeChiName;
+      setTimeout(() => {
+        window.location.href = "gradingSummaryFan" + queryString;
+      }, 1000);
+      // setTimeout(() => history.push({
+      //   pathname: '/gradingSummaryFan',
+      //   token: gradingImpressionFanData.token,
+      //   indexT: gradingImpressionFanData.indexT,
+      //   judgeChiName:gradingImpressionFanData.judgeChiName,
+      // }), 1000);
     }
     else{
       setShowF(true);

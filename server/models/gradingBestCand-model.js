@@ -9,7 +9,7 @@ const gradingBestCandSchema = mongoose.Schema({
 })
 
 // registerModel.plugin(uniqueValidator);
-gradingBestCandSchema.index({ indexT: "text" });
+gradingBestCandSchema.index({ indexT: "text" , token: "text"});
 var gradingBestCandModel = mongoose.model('GradingBestCand', gradingBestCandSchema);
 
 

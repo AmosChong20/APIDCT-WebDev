@@ -160,9 +160,24 @@ const GradingTable = () => {
     return rows.map(row => { if (row.team === t) return row.subt; else return 0 }).reduce((sum, i) => sum + i, 0) + subtotal;
   }
 
-  React.useEffect(
-    () => { setAffTotal(total(rows, 1)); setNegTotal(total(rows, 0)) }, [total, rows]
-  )
+  const getParameterByName= (name, url) => {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
+  
+
+
+  useEffect(() => { 
+      setAffTotal(total(rows, 1)); 
+      setNegTotal(total(rows, 0));
+  }, [total, rows])
+
+
 
   const onChange = (e, row) => {
     if (!previous[row.id]) {
@@ -195,9 +210,12 @@ const GradingTable = () => {
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
-        token: location.token,
-        indexT: location.indexT,
-        judgeChiName: location.judgeChiName,
+        // token: location.token,
+        // indexT: location.indexT,
+        // judgeChiName: location.judgeChiName,
+        token: getParameterByName('token'),
+        indexT: getParameterByName('indexT'),
+        judgeChiName: getParameterByName('judgeChiName'),
         rows: rows,
         affDef: affDef,
         affFree: affFree,
@@ -214,12 +232,16 @@ const GradingTable = () => {
       setShowS(true);
       setTimeout(() => setShowS(false), 1000);
       setShowF(false);
-      setTimeout(() => history.push({
-        pathname: '/gradingImpression',
-        token: location.token,
-        indexT: location.indexT,
-        judgeChiName: location.judgeChiName
-      }), 1000);
+      var queryString = "?token=" + getParameterByName('token') +"&indexT="+getParameterByName('indexT')+"&judgeChiName="+getParameterByName('judgeChiName');
+      setTimeout(() => {
+        window.location.href = "gradingImpression" + queryString;
+      }, 1000);
+      // setTimeout(() => history.push({
+      //   pathname: '/gradingImpression',
+      //   token: location.token,
+      //   indexT: location.indexT,
+      //   judgeChiName: location.judgeChiName
+      // }), 1000);
     }
     else {
       setShowF(true);
