@@ -19,53 +19,69 @@ const JudgeLogin = () => {
   
 
 
-  const findGradingSummaryFan = async (indexT) => {
+  const findGradingSummaryFan = async (indexT,token) => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('https://apicdt-server.com'+'/gradingSummaryFan/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/gradingSummaryFan/'+indexT+'/'+token)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     if(data.length>0){
       setTimeout(() => history.push({
         pathname: '/',
       }), 1000);
+      setShowI(false);
+      setShowS(false);
+      setShowF(true);
+      setTimeout(() => setShowF(false), 1000);
     }
     else{
+      setShowI(false);
+      setShowS(true);
+      setShowF(false);
+      setTimeout(() => setShowS(false), 1000);
       var queryString = "?token=" +judgeLoginData.token +"&indexT="+judgeLoginData.indexT+"&judgeChiName="+judgeLoginData.judgeChiName;
       setTimeout(() => {
         window.location.href = "gradingSummaryFan" + queryString;
       }, 1000);
     }
   }
-  const findGradingImpressionFan = async (indexT) => {
+  const findGradingImpressionFan = async (indexT,token) => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('https://apicdt-server.com'+'/gradingImpressionFan/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/gradingImpressionFan/'+indexT+'/'+token)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     if(data.length>0){
-      findGradingSummaryFan(indexT);
+      findGradingSummaryFan(indexT,token);
     }
     else{
+      setShowI(false);
+      setShowS(true);
+      setShowF(false);
+      setTimeout(() => setShowS(false), 1000);
       var queryString = "?token=" +judgeLoginData.token +"&indexT="+judgeLoginData.indexT+"&judgeChiName="+judgeLoginData.judgeChiName;
       setTimeout(() => {
         window.location.href = "gradingImpressionFan" + queryString;
       }, 1000);
     }
   }
-  const findGradingFan = async (indexT) => {
+  const findGradingFan = async (indexT,token) => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('https://apicdt-server.com'+'/gradingFan/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/gradingFan/'+indexT+'/'+token)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     if(data.length>0){
-      findGradingImpressionFan(indexT);
+      findGradingImpressionFan(indexT,token);
     }
     else{
+      setShowI(false);
+      setShowS(true);
+      setShowF(false);
+      setTimeout(() => setShowS(false), 1000);
       var queryString = "?token=" +judgeLoginData.token +"&indexT="+judgeLoginData.indexT+"&judgeChiName="+judgeLoginData.judgeChiName;
       setTimeout(() => {
         window.location.href = "gradingFan" + queryString;
@@ -73,68 +89,85 @@ const JudgeLogin = () => {
     }
   }
 
-  const findGradingTable = async (indexT) => {
+  const findGradingTable = async (indexT,token) => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('https://apicdt-server.com'+'/gradingTable/'+indexT)
+    console.log(indexT,token)
+    const res = await fetch('https://apicdt-server.com'+'/gradingTable/'+indexT+'/'+token)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     if(data.length>0){
-      findGradingImpression(indexT);
+      findGradingImpression(indexT,token);
     }
     else{
+      setShowI(false);
+      setShowS(true);
+      setShowF(false);
+      setTimeout(() => setShowS(false), 1000);
       var queryString = "?token=" +judgeLoginData.token +"&indexT="+judgeLoginData.indexT+"&judgeChiName="+judgeLoginData.judgeChiName;
       setTimeout(() => {
         window.location.href = "gradingTable" + queryString;
       }, 1000);
     }
   }
-  const findGradingImpression = async (indexT) => {
+  const findGradingImpression = async (indexT,token) => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('https://apicdt-server.com'+'/gradingImpression/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/gradingImpression/'+indexT+'/'+token)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     if(data.length>0){
-      findGradingBestCand(indexT);
+      findGradingBestCand(indexT,token);
     }
     else{
+      setShowI(false);
+      setShowS(true);
+      setShowF(false);
+      setTimeout(() => setShowS(false), 1000);
       var queryString = "?token=" +judgeLoginData.token +"&indexT="+judgeLoginData.indexT+"&judgeChiName="+judgeLoginData.judgeChiName;
       setTimeout(() => {
         window.location.href = "gradingImpression" + queryString;
       }, 1000);
     }
   }
-  const findGradingBestCand = async (indexT) => {
+  const findGradingBestCand = async (indexT,token) => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('https://apicdt-server.com'+'/gradingBestCand/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/gradingBestCand/'+indexT+'/'+token)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     if(data.length>0){
-      findGradingSummary(indexT);
+      findGradingSummary(indexT,token);
     }
     else{
+      setShowI(false);
+      setShowS(true);
+      setShowF(false);
+      setTimeout(() => setShowS(false), 1000);
       var queryString = "?token=" +judgeLoginData.token +"&indexT="+judgeLoginData.indexT+"&judgeChiName="+judgeLoginData.judgeChiName;
       setTimeout(() => {
         window.location.href = "gradingBestCand" + queryString;
       }, 1000);
     }
   }
-  const findGradingSummary = async (indexT) => {
+  const findGradingSummary = async (indexT,token) => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('https://apicdt-server.com'+'/gradingSummary/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/gradingSummary/'+indexT+'/'+token)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     if(data.length>0){
-      findGradingBestFinal(indexT);
+      findGradingBestFinal(indexT,token);
     }
     else{
+      setShowI(false);
+      setShowS(true);
+      setShowF(false);
+      setTimeout(() => setShowS(false), 1000);
       var queryString = "?token=" +judgeLoginData.token +"&indexT="+judgeLoginData.indexT+"&judgeChiName="+judgeLoginData.judgeChiName;
       setTimeout(() => {
         window.location.href = "gradingSummary" + queryString;
@@ -142,25 +175,34 @@ const JudgeLogin = () => {
     }
   }
 
-  const findGradingBestFinal = async (indexT) => {
+  const findGradingBestFinal = async (indexT,token) => {
     if(indexT === ''){
       return;
     }
-    const res = await fetch('https://apicdt-server.com'+'/gradingBestFinal/'+indexT)
+    const res = await fetch('https://apicdt-server.com'+'/gradingBestFinal/'+indexT+'/'+token)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()
     if(data.length>0){
+      setShowI(false);
+      setShowS(false);
+      setShowF(true);
+      setTimeout(() => setShowF(false), 1000);
       setTimeout(() => history.push({
         pathname: '/',
       }), 1000);
     }
     else{
+      setShowI(false);
+      setShowS(true);
+      setShowF(false);
+      setTimeout(() => setShowS(false), 1000);
       var queryString = "?token=" +judgeLoginData.token +"&indexT="+judgeLoginData.indexT+"&judgeChiName="+judgeLoginData.judgeChiName;
       setTimeout(() => {
         window.location.href = "gradingBestFinal" + queryString;
       }, 1000);
     }
   }
+
   const onSubmit = async (e) =>{
     e.preventDefault()
 
@@ -246,10 +288,10 @@ const JudgeLogin = () => {
         judgeLoginData.judgeChiName = dataf[0].judgeChiName;
         // console.log(judgeLoginData)
         if(judgeLoginData.isRoadShow){
-          findGradingFan(judgeLoginData.token)
+          findGradingFan(judgeLoginData.indexT,judgeLoginData.token)
         }
         else{
-          findGradingTable(judgeLoginData.token)
+          findGradingTable(judgeLoginData.indexT,judgeLoginData.token)
           // setTimeout(() => history.push({
           //   pathname: '/gradingTable',
           //   token: judgeLoginData.token,
@@ -258,10 +300,10 @@ const JudgeLogin = () => {
           // }), 1000);
         }
         
-        setShowI(false);
-        setShowS(true);
-        setShowF(false);
-        setTimeout(() => setShowS(true), 500);
+        // setShowI(false);
+        // setShowS(true);
+        // setShowF(false);
+        // setTimeout(() => setShowS(true), 500);
         return;
       }
     });

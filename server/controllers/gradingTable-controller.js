@@ -39,3 +39,26 @@ export const findGradingTable = async (req, res) =>{
         }
     })
 }
+
+export const findGradingTableToken = async (req, res) =>{
+    var query1 = req.params.query1;
+    var query2 = req.params.query2;
+    // console.log(req.params.query1)
+    // console.log(req.params.query2)
+    gradingTableModel.find({
+        $text: {
+            $search: query1,
+            $search: query2
+        }
+    }, function(err, result) {
+        if (err) throw err;
+        if (result) {
+            // console.log(result);
+            res.json(result)
+        } else {
+            res.send(JSON.stringify({
+                error : 'Error'
+            }))
+        }
+    })
+}

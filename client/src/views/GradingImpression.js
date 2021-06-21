@@ -44,13 +44,13 @@ const GradingImpression = () => {
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
-        impression: impression,
         // token: location.token,
         // indexT: location.indexT,
         // judgeChiName: location.judgeChiName
         token: getParameterByName('token'),
         indexT: getParameterByName('indexT'),
         judgeChiName: getParameterByName('judgeChiName'),
+        impression: impression,
       }),
     })
     const data = await res.json()
