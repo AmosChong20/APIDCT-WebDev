@@ -93,7 +93,7 @@ const JudgeLogin = () => {
     if(indexT === ''){
       return;
     }
-    console.log(indexT,token)
+    // console.log(indexT,token)
     const res = await fetch('https://apicdt-server.com'+'/gradingTable/'+indexT+'/'+token)
     // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
     const data = await res.json()

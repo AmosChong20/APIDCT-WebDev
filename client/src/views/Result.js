@@ -681,6 +681,12 @@ const Grading = () => {
                 {(scoreT.winner === 1) ? <div  style={{ fontSize: "170%" }}>正方</div> :<div  style={{ fontSize: "170%" }}>反方</div>}
               </TableCell>
             </TableRow>
+            <TableRow className ="rowResult">
+              <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>评审数量</div></TableCell>
+              <TableCell align="center" colSpan={2}>
+                <div  style={{ fontSize: "170%" }}>{dataT[0] ? <div>{dataT[0].JudgeNo}</div> : <div> </div>}</div>
+              </TableCell>
+            </TableRow>
           </TableBody>
         </Table>
       </div>

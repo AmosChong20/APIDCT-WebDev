@@ -107,8 +107,8 @@ const GradingBestCand = () => {
 
         var keysSorted = Object.keys(list).sort(function (a, b) { return list[b] - list[a] })
         var keysSortedValue = Object.keys(list).sort(function (a, b) { return list[b] - list[a] }).map(key => list[key])
-        console.log(keysSorted);  
-        console.log(keysSortedValue);  
+        //console.log(keysSorted);  
+        //console.log(keysSortedValue);  
         var count = 0;
         var min = 0;
         for (const val of keysSortedValue) {

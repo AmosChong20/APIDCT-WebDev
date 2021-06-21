@@ -38,7 +38,7 @@ const JudgeLogin = () => {
         for (var i = 0; i < len; i++){
           
           fetchTZTopic((dataf[0].indexA)[i].topic)
-          console.log(judgeLoginData)
+          // console.log(judgeLoginData)
         }
         
         // try{
