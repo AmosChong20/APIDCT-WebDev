@@ -274,6 +274,11 @@ const GradingTable = () => {
     setStart(false);
   }
 
+
+  const checkFill = () =>{
+    setDialogOpen(true)
+  } 
+
   const onSubmit = (e) => {
     e.preventDefault()
     setDialogOpen(false);
@@ -286,7 +291,9 @@ const GradingTable = () => {
     <section className="header-gradient">
       <GradingDialog open={dialogOpen} setOpen={setDialogOpen} content={<div>
         <Table aria-label="caption table">
-          <caption></caption>
+          <TableHead>
+              <TableCell  colSpan={6}><div className = "empt" >红色字体为0分项目，请确认分数。</div></TableCell>
+          </TableHead>
           <colgroup>
             <col style={{ width: '12%' }} />
             <col style={{ width: '15%' }} />
@@ -297,27 +304,28 @@ const GradingTable = () => {
           </colgroup>
           <TableHead>
             <TableRow>
-              <TableCell colSpan={6}><div><h4>正方</h4></div></TableCell></TableRow>
+              <TableCell colSpan={6}><div><h4>正方</h4></div></TableCell>
+            </TableRow>
           </TableHead>
           <TableBody>
             {rows.slice(0, 4).map((row) => (
               <TableRow key={row.id}>
                 <TableCell component="th" scope="row"><div>{speaker[row.name]}</div></TableCell>
-                <TableCell align="right"><div>{title[row.name]['mark1'].slice(0, -5)}</div>{row.mark1}</TableCell>
-                <TableCell align="right">{title[row.name]['mark2'] === '-' ? '-' : <div><div>{title[row.name]['mark2'].slice(0, -5)}</div>{row.mark2}</div>}</TableCell>
-                <TableCell align="right">{title[row.name]['mark3'] === '-' ? '-' : <div><div>{title[row.name]['mark3'].slice(0, -5)}</div>{row.mark3}</div>}</TableCell>
-                <TableCell align="right"><div>{title[row.name]['mark4'].slice(0, -5)}</div>{row.mark4}</TableCell>
+                <TableCell align="right"><div className={`${row.mark1===0 ? "empt" : ""} `}><div>{title[row.name]['mark1'].slice(0, -5)}</div >{row.mark1}</div></TableCell>
+                <TableCell align="right">{title[row.name]['mark2'] === '-' ? '-' : <div className={`${row.mark2===0 ? "empt" : ""} `} ><div>{title[row.name]['mark2'].slice(0, -5)}</div>{row.mark2}</div>}</TableCell>
+                <TableCell align="right">{title[row.name]['mark3'] === '-' ? '-' : <div className={`${row.mark3===0 ? "empt" : ""} `}><div>{title[row.name]['mark3'].slice(0, -5)}</div>{row.mark3}</div>}</TableCell>
+                <TableCell align="right"><div className={`${row.mark4===0 ? "empt" : ""} `}><div>{title[row.name]['mark4'].slice(0, -5)}</div>{row.mark4}</div></TableCell>
                 <TableCell align="left"><div>{'总分'}</div>{row.subt}</TableCell>
               </TableRow>
             ))}
             <TableRow>
-              <TableCell align="right" colSpan={5}><div>答辩(10分)</div></TableCell><TableCell align="left">{affDef}</TableCell>
+              <TableCell  align="right" colSpan={5}><div className={`${affDef===0 ? "empt" : ""} `} >答辩(10分)</div></TableCell><TableCell align="left"><div className={`${affDef===0 ? "empt" : ""} `}> {affDef} </div></TableCell>
             </TableRow>
             <TableRow>
-              <TableCell align="right" colSpan={5}><div>自由辩论(80分)</div></TableCell><TableCell align="left">{affFree}</TableCell>
+              <TableCell align="right" colSpan={5}><div className={`${affFree===0 ? "empt" : ""} `} >自由辩论(80分)</div></TableCell><TableCell align="left"><div className={`${affFree===0 ? "empt" : ""} `}> {affFree} </div></TableCell>
             </TableRow>
             <TableRow>
-              <TableCell align="right" colSpan={5}><div>团体配合与合作精神(30分)</div></TableCell><TableCell align="left">{affTeamwork}</TableCell>
+              <TableCell align="right" colSpan={5}><div className={`${affTeamwork===0 ? "empt" : ""} `}>团体配合与合作精神(30分)</div></TableCell><TableCell align="left"><div className={`${affTeamwork ===0 ? "empt" : ""} `}> {affTeamwork } </div></TableCell>
             </TableRow>
             <TableRow>
               <TableCell align="right" colSpan={5}><div style={{ fontSize: "130%" }}>总分(400分)</div></TableCell><TableCell align="left"><div style={{ fontSize: "130%", fontWeight: "bolder" }}>{affTotal}</div></TableCell>
@@ -342,21 +350,21 @@ const GradingTable = () => {
             {rows.slice(4, 8).map((row) => (
               <TableRow key={row.id}>
                 <TableCell component="th" scope="row"><div>{speaker[row.name]}</div></TableCell>
-                <TableCell align="right"><div>{title[row.name]['mark1'].slice(0, -5)}</div>{row.mark1}</TableCell>
-                <TableCell align="right">{title[row.name]['mark2'] === '-' ? '-' : <div><div>{title[row.name]['mark2'].slice(0, -5)}</div>{row.mark2}</div>}</TableCell>
-                <TableCell align="right">{title[row.name]['mark3'] === '-' ? '-' : <div><div>{title[row.name]['mark3'].slice(0, -5)}</div>{row.mark3}</div>}</TableCell>
-                <TableCell align="right"><div>{title[row.name]['mark4'].slice(0, -5)}</div>{row.mark4}</TableCell>
+                <TableCell align="right"><div className={`${row.mark1===0 ? "empt" : ""} `}><div>{title[row.name]['mark1'].slice(0, -5)}</div >{row.mark1}</div></TableCell>
+                <TableCell align="right">{title[row.name]['mark2'] === '-' ? '-' : <div className={`${row.mark2===0 ? "empt" : ""} `} ><div>{title[row.name]['mark2'].slice(0, -5)}</div>{row.mark2}</div>}</TableCell>
+                <TableCell align="right">{title[row.name]['mark3'] === '-' ? '-' : <div className={`${row.mark3===0 ? "empt" : ""} `}><div>{title[row.name]['mark3'].slice(0, -5)}</div>{row.mark3}</div>}</TableCell>
+                <TableCell align="right"><div className={`${row.mark4===0 ? "empt" : ""} `}><div>{title[row.name]['mark4'].slice(0, -5)}</div>{row.mark4}</div></TableCell>
                 <TableCell align="left"><div>{'总分'}</div>{row.subt}</TableCell>
               </TableRow>
             ))}
             <TableRow>
-              <TableCell align="right" colSpan={5}><div>答辩(10分)</div></TableCell><TableCell align="left">{negDef}</TableCell>
+              <TableCell align="right" colSpan={5}><div className={`${negDef===0 ? "empt" : ""} `}>答辩(10分)</div></TableCell><TableCell align="left"><div className={`${negDef===0 ? "empt" : ""} `} >{negDef} </div></TableCell>
             </TableRow>
             <TableRow>
-              <TableCell align="right" colSpan={5}><div>自由辩论(80分)</div></TableCell><TableCell align="left">{negFree}</TableCell>
+              <TableCell align="right" colSpan={5}><div className={`${negFree===0 ? "empt" : ""} `} >自由辩论(80分)</div></TableCell><TableCell align="left"><div className={`${negFree===0 ? "empt" : ""} `} >{negFree}</div></TableCell>
             </TableRow>
             <TableRow>
-              <TableCell align="right" colSpan={5}><div>团体配合与合作精神(30分)</div></TableCell><TableCell align="left">{negTeamwork}</TableCell>
+              <TableCell align="right" colSpan={5}><div className={`${negTeamwork===0 ? "empt" : ""} `} >团体配合与合作精神(30分)</div></TableCell><TableCell align="left"><div className={`${negTeamwork===0 ? "empt" : ""} `} >{negTeamwork}</div></TableCell>
             </TableRow>
             <TableRow>
               <TableCell align="right" colSpan={5}><div style={{ fontSize: "130%" }}>总分(400分)</div></TableCell><TableCell align="left"><div style={{ fontSize: "130%", fontWeight: "bolder" }}>{negTotal}</div></TableCell>
@@ -481,7 +489,7 @@ const GradingTable = () => {
                 </TableBody>
               </Table></div>
 
-            <button type="button" onClick={() => setDialogOpen(true)} className="btn sub btn btn-primary" data-toggle="modal" data-target="#exampleModal" value='Save Form'>
+            <button type="button" onClick={checkFill} className="btn sub btn btn-primary" data-toggle="modal" data-target="#exampleModal" value='Save Form'>
               <span className="englishF"> Submit / </span> <span> 提交 </span>
             </button>
           </form>

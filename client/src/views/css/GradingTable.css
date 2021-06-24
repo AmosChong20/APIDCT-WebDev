@@ -4,6 +4,10 @@
     margin-left: auto;
 }
 
+.empt{
+    color: red;
+}
+
 h3{
     word-wrap: break-word;
     -webkit-hyphens: auto;
