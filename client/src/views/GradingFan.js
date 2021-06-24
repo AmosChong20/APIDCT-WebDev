@@ -391,6 +391,9 @@ const GradingFan = () => {
       <GradingDialog open={dialogOpen} setOpen={setDialogOpen} content={
       <div>
         <Table  aria-label="caption table">
+           <TableHead>
+              <TableCell  colSpan={6}><div className = "empt" >红色字体为0分项目，请确认分数。</div></TableCell>
+           </TableHead>
             <colgroup>
               <col style={{ width: '40%' }} />
               <col style={{ width: '30%' }} />
@@ -407,144 +410,144 @@ const GradingFan = () => {
               <TableRow className = "shade">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>立论</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.affLilun} </div> 
+                  <div className={`${gradingFanData.affLilun===0 ? "empt" : ""} `} style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${gradingFanData.affLilun===0 ? "empt" : ""} `}> {gradingFanData.affLilun} </div> 
                 </TableCell>
-                <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.negLilun} </div> 
+                <TableCell  align="left">
+                  <div  className={`${gradingFanData.negLilun===0 ? "empt" : ""} `} style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${gradingFanData.negLilun===0 ? "empt" : ""} `} > {gradingFanData.negLilun} </div> 
                 </TableCell>
               </TableRow>
               
               <TableRow>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>质询</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.affZhixun} </div> 
+                  <div className={`${gradingFanData.affZhixun===0 ? "empt" : ""} `} style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${gradingFanData.affZhixun===0 ? "empt" : ""} `}> {gradingFanData.affZhixun} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.negZhixun} </div> 
+                  <div  className={`${gradingFanData.negZhixun===0 ? "empt" : ""} `} style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${gradingFanData.negZhixun===0 ? "empt" : ""} `}> {gradingFanData.negZhixun} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow className = "shade">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>答辩</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（20分）</div> 
-                  <div> {gradingFanData.affDabian} </div> 
+                  <div  className={`${gradingFanData.affDabian===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（20分）</div> 
+                  <div className={`${gradingFanData.affDabian===0 ? "empt" : ""} `} > {gradingFanData.affDabian} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（20分）</div> 
-                  <div> {gradingFanData.negDabian} </div> 
+                  <div  className={`${gradingFanData.negDabian===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（20分）</div> 
+                  <div className={`${gradingFanData.negDabian===0 ? "empt" : ""} `} > {gradingFanData.negDabian} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>驳论</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.affBolun} </div> 
+                  <div   className={`${gradingFanData.affBolun===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div  className={`${gradingFanData.affBolun===0 ? "empt" : ""} `} > {gradingFanData.affBolun} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.negBolun} </div> 
+                  <div  className={`${gradingFanData.negBolun===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${gradingFanData.negBolun===0 ? "empt" : ""} `} > {gradingFanData.negBolun} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow className = "shade">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第一次攻辩</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.affFirstAttack} </div> 
+                  <div  className={`${gradingFanData.affFirstAttack===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${gradingFanData.affFirstAttack===0 ? "empt" : ""} `} > {gradingFanData.affFirstAttack} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.negFirstAttack} </div> 
+                  <div  className={`${gradingFanData.negFirstAttack===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${gradingFanData.negFirstAttack===0 ? "empt" : ""} `} > {gradingFanData.negFirstAttack} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>陈词</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.affChenci} </div> 
+                  <div  className={`${gradingFanData.affChenci===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${gradingFanData.affChenci===0 ? "empt" : ""} `} > {gradingFanData.affChenci} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.negChenci} </div> 
+                  <div  className={`${gradingFanData.negChenci===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${gradingFanData.negChenci===0 ? "empt" : ""} `} > {gradingFanData.negChenci} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow className = "shade">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第二次攻辩</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.affSecondAttack} </div> 
+                  <div  className={`${gradingFanData.affSecondAttack===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${gradingFanData.affSecondAttack===0 ? "empt" : ""} `} > {gradingFanData.affSecondAttack} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.negSecondAttack} </div> 
+                  <div  className={`${gradingFanData.negSecondAttack===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${gradingFanData.negSecondAttack===0 ? "empt" : ""} `} > {gradingFanData.negSecondAttack} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第一次总结</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.affFirstFinal} </div> 
+                  <div  className={`${gradingFanData.affFirstFinal===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${gradingFanData.affFirstFinal===0 ? "empt" : ""} `} > {gradingFanData.affFirstFinal} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.negFirstFinal} </div> 
+                  <div  className={`${gradingFanData.negFirstFinal===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${gradingFanData.negFirstFinal===0 ? "empt" : ""} `} > {gradingFanData.negFirstFinal} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow className = "shade">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第二次总结</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.affSecondFinal} </div> 
+                  <div  className={`${gradingFanData.affSecondFinal===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${gradingFanData.affSecondFinal===0 ? "empt" : ""} `} > {gradingFanData.affSecondFinal} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.negSecondFinal} </div> 
+                  <div  className={`${gradingFanData.negSecondFinal===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${gradingFanData.negSecondFinal===0 ? "empt" : ""} `} > {gradingFanData.negSecondFinal} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>语言风度</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（40分）</div> 
-                  <div> {gradingFanData.affLanguage} </div> 
+                  <div  className={`${gradingFanData.affLanguage===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（40分）</div> 
+                  <div className={`${gradingFanData.affLanguage===0 ? "empt" : ""} `} > {gradingFanData.affLanguage} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（40分）</div> 
-                  <div> {gradingFanData.neLanguage} </div> 
+                  <div  className={`${gradingFanData.negLanguage===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（40分）</div> 
+                  <div className={`${gradingFanData.negLanguage===0 ? "empt" : ""} `} > {gradingFanData.negLanguage} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow className = "shade">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>自由辩论</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（80分）</div> 
-                  <div> {gradingFanData.affFree} </div> 
+                  <div  className={`${gradingFanData.affFree===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（80分）</div> 
+                  <div className={`${gradingFanData.affFree===0 ? "empt" : ""} `} > {gradingFanData.affFree} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（80分）</div> 
-                  <div> {gradingFanData.negFree} </div> 
+                  <div  className={`${gradingFanData.negFree===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（80分）</div> 
+                  <div className={`${gradingFanData.negFree===0 ? "empt" : ""} `} > {gradingFanData.negFree} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>团体配合与合作精神</div></TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.affTeamwork} </div> 
+                  <div  className={`${gradingFanData.affTeamwork===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${gradingFanData.affTeamwork===0 ? "empt" : ""} `} > {gradingFanData.affTeamwork} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div> {gradingFanData.negTeamwork} </div> 
+                  <div   className={`${gradingFanData.negTeamwork===0 ? "empt" : ""} `} style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${gradingFanData.negTeamwork===0 ? "empt" : ""} `} > {gradingFanData.negTeamwork} </div> 
                 </TableCell>
               </TableRow>
 
