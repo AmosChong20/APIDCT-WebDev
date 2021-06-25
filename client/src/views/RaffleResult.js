@@ -6,7 +6,7 @@ const RaffleResult = () => {
   return (
     <div>
         <div className="raffleResult mainBlockBracket">
-          <div className>
+          <div>
             <h2>辩题抽签结果</h2>
           </div>
           <div className="containerOne">

@@ -19,6 +19,10 @@
     "GHHead GH";
 }
 
+.RaffleResultTableHeader {
+  grid-column: span 2;
+}
+
 .RaffleResultTableHeader span {
   grid-area: RaffleResultTableHeader;
   background-color: grey;
