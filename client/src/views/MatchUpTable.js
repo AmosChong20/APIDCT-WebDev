@@ -1,5 +1,5 @@
 import React from 'react'
-import image from '../assets/image/matchUpTableNew.jpg';
+import image from '../assets/image/matchUpTable.jpg';
 import '../views/css/MatchUpTable.css'
 import Footer from '../components/Footer'
 
