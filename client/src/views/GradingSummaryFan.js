@@ -55,10 +55,15 @@ const GradingSummaryFan = () => {
   } 
 
   if(start){
+    if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
+      setTimeout(() => history.push({
+          pathname: '/judgeLogin',
+      }), 1000);
+    }
     gradingSummaryFanData.token = getParameterByName('token')
     gradingSummaryFanData.indexT = getParameterByName('indexT') 
     setGradingSummaryFanData({ ...gradingSummaryFanData, judgeChiName: getParameterByName('judgeChiName') })
-    findGradingSummaryFan(getParameterByName('token'),getParameterByName('indexT'))
+    findGradingSummaryFan(getParameterByName('indexT'),getParameterByName('token'))
     setStart(false)
   }
 

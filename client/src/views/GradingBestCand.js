@@ -97,7 +97,12 @@ const GradingBestCand = () => {
       }
     
     if(start){
-        findGradingBestCand(getParameterByName('indexT'),getParameterByName('indexT'))
+        if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
+            setTimeout(() => history.push({
+                pathname: '/judgeLogin',
+            }), 1000);
+        }
+        findGradingBestCand(getParameterByName('indexT'),getParameterByName('token'))
         setStart(false);
     }
 

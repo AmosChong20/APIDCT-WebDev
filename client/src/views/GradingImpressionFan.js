@@ -55,7 +55,12 @@ const GradingImpressionFan = () => {
   } 
 
   if(start){
-    findGradingImpressionFan(getParameterByName('token'),getParameterByName('indexT'))
+    if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
+      setTimeout(() => history.push({
+          pathname: '/judgeLogin',
+      }), 1000);
+    }
+    findGradingImpressionFan(getParameterByName('indexT'),getParameterByName('token'))
     gradingImpressionFanData.token = getParameterByName('token')
     gradingImpressionFanData.indexT = getParameterByName('indexT') 
     setGradingImpressionFanData({ ...gradingImpressionFanData, judgeChiName: getParameterByName('judgeChiName') })

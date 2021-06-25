@@ -96,8 +96,13 @@ const GradingSummary = () => {
   }
 
   if(start){
-      findGradingSummary(getParameterByName('indexT'),getParameterByName('indexT'))
-      setStart(false);
+    if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
+      setTimeout(() => history.push({
+          pathname: '/judgeLogin',
+      }), 1000);
+    }
+    findGradingSummary(getParameterByName('indexT'),getParameterByName('token'))
+    setStart(false);
   }
 
   const onSubmit = (e) =>{

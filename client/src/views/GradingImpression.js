@@ -94,7 +94,12 @@ const GradingImpression = () => {
   }
 
   if(start){
-    findGradingImpression(getParameterByName('indexT'),getParameterByName('indexT'))
+    if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
+      setTimeout(() => history.push({
+          pathname: '/judgeLogin',
+      }), 1000);
+    }
+    findGradingImpression(getParameterByName('indexT'),getParameterByName('token'))
     setStart(false);
   }
 

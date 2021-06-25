@@ -341,7 +341,12 @@ const GradingBestCand = () => {
     }
     
     if(start){
-        findGradingBestFinal(getParameterByName('indexT'),getParameterByName('indexT'));
+        if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
+            setTimeout(() => history.push({
+                pathname: '/judgeLogin',
+            }), 1000);
+        }
+        findGradingBestFinal(getParameterByName('indexT'),getParameterByName('token'));
         fetchData();
         setStart(false);
     }
