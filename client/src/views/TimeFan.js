@@ -71,6 +71,12 @@ const TimeFan = () => {
       }
     }
 
+    if ((timeData.affTimeSec > 59)|| (timeData.affTimeSec > 59)){
+      setShowF(true);
+      setShowS(false);
+      return;
+    }
+
     if(timeData.negTimeMin === 19) {
       if(timeData.negTimeSec > 0){
         setShowF(true);

@@ -79,57 +79,58 @@ const GradingFan = () => {
 
   const affChange = (e,a) => {
     if(!e){
-      e = 0
+      e = 0;
     }
-    var temp = parseInt(gradingFanData.affLilun) + parseInt(gradingFanData.affZhixun) + parseInt(gradingFanData.affDabian) + parseInt(gradingFanData.affBolun) + parseInt(gradingFanData.affFirstAttack) + parseInt(gradingFanData.affChenci) + parseInt(gradingFanData.affSecondAttack) + parseInt(gradingFanData.affFirstFinal) + parseInt(gradingFanData.affSecondFinal) + parseInt(gradingFanData.affLanguage) + parseInt(gradingFanData.affFree) + parseInt(gradingFanData.affTeamwork)
+    
+    var temp = parseInt(gradingFanData.affLilun ? gradingFanData.affLilun : 0) + parseInt(gradingFanData.affZhixun ? gradingFanData.affZhixun : 0) + parseInt(gradingFanData.affDabian ? gradingFanData.affDabian : 0) + parseInt(gradingFanData.affBolun ? gradingFanData.affBolun : 0) + parseInt(gradingFanData.affFirstAttack ? gradingFanData.affFirstAttack : 0) + parseInt(gradingFanData.affChenci ? gradingFanData.affChenci : 0) + parseInt(gradingFanData.affSecondAttack ? gradingFanData.affSecondAttack : 0) + parseInt(gradingFanData.affFirstFinal ? gradingFanData.affFirstFinal : 0) + parseInt(gradingFanData.affSecondFinal ? gradingFanData.affSecondFinal : 0) + parseInt(gradingFanData.affLanguage ? gradingFanData.affLanguage : 0) + parseInt(gradingFanData.affFree ? gradingFanData.affFree : 0) + parseInt(gradingFanData.affTeamwork ? gradingFanData.affTeamwork : 0)
 
     if(a===1){
-      temp = temp - parseInt(gradingFanData.affLilun) + parseInt(e);
-      gradingFanData.affLilun = parseInt(e);
+      temp = temp - parseInt(gradingFanData.affLilun ? gradingFanData.affLilun : 0) + parseInt(e ? e : 0);
+      gradingFanData.affLilun = (e);
     }
     if(a===2){
-      temp = temp - parseInt(gradingFanData.affZhixun) + parseInt(e);
-      gradingFanData.affZhixun = parseInt(e);
+      temp = temp - parseInt(gradingFanData.affZhixun ? gradingFanData.affZhixun : 0) + parseInt(e ? e : 0);
+      gradingFanData.affZhixun = (e);
     }
     if(a===3){
-      temp = temp - parseInt(gradingFanData.affDabian) + parseInt(e);
-      gradingFanData.affDabian = parseInt(e);
+      temp = temp - parseInt(gradingFanData.affDabian ? gradingFanData.affDabian : 0) + parseInt(e ? e : 0);
+      gradingFanData.affDabian = (e);
     }
     if(a===4){
-      temp = temp - parseInt(gradingFanData.affBolun) + parseInt(e);
-      gradingFanData.affBolun = parseInt(e);
+      temp = temp - parseInt(gradingFanData.affBolun ? gradingFanData.affBolun : 0) + parseInt(e ? e : 0);
+      gradingFanData.affBolun = (e);
     }
     if(a===5){
-      temp = temp - parseInt(gradingFanData.affFirstAttack) + parseInt(e);
-      gradingFanData.affFirstAttack = parseInt(e);
+      temp = temp - parseInt(gradingFanData.affFirstAttack ? gradingFanData.affFirstAttack : 0) + parseInt(e ? e : 0);
+      gradingFanData.affFirstAttack = (e);
     }
     if(a===6){
-      temp = temp - parseInt(gradingFanData.affChenci) + parseInt(e);
-      gradingFanData.affChenci = parseInt(e);
+      temp = temp - parseInt(gradingFanData.affChenci ? gradingFanData.affChenci : 0) + parseInt(e ? e : 0);
+      gradingFanData.affChenci = (e);
     }
     if(a===7){
-      temp = temp - parseInt(gradingFanData.affSecondAttack) + parseInt(e);
-      gradingFanData.affSecondAttack = parseInt(e);
+      temp = temp - parseInt(gradingFanData.affSecondAttack ? gradingFanData.affSecondAttack : 0) + parseInt(e ? e : 0);
+      gradingFanData.affSecondAttack = (e);
     }
     if(a===8){
-      temp = temp - parseInt(gradingFanData.affFirstFinal) + parseInt(e);
-      gradingFanData.affFirstFinal = parseInt(e);
+      temp = temp - parseInt(gradingFanData.affFirstFinal ? gradingFanData.affFirstFinal : 0) + parseInt(e ? e : 0);
+      gradingFanData.affFirstFinal = (e);
     }
     if(a===9){
-      temp = temp - parseInt(gradingFanData.affSecondFinal) + parseInt(e);
-      gradingFanData.affSecondFinal = parseInt(e);
+      temp = temp - parseInt(gradingFanData.affSecondFinal ? gradingFanData.affSecondFinal : 0) + parseInt(e ? e : 0);
+      gradingFanData.affSecondFinal = (e);
     }
     if(a===10){
-      temp = temp - parseInt(gradingFanData.affLanguage) + parseInt(e);
-      gradingFanData.affLanguage = parseInt(e);
+      temp = temp - parseInt(gradingFanData.affLanguage ? gradingFanData.affLanguage : 0) + parseInt(e ? e : 0);
+      gradingFanData.affLanguage = (e);
     }
     if(a===11){
-      temp = temp - parseInt(gradingFanData.affFree) + parseInt(e);
-      gradingFanData.affFree = parseInt(e);
+      temp = temp - parseInt(gradingFanData.affFree ? gradingFanData.affFree : 0) + parseInt(e ? e : 0);
+      gradingFanData.affFree = (e);
     }
     if(a===12){
-      temp = temp - parseInt(gradingFanData.affTeamwork) + parseInt(e);
-      gradingFanData.affTeamwork = parseInt(e);
+      temp = temp - parseInt(gradingFanData.affTeamwork ? gradingFanData.affTeamwork : 0) + parseInt(e ? e : 0);
+      gradingFanData.affTeamwork = (e);
     }
     
     setGradingFanData({ ...gradingFanData, affTotal: temp })
@@ -139,57 +140,57 @@ const GradingFan = () => {
 
   const negChange = (e,a) => {
     if(!e){
-      e = 0
+      e = 0;
     }
-    var temp = parseInt(gradingFanData.negLilun) + parseInt(gradingFanData.negZhixun) + parseInt(gradingFanData.negDabian) + parseInt(gradingFanData.negBolun) + parseInt(gradingFanData.negFirstAttack) + parseInt(gradingFanData.negChenci) + parseInt(gradingFanData.negSecondAttack) + parseInt(gradingFanData.negFirstFinal) + parseInt(gradingFanData.negSecondFinal) + parseInt(gradingFanData.negLanguage) + parseInt(gradingFanData.negFree) + parseInt(gradingFanData.negTeamwork)
+    var temp = parseInt(gradingFanData.negLilun ? gradingFanData.negLilun : 0) + parseInt(gradingFanData.negZhixun ? gradingFanData.negZhixun : 0) + parseInt(gradingFanData.negDabian ? gradingFanData.negDabian : 0) + parseInt(gradingFanData.negBolun ? gradingFanData.negBolun : 0) + parseInt(gradingFanData.negFirstAttack ? gradingFanData.negFirstAttack : 0) + parseInt(gradingFanData.negChenci ? gradingFanData.negChenci : 0) + parseInt(gradingFanData.negSecondAttack ? gradingFanData.negSecondAttack : 0) + parseInt(gradingFanData.negFirstFinal ? gradingFanData.negFirstFinal : 0) + parseInt(gradingFanData.negSecondFinal ? gradingFanData.negSecondFinal : 0) + parseInt(gradingFanData.negLanguage ? gradingFanData.negLanguage : 0) + parseInt(gradingFanData.negFree ? gradingFanData.negFree : 0) + parseInt(gradingFanData.negTeamwork ? gradingFanData.negTeamwork : 0)
 
     if(a===1){
-      temp = temp - parseInt(gradingFanData.negLilun) + parseInt(e);
-      gradingFanData.negLilun = parseInt(e);
+      temp = temp - parseInt(gradingFanData.negLilun ? gradingFanData.negLilun : 0) + parseInt(e ? e : 0);
+      gradingFanData.negLilun = (e);
     }
     if(a===2){
-      temp = temp - parseInt(gradingFanData.negZhixun) + parseInt(e);
-      gradingFanData.negZhixun = parseInt(e);
+      temp = temp - parseInt(gradingFanData.negZhixun ? gradingFanData.negZhixun : 0) + parseInt(e ? e : 0);
+      gradingFanData.negZhixun = (e);
     }
     if(a===3){
-      temp = temp - parseInt(gradingFanData.negDabian) + parseInt(e);
-      gradingFanData.negDabian = parseInt(e);
+      temp = temp - parseInt(gradingFanData.negDabian ? gradingFanData.negDabian : 0) + parseInt(e ? e : 0);
+      gradingFanData.negDabian = (e);
     }
     if(a===4){
-      temp = temp - parseInt(gradingFanData.negBolun) + parseInt(e);
-      gradingFanData.negBolun = parseInt(e);
+      temp = temp - parseInt(gradingFanData.negBolun ? gradingFanData.negBolun : 0) + parseInt(e ? e : 0);
+      gradingFanData.negBolun = (e);
     }
     if(a===5){
-      temp = temp - parseInt(gradingFanData.negFirstAttack) + parseInt(e);
-      gradingFanData.negFirstAttack = parseInt(e);
+      temp = temp - parseInt(gradingFanData.negFirstAttack ? gradingFanData.negFirstAttack : 0) + parseInt(e ? e : 0);
+      gradingFanData.negFirstAttack = (e);
     }
     if(a===6){
-      temp = temp - parseInt(gradingFanData.negChenci) + parseInt(e);
-      gradingFanData.negChenci = parseInt(e);
+      temp = temp - parseInt(gradingFanData.negChenci ? gradingFanData.negChenci : 0) + parseInt(e ? e : 0);
+      gradingFanData.negChenci = (e);
     }
     if(a===7){
-      temp = temp - parseInt(gradingFanData.negSecondAttack) + parseInt(e);
-      gradingFanData.negSecondAttack = parseInt(e);
+      temp = temp - parseInt(gradingFanData.negSecondAttack ? gradingFanData.negSecondAttack : 0) + parseInt(e ? e : 0);
+      gradingFanData.negSecondAttack = (e);
     }
     if(a===8){
-      temp = temp - parseInt(gradingFanData.negFirstFinal) + parseInt(e);
-      gradingFanData.negFirstFinal = parseInt(e);
+      temp = temp - parseInt(gradingFanData.negFirstFinal ? gradingFanData.negFirstFinal : 0) + parseInt(e ? e : 0);
+      gradingFanData.negFirstFinal = (e);
     }
     if(a===9){
-      temp = temp - parseInt(gradingFanData.negSecondFinal) + parseInt(e);
-      gradingFanData.negSecondFinal = parseInt(e);
+      temp = temp - parseInt(gradingFanData.negSecondFinal ? gradingFanData.negSecondFinal : 0) + parseInt(e ? e : 0);
+      gradingFanData.negSecondFinal = (e);
     }
     if(a===10){
-      temp = temp - parseInt(gradingFanData.negLanguage) + parseInt(e);
-      gradingFanData.negLanguage = parseInt(e);
+      temp = temp - parseInt(gradingFanData.negLanguage ? gradingFanData.negLanguage : 0) + parseInt(e ? e : 0);
+      gradingFanData.negLanguage = (e);
     }
     if(a===11){
-      temp = temp - parseInt(gradingFanData.negFree) + parseInt(e);
-      gradingFanData.negFree = parseInt(e);
+      temp = temp - parseInt(gradingFanData.negFree ? gradingFanData.negFree : 0) + parseInt(e ? e : 0);
+      gradingFanData.negFree = (e);
     }
     if(a===12){
-      temp = temp - parseInt(gradingFanData.negTeamwork) + parseInt(e);
-      gradingFanData.negTeamwork = parseInt(e);
+      temp = temp - parseInt(gradingFanData.negTeamwork ? gradingFanData.negTeamwork : 0) + parseInt(e ? e : 0);
+      gradingFanData.negTeamwork = (e);
     }
     
     setGradingFanData({ ...gradingFanData, negTotal: temp })
@@ -335,11 +336,11 @@ const GradingFan = () => {
   } 
 
   if(start){
-    if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
-      setTimeout(() => history.push({
-          pathname: '/judgeLogin',
-      }), 1000);
-    }
+    // if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
+    //   setTimeout(() => history.push({
+    //       pathname: '/judgeLogin',
+    //   }), 1000);
+    // }
     findGradingFan(getParameterByName('indexT'),getParameterByName('token'))
     gradingFanData.token = getParameterByName('token')
     gradingFanData.indexT = getParameterByName('indexT')
@@ -415,144 +416,144 @@ const GradingFan = () => {
               <TableRow className = "shade">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>立论</div></TableCell>
                 <TableCell align="left">
-                  <div className={`${gradingFanData.affLilun===0 ? "empt" : ""} `} style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div className={`${gradingFanData.affLilun===0 ? "empt" : ""} `}> {gradingFanData.affLilun} </div> 
+                  <div className={`${(gradingFanData.affLilun===0 || gradingFanData.affLilun==='0') ? "empt" : ""} `} style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${(gradingFanData.affLilun===0 || gradingFanData.affLilun==='0') ? "empt" : ""} `}> {gradingFanData.affLilun} </div> 
                 </TableCell>
                 <TableCell  align="left">
-                  <div  className={`${gradingFanData.negLilun===0 ? "empt" : ""} `} style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div className={`${gradingFanData.negLilun===0 ? "empt" : ""} `} > {gradingFanData.negLilun} </div> 
+                  <div  className={`${(gradingFanData.negLilun===0 || gradingFanData.negLilun==='0') ? "empt" : ""} `} style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${(gradingFanData.negLilun===0 || gradingFanData.negLilun==='0') ? "empt" : ""} `} > {gradingFanData.negLilun} </div> 
                 </TableCell>
               </TableRow>
               
               <TableRow>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>质询</div></TableCell>
                 <TableCell align="left">
-                  <div className={`${gradingFanData.affZhixun===0 ? "empt" : ""} `} style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div className={`${gradingFanData.affZhixun===0 ? "empt" : ""} `}> {gradingFanData.affZhixun} </div> 
+                  <div className={`${(gradingFanData.affZhixun===0 || gradingFanData.affZhixun==='0') ? "empt" : ""} `} style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${(gradingFanData.affZhixun===0 || gradingFanData.affZhixun==='0') ? "empt" : ""} `}> {gradingFanData.affZhixun} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.negZhixun===0 ? "empt" : ""} `} style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div className={`${gradingFanData.negZhixun===0 ? "empt" : ""} `}> {gradingFanData.negZhixun} </div> 
+                  <div  className={`${(gradingFanData.negZhixun===0 || gradingFanData.negZhixun==='0') ? "empt" : ""} `} style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${(gradingFanData.negZhixun===0 || gradingFanData.negZhixun==='0') ? "empt" : ""} `}> {gradingFanData.negZhixun} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow className = "shade">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>答辩</div></TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.affDabian===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（20分）</div> 
-                  <div className={`${gradingFanData.affDabian===0 ? "empt" : ""} `} > {gradingFanData.affDabian} </div> 
+                  <div  className={`${(gradingFanData.affDabian===0 || gradingFanData.affDabian==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（20分）</div> 
+                  <div className={`${(gradingFanData.affDabian===0 || gradingFanData.affDabian==='0') ? "empt" : ""} `} > {gradingFanData.affDabian} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.negDabian===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（20分）</div> 
-                  <div className={`${gradingFanData.negDabian===0 ? "empt" : ""} `} > {gradingFanData.negDabian} </div> 
+                  <div  className={`${(gradingFanData.negDabian===0 || gradingFanData.negDabian==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（20分）</div> 
+                  <div className={`${(gradingFanData.negDabian===0 || gradingFanData.negDabian==='0') ? "empt" : ""} `} > {gradingFanData.negDabian} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>驳论</div></TableCell>
                 <TableCell align="left">
-                  <div   className={`${gradingFanData.affBolun===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div  className={`${gradingFanData.affBolun===0 ? "empt" : ""} `} > {gradingFanData.affBolun} </div> 
+                  <div   className={`${(gradingFanData.affBolun===0 || gradingFanData.affBolun==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div  className={`${(gradingFanData.affBolun===0 || gradingFanData.affBolun==='0') ? "empt" : ""} `} > {gradingFanData.affBolun} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.negBolun===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div className={`${gradingFanData.negBolun===0 ? "empt" : ""} `} > {gradingFanData.negBolun} </div> 
+                  <div  className={`${(gradingFanData.negBolun===0 || gradingFanData.negBolun==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${(gradingFanData.negBolun===0 || gradingFanData.negBolun==='0') ? "empt" : ""} `} > {gradingFanData.negBolun} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow className = "shade">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第一次攻辩</div></TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.affFirstAttack===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div className={`${gradingFanData.affFirstAttack===0 ? "empt" : ""} `} > {gradingFanData.affFirstAttack} </div> 
+                  <div  className={`${(gradingFanData.affFirstAttack===0 || gradingFanData.affFirstAttack==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${(gradingFanData.affFirstAttack===0 || gradingFanData.affFirstAttack==='0') ? "empt" : ""} `} > {gradingFanData.affFirstAttack} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.negFirstAttack===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div className={`${gradingFanData.negFirstAttack===0 ? "empt" : ""} `} > {gradingFanData.negFirstAttack} </div> 
+                  <div  className={`${(gradingFanData.negFirstAttack===0 || gradingFanData.negFirstAttack==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${(gradingFanData.negFirstAttack===0 || gradingFanData.negFirstAttack==='0') ? "empt" : ""} `} > {gradingFanData.negFirstAttack} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>陈词</div></TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.affChenci===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div className={`${gradingFanData.affChenci===0 ? "empt" : ""} `} > {gradingFanData.affChenci} </div> 
+                  <div  className={`${(gradingFanData.affChenci===0 || gradingFanData.affChenci==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${(gradingFanData.affChenci===0 || gradingFanData.affChenci==='0') ? "empt" : ""} `} > {gradingFanData.affChenci} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.negChenci===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div className={`${gradingFanData.negChenci===0 ? "empt" : ""} `} > {gradingFanData.negChenci} </div> 
+                  <div  className={`${(gradingFanData.negChenci===0 || gradingFanData.negChenci==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${(gradingFanData.negChenci===0 || gradingFanData.negChenci==='0') ? "empt" : ""} `} > {gradingFanData.negChenci} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow className = "shade">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第二次攻辩</div></TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.affSecondAttack===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div className={`${gradingFanData.affSecondAttack===0 ? "empt" : ""} `} > {gradingFanData.affSecondAttack} </div> 
+                  <div  className={`${(gradingFanData.affSecondAttack===0 || gradingFanData.affSecondAttack==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${(gradingFanData.affSecondAttack===0 || gradingFanData.affSecondAttack==='0') ? "empt" : ""} `} > {gradingFanData.affSecondAttack} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.negSecondAttack===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div className={`${gradingFanData.negSecondAttack===0 ? "empt" : ""} `} > {gradingFanData.negSecondAttack} </div> 
+                  <div  className={`${(gradingFanData.negSecondAttack===0 || gradingFanData.negSecondAttack==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${(gradingFanData.negSecondAttack===0 || gradingFanData.negSecondAttack==='0') ? "empt" : ""} `} > {gradingFanData.negSecondAttack} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第一次总结</div></TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.affFirstFinal===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div className={`${gradingFanData.affFirstFinal===0 ? "empt" : ""} `} > {gradingFanData.affFirstFinal} </div> 
+                  <div  className={`${(gradingFanData.affFirstFinal===0 || gradingFanData.affFirstFinal==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${(gradingFanData.affFirstFinal===0 || gradingFanData.affFirstFinal==='0') ? "empt" : ""} `} > {gradingFanData.affFirstFinal} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.negFirstFinal===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div className={`${gradingFanData.negFirstFinal===0 ? "empt" : ""} `} > {gradingFanData.negFirstFinal} </div> 
+                  <div  className={`${(gradingFanData.negFirstFinal===0 || gradingFanData.negFirstFinal==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${(gradingFanData.negFirstFinal===0 || gradingFanData.negFirstFinal==='0') ? "empt" : ""} `} > {gradingFanData.negFirstFinal} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow className = "shade">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>第二次总结</div></TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.affSecondFinal===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div className={`${gradingFanData.affSecondFinal===0 ? "empt" : ""} `} > {gradingFanData.affSecondFinal} </div> 
+                  <div  className={`${(gradingFanData.affSecondFinal===0 || gradingFanData.affSecondFinal==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${(gradingFanData.affSecondFinal===0 || gradingFanData.affSecondFinal==='0') ? "empt" : ""} `} > {gradingFanData.affSecondFinal} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.negSecondFinal===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div className={`${gradingFanData.negSecondFinal===0 ? "empt" : ""} `} > {gradingFanData.negSecondFinal} </div> 
+                  <div  className={`${(gradingFanData.negSecondFinal===0 || gradingFanData.negSecondFinal==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${(gradingFanData.negSecondFinal===0 || gradingFanData.negSecondFinal==='0') ? "empt" : ""} `} > {gradingFanData.negSecondFinal} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>语言风度</div></TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.affLanguage===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（40分）</div> 
-                  <div className={`${gradingFanData.affLanguage===0 ? "empt" : ""} `} > {gradingFanData.affLanguage} </div> 
+                  <div  className={`${(gradingFanData.affLanguage===0 || gradingFanData.affLanguage==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（40分）</div> 
+                  <div className={`${(gradingFanData.affLanguage===0 || gradingFanData.affLanguage==='0') ? "empt" : ""} `} > {gradingFanData.affLanguage} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.negLanguage===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（40分）</div> 
-                  <div className={`${gradingFanData.negLanguage===0 ? "empt" : ""} `} > {gradingFanData.negLanguage} </div> 
+                  <div  className={`${(gradingFanData.negLanguage===0 || gradingFanData.negLanguage==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（40分）</div> 
+                  <div className={`${(gradingFanData.negLanguage===0 || gradingFanData.negLanguage==='0') ? "empt" : ""} `} > {gradingFanData.negLanguage} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow className = "shade">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>自由辩论</div></TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.affFree===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（80分）</div> 
-                  <div className={`${gradingFanData.affFree===0 ? "empt" : ""} `} > {gradingFanData.affFree} </div> 
+                  <div  className={`${(gradingFanData.affFree===0 || gradingFanData.affFree==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（80分）</div> 
+                  <div className={`${(gradingFanData.affFree===0 || gradingFanData.affFree==='0') ? "empt" : ""} `} > {gradingFanData.affFree} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.negFree===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（80分）</div> 
-                  <div className={`${gradingFanData.negFree===0 ? "empt" : ""} `} > {gradingFanData.negFree} </div> 
+                  <div  className={`${(gradingFanData.negFree===0 || gradingFanData.negFree==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（80分）</div> 
+                  <div className={`${(gradingFanData.negFree===0 || gradingFanData.negFree==='0') ? "empt" : ""} `} > {gradingFanData.negFree} </div> 
                 </TableCell>
               </TableRow>
 
               <TableRow>
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>团体配合与合作精神</div></TableCell>
                 <TableCell align="left">
-                  <div  className={`${gradingFanData.affTeamwork===0 ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div className={`${gradingFanData.affTeamwork===0 ? "empt" : ""} `} > {gradingFanData.affTeamwork} </div> 
+                  <div  className={`${(gradingFanData.affTeamwork===0 || gradingFanData.affTeamwork==='0') ? "empt" : ""} `}  style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${(gradingFanData.affTeamwork===0 || gradingFanData.affTeamwork==='0') ? "empt" : ""} `} > {gradingFanData.affTeamwork} </div> 
                 </TableCell>
                 <TableCell align="left">
-                  <div   className={`${gradingFanData.negTeamwork===0 ? "empt" : ""} `} style={{ fontSize: "120%" }}>分数（30分）</div> 
-                  <div className={`${gradingFanData.negTeamwork===0 ? "empt" : ""} `} > {gradingFanData.negTeamwork} </div> 
+                  <div   className={`${(gradingFanData.negTeamwork===0 || gradingFanData.negTeamwork==='0') ? "empt" : ""} `} style={{ fontSize: "120%" }}>分数（30分）</div> 
+                  <div className={`${(gradingFanData.negTeamwork===0 || gradingFanData.negTeamwork==='0') ? "empt" : ""} `} > {gradingFanData.negTeamwork} </div> 
                 </TableCell>
               </TableRow>
 
