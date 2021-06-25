@@ -7,7 +7,7 @@ const RaffleResult = () => {
     <div>
         <div className="raffleResult mainBlockBracket">
           <div className>
-            <h1>辩题抽签结果</h1>
+            <h2>辩题抽签结果</h2>
           </div>
           <div className="containerOne">
             <div className="RaffleResultTableHeader">
@@ -18,16 +18,16 @@ const RaffleResult = () => {
               <div className="B">反：所爱隔山海，山海不可平</div>
             </div>
             <div className="CD">
-              <div className="C">C</div>
-              <div className="D">D</div>
+              <div className="C">正：笑傲江湖必当武功盖世</div>
+              <div className="D">反：笑傲江湖不必当武功盖世</div>
             </div>
             <div className="EF">
-              <div className="E">E</div>
-              <div className="F">F</div>
+              <div className="E">正：距离感是维持当代伴侣关系的解药</div>
+              <div className="F">反：距离感是维持当代伴侣关系的毒药</div>
             </div>
             <div className="GH">
-              <div className="G">G</div>
-              <div className="H">H</div>
+              <div className="G">正：遗憾为青春增色</div>
+              <div className="H">反：遗憾让青春失色</div>
             </div>
             <div className="ABHead">AB</div>
             <div className="CDHead">CD</div>
@@ -39,12 +39,12 @@ const RaffleResult = () => {
               <span>半决赛</span>
             </div>
             <div className="I1">
-              <div className="I1A">I1A</div>
-              <div className="I1B">I1B</div>
+              <div className="I1A">正：社会性死亡是网络谴责可承受之重</div>
+              <div className="I1B">反：社会性死亡不是网络谴责可承受之重</div>
             </div>
             <div className="I2">
-              <div className="I2A">I2A</div>
-              <div className="I2B">I2B</div>
+              <div className="I2A">正：如果牺牲艺术性追求商业化才能让自己的电影叫座，电影从业者应该选择牺牲</div>
+              <div className="I2B">反：如果牺牲艺术性追求商业化才能让自己的电影叫座，电影从业者不应该选择牺牲</div>
             </div>
             <div className="I1Head">I1</div>
             <div className="I2Head">I2</div>
@@ -54,8 +54,8 @@ const RaffleResult = () => {
               <span>决赛</span>
             </div>
             <div className="J1">
-              <div className="J1A">J1A</div>
-              <div className="J1B">J1B</div>
+              <div className="J1A">正：唯心主义更能回应世界</div>
+              <div className="J1B">反：唯物主义更能回应世界</div>
             </div>
             <div className="J1Head">J1</div>
           </div>

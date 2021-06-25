@@ -13,6 +13,7 @@ const Match = () => {
                 <p className="resultsTitle">辩题抽签结果</p>    
             </div>
             <p className="tableheader">循环赛</p>
+            <div></div>
             <table>
               <tbody>
                 <tr>
