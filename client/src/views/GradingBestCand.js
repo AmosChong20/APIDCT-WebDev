@@ -18,8 +18,7 @@ const GradingBestCand = () => {
     const location = useLocation();
     const [speakers, setSpeakers] = useState([{ 'name': "正方一辩" }, { 'name': "正方二辩" }, { 'name': "正方三辩" }, { 'name': "正方四辩" }, { 'name': "反方一辩" }, { 'name': "反方二辩" }, { 'name': "反方三辩" }, { 'name': "反方四辩" }]);
     const [selected, setSelected] = useState(['', '', ''])
-
-
+    const [start, setStart] = useState(true);
     const [showS, setShowS] = useState(false);
     const [showF, setShowF] = useState(false);
     const [dialogOpen, setDialogOpen] = useState(false);
@@ -32,6 +31,16 @@ const GradingBestCand = () => {
         setSelected(newS);
     }
 
+    const getParameterByName= (name, url) => {
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+         results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
     const addGradingBestCand = async (selected) => {
         const res = await fetch(('https://apicdt-server.com/' + 'gradingBestCand'), {
             method: 'POST',
@@ -40,20 +49,61 @@ const GradingBestCand = () => {
             },
             body: JSON.stringify({
                 selected: selected,
-                token: location.token,
-                indexT: location.indexT,
-                judgeChiName: location.judgeChiName
+                // token: location.token,
+                // indexT: location.indexT,
+                // judgeChiName: location.judgeChiName
+                token: getParameterByName('token'),
+                indexT: getParameterByName('indexT'),
+                judgeChiName: getParameterByName('judgeChiName'),
             }),
         })
         const data = await res.json()
         if (res.status === 201) {
             setShowS(true);
             setShowF(false);
+            var queryString = "?token=" + getParameterByName('token') +"&indexT="+getParameterByName('indexT')+"&judgeChiName="+getParameterByName('judgeChiName');
+            setTimeout(() => {
+              window.location.href = "gradingSummary" + queryString;
+            }, 1000);
+            // setTimeout(() => history.push({
+            //     pathname: '/gradingSummary',
+            //     token: location.token,
+            //     indexT: location.indexT,
+            //     judgeChiName: location.judgeChiName
+            // }), 1000);
         }
         else {
             setShowF(true);
             setShowS(false);
         }
+    }
+
+    const findGradingBestCand = async (indexT,token) => {
+        if(indexT === ''){
+          return;
+        }
+        const res = await fetch('https://apicdt-server.com'+'/gradingBestCand/'+indexT+'/'+token)
+        // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
+        const data = await res.json()
+        if(data.length>0){
+          var queryString = "?token=" +token +"&indexT="+indexT+"&judgeChiName="+getParameterByName('judgeChiName');
+          setTimeout(() => {
+            window.location.href = "gradingSummary" + queryString;
+          }, 1000);
+        }
+        else{
+          return;
+        }
+      }
+    
+    if(start){
+        if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
+            setTimeout(() => history.push({
+                pathname: '/judgeLogin',
+            }), 1000);
+        }
+        findGradingBestCand(getParameterByName('indexT'),getParameterByName('token'))
+        setStart(false);
     }
 
     const onSubmit = (e) => {
@@ -63,12 +113,7 @@ const GradingBestCand = () => {
         addGradingBestCand(selected);
         setSelected(['', '', '']);
 
-        setTimeout(() => history.push({
-            pathname: '/gradingSummary',
-            token: location.token,
-            indexT: location.indexT,
-            judgeChiName: location.judgeChiName
-        }), 1000);
+
     }
 
     const checkSelected = () =>{
@@ -85,7 +130,7 @@ const GradingBestCand = () => {
 
     return (
         <section className="header-gradient">
-             <div className="container main_block">
+             <div className="main_block">
 
                 <Alert show={showS} className="alert" variant="success" onClose={() => setShowS(false)} dismissible>
                     <Alert.Heading className="alertHeading"> 提交成功 ！/ Submitted Successfully ！ </Alert.Heading>
@@ -109,9 +154,9 @@ const GradingBestCand = () => {
                 <div className="regBlock row">
                     <form className="col-12 regForm" noValidate>
                         <div className="d-flex justify-content-center">请选择三位最佳辩手候选人(请勿复选)</div>
-                        <div className="school container col d-flex justify-content-center">
-                            <Form.Control className="selectspeaker" as="select" onChange={(e) => getSelection(e, 0)} style={{ width: "50vw", margin: "10px" }}>
-                                <option value='0' >
+                        <div className="school col d-flex justify-content-center selection">
+                            <Form.Control className="selectspeaker col-12 col-md-4" as="select" onChange={(e) => getSelection(e, 0)} style={{ width: "50vw", margin: "10px" }}>
+                                <option value='' >
                                     第一位候选人
                                 </option>
                                 {speakers.map(speaker => (
@@ -120,8 +165,8 @@ const GradingBestCand = () => {
 
                             </Form.Control>
 
-                            <Form.Control className="selectspeaker" as="select" onChange={(e) => getSelection(e, 1)} style={{ width: "50vw", margin: "10px" }}>
-                                <option value='0' >
+                            <Form.Control className="selectspeaker col-12 col-md-4" as="select" onChange={(e) => getSelection(e, 1)} style={{ width: "50vw", margin: "10px" }}>
+                                <option value='' >
                                     第二位候选人
                                 </option>
                                 {speakers.map(speaker => (
@@ -130,8 +175,8 @@ const GradingBestCand = () => {
 
                             </Form.Control>
 
-                            <Form.Control className="selectspeaker" as="select" onChange={(e) => getSelection(e, 2)} style={{ width: "50vw", margin: "10px" }}>
-                                <option value='0' >
+                            <Form.Control className="selectspeaker col-12 col-md-4" as="select" onChange={(e) => getSelection(e, 2)} style={{ width: "50vw", margin: "10px" }}>
+                                <option value='' >
                                     第三位候选人
                                 </option>
                                 {speakers.map(speaker => (

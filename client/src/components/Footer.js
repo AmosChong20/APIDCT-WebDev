@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import './css/Footer.css';
+import sponsor from '../assets/image/sponsorlogotransp.png';
 
 class Footer extends Component {
     state = {  }
     render() { 
         return ( 
             <footer>
-            <div className="container">
+            <div className="footercontainer">
               <div className="row">
-                <div className="col-sm-6">
+                <div className="col-12 col-sm-6">
                   <div>
                     <h4>联系方式</h4>
                     <dl>
@@ -31,7 +32,9 @@ class Footer extends Component {
                     </dl>
                   </div>
                 </div>
-                <div className="col-sm-6">
+                <div className="col-12 col-sm-6">
+                <h4>合作伙伴</h4>
+                <img src={sponsor} alt="ICBC" className="ICBC-logo"/>
                   <h4>关注我们</h4>
                       <ul className="social-network social-circle">
                        <li><a href="https://www.facebook.com/NTUCSapchinesedebate/" className="icoFacebook" title="Facebook" target="_blank" rel="noreferrer"><i className="fab fa-facebook-f"></i></a></li>

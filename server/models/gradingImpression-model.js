@@ -9,7 +9,7 @@ const gradingImpressionSchema = mongoose.Schema({
 })
 
 // registerModel.plugin(uniqueValidator);
-gradingImpressionSchema.index({ indexT: "text" });
+gradingImpressionSchema.index({ indexT: "text" , token: "text"});
 var gradingImpressionModel = mongoose.model('GradingImpression', gradingImpressionSchema);
 
 

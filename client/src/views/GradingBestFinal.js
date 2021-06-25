@@ -21,7 +21,6 @@ const GradingBestCand = () => {
     const [dataTable, setDataTable] = useState([]);
     const [dataBC, setDataBC] = useState([]);
     const location = useLocation();
-
     const [showS, setShowS] = useState(false);
     const [showF, setShowF] = useState(false);
     const [dialogOpen, setDialogOpen] = useState(false);
@@ -45,20 +44,25 @@ const GradingBestCand = () => {
         setDataBC(data)
     }
 
-    const fetchData = () => {
-        findGradingTable(location.indexT);
-        findGradingBestCand(location.indexT);
+    const getParameterByName= (name, url) => {
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
 
-    if (start) {
-        fetchData();
-        setStart(false);
+    const fetchData = () => {
+        findGradingTable(getParameterByName('indexT'));
+        findGradingBestCand(getParameterByName('indexT'));
     }
 
 
     const getHeir = () => {
-        // console.log(dataBC)
-        // console.log(dataTable)
+      //   console.log(dataBC)
+      //   console.log(dataTable)
         var tempHeirList = [];
         var lengthBC = dataBC.length;
         var lengthTable = dataTable.length;
@@ -97,8 +101,8 @@ const GradingBestCand = () => {
 
         var keysSorted = Object.keys(list).sort(function (a, b) { return list[b] - list[a] })
         var keysSortedValue = Object.keys(list).sort(function (a, b) { return list[b] - list[a] }).map(key => list[key])
-        // console.log(keysSorted);  
-        // console.log(keysSortedValue);  
+        //console.log(keysSorted);  
+        //console.log(keysSortedValue);  
         var count = 0;
         var min = 0;
         for (const val of keysSortedValue) {
@@ -265,7 +269,7 @@ const GradingBestCand = () => {
             }
         }
         setHeirList(tempHeirList);
-        // console.log(tempHeirList)
+        console.log(tempHeirList)
 
     }
 
@@ -286,6 +290,8 @@ const GradingBestCand = () => {
 
     const history = useHistory();
 
+
+
     const addGradingBestFinal = async (selected) => {
         const res = await fetch(('https://apicdt-server.com/' + 'gradingBestFinal'), {
             method: 'POST',
@@ -294,9 +300,12 @@ const GradingBestCand = () => {
             },
             body: JSON.stringify({
                 selected: selected,
-                token: location.token,
-                indexT: location.indexT,
-                judgeChiName: location.judgeChiName
+                // token: location.token,
+                // indexT: location.indexT,
+                // judgeChiName: location.judgeChiName
+                token: getParameterByName('token'),
+                indexT: getParameterByName('indexT'),
+                judgeChiName: getParameterByName('judgeChiName'),
             }),
         })
         const data = await res.json()
@@ -312,6 +321,34 @@ const GradingBestCand = () => {
             setShowF(true);
             setShowS(false);
         }
+    }
+
+    const findGradingBestFinal = async (indexT,token) => {
+        if(indexT === ''){
+          return;
+        }
+        const res = await fetch('https://apicdt-server.com'+'/gradingBestFinal/'+indexT+'/'+token)
+        // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
+        const data = await res.json()
+        if(data.length>0){
+            setTimeout(() => history.push({
+                pathname: '/',
+            }), 1000);
+        }
+        else{
+          return;
+        }
+    }
+    
+    if(start){
+        if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
+            setTimeout(() => history.push({
+                pathname: '/judgeLogin',
+            }), 1000);
+        }
+        findGradingBestFinal(getParameterByName('indexT'),getParameterByName('token'));
+        fetchData();
+        setStart(false);
     }
 
     const onSubmit = (e) => {
@@ -336,7 +373,7 @@ const GradingBestCand = () => {
 
     return (
         <section className="header-gradient">
-            <div className="container main_block">
+            <div className="main_block">
                 <Alert show={showS} className="alert" variant="success" onClose={() => setShowS(false)} dismissible>
                     <Alert.Heading className="alertHeading"> 提交成功 ！/ Registration Successful ！ </Alert.Heading>
                 </Alert>
@@ -359,9 +396,9 @@ const GradingBestCand = () => {
                 <div className="regBlock row">
                     <form className="col-12 regForm" noValidate>
                         <div className="d-flex justify-content-center">请选择一位最佳辩手</div>
-                        <div className="school container col d-flex justify-content-center">
+                        <div className="school col d-flex justify-content-center">
                             <Form.Control className="selectspeaker" as="select" onChange={(e) => getSelection(e, 0)} style={{ width: "50vw", margin: "10px" }}>
-                                <option value='0' >
+                                <option value='' >
                                     请选择最佳辩手
                                 </option>
                                 {heirList.map(heir => (

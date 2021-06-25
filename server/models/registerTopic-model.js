@@ -4,6 +4,7 @@ import uniqueValidator from 'mongoose-unique-validator';
 const resgisterTopicSchema = mongoose.Schema({
     topic : String,
     indexT : String,
+    judgeNo: Number,
     stimeh : Number,
     stimem : Number,
     etimeh : Number,

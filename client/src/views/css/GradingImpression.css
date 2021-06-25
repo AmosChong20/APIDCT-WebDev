@@ -31,3 +31,29 @@
     box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);
     
 }
+
+.tablecontainer{
+    overflow-x: auto;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+h3{
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -o-hyphens: auto;
+    hyphens: auto;
+}
+
+@media only screen and (max-width: 960px) {
+    h3{
+        font-size: 4vw !important;
+    }
+
+    h5{
+        font-size: 3vw !important;
+    }
+  }
+

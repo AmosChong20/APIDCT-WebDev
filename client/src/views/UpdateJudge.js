@@ -185,7 +185,7 @@ const RegisterJudge = () => {
                 </div>
               </div>
               <div className = "row">
-                <Form.Control  id = "my_select" className=" TopicSel col-9" as="select" onChange={(e) => getSelection(e)} autocomplete="off">
+                <Form.Control  id = "my_select" className=" TopicSel col-9" as="select" onChange={(e) => getSelection(e)} autoComplete="off">
                     <option value = '0' autocomplete="off">
                       请选择辩题
                     </option>

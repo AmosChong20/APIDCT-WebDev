@@ -10,13 +10,14 @@ import {serverURL} from '../config.js'
 import Footer from '../components/Footer'
 
 const RegisterTopic = () => {
-  const [registerTopicData, setRegisterTopicData] = useState ({topic : '', indexT: '' , stimeh : '', stimem : '', etimeh : '', etimem : '', date: '',isRoadShow: ''});
+  const [registerTopicData, setRegisterTopicData] = useState ({topic : '', indexT: '' ,judgeNo:'' , stimeh : '', stimem : '', etimeh : '', etimem : '', date: '',isRoadShow: ''});
   const[changed_1,setChanged_1] = useState(false);
   const[changed_2,setChanged_2] = useState(false);
   const[changed_3,setChanged_3] = useState(false);
   const[changed_4,setChanged_4] = useState(false);
   const[changed_5,setChanged_5] = useState(false);
   const[changed_6,setChanged_6] = useState(false);
+  const[changed_7,setChanged_7] = useState(false);
   
   const [start,setStart] = useState(true);
 
@@ -81,28 +82,29 @@ const RegisterTopic = () => {
 
   const onSubmit = (e) =>{
     e.preventDefault()
-    // console.log(isEmail1);
+    console.log(registerTopicData);
     if(registerTopicData.topic === '' ||
     registerTopicData.stimeh === '' ||
     registerTopicData.stimem === '' ||
     registerTopicData.etimeh === '' ||
     registerTopicData.etimem === '' ||
     registerTopicData.date === ''  ||
-    registerTopicData.isRoadShow === '' ){
+    registerTopicData.isRoadShow === '' ||
+    registerTopicData.judgeNo === '' ){
       setShowF(true);
       setShowS(false);
       return;
     }
   
     addRegisterTopicData(registerTopicData);
-    // console.log(registerTopicData);
-    setRegisterTopicData ({topic : '', indexT: 0 , stimeh : '', stimem : '', etimeh : '', etimem : '', date :'', isRoadShow: ''});
+    setRegisterTopicData ({topic : '', indexT: 0, judgeNo: '' , stimeh : '', stimem : '', etimeh : '', etimem : '', date :'', isRoadShow: ''});
     setChanged_1(false);
     setChanged_2(false);
     setChanged_3(false);
     setChanged_4(false);
     setChanged_5(false);
     setChanged_6(false);
+    setChanged_7(false);
   }
 
 
@@ -130,6 +132,14 @@ const RegisterTopic = () => {
               <div className="row schoolPartForm">
                 <div className="mb-3 col-12">
                   <input type="text" className={`form-control englsihF  ${registerTopicData.topic ? "is-valid" : ""} ${(!registerTopicData.topic && changed_1) ? "is-invalid" : ""}`}  value={registerTopicData.topic} placeholder="辩题" onChange={(e) => setChanged_1(true) & setRegisterTopicData({ ...registerTopicData, topic: e.target.value })} />
+                </div>
+              </div>
+              <div className="schoolPart formHeader">
+                 <span> 评审数量 </span>
+              </div>
+              <div className="row schoolPartForm">
+                <div className="mb-6 col-12">
+                  <input type="text" className={`form-control englsihF  ${registerTopicData.judgeNo ? "is-valid" : ""} `}  value={registerTopicData.judgeNo} placeholder="评审数量" onChange={(e) => setChanged_7(true) & setRegisterTopicData({ ...registerTopicData, judgeNo: e.target.value })} />
                 </div>
               </div>
               <div className="schoolPart formHeader">

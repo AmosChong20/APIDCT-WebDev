@@ -9,7 +9,7 @@ const gradingImpressionFanSchema = mongoose.Schema({
 })
 
 // registerModel.plugin(uniqueValidator);
-gradingImpressionFanSchema.index({ indexT: "text" });
+gradingImpressionFanSchema.index({ indexT: "text" , token: "text"});
 var gradingImpressionFanModel = mongoose.model('GradingImpressionFan', gradingImpressionFanSchema);
 
 

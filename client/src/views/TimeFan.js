@@ -55,11 +55,36 @@ const TimeFan = () => {
       timeData.affTimeMin === '' ||
       timeData.negTimeMin === '' ||
       timeData.affTimeSec === '' ||
-      timeData.negTimeSec === ''){
+      timeData.negTimeSec === '' ||
+      timeData.affTimeMin > 19 ||
+      timeData.negTimeMin > 19 ){
       setShowF(true);
       setShowS(false);
       return;
     }
+
+    if(timeData.affTimeMin === 19) {
+      if  (timeData.affTimeSec > 0){
+        setShowF(true);
+        setShowS(false);
+        return;
+      }
+    }
+
+    if ((timeData.affTimeSec > 59)|| (timeData.affTimeSec > 59)){
+      setShowF(true);
+      setShowS(false);
+      return;
+    }
+
+    if(timeData.negTimeMin === 19) {
+      if(timeData.negTimeSec > 0){
+        setShowF(true);
+        setShowS(false);
+        return;
+      }
+    }
+
    
     timeData.affTotalSec = (parseInt(timeData.affTimeMin)*60) + parseInt(timeData.affTimeSec)
     timeData.negTotalSec = (parseInt(timeData.negTimeMin)*60) + parseInt(timeData.negTimeSec)
@@ -123,7 +148,7 @@ const TimeFan = () => {
   return (
     <div>
       <Alert show={showS} className= "jalert" variant="success" onClose={() => setShowS(false)} dismissible>
-        <Alert.Heading className = "alertHeading"> 登入成功！ </Alert.Heading>
+        <Alert.Heading className = "alertHeading"> 提交成功！ </Alert.Heading>
       </Alert>
       <Alert show={showF} className= "alert" variant="danger" onClose={() => setShowF(false)} dismissible>
           <Alert.Heading className = "alertHeading"> 提交失败 ！ </Alert.Heading>

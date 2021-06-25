@@ -10,8 +10,8 @@ export const getRegisterTopicData = async (req, res) => {
 }
 
 export const addRegisterTopicData = async (req, res) => {
-    const {topic,indexT,stimeh,stimem,etimeh,etimem,date,isRoadShow} = req.body;
-    const newRegisterTopicData = new registerTopicModel({topic,indexT,stimeh,stimem,etimeh,etimem,date,isRoadShow});
+    const {topic,indexT,judgeNo,stimeh,stimem,etimeh,etimem,date,isRoadShow} = req.body;
+    const newRegisterTopicData = new registerTopicModel({topic,indexT,judgeNo,stimeh,stimem,etimeh,etimem,date,isRoadShow});
     try {
         // console.log(newRegisterTestData)
         await newRegisterTopicData.save();

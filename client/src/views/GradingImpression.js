@@ -19,12 +19,23 @@ const GradingImpression = () => {
   const location = useLocation();
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
+  const [start, setStart] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const onClickTeam = (selectedTeam) => {
     if (parseInt(selectedTeam) != impression) {
       setImpression(parseInt(selectedTeam))
     }
+  }
+
+  const getParameterByName= (name, url) => {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
 
   const addGradingImpression = async (impression) => {
@@ -34,16 +45,29 @@ const GradingImpression = () => {
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
+        // token: location.token,
+        // indexT: location.indexT,
+        // judgeChiName: location.judgeChiName
+        token: getParameterByName('token'),
+        indexT: getParameterByName('indexT'),
+        judgeChiName: getParameterByName('judgeChiName'),
         impression: impression,
-        token: location.token,
-        indexT: location.indexT,
-        judgeChiName: location.judgeChiName
       }),
     })
     const data = await res.json()
     if (res.status === 201) {
       setShowS(true);
       setShowF(false);
+      var queryString = "?token=" + getParameterByName('token') +"&indexT="+getParameterByName('indexT')+"&judgeChiName="+getParameterByName('judgeChiName');
+      setTimeout(() => {
+        window.location.href = "gradingBestCand" + queryString;
+      }, 1000);
+      // setTimeout(() => history.push({
+      //   pathname: '/gradingBestCand',
+      //   token: location.token,
+      //   indexT: location.indexT,
+      //   judgeChiName: location.judgeChiName
+      // }), 1000);
     }
     else {
       setShowF(true);
@@ -51,19 +75,45 @@ const GradingImpression = () => {
     }
   }
 
+  const findGradingImpression = async (indexT,token) => {
+    if(indexT === ''){
+      return;
+    }
+    const res = await fetch('https://apicdt-server.com'+'/gradingImpression/'+indexT+'/'+token)
+    // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
+    const data = await res.json()
+    if(data.length>0){
+      var queryString = "?token=" +token +"&indexT="+indexT+"&judgeChiName="+getParameterByName('judgeChiName');
+      setTimeout(() => {
+        window.location.href = "gradingBestCand" + queryString;
+      }, 1000);
+    }
+    else{
+      return;
+    }
+  }
+
+  if(start){
+    if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
+      setTimeout(() => history.push({
+          pathname: '/judgeLogin',
+      }), 1000);
+    }
+    findGradingImpression(getParameterByName('indexT'),getParameterByName('token'))
+    setStart(false);
+  }
+
   const onSubmit = (e) => {
     e.preventDefault()
-
+    setDialogOpen(false);
     addGradingImpression(impression);
-    setImpression(0);
     
+    setTimeout(() => {
+      setImpression(0)
+    }, 900);
 
-    setTimeout(() => history.push({
-      pathname: '/gradingBestCand',
-      token: location.token,
-      indexT: location.indexT,
-      judgeChiName: location.judgeChiName
-    }), 1000);
+
+  
   }
 
   const checkSelected = () =>{
@@ -86,7 +136,7 @@ const GradingImpression = () => {
         submit={onSubmit}
         content={<div><div style={{ marginBottom: "10px" }} className="d-flex justify-content-center">您选择的是</div><h3 className="d-flex justify-content-center">{impression === 1 ? "正方" : impression===2?"反方":""}</h3></div>} 
         />
-      <div className="container main_block">
+      <div className=" main_block">
         <Alert show={showS} className="alert" variant="success" onClose={() => setShowS(false)} dismissible>
           <Alert.Heading className="alertHeading"> 提交成功 ！/ Submitted Successfully ！ </Alert.Heading>
         </Alert>
