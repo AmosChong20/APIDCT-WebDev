@@ -271,11 +271,11 @@ const GradingTable = () => {
 
   if(start){
 
-    // if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
-    //   setTimeout(() => history.push({
-    //       pathname: '/judgeLogin',
-    //   }), 1000);
-    // }
+    if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
+      setTimeout(() => history.push({
+          pathname: '/judgeLogin',
+      }), 1000);
+    }
 
     findGradingTable(getParameterByName('indexT'),getParameterByName('token'))
     setStart(false);

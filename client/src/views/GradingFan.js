@@ -336,11 +336,11 @@ const GradingFan = () => {
   } 
 
   if(start){
-    // if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
-    //   setTimeout(() => history.push({
-    //       pathname: '/judgeLogin',
-    //   }), 1000);
-    // }
+    if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
+      setTimeout(() => history.push({
+          pathname: '/judgeLogin',
+      }), 1000);
+    }
     findGradingFan(getParameterByName('indexT'),getParameterByName('token'))
     gradingFanData.token = getParameterByName('token')
     gradingFanData.indexT = getParameterByName('indexT')
