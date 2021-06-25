@@ -14,6 +14,7 @@ import SchoolList from './views/SchoolList'
 import Portfolio from './views/Portfolio';
 import Match from './views/Match';
 import Bracket from './views/Bracket'
+import RaffleResult from './views/RaffleResult';
 
 import './App.css';
 import StarWars from './views/StarWars';
@@ -105,6 +106,7 @@ const App = () => {
                     <Route path="/matchUpTable" exact component={MatchUpTable} />
                     <Route path="/bracket" exact component={Bracket} />
                     <Route path="/tokenlist" exact component={TokenList} />
+                    <Route path="/raffleresult" exact component={RaffleResult} />
                 </Switch>
                 {/* <Footer /> */}
             </div>

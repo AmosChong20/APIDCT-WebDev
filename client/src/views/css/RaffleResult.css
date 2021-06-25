@@ -1,0 +1,320 @@
+.raffleResult {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 1rem 0px;
+  grid-auto-flow: row;
+}
+
+.containerOne {
+  display: grid;
+  grid-template-columns: 0.1fr 1fr;
+  grid-template-rows: 0.2fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "RaffleResultTableHeader RaffleResultTableHeader"
+    "ABHead AB"
+    "CDHead CD"
+    "EFHead EF"
+    "GHHead GH";
+}
+
+.RaffleResultTableHeader span {
+  grid-area: RaffleResultTableHeader;
+  background-color: grey;
+  color: white;
+}
+
+.AB {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  border: solid 1px #6353f0;
+  grid-template-areas:
+    "A"
+    "B";
+  grid-area: AB;
+}
+.A {
+  grid-area: A;
+  border-bottom: solid 1px #6353f0;
+  background-color: grey;
+}
+.B {
+  grid-area: B;
+}
+
+.CD {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  border: solid 1px #6353f0;
+  grid-template-areas:
+    "C"
+    "D";
+  grid-area: CD;
+}
+.C {
+  grid-area: C;
+  border-bottom: solid 1px #6353f0;
+  background-color: grey;
+}
+.D {
+  grid-area: D;
+}
+
+.EF {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  border: solid 1px #6353f0;
+  grid-template-areas:
+    "E"
+    "F";
+  grid-area: EF;
+}
+.E {
+  grid-area: E;
+  border-bottom: solid 1px #6353f0;
+  background-color: grey;
+}
+.F {
+  grid-area: F;
+}
+
+.GH {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  border: solid 1px #6353f0;
+  grid-template-areas:
+    "G"
+    "H";
+  grid-area: GH;
+}
+.G {
+  grid-area: G;
+  border-bottom: solid 1px #6353f0;
+  background-color: grey;
+}
+.H {
+  grid-area: H;
+}
+
+.ABHead {
+  grid-area: ABHead;
+  border: solid 1px #6353f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6353f0;
+  color: white;
+}
+.CDHead {
+  grid-area: CDHead;
+  border: solid 1px #6353f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6353f0;
+  color: white;
+}
+.EFHead {
+  grid-area: EFHead;
+  border: solid 1px #6353f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6353f0;
+  color: white;
+}
+.GHHead {
+  grid-area: GHHead;
+  border: solid 1px #6353f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6353f0;
+  color: white;
+}
+
+.containerTwo {
+  display: grid;
+  grid-template-columns: 0.1fr 1fr;
+  grid-template-rows: 0.2fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "RaffleResultTableHeader RaffleResultTableHeader"
+    "I1Head I1"
+    "I2Head I2";
+}
+
+.I1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  border: solid 1px #6353f0;
+  grid-template-areas:
+    "I1A"
+    "I1B";
+  grid-area: I1;
+}
+.I1A {
+  grid-area: I1A;
+  border-bottom: solid 1px #6353f0;
+  background-color: grey;
+}
+.I1B {
+  grid-area: I1B;
+}
+
+.I2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  border: solid 1px #6353f0;
+  grid-template-areas:
+    "I2A"
+    "I2B";
+  grid-area: I2;
+}
+.I2A {
+  grid-area: I2A;
+  border-bottom: solid 1px #6353f0;
+  background-color: grey;
+}
+.I2B {
+  grid-area: I2B;
+}
+
+.I1Head {
+  grid-area: I1Head;
+  border: solid 1px #6353f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6353f0;
+  color: white;
+}
+.I2Head {
+  grid-area: I2Head;
+  border: solid 1px #6353f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6353f0;
+  color: white;
+}
+
+.containerThree {
+  display: grid;
+  grid-template-columns: 0.1fr 1fr;
+  grid-template-rows: 0.2fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "RaffleResultTableHeader RaffleResultTableHeader"
+    "J1Head J1";
+}
+
+.J1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  border: solid 1px #6353f0;
+  grid-template-areas:
+    "J1A"
+    "J1B";
+  grid-area: J1;
+}
+.J1A {
+  grid-area: J1A;
+  border-bottom: solid 1px #6353f0;
+  background-color: grey;
+}
+.J1B {
+  grid-area: J1B;
+}
+
+.J1Head {
+  grid-area: J1Head;
+  border: solid 1px #6353f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6353f0;
+  color: white;
+}
+
+html,
+body,
+.container {
+  height: 100%;
+  margin: 0;
+}
+
+/* For presentation only, no need to copy the code below */
+
+/* .containerOne * {
+  border: 1px solid red;
+  position: relative;
+}
+
+.containerTwo * {
+  border: 1px solid red;
+  position: relative;
+}
+
+.containerThree * {
+  border: 1px solid red;
+  position: relative;
+} */
+
+/* .containerOne *:after {
+  content:attr(class);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+.containerTwo *:after {
+  content:attr(class);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+.containerThree *:after {
+  content:attr(class);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+} */
