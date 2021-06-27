@@ -13,6 +13,7 @@ import RegisterTest from './views/RegisterTest'
 import SchoolList from './views/SchoolList'
 import Portfolio from './views/Portfolio';
 import Match from './views/Match';
+import MatchTwo from './views/MatchTwo';
 import Bracket from './views/Bracket'
 import RaffleResult from './views/RaffleResult';
 
@@ -103,6 +104,7 @@ const App = () => {
                     <Route path="/starwarslistuk" exact component={StarwarsListuk} /> */}
                     <Route path="/portfolio" exact component={Portfolio} />
                     <Route path="/match" exact component={Match} />
+                    <Route path="/matchtwo" exact component={MatchTwo} />
                     <Route path="/matchUpTable" exact component={MatchUpTable} />
                     <Route path="/bracket" exact component={Bracket} />
                     <Route path="/tokenlist" exact component={TokenList} />
