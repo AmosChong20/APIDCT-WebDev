@@ -69,17 +69,13 @@ tr:nth-child(even):hover {
 
 .tableheader {
   display: block;
-  width: 10%;
+  width: fit-content;
   border: solid lightgrey;
-  margin-top: 2%;
-  padding-left: 1%;
-  padding-right: 1%;
-  margin: 1%;
   color: white;
   background-color: #2e4053;
-  position: relative;
   text-align: center;
   border-radius: 10px;
+  margin-top: 3%;
 }
 
 .chineseTitle {
