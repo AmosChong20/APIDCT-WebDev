@@ -441,6 +441,35 @@ const ResultFan = () => {
 
       <div className="container subBlockResult">
         <div className="fan_title">
+          <span> 团体评分 </span>
+        </div>
+        <Table  aria-label="caption table">
+          <colgroup>
+            <col style={{ width: '40%' }} />
+            <col style={{ width: '30%' }} />
+            <col style={{ width: '30%' }} />
+          </colgroup>
+          <TableHead>
+            <TableRow>
+              <TableCell align="center" colSpan={1}><div><h2>评审姓名</h2></div></TableCell>
+              <TableCell align="center" colSpan={1}><div><h2>正方</h2></div></TableCell>
+              <TableCell align="center" colSpan={1}><div><h2>反方</h2></div></TableCell>
+            </TableRow>
+          </TableHead>
+          {dataF.map((data,index) => (
+            <TableBody key = {index}>
+              <TableRow className ="rowResult">
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>{data.judgeChiName}</div></TableCell>
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}><div>团体总分：{data.affFree+data.affTeamwork}</div> <div>自由辩论：{data.affFree} </div> <div> 团体配合：{data.affTeamwork} </div> </div> </TableCell>
+                <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}><div>团体总分：{data.negFree+data.negTeamwork}</div> <div>自由辩论：{data.negFree} </div> <div> 团体配合：{data.negTeamwork}</div> </div> </TableCell>
+              </TableRow>
+            </TableBody>
+          ))}
+        </Table>
+      </div>
+
+      <div className="container subBlockResult">
+        <div className="fan_title">
           <span> 印象票 </span>
         </div>
         <Table  aria-label="caption table">
