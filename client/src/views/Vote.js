@@ -6,11 +6,13 @@ import './css/JudgeLogin.css'
 import './css/Vote.css'
 
 const Vote = () => {
-  const [voteData,setVoteData] = useState({indexT: '', affVote: '', negVote: ''});
+  const [voteData,setVoteData] = useState({indexT: '', affVote: '', negVote: '',affVoteAfter: '', negVoteAfter: ''});
   const [time,setTime] = useState({hour:'',minute:'',day:''});
   const [changed_1, setChanged_1] = useState(false);
   const [changed_2, setChanged_2] = useState(false);
-
+  const [changed_3, setChanged_3] = useState(false);
+  const [changed_4, setChanged_4] = useState(false);
+  
   const[topics,setTopics] = useState([]);
   const [start,setStart] = useState(true);
 
@@ -50,17 +52,21 @@ const Vote = () => {
 
     if(voteData.indexT === '' ||
       voteData.affVote === '' ||
-      voteData.negVote === ''){
+      voteData.negVote === '' ||
+      voteData.affVoteAfter === '' ||
+      voteData.negVoteAfter === ''){
       setShowF(true);
       setShowS(false);
       return;
     }
     addVoteData(voteData);
-    setVoteData ({indexT: '', affVote: '', negVote: ''});
+    setVoteData ({indexT: '', affVote: '', negVote: '', affVoteAfter: '', negVoteAfter: ''});
 
     setTopics([]);
     setChanged_1(false);
     setChanged_2(false);
+    setChanged_3(false);
+    setChanged_4(false);
   }
 
   const fetchTopic = async () => {
@@ -116,11 +122,11 @@ const Vote = () => {
       </Alert>
       <form className="Vform" onSubmit = {onSubmit}>
         <div className="JudgeTitle"> 
-          凡尔赛队伍票数提交
+          返尔赛队伍票数提交
         </div>
         
 
-        <Form.Control  className="JudgeLoginSel" as="select" onChange={(e) =>  setVoteData({ ...voteData, indexT: e.target.value }) }>
+        <Form.Control  style = {{marginBottom: 10}}  className="JudgeLoginSel" as="select" onChange={(e) =>  setVoteData({ ...voteData, indexT: e.target.value }) }>
             <option value = '0' >
               请选择辩题
             </option>
@@ -129,8 +135,10 @@ const Vote = () => {
             ))}
 
         </Form.Control>
-        <input type="text" className={`form-control  ${voteData.affVote ? "is-valid" : ""} ${(!voteData.affVote && changed_1) ? "is-invalid" : ""}`}  value={voteData.affVote} placeholder="正反获得票数" onChange={(e) => setChanged_1(true) & setVoteData({ ...voteData, affVote: e.target.value })} />
-        <input type="text" className={`form-control  ${voteData.negVote ? "is-valid" : ""} ${(!voteData.negVote && changed_2) ? "is-invalid" : ""}`}  value={voteData.negVote} placeholder="反方获得票数" onChange={(e) => setChanged_2(true) & setVoteData({ ...voteData, negVote: e.target.value })} />
+        <input type="text" style = {{marginBottom: 10}}  className={`form-control  ${voteData.affVote ? "is-valid" : ""} ${(!voteData.affVote && changed_1) ? "is-invalid" : ""}`}  value={voteData.affVote} placeholder="正反初始获得票数" onChange={(e) => setChanged_1(true) & setVoteData({ ...voteData, affVote: e.target.value })} />
+        <input type="text" style = {{marginBottom: 10}}  className={`form-control  ${voteData.negVote ? "is-valid" : ""} ${(!voteData.negVote && changed_2) ? "is-invalid" : ""}`}  value={voteData.negVote} placeholder="反方初始获得票数" onChange={(e) => setChanged_2(true) & setVoteData({ ...voteData, negVote: e.target.value })} />
+        <input type="text" style = {{marginBottom: 10}}  className={`form-control  ${voteData.affVoteAfter ? "is-valid" : ""} ${(!voteData.affVoteAfter && changed_3) ? "is-invalid" : ""}`}  value={voteData.affVoteAfter} placeholder="正反最终获得票数" onChange={(e) => setChanged_3(true) & setVoteData({ ...voteData, affVoteAfter: e.target.value })} />
+        <input type="text" style = {{marginBottom: 10}}  className={`form-control  ${voteData.negVoteAfter ? "is-valid" : ""} ${(!voteData.negVoteAfter && changed_4) ? "is-invalid" : ""}`}  value={voteData.negVoteAfter} placeholder="反方最终获得票数" onChange={(e) => setChanged_4(true) & setVoteData({ ...voteData, negVoteAfter: e.target.value })} />
 
 
         <button  type="submit" className="btn btn-primary SWbutton " data-toggle="modal" value='Save Form' >

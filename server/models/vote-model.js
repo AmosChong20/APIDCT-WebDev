@@ -5,6 +5,8 @@ const voteSchema = mongoose.Schema({
     indexT : String,
     affVote: Number,
     negVote: Number,
+    affVoteAfter: Number,
+    negVoteAfter: Number,
 
 })
 

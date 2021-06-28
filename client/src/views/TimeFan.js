@@ -155,7 +155,7 @@ const TimeFan = () => {
       </Alert>
       <form className="Vform" onSubmit = {onSubmit}>
         <div className="JudgeTitle"> 
-          凡尔赛队伍用时提交
+          返尔赛队伍用时提交
         </div>
         
 

@@ -10,8 +10,8 @@ export const getVoteData = async (req, res) => {
 }
 
 export const addVoteData = async (req, res) => {
-    const {indexT,affVote,negVote} = req.body;
-    const newVoteData = new voteModel({indexT,affVote,negVote} );
+    const {indexT,affVote,negVote,affVoteAfter,negVoteAfter} = req.body;
+    const newVoteData = new voteModel({indexT,affVote,negVote,affVoteAfter,negVoteAfter} );
     try {
         await newVoteData.save();
         res.status(201).json( newVoteData );

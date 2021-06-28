@@ -9,6 +9,7 @@ import { serverURL } from '../config.js'
 
 import Footer from '../components/Footer'
 import GradingDialog from '../components/GradingDialog'
+import CheckDialog from '../components/CheckDialog'
 
 import ReactDOM from "react-dom";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
@@ -59,7 +60,7 @@ const title = {
 
 const speaker = { "1st": "一辩", "2nd": "二辩", "3rd": "三辩", "4th": "四辩" };
 
-const CustomTableCell = ({ row, id, name, onChange, handleChange, checkState }) => {
+const CustomTableCell = ({ row, id, name, onChange, handleChange, setCheckData, setCheckDialogOpen,checkState }) => {
   const t = title[row[id]][name];
   return (
     <TableCell align="left">
@@ -70,7 +71,8 @@ const CustomTableCell = ({ row, id, name, onChange, handleChange, checkState }) 
             {(name !== "mark4") ?
               <Checkbox
                 checked={checkState}
-                onChange={e => handleChange(e, row, name)}
+                onChange={e => (e.target.checked ? (setCheckData({e, row, name})  & setCheckDialogOpen(true)) : handleChange(e, row, name) )}
+                // onChange={e => setCheckData({e, row, name}) & setCheckDialogOpen(true)}
                 color="primary"
               />
               : <div></div>}
@@ -126,13 +128,18 @@ const GradingTable = () => {
   const [affTotal, setAffTotal] = useState(0);
   const [negTotal, setNegTotal] = useState(0);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [checkDialogOpen, setCheckDialogOpen] = useState(false);
   const [start, setStart] = useState(true);
+  const [checkData, setCheckData] = useState();
   const [previous, setPrevious] = React.useState({});
   const classes = useStyles();
 
   const [timeoutlist, setTimeoutlist] = useState([]);
 
+ 
+
   const handleChange = (e, row, name) => {
+
     if (timeoutlist.includes(row.id + name)) {
       setTimeoutlist(timeoutlist.filter(e => e !== row.id + name));
     }
@@ -149,6 +156,12 @@ const GradingTable = () => {
       setRows(newRows);
     }
   };
+
+  const onCheckSubmit = () =>{
+    handleChange(checkData.e, checkData.row, checkData.name);
+    setCheckDialogOpen(false);
+  }
+
 
   function total(rows, t, opt = 0) {
     var subtotal = 0;
@@ -271,11 +284,11 @@ const GradingTable = () => {
 
   if(start){
 
-    if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
-      setTimeout(() => history.push({
-          pathname: '/judgeLogin',
-      }), 1000);
-    }
+    // if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
+    //   setTimeout(() => history.push({
+    //       pathname: '/judgeLogin',
+    //   }), 1000);
+    // }
 
     findGradingTable(getParameterByName('indexT'),getParameterByName('token'))
     setStart(false);
@@ -283,7 +296,7 @@ const GradingTable = () => {
 
 
   const checkFill = () =>{
-    setDialogOpen(true)
+    setDialogOpen(true);
   } 
 
   const onSubmit = (e) => {
@@ -291,11 +304,14 @@ const GradingTable = () => {
     setDialogOpen(false);
     addGradingTableData(rows, affDef, affFree, affTeamwork, negDef, negFree, negTeamwork, affTotal, negTotal);
   }
+  
+ 
 
   const history = useHistory();
 
   return (
     <section className="header-gradient">
+      <CheckDialog open={checkDialogOpen} setOpen={setCheckDialogOpen} submit={onCheckSubmit}/>
       <GradingDialog open={dialogOpen} setOpen={setDialogOpen} content={<div>
         <Table aria-label="caption table">
           <TableHead>
@@ -422,11 +438,11 @@ const GradingTable = () => {
                         <div style={{ fontSize: "150%" }}>
                           {speaker[row.name]}</div>
                       </TableCell>
-                      <CustomTableCell {...{ row, id: "name", name: "mark1", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark1")) }} />
-                      <CustomTableCell {...{ row, id: "name", name: "mark2", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark2")) }} />
-                      <CustomTableCell {...{ row, id: "name", name: "mark3", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark3")) }} />
-                      <CustomTableCell {...{ row, id: "name", name: "mark4", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark4")) }} />
-                      <CustomTableCell {...{ row, id: "name", name: "subt", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "subt")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "mark2", onChange, handleChange, setCheckData,setCheckDialogOpen, checkState: (timeoutlist.includes(row.id + "mark2")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "mark1", onChange, handleChange, setCheckData,setCheckDialogOpen, checkState: (timeoutlist.includes(row.id + "mark1")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "mark3", onChange, handleChange, setCheckData,setCheckDialogOpen, checkState: (timeoutlist.includes(row.id + "mark3")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "mark4", onChange, handleChange, setCheckData,setCheckDialogOpen, checkState: (timeoutlist.includes(row.id + "mark4")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "subt", onChange, handleChange, setCheckData,setCheckDialogOpen, checkState: (timeoutlist.includes(row.id + "subt")) }} />
                     </StyledTableRow>
                   ))}
                   <TableRow>
@@ -470,11 +486,11 @@ const GradingTable = () => {
                       <TableCell align="center">
                         <div style={{ fontSize: "150%" }}>{speaker[row.name]}</div>
                       </TableCell>
-                      <CustomTableCell {...{ row, id: "name", name: "mark1", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark1")) }} />
-                      <CustomTableCell {...{ row, id: "name", name: "mark2", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark2")) }} />
-                      <CustomTableCell {...{ row, id: "name", name: "mark3", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark3")) }} />
-                      <CustomTableCell {...{ row, id: "name", name: "mark4", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "mark4")) }} />
-                      <CustomTableCell {...{ row, id: "name", name: "subt", onChange, handleChange, checkState: (timeoutlist.includes(row.id + "subt")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "mark1", onChange, handleChange, setCheckData, setCheckDialogOpen, checkState: (timeoutlist.includes(row.id + "mark1")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "mark2", onChange, handleChange, setCheckData, setCheckDialogOpen, checkState: (timeoutlist.includes(row.id + "mark2")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "mark3", onChange, handleChange, setCheckData, setCheckDialogOpen, checkState: (timeoutlist.includes(row.id + "mark3")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "mark4", onChange, handleChange, setCheckData, setCheckDialogOpen, checkState: (timeoutlist.includes(row.id + "mark4")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "subt", onChange, handleChange, setCheckData, setCheckDialogOpen, checkState: (timeoutlist.includes(row.id + "subt")) }} />
                     </StyledTableRow>
                   ))}
                   <TableRow>

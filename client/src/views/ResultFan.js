@@ -225,9 +225,23 @@ const ResultFan = () => {
     scoreT.judgeNeg = (scoreT.neg)/(scoreT.aff+scoreT.neg)*50
     scoreT.judgeNeg = scoreT.judgeNeg.toFixed(2)
 
-    scoreT.voteAff = (scoreT.affVote)/(scoreT.affVote+scoreT.negVote)*50
+    if(scoreT.affVoteAfter > scoreT.affVote){
+      scoreT.voteAff = ((scoreT.affVoteAfter-scoreT.affVote)/scoreT.negVote)*50;
+      scoreT.voteNeg = 0;
+    }
+    else if(scoreT.negVoteAfter > scoreT.negVote){
+      scoreT.voteNeg = ((scoreT.negVoteAfter-scoreT.negVote)/scoreT.affVote)*50;
+      scoreT.voteAff = 0;
+    }
+    else{
+      scoreT.voteAff = 0;
+      scoreT.voteNeg = 0;
+    }
+    
+
+    //  = (scoreT.affVote)/(scoreT.affVote+scoreT.negVote)*50
     scoreT.voteAff =  scoreT.voteAff.toFixed(2)    
-    scoreT.voteNeg = (scoreT.negVote)/(scoreT.affVote+scoreT.negVote)*50
+    // scoreT.voteNeg = (scoreT.negVote)/(scoreT.affVote+scoreT.negVote)*50
     scoreT.voteNeg = scoreT.voteNeg.toFixed(2)
 
     scoreT.finalAff = parseFloat(scoreT.judgeAff) + parseFloat(scoreT.voteAff)
@@ -292,7 +306,7 @@ const ResultFan = () => {
             <TableRow className ="rowResult">
               <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>评审数量</div></TableCell>
               <TableCell align="center" colSpan={2}>
-                <div  style={{ fontSize: "170%" }}>{dataT[0] ? <div>{dataT[0].JudgeNo}</div> : <div> </div>}</div>
+                <div  style={{ fontSize: "170%" }}>{dataT[0] ? <div>{dataT[0].judgeNo}</div> : <div> </div>}</div>
               </TableCell>
             </TableRow>
           </TableBody>
