@@ -49,7 +49,7 @@ const Vote = () => {
 
   const onSubmit = async (e) =>{
     e.preventDefault()
-
+    // console.log(voteData);
     if(voteData.indexT === '' ||
       voteData.affVote === '' ||
       voteData.negVote === '' ||
@@ -135,9 +135,9 @@ const Vote = () => {
             ))}
 
         </Form.Control>
-        <input type="text" style = {{marginBottom: 10}}  className={`form-control  ${voteData.affVote ? "is-valid" : ""} ${(!voteData.affVote && changed_1) ? "is-invalid" : ""}`}  value={voteData.affVote} placeholder="正反初始获得票数" onChange={(e) => setChanged_1(true) & setVoteData({ ...voteData, affVote: e.target.value })} />
+        <input type="text" style = {{marginBottom: 10}}  className={`form-control  ${voteData.affVote ? "is-valid" : ""} ${(!voteData.affVote && changed_1) ? "is-invalid" : ""}`}  value={voteData.affVote} placeholder="正放初始获得票数" onChange={(e) => setChanged_1(true) & setVoteData({ ...voteData, affVote: e.target.value })} />
         <input type="text" style = {{marginBottom: 10}}  className={`form-control  ${voteData.negVote ? "is-valid" : ""} ${(!voteData.negVote && changed_2) ? "is-invalid" : ""}`}  value={voteData.negVote} placeholder="反方初始获得票数" onChange={(e) => setChanged_2(true) & setVoteData({ ...voteData, negVote: e.target.value })} />
-        <input type="text" style = {{marginBottom: 10}}  className={`form-control  ${voteData.affVoteAfter ? "is-valid" : ""} ${(!voteData.affVoteAfter && changed_3) ? "is-invalid" : ""}`}  value={voteData.affVoteAfter} placeholder="正反最终获得票数" onChange={(e) => setChanged_3(true) & setVoteData({ ...voteData, affVoteAfter: e.target.value })} />
+        <input type="text" style = {{marginBottom: 10}}  className={`form-control  ${voteData.affVoteAfter ? "is-valid" : ""} ${(!voteData.affVoteAfter && changed_3) ? "is-invalid" : ""}`}  value={voteData.affVoteAfter} placeholder="正放最终获得票数" onChange={(e) => setChanged_3(true) & setVoteData({ ...voteData, affVoteAfter: e.target.value })} />
         <input type="text" style = {{marginBottom: 10}}  className={`form-control  ${voteData.negVoteAfter ? "is-valid" : ""} ${(!voteData.negVoteAfter && changed_4) ? "is-invalid" : ""}`}  value={voteData.negVoteAfter} placeholder="反方最终获得票数" onChange={(e) => setChanged_4(true) & setVoteData({ ...voteData, negVoteAfter: e.target.value })} />
 
 

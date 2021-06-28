@@ -219,11 +219,15 @@ const ResultFan = () => {
     scoreT.aff = tempFAff + tempSFAff + tempIFAff
     scoreT.negVote = dataV[0].negVote
     scoreT.affVote = dataV[0].affVote
+    scoreT.negVoteAfter = dataV[0].negVoteAfter
+    scoreT.affVoteAfter = dataV[0].affVoteAfter
 
     scoreT.judgeAff = (scoreT.aff)/(scoreT.aff+scoreT.neg)*50
     scoreT.judgeAff = scoreT.judgeAff.toFixed(2)
     scoreT.judgeNeg = (scoreT.neg)/(scoreT.aff+scoreT.neg)*50
     scoreT.judgeNeg = scoreT.judgeNeg.toFixed(2)
+
+    console.log(scoreT);
 
     if(scoreT.affVoteAfter > scoreT.affVote){
       scoreT.voteAff = ((scoreT.affVoteAfter-scoreT.affVote)/scoreT.negVote)*50;
@@ -246,6 +250,9 @@ const ResultFan = () => {
 
     scoreT.finalAff = parseFloat(scoreT.judgeAff) + parseFloat(scoreT.voteAff)
     scoreT.finalNeg = parseFloat(scoreT.judgeNeg) + parseFloat(scoreT.voteNeg)
+
+    scoreT.finalAff =  scoreT.finalAff.toFixed(2)   
+    scoreT.finalNeg = scoreT.finalNeg.toFixed(2)
 
     if(scoreT.finalAff > scoreT.finalNeg){
       scoreT.winner = 1
@@ -381,12 +388,22 @@ const ResultFan = () => {
             </TableRow>
 
             <TableRow>
-              <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>观众投票数</div></TableCell>
+              <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>观众初始投票数</div></TableCell>
               <TableCell align="left">
                 <div  style={{ fontSize: "120%" }}>{scoreT.affVote}</div> 
               </TableCell>
               <TableCell align="left">
                 <div  style={{ fontSize: "120%" }}>{scoreT.negVote}</div> 
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>观众最终投票数</div></TableCell>
+              <TableCell align="left">
+                <div  style={{ fontSize: "120%" }}>{scoreT.affVoteAfter}</div> 
+              </TableCell>
+              <TableCell align="left">
+                <div  style={{ fontSize: "120%" }}>{scoreT.negVoteAfter}</div> 
               </TableCell>
             </TableRow>
 
