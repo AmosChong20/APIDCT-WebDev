@@ -230,7 +230,7 @@ const JudgeLogin = () => {
         setShowI(false);
         setShowS(false);
         setTimeout(() => setShowF(true), 800);
-        setTimeout(() => setShowF(false), 1000);
+        setTimeout(() => setShowF(false), 1800);
         return;
       }
       else{
