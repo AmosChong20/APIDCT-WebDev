@@ -132,6 +132,7 @@ const GradingTable = () => {
   const [start, setStart] = useState(true);
   const [checkData, setCheckData] = useState();
   const [previous, setPrevious] = React.useState({});
+  const [topic,setTopic] = useState("");
   const classes = useStyles();
 
   const [timeoutlist, setTimeoutlist] = useState([]);
@@ -282,6 +283,24 @@ const GradingTable = () => {
     }
   }
 
+  const fetchTZTopic = async (indexT) => {
+    if(indexT === ''){
+      return;
+    }
+
+    const res = await fetch('https://apicdt-server.com'+'/registerTopic/'+indexT)
+    // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
+    const data = await res.json()
+    // console.log(data)
+    try{
+      setTopic(data[0].topic);
+    }
+    catch(err){
+      
+    };
+
+  }
+
   if(start){
 
     // if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
@@ -289,7 +308,7 @@ const GradingTable = () => {
     //       pathname: '/judgeLogin',
     //   }), 1000);
     // }
-
+    fetchTZTopic(getParameterByName('indexT'));
     findGradingTable(getParameterByName('indexT'),getParameterByName('token'))
     setStart(false);
   }
@@ -406,7 +425,11 @@ const GradingTable = () => {
         </Alert>
         <div className="row register_header">
           <div className="col-12">
-            <span> 正赛 </span></div>
+            <span> 正赛 </span>
+          </div>
+          <div className="col-12">
+            <span> 辩题：{topic} </span>
+          </div>
         </div>
         <Stepper step={0} />
 

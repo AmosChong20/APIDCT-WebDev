@@ -24,6 +24,7 @@ const GradingFan = () => {
   const [showS, setShowS] = useState(false);
   const [showF, setShowF] = useState(false);
   const [start, setStart] = useState(true);
+  const [topic,setTopic] = useState("");
   const location = useLocation();
   const [gradingFanData, setGradingFanData] = useState({
     token: '',
@@ -343,6 +344,22 @@ const GradingFan = () => {
       return;
     }
   } 
+  const fetchTZTopic = async (indexT) => {
+    if(indexT === ''){
+      return;
+    }
+
+    const res = await fetch('https://apicdt-server.com'+'/registerTopic/'+indexT)
+    // const res = await fetch('https://apicdt-server.com'+'registerJudge/'+indexT)
+    const data = await res.json()
+    // console.log(data);
+    try{
+      setTopic(data[0].topic);
+    }
+    catch(err){
+      
+    };
+  }
 
   if(start){
     // if((getParameterByName('indexT')===null)|| (getParameterByName('token')===null)){
@@ -353,6 +370,7 @@ const GradingFan = () => {
     findGradingFan(getParameterByName('indexT'),getParameterByName('token'))
     gradingFanData.token = getParameterByName('token')
     gradingFanData.indexT = getParameterByName('indexT')
+    fetchTZTopic(getParameterByName('indexT'));
     setGradingFanData({ ...gradingFanData, judgeChiName: getParameterByName('judgeChiName') })
     setStart(false)
   }
@@ -594,6 +612,9 @@ const GradingFan = () => {
         </Alert>
         <div className="fan_title">
           <span> 返尔赛 </span>
+        </div>
+        <div className="fan_title">
+          <span> 辩题 ： {topic} </span>
         </div>
         <StepperFan step={0} />
         <div className="fan_title">

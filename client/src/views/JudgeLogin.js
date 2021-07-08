@@ -43,7 +43,7 @@ const JudgeLogin = () => {
       var queryString = "?token=" +judgeLoginData.token +"&indexT="+judgeLoginData.indexT+"&judgeChiName="+judgeLoginData.judgeChiName;
       setTimeout(() => {
         window.location.href = "gradingSummaryFan" + queryString;
-      }, 1000);
+      }, 250);
     }
   }
   const findGradingImpressionFan = async (indexT,token) => {
@@ -64,7 +64,7 @@ const JudgeLogin = () => {
       var queryString = "?token=" +judgeLoginData.token +"&indexT="+judgeLoginData.indexT+"&judgeChiName="+judgeLoginData.judgeChiName;
       setTimeout(() => {
         window.location.href = "gradingImpressionFan" + queryString;
-      }, 1000);
+      }, 250);
     }
   }
   const findGradingFan = async (indexT,token) => {
@@ -85,7 +85,7 @@ const JudgeLogin = () => {
       var queryString = "?token=" +judgeLoginData.token +"&indexT="+judgeLoginData.indexT+"&judgeChiName="+judgeLoginData.judgeChiName;
       setTimeout(() => {
         window.location.href = "gradingFan" + queryString;
-      }, 1000);
+      }, 250);
     }
   }
 
@@ -108,7 +108,7 @@ const JudgeLogin = () => {
       var queryString = "?token=" +judgeLoginData.token +"&indexT="+judgeLoginData.indexT+"&judgeChiName="+judgeLoginData.judgeChiName;
       setTimeout(() => {
         window.location.href = "gradingTable" + queryString;
-      }, 1000);
+      }, 250);
     }
   }
   const findGradingImpression = async (indexT,token) => {
@@ -129,7 +129,7 @@ const JudgeLogin = () => {
       var queryString = "?token=" +judgeLoginData.token +"&indexT="+judgeLoginData.indexT+"&judgeChiName="+judgeLoginData.judgeChiName;
       setTimeout(() => {
         window.location.href = "gradingImpression" + queryString;
-      }, 1000);
+      }, 250);
     }
   }
   const findGradingBestCand = async (indexT,token) => {
@@ -150,7 +150,7 @@ const JudgeLogin = () => {
       var queryString = "?token=" +judgeLoginData.token +"&indexT="+judgeLoginData.indexT+"&judgeChiName="+judgeLoginData.judgeChiName;
       setTimeout(() => {
         window.location.href = "gradingBestCand" + queryString;
-      }, 1000);
+      }, 250);
     }
   }
   const findGradingSummary = async (indexT,token) => {
@@ -171,7 +171,7 @@ const JudgeLogin = () => {
       var queryString = "?token=" +judgeLoginData.token +"&indexT="+judgeLoginData.indexT+"&judgeChiName="+judgeLoginData.judgeChiName;
       setTimeout(() => {
         window.location.href = "gradingSummary" + queryString;
-      }, 1000);
+      }, 250);
     }
   }
 
@@ -189,7 +189,7 @@ const JudgeLogin = () => {
       setTimeout(() => setShowF(false), 1000);
       setTimeout(() => history.push({
         pathname: '/',
-      }), 1000);
+      }), 250);
     }
     else{
       setShowI(false);
@@ -199,7 +199,7 @@ const JudgeLogin = () => {
       var queryString = "?token=" +judgeLoginData.token +"&indexT="+judgeLoginData.indexT+"&judgeChiName="+judgeLoginData.judgeChiName;
       setTimeout(() => {
         window.location.href = "gradingBestFinal" + queryString;
-      }, 1000);
+      }, 250);
     }
   }
 
@@ -213,10 +213,11 @@ const JudgeLogin = () => {
       setTimeout(() => setShowI(false), 1000);
       return;
     }
-
+   
     try{
       if((dataf[0].token)&&(dataf.length<2)){
         var len = (dataf[0].indexA).length
+        
         if(len === 0){  
           setShowI(false);
           setShowS(false);
@@ -228,7 +229,7 @@ const JudgeLogin = () => {
         }
         setShowI(false);
         setShowS(false);
-        setTimeout(() => setShowF(false), 100);
+        setTimeout(() => setShowF(true), 800);
         setTimeout(() => setShowF(false), 1000);
         return;
       }
