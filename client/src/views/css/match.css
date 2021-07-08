@@ -1,7 +1,3 @@
-/* * {
-  font-size: x-large;
-} */
-
 .cardtitle {
   margin-top: 20%;
   background-color: #f8ebf2;
@@ -12,98 +8,61 @@
   border-radius: 10px;
 }
 
-/* table {
+.matchTable {
   border-collapse: collapse;
   border-spacing: 0;
-  width: 96%;
-  border: 1px solid #ddd;
-  margin: 3%;
-  padding: 3%;
+  width: 100%;
 }
-
-th,
-td {
-  text-align: center;
-  padding: 15px;
-  border: 1px solid #ddd;
-}
-
-tr:nth-child(odd) {
-  background-color: #f2f2f2;
-  text-align: center;
-}
-
-th {
-  background-color: #3394d5;
-  text-align: center;
-}
-
-tr:nth-child(odd):hover {
-  background-color: #3394d9;
-  text-align: center;
-}
-
-tr:nth-child(even):hover {
-  background-color: #a569bd;
-} */
 
 .group {
   background-color: #6353f0;
   text-align: center;
-  border: solid 1px black;
+  border: solid 2px #6353f0;
+  color: white;
+  width: 10%;
 }
 
 .category {
-  background-color: lightgrey;
-  width: 100px;
+  /* background-color: lightgrey; */
+  width: 10%;
   text-align: center;
-  border: solid 1px black;
+  border: solid 2px #6353f0;
 }
 
 .serial {
   background-color: #6353f0;
-  width: 15px;
+  width: 9.1%;
   text-align: center;
-  border: solid 1px black;
+  border: solid 2px #6353f0;
+  color: white;
 }
 
 .tableheader {
-  display: block;
-  width: fit-content;
-  border: solid lightgrey;
+  margin-top: 2rem;
+  background-color: rgb(87, 87, 87);
+  padding: .5rem 1rem .5rem 1rem;
   color: white;
-  background-color: #2e4053;
-  text-align: center;
-  border-radius: 10px;
-  margin-top: 3%;
-}
-
-.chineseTitle {
-  display: block;
-  text-align: center;
-  font-size: xx-large;
-}
-
-.englishTitle {
-  display: block;
-  padding: 1%;
-  margin: 1%;
-  position: relative;
-  text-align: center;
-  font-size: large;
-}
-
-.resultsTitle {
-  display: block;
-  padding: 1%;
-  margin: 1%;
-  position: relative;
-  text-align: center;
-  font-size: xx-large;
+  /* margin-bottom: 0rem; */
+  font-size: 1.3rem;
+  width: fit-content;
 }
 
 .topic {
   margin-left: auto;
   margin-right: auto;
-  border: solid 1px black;
+  border: solid 2px #6353f0;
+  width: 71%;
+  padding: .5rem 0rem .5rem 1rem;
+  /* padding-left: 1rem; */
 }
+
+.topica {
+  border-bottom: solid 0px #6353f0;
+  background-color: rgb(231, 231, 231);
+
+}
+
+.topicb {
+  border-top: solid 0px #6353f0;
+}
+
