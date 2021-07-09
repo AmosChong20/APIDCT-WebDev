@@ -1,7 +1,7 @@
 footer {
   background: #16222A;
-  background: -webkit-linear-gradient(59deg, #3A6073, #16222A);
-  background: linear-gradient(59deg, #3A6073, #16222A);
+  /* background: -webkit-linear-gradient(59deg, #3A6073, #16222A); */
+  background: linear-gradient(59deg, #6894aa, #3d5261);
   color: #ffffff;
   padding-top: 3%;
   margin-top: 5%;
@@ -42,31 +42,37 @@ dl{
 }
 
 .ICBC-logo{
-  width:100%;
+  width:40%;
+  margin-bottom: 2rem;
 }
 
 .TYS-logo{
-  width:50%;
+  width:15%;
+  margin-bottom: 2rem;
 }
 
 .CLCF-logo{
-  width:25%;
+  width:15%;
+  margin-bottom: 2rem;
 }
 
 .NYC-logo{
-  width:25%;
+  width:20%;
+  margin-bottom: 2rem;
 }
 
 .MANSA-logo{
-  width:25%;
+  width:12%;
+  margin-bottom: 2rem;
 }
 
 .SC-logo{
-  width:25%;
+  width:20%;
+  margin-bottom: 2rem;
 }
 
 .SE-logo{
-  width:25%;
+  width:12%;
 }
 
 

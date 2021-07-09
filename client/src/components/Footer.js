@@ -3,10 +3,10 @@ import './css/Footer.css';
 import sponsor from '../assets/image/sponsorlogotransp.png';
 import tys from '../assets/image/TYSLogo.png';
 import clcf from '../assets/image/CLCFLogo.png';
-import nyc from '../assets/image/CLCFLogo.png';
-import mansa from '../assets/image/CLCFLogo.png';
-import sc from '../assets/image/CLCFLogo.png';
-import se from '../assets/image/CLCFLogo.png';
+import nyc from '../assets/image/NYCLogo.png';
+import mansa from '../assets/image/MANSALogo.png';
+import sc from '../assets/image/SCLogo.png';
+import se from '../assets/image/SELogo.png';
 
 
 
@@ -49,11 +49,11 @@ class Footer extends Component {
                     <li><a href="https://weibo.com/u/5398940329" className="icoweibo" title="weibo" target="_blank" rel="noreferrer"><i className="fab fa-weibo"></i></a></li>
                   </ul>       
                 </div>
-                <div className="col-12 col-sm-6">
+                <div className="col-12 ">
                   <h4>合作伙伴 Title Partner</h4>
                   <a href="https://singapore.icbc.com.cn/ICBC/%E6%B5%B7%E5%A4%96%E5%88%86%E8%A1%8C/%E6%96%B0%E5%8A%A0%E5%9D%A1%E7%BD%91%E7%AB%99/en/" target="_blank"><img src={sponsor} alt="ICBC" className="ICBC-logo"/></a>
                 </div>
-                <div className="col-12 col-sm-6">
+                <div className="col-12 ">
                   <h4>宣传伙伴 Supporting Partner</h4>
                   <img src={tys} alt="TYS" className="TYS-logo"/>
                 </div>
