@@ -63,7 +63,7 @@ export default function TokenList() {
                 </TableBody>
             </Table>
         </div>
-            <Footer/>
-            </section>
+        <Footer/>
+        </section>
     );
 }

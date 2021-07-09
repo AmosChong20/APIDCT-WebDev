@@ -59,6 +59,7 @@ function TopNavbar() {
                     <NavLink to="/starwarslisttemp" exact className="nav-link" activeClassName="router-link-exact-active"> 电子抽签成绩 </NavLink>
                     <NavLink to="/raffleResult" exact className="nav-link" activeClassName="router-link-exact-active"> 辩题抽签结果 </NavLink>
                     <NavLink to="/matchUpTable" exact className="nav-link" activeClassName="router-link-exact-active"> 对垒表 </NavLink>
+                    <NavLink to="/sponsor" exact className="nav-link" activeClassName="router-link-exact-active"> 鸣谢 </NavLink>
                 </Nav>
                {/*} <Nav className="" onClick={closeExpanded}>
                     <AuthButton/>

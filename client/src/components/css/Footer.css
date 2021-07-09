@@ -42,8 +42,35 @@ dl{
 }
 
 .ICBC-logo{
+  width:100%;
+}
+
+.TYS-logo{
   width:50%;
 }
+
+.CLCF-logo{
+  width:25%;
+}
+
+.NYC-logo{
+  width:25%;
+}
+
+.MANSA-logo{
+  width:25%;
+}
+
+.SC-logo{
+  width:25%;
+}
+
+.SE-logo{
+  width:25%;
+}
+
+
+
 
 ul.social-network {
   list-style: none;

@@ -1,0 +1,27 @@
+.STitle{
+  font-size: 5rem;
+  color: black;
+  margin-top: 3rem;
+}
+
+.SSubTitle{
+  margin-top: 8rem;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.SSubTitle1{
+  margin-top: 1.5rem;
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+.ICBCsponsor{
+  width: 76%;
+  margin-left: 12% ;
+}
+
+.content{
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}

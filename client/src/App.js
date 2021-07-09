@@ -46,6 +46,8 @@ import Result from './views/Result';
 import TimeFan from './views/TimeFan';
 import MatchUpTable from './views/MatchUpTable';
 import TokenList from './views/TokenList';
+import Sponsor from './views/Sponsor';
+import Topics from './views/Topics';
 
 
 
@@ -107,6 +109,8 @@ const App = () => {
                     {/* <Route path="/bracket" exact component={Bracket} /> */}
                     <Route path="/tokenlist" exact component={TokenList} />
                     <Route path="/raffleresult" exact component={RaffleResult} />
+                    <Route path="/sponsor" exact component={Sponsor} />
+                    <Route path="/topics" exact component={Topics} />
                 </Switch>
                 {/* <Footer /> */}
             </div>
