@@ -44,10 +44,7 @@ export const findGradingBestCandToken = async (req, res) =>{
     var query1 = req.params.query1;
     var query2 = req.params.query2;
     gradingBestCandModel.find({
-        $text: {
-            $search: query1,
-            $search: query2
-        }
+        $and: [{ indexT : query1 },  { token: query2 }]
     }, function(err, result) {
         if (err) throw err;
         if (result) {

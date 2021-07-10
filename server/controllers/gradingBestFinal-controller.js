@@ -24,9 +24,7 @@ export const findGradingBestFinal = async (req, res) =>{
     var query = req.params.query;
     // console.log(query)
     gradingBestFinalModel.find({
-        $text: {
-            $search: query
-        }
+        $and: [{ indexT : query1 },  { token: query2 }]
     }, function(err, result) {
         if (err) throw err;
         if (result) {
