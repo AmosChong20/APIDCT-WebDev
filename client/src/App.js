@@ -48,6 +48,7 @@ import MatchUpTable from './views/MatchUpTable';
 import TokenList from './views/TokenList';
 import Sponsor from './views/Sponsor';
 import Topics from './views/Topics';
+import Handbook from './views/Handbook';
 
 
 
@@ -111,6 +112,7 @@ const App = () => {
                     <Route path="/raffleresult" exact component={RaffleResult} />
                     <Route path="/sponsor" exact component={Sponsor} />
                     <Route path="/topics" exact component={Topics} />
+                    <Route path="/handbook" exact component={Handbook} />
                 </Switch>
                 {/* <Footer /> */}
             </div>
