@@ -8,7 +8,7 @@
 .SSubTitle{
   margin-top: 7rem;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
 
 .SSubTitle1{
@@ -20,6 +20,12 @@
 .ICBCsponsor{
   width: 76%;
   margin-left: 12% ;
+}
+
+.IQYsponsor{
+  width: 30%;
+  margin-left: 35% ;
+  margin-top: 5rem;
 }
 
 .content{

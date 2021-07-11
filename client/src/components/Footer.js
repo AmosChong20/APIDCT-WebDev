@@ -7,6 +7,7 @@ import nyc from '../assets/image/NYCLogo.png';
 import mansa from '../assets/image/MANSALogo.png';
 import sc from '../assets/image/SCLogo.png';
 import se from '../assets/image/SELogo.png';
+import iqy from '../assets/image/IQYLogo.png';
 
 
 
@@ -59,6 +60,7 @@ class Footer extends Component {
                 </div>
                 <div className="col-12 ">
                   <h4>赞助商 Sponsors</h4>
+                  <img src={iqy} alt="IQY" className="IQY-logo"/>
                   <img src={clcf} alt="CLCF" className="CLCF-logo"/>
                   <img src={nyc} alt="NYC" className="NYC-logo"/>
                   <img src={mansa} alt="MANSA" className="MANSA-logo"/>

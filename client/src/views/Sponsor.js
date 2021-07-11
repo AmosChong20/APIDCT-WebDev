@@ -1,6 +1,7 @@
 import React from 'react'
 import './css/Sponsor.css';
 import ICBCsponsor from '../assets/image/sponsorlogotransp.png';
+import iqy from '../assets/image/IQYLogo.png';
 import Footer from '../components/Footer'
 
 const Sponsor = () => {
@@ -61,7 +62,33 @@ const Sponsor = () => {
         <div className = "content">
           &nbsp;  &nbsp; Over the years, with in-depth understanding of Chinese policies and China market, we have forged strategic cooperation with many leading multinational companies, Chinese companies, Singapore large corporations and SMEs, enabling them to expand and deepen their trade and investment in and out of China.
         </div>
+
+        <a href="https://www.iq.com/" target="_blank"><img src={iqy} alt="IQY" className="IQYsponsor"/></a>
+        <div className = "SSubTitle">
+          爱奇艺
+        </div>
+        <div className = "SSubTitle1" > 
+          &nbsp;  &nbsp;  關於愛奇藝國際站
+        </div>
+        <div className = "content">
+          &nbsp;  &nbsp; 愛奇藝國際站總部位於新加坡，是一家視頻點播流媒體服務商，向國際觀眾提供備受歡迎的泛亞洲娛樂節目。愛奇藝國際站提供廣告型點播（AVOD）和VIP訂閱型點播（SVOD）兩種點播模式。並採用尖端科技，提供帶有本地語言和字幕的優質電視劇、電影、綜藝和動漫。愛奇藝國際站還與多家娛樂公司建立SaaS合作關係，將其技術分享給合作夥伴。您可以在任何設備上通過 <a href="https://www.iq.com/" target="_blank">iQ.com</a> 或App享受愛奇藝國際站提供的觀影服務。愛奇藝國際站由愛奇藝公司（那斯達克股票代碼：IQ）所有。
+        </div>
+        <div className = "SSubTitle1" > 
+          &nbsp;  &nbsp;  关于爱奇艺国际站
+        </div>
+        <div className = "content">
+          &nbsp;  &nbsp; 爱奇艺国际站总部位于新加坡，是一家视频点播流媒体服务商，向国际观众提供备受欢迎的泛亚洲娱乐节目。爱奇艺国际站提供广告型点播（AVOD）和VIP订阅型点播（SVOD）两种点播模式。并采用尖端科技，提供带有本地语言和字幕的优质电视剧、电影、综艺和动漫。爱奇艺国际站还与多家娱乐公司建立SaaS合作关系，将其技术分享给合作伙伴。您可以在任何设备上通过 <a href="https://www.iq.com/" target="_blank">iQ.com</a> 或App享受爱奇艺国际站提供的观影服务。爱奇艺国际站由爱奇艺公司（纳斯达克股票代码：IQ）所有。
+        </div>
+        <div className = "SSubTitle1" > 
+          &nbsp;  &nbsp;  About iQIYI International
+        </div>
+        <div className = "content">
+          &nbsp;  &nbsp; Headquartered in Singapore, iQIYI International is an on-demand video streaming service providing beloved pan-Asian entertainment to international viewers. Offering both ad-supported and VIP subscription services, iQIYI International delivers premium drama series, movies, variety shows, and anime; with local languages and subtitles; powered by cutting-edge technology. iQIYI International also makes its technology available to other entertainment services through SaaS partnerships. iQIYI International can be enjoyed on any device via <a href="https://www.iq.com/" target="_blank">iQ.com</a> and the app. iQIYI International is owned by iQIYI, Inc. (Nasdaq: IQ).
+        </div>
+
       </div>
+
+      
 
       <Footer/>
     </div>
