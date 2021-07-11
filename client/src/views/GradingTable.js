@@ -461,8 +461,8 @@ const GradingTable = () => {
                         <div style={{ fontSize: "150%" }}>
                           {speaker[row.name]}</div>
                       </TableCell>
-                      <CustomTableCell {...{ row, id: "name", name: "mark2", onChange, handleChange, setCheckData,setCheckDialogOpen, checkState: (timeoutlist.includes(row.id + "mark2")) }} />
                       <CustomTableCell {...{ row, id: "name", name: "mark1", onChange, handleChange, setCheckData,setCheckDialogOpen, checkState: (timeoutlist.includes(row.id + "mark1")) }} />
+                      <CustomTableCell {...{ row, id: "name", name: "mark2", onChange, handleChange, setCheckData,setCheckDialogOpen, checkState: (timeoutlist.includes(row.id + "mark2")) }} />
                       <CustomTableCell {...{ row, id: "name", name: "mark3", onChange, handleChange, setCheckData,setCheckDialogOpen, checkState: (timeoutlist.includes(row.id + "mark3")) }} />
                       <CustomTableCell {...{ row, id: "name", name: "mark4", onChange, handleChange, setCheckData,setCheckDialogOpen, checkState: (timeoutlist.includes(row.id + "mark4")) }} />
                       <CustomTableCell {...{ row, id: "name", name: "subt", onChange, handleChange, setCheckData,setCheckDialogOpen, checkState: (timeoutlist.includes(row.id + "subt")) }} />
