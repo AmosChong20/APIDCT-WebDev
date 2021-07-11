@@ -60,7 +60,7 @@ class Footer extends Component {
                 </div>
                 <div className="col-12 ">
                   <h4>赞助商 Sponsors</h4>
-                  <img src={iqy} alt="IQY" className="IQY-logo"/>
+                  <a href="https://www.iq.com/" target="_blank"><img src={iqy} alt="IQY" className="IQY-logo"/></a>
                   <img src={clcf} alt="CLCF" className="CLCF-logo"/>
                   <img src={nyc} alt="NYC" className="NYC-logo"/>
                   <img src={mansa} alt="MANSA" className="MANSA-logo"/>
