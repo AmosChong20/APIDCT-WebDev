@@ -964,7 +964,7 @@ const Grading = () => {
               <TableCell align="center" colSpan={2}><div><h2>选择</h2></div></TableCell>
             </TableRow>
           </TableHead>
-          {finalList.map((data,index) => (
+          {dataBF.map((data,index) => (
             <TableBody key = {index}>
               <TableRow className ="rowResult">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>{data.judgeChiName}</div></TableCell>
