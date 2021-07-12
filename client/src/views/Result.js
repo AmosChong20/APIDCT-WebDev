@@ -544,7 +544,7 @@ const Grading = () => {
         tempFinalList.push({'name':"反方四辩",'score': subFinalList.neg4})
       }
     }
-
+    // console.log(tempFinalList);
     setFinalList(tempFinalList);
 
     for (i = 0; i < lengthTable; i++) {
@@ -964,7 +964,7 @@ const Grading = () => {
               <TableCell align="center" colSpan={2}><div><h2>选择</h2></div></TableCell>
             </TableRow>
           </TableHead>
-          {dataBF.map((data,index) => (
+          {finalList.map((data,index) => (
             <TableBody key = {index}>
               <TableRow className ="rowResult">
                 <TableCell align="center" colSpan={1}><div style={{ fontSize: "170%" }}>{data.judgeChiName}</div></TableCell>
