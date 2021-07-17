@@ -112,7 +112,7 @@ const App = () => {
                     <Route path="/raffleresult" exact component={RaffleResult} />
                     <Route path="/sponsor" exact component={Sponsor} />
                     <Route path="/topics" exact component={Topics} />
-                    {/* <Route path="/handbook" exact component={Handbook} /> */}
+                    <Route path="/handbook" exact component={Handbook} />
                 </Switch>
                 {/* <Footer /> */}
             </div>

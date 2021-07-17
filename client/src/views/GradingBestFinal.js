@@ -356,7 +356,7 @@ const GradingBestCand = () => {
         setDialogOpen(false);
     
         addGradingBestFinal(selected);
-        setSelected([]);
+        setSelected(['']);
     }
 
     
