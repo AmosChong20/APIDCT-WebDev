@@ -1,11 +1,18 @@
 # Getting started
 
-Requirement: Nodejs version 16.0.0
-To change node version, run: `nvm install 16.0.0`
+Install Node Version Manager(NVM):
+
+`brew install nvm`
+
+Requirement: Nodejs version 16.0.0\
+To change node version, run: 
+
+`nvm use 16.0.0` (Run `nvm install 16.0.0` for the first time)
 
 Run the following code to run the app:
-`cd client`
-`yarn install/yarn`
+
+`cd client`\
+`yarn install`/`yarn`\
 `yarn start`
 
 # Getting Started with Create React App
